@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Middleware - Compendios Semanales</title>
+    <style>
+        :root {
+            --university-primary: #910048;
+            /* UIDE Burgundy */
+            --university-secondary: #23356E;
+            /* UIDE Navy */
+            --university-accent: #E9AB21;
+            /* UIDE Gold */
+            --university-light: #f8f8f8;
+            /* Light background for contrast */
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--university-light);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: var(--university-primary);
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2em;
+            border-radius: 15px;
+            border: 3px double var(--university-primary);
+        }
+
+        .header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3em;
+            font-weight: normal;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: var(--university-secondary);
+            font-style: italic;
+        }
+
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .week-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 25px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            border-left: 4px solid var(--university-primary);
+        }
+
+        .week-card:hover {
+            border-color: var(--university-secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .week-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--university-primary);
+            margin-bottom: 10px;
+        }
+
+        .week-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.3em;
+            font-weight: normal;
+            color: var(--university-secondary);
+            margin-bottom: 10px;
+        }
+
+        .week-description {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .week-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .link-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .link-html {
+            background: var(--university-primary);
+            color: white;
+        }
+
+        .link-html:hover {
+            background: var(--university-accent);
+            color: var(--university-secondary);
+        }
+
+        .link-md {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #dee2e6;
+        }
+
+        .link-md:hover {
+            background: #e9ecef;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--university-secondary);
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1em;
+            border-radius: 10px;
+            border-top: 2px solid var(--university-primary);
+        }
+
+        /* Table of Contents */
+        .toc-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .toc-section h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2em;
+            color: var(--university-primary);
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .toc-subtitle {
+            color: var(--university-secondary);
+            font-style: italic;
+            margin: 0;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Logo UIDE.png" alt="Logo UIDE" style="max-width: 150px; margin-bottom: 20px;">
+            <h1>Programación de Middleware y Seguridad en Base de Datos</h1>
+            <p>Compendios Semanales del Curso</p>
+            <div
+                style="margin-top: 1em; padding: 1em; background: rgba(255,255,255,0.7); border-radius: 8px; font-size: 0.9em;">
+                <strong>LTI_05A_458</strong> • Programación de Middleware y Seguridad en Base de Datos<br>
+                <strong>Cuarto Nivel</strong> • Octubre 2025 - Febrero 2026 • 48 sesiones/16 semanas<br>
+                <strong>Escuela de Ciencias de la Computación</strong> • Ingeniería en Tecnologías de la Información<br>
+                <em>Prof. Charlie Alexander Cárdenas Toledo, M.Sc.</em>
+            </div>
+        </div>
+
+        <!-- Course Table of Contents -->
+        <div class="toc-section">
+            <h2>Compendios Semanales</h2>
+            <p class="toc-subtitle">Contenidos organizados cronológicamente por semanas</p>
+        </div>
+
+        <div class="weeks-grid">
+            <a href="semanas/semana-01/compendio-middleware-semana1.html" class="week-card">
+                <div class="week-number">Semana 01</div>
+                <div class="week-title">Fundamentos de Sistemas Distribuidos</div>
+                <div class="week-description"><strong>Unidad 1:</strong> Conceptos de SD, roles del middleware, panorama
+                    de tecnologías, estilos y capas a alto nivel</div>
+
+            </a>
+
+            <a href="semanas/semana-02/compendio-middleware-semana2.html" class="week-card">
+                <div class="week-number">Semana 02</div>
+                <div class="week-title">Arquitectura de 3 Capas y MVC</div>
+                <div class="week-description"><strong>Unidad 1:</strong> 3 capas, MVC, comparación de estilos,
+                    middleware como integración</div>
+            </a>
+
+            <a href="semanas/semana-03/compendio-middleware-semana3.html" class="week-card">
+                <div class="week-number">Semana 03</div>
+                <div class="week-title">Protocolos y Formatos de Datos</div>
+                <div class="week-description"><strong>Unidad 2:</strong> HTTP/2, WebSockets, gRPC, formatos: JSON,
+                    Protobuf, MessagePack, XML básico y rol enterprise</div>
+            </a>
+
+            <a href="semanas/semana-04/compendio-middleware-semana4.html" class="week-card">
+                <div class="week-number">Semana 04</div>
+                <div class="week-title">Seguridad: CIA y Criptografía</div>
+                <div class="week-description"><strong>Unidad 2:</strong> CIA, modelos de amenaza, criptografía aplicada
+                    (hash, sim/asim, TLS, PKI) orientada a APIs</div>
+            </a>
+
+            <a href="semanas/semana-05/compendio-middleware-semana5.html" class="week-card">
+                <div class="week-number">Semana 05</div>
+                <div class="week-title">Evaluación Diagnóstica</div>
+                <div class="week-description"><strong>Evaluación:</strong> Evaluación de conocimientos adquiridos en las
+                    primeras 4 semanas</div>
+            </a>
+
+            <a href="semanas/semana-06/compendio-middleware-semana6.html" class="week-card">
+                <div class="week-number">Semana 06</div>
+                <div class="week-title">Desarrollo de APIs con Django / Node.js</div>
+                <div class="week-description"><strong>Unidad 3:</strong> Django REST Framework en profundidad /
+                    TypeScript + Node.js, Express y Fastify (ecosistema), middlewares personalizados, validación
+                    (zod/Joi), estructura de proyecto</div>
+            </a>
+
+            <a href="semanas/semana-07/compendio-middleware-semana7.html" class="week-card">
+                <div class="week-number">Semana 07</div>
+                <div class="week-title">Diseño de APIs REST Escalables y Contratos MCP</div>
+                <div class="week-description"><strong>Unidad 3:</strong> Patrones avanzados de API (HATEOAS, Pagination,
+                    Filtering), versiones y documentación automatizada (Swagger/OpenAPI), optimización y caching,
+                    estructura de endpoints orientados a herramientas MCP</div>
+            </a>
+
+            <a href="semanas/semana-08/compendio-middleware-semana8.html" class="week-card">
+                <div class="week-number">Semana 08</div>
+                <div class="week-title">Seguridad y Autenticación de APIs</div>
+                <div class="week-description"><strong>Unidad 4:</strong> Autenticación y autorización, OAuth2/OIDC
+                    (passport/openid-client), tokens (JWT, PASETO), protección ante XSS/CSRF/SSRF, rate limiting y CORS
+                </div>
+            </a>
+
+            <a href="semanas/semana-09/compendio-middleware-semana9.html" class="week-card">
+                <div class="week-number">Semana 09</div>
+                <div class="week-title">Optimización y Persistencia</div>
+                <div class="week-description"><strong>Unidad 4:</strong> ORM/ODM (Prisma/TypeORM/Sequelize, Mongoose),
+                    N+1, caching con Redis, sharding/particionamiento, NoSQL como middleware de datos, observabilidad
+                    básica (logs/metrics)</div>
+            </a>
+
+            <a href="semanas/semana-10/compendio-middleware-semana10.html" class="week-card">
+                <div class="week-number">Semana 10</div>
+                <div class="week-title">Evaluación Formativa</div>
+                <div class="week-description"><strong>Evaluación:</strong> Evaluación de conocimientos de desarrollo de
+                    APIs y seguridad</div>
+            </a>
+
+            <a href="semanas/semana-11/compendio-middleware-semana11.html" class="week-card">
+                <div class="week-number">Semana 11</div>
+                <div class="week-title">Seguridad en Base de Datos</div>
+                <div class="week-description"><strong>Unidad 5:</strong> Modelos de seguridad, RBAC/ABAC, cifrado en
+                    reposo/en tránsito, auditoría y detección de intrusiones</div>
+            </a>
+
+            <a href="semanas/semana-12/compendio-middleware-semana12.html" class="week-card">
+                <div class="week-number">Semana 12</div>
+                <div class="week-title">Integración con Sistemas Legacy y Servidores MCP</div>
+                <div class="week-description"><strong>Unidad 5:</strong> SOAP/WSDL, integración legacy, WS-Security,
+                    migración SOAP→REST/GraphQL. Protocolo MCP: estructura, registro de herramientas y capacidades,
+                    comunicación stdio/WebSocket</div>
+            </a>
+
+            <a href="semanas/semana-13/compendio-middleware-semana13.html" class="week-card">
+                <div class="week-number">Semana 13</div>
+                <div class="week-title">Arquitectura de Mensajerías</div>
+                <div class="week-description"><strong>Unidad 6:</strong> RabbitMQ/Kafka en Node (amqplib/kafkajs),
+                    Pub/Sub, Saga, CQRS, EDA, resiliencia (reintentos, DLQ, idempotencia)</div>
+            </a>
+
+            <a href="semanas/semana-14/compendio-middleware-semana14.html" class="week-card">
+                <div class="week-number">Semana 14</div>
+                <div class="week-title">Microservicios y Service Mesh</div>
+                <div class="week-description"><strong>Unidad 6:</strong> Diseño y descomposición de dominios, Service
+                    Mesh (Istio/Linkerd), estrategias de migración, observabilidad (tracing con OpenTelemetry)</div>
+            </a>
+
+            <a href="semanas/semana-15/compendio-middleware-semana15.html" class="week-card">
+                <div class="week-number">Semana 15</div>
+                <div class="week-title">Despliegue e Integración Continua</div>
+                <div class="week-description"><strong>Unidad 7:</strong> Integración continua y policy as code
+                    (aprobación de herramientas), secrets management y rotación, despliegue Canary/Blue-Green para
+                    nuevas herramientas MCP, auditoría de despliegues</div>
+            </a>
+
+            <a href="semanas/semana-16/compendio-middleware-semana16.html" class="week-card">
+                <div class="week-number">Semana 16</div>
+                <div class="week-title">Evaluación Sumativa</div>
+                <div class="week-description"><strong>Evaluación:</strong> Evaluación final del curso</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 - Programación de Middleware y Seguridad en Base de Datos - Universidad Internacional del
+                Ecuador</p>
+            <p style="margin-top: 0.5em; font-size: 0.9em; opacity: 0.8;">
+                <strong>Escuela de Ciencias de la Computación</strong> • Ingeniería en Tecnologías de la Información<br>
+                Horario: Martes 13:00-15:00, Miércoles 08:00-10:00 | Tutorías: Viernes 11:00-12:00<br>
+                <strong>chcardenasto@uide.edu.ec</strong> • +593 22985600 Ext. 6008
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>
