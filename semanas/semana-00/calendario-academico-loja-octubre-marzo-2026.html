@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Académico · Loja Octubre 2025 – Marzo 2026</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <style>
+        :root {
+            color-scheme: only light;
+        }
+
+        body {
+            background: var(--uide-light);
+        }
+
+        .reveal section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 18px 36px -26px rgba(35, 53, 110, 0.45);
+            border: 1px solid rgba(35, 53, 110, 0.12);
+        }
+
+        .reveal section[data-background-color] {
+            box-shadow: none;
+            border: none;
+            background: transparent;
+        }
+
+        .reveal h1 {
+            color: var(--uide-primary) !important;
+        }
+
+        .reveal h2 {
+            margin-bottom: 0.4em;
+        }
+
+        .hero-card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid rgba(35, 53, 110, 0.15);
+            padding: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .hero-card .badge {
+            justify-self: start;
+            padding: 0.4rem 1.1rem;
+            border-radius: 999px;
+            background: rgba(35, 53, 110, 0.1);
+            color: var(--uide-secondary);
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .hero-card p {
+            margin: 0;
+            color: rgba(35, 53, 110, 0.9);
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .info-card {
+            border-radius: 16px;
+            border: 1px solid rgba(35, 53, 110, 0.1);
+            padding: 1.2rem 1.4rem;
+            display: grid;
+            gap: .45rem;
+        }
+
+        .info-card h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--uide-primary);
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: .95rem;
+            text-align: left;
+        }
+
+        .info-card.sessions {
+            border-left: 4px solid var(--uide-primary);
+        }
+
+        .info-card.tutoring {
+            border-left: 4px solid var(--uide-accent);
+        }
+
+        .info-card.contact {
+            border-left: 4px solid var(--uide-secondary);
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem 1.6rem;
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid rgba(35, 53, 110, 0.12);
+            padding: 1rem 1.4rem;
+        }
+
+        .legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .9rem;
+        }
+
+        .legend .marker {
+            width: 15px;
+            height: 15px;
+            border-radius: 6px;
+        }
+
+        .marker.class-session {
+            background: rgba(145, 0, 72, 0.22);
+            border: 1px solid rgba(145, 0, 72, 0.4);
+        }
+
+        .marker.tutoring-slot {
+            background: rgba(233, 171, 33, 0.28);
+            border: 1px solid rgba(233, 171, 33, 0.45);
+        }
+
+        table.academic-calendar {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: .4rem;
+            font-size: .9rem;
+        }
+
+        table.academic-calendar th,
+        table.academic-calendar td {
+            text-align: center;
+            padding: .65rem .5rem;
+            border-radius: 10px;
+            background: rgba(35, 53, 110, 0.05);
+            color: #1f1f1f;
+        }
+
+        table.academic-calendar th .subtitle {
+            display: block;
+            font-size: .7rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            color: rgba(35, 53, 110, 0.7);
+            margin-top: .25rem;
+        }
+
+        table.academic-calendar td .note {
+            display: block;
+            margin-top: .35rem;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .note.holiday {
+            color: var(--uide-primary);
+        }
+
+        .note.recess {
+            color: var(--uide-secondary);
+        }
+
+        .note.alert {
+            color: #b25d00;
+        }
+
+        .note.event {
+            color: rgba(35, 53, 110, 0.85);
+        }
+
+        table.academic-calendar th {
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: .08em;
+            background: rgba(35, 53, 110, 0.12);
+            color: var(--uide-secondary);
+        }
+
+        table.academic-calendar th.week-col,
+        table.academic-calendar td.week-col {
+            text-align: left;
+            font-weight: 600;
+            padding-left: .85rem;
+            background: rgba(233, 171, 33, 0.18);
+            color: var(--uide-secondary);
+        }
+
+        /* Clases MARTES y MIÉRCOLES, tutorías VIERNES (según sílabo) */
+        table.academic-calendar th.class-session,
+        table.academic-calendar td.class-session {
+            background: rgba(145, 0, 72, 0.16);
+            color: var(--uide-secondary);
+            font-weight: 600;
+        }
+
+        table.academic-calendar th.tutoring-slot,
+        table.academic-calendar td.tutoring-slot {
+            background: rgba(233, 171, 33, 0.24);
+            color: #5a4300;
+            font-weight: 600;
+        }
+
+        table.academic-calendar td.other-month {
+            color: rgba(31, 31, 31, 0.45);
+            background: rgba(35, 53, 110, 0.04);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section data-background-color="#f8f8f8">
+                <div class="hero-card">
+                    <span class="badge">Semana 0 · LTI_05A_458</span>
+                    <h1>Calendario Académico · Loja</h1>
+                    <h2>Octubre 2025 – Febrero 2026</h2>
+                    <p>
+                        Visualiza las semanas académicas, actividades clave, periodos administrativos y feriados
+                        oficiales del período Octubre 2025 – Febrero 2026 para la sede Loja. Este recurso está alineado con el
+                        calendario institucional y diseñado para consultas rápidas durante el curso.
+                    </p>
+                    <p style="font-size: 0.95rem;">
+                        <strong>Asignatura:</strong> Programación de Middleware y Seguridad en Base de Datos (LTI_05A_458) · Nivel 4 · 48 horas<br>
+                        <strong>Período del sílabo:</strong> octubre 2025–febrero 2026<br>
+                        <strong>Docente:</strong> Prof. Charlie A. Cárdenas Toledo, M.Sc. · <a
+                            href="mailto:chcardenasto@uide.edu.ec">chcardenasto@uide.edu.ec</a>
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Horarios y Contacto</h2>
+                <div class="info-grid">
+                    <div class="info-card sessions">
+                        <h3>Clases</h3>
+                        <p><strong>Martes · 13h00 – 15h00</strong></p>
+                        <p><strong>Miércoles · 08h00 – 10h00</strong></p>
+                        <p>Sesiones presenciales orientadas a desarrollo de middleware, APIs y seguridad en bases de datos.</p>
+                    </div>
+                    <div class="info-card tutoring">
+                        <h3>Tutorías</h3>
+                        <p><strong>Viernes · 11h00 – 12h00</strong></p>
+                        <p>Consultas, seguimiento de proyecto y retroalimentación personalizada.</p>
+                    </div>
+                    <div class="info-card contact">
+                        <h3>Contacto</h3>
+                        <p><strong>Correo:</strong> <a
+                                href="mailto:chcardenasto@uide.edu.ec">chcardenasto@uide.edu.ec</a></p>
+                        <p><strong>Sede:</strong> C. Agustín Carrión Palacios, Loja</p>
+                    </div>
+                </div>
+                <div class="legend" style="margin-top: 1.6rem;">
+                    <span><span class="marker class-session" aria-hidden="true"></span> Clases (mar · 13h00 – 15h00, mié · 08h00 – 10h00)</span>
+                    <span><span class="marker tutoring-slot" aria-hidden="true"></span> Tutorías (viernes · 11h00 – 12h00)</span>
+                </div>
+            </section>
+
+            <!-- OCTUBRE -->
+            <section>
+                <h2>Octubre 2025 · Semanas 1 – 4</h2>
+                <table class="academic-calendar" aria-label="Calendario de octubre 2025">
+                    <thead>
+                        <tr>
+                            <th class="week-col">Semana</th>
+                            <th>L</th>
+                            <th class="class-session">M<span class="subtitle">13h00 – 15h00</span></th>
+                            <th class="class-session">X<span class="subtitle">08h00 – 10h00</span></th>
+                            <th>J</th>
+                            <th class="tutoring-slot">V<span class="subtitle">11h00 – 12h00</span></th>
+                            <th>S</th>
+                            <th>D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-col">1</td>
+                            <td>6</td>
+                            <td class="class-session">7<span class="note event">Cierre evaluación NPS</span></td>
+                            <td class="class-session">8</td>
+                            <td>9</td>
+                            <td class="tutoring-slot">10<span class="note holiday">Feriado Independencia de Guayaquil</span></td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">2</td>
+                            <td>13</td>
+                            <td class="class-session">14</td>
+                            <td class="class-session">15</td>
+                            <td>16</td>
+                            <td class="tutoring-slot">17</td>
+                            <td>18</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">3</td>
+                            <td>20<span class="note event">20-24 Matrículas extraordinarias</span></td>
+                            <td class="class-session">21</td>
+                            <td class="class-session">22</td>
+                            <td>23</td>
+                            <td class="tutoring-slot">24</td>
+                            <td>25<span class="note holiday">Navidad</span></td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">4</td>
+                            <td>27<span class="note event">Inicio clases período Oct 2025 – Feb 2026</span><span class="note event">27-31 Matrículas especiales</span><span class="note event">27/10-01/11 Socialización de sílabos</span></td>
+                            <td class="class-session">28<span class="note event">Cierre evaluación sumativa</span></td>
+                            <td class="class-session">29</td>
+                            <td>30</td>
+                            <td class="tutoring-slot">31<span class="note event">Cierre matrículas especiales</span></td>
+                            <td class="other-month">1<span class="note holiday">Inicio feriado Difuntos</span><span class="note event">Cierre socialización de sílabos</span></td>
+                            <td class="other-month">2<span class="note holiday">Día de los Difuntos</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- NOVIEMBRE -->
+            <section>
+                <h2>Noviembre 2025 · Semanas 5 – 8</h2>
+                <table class="academic-calendar" aria-label="Calendario de noviembre 2025">
+                    <thead>
+                        <tr>
+                            <th class="week-col">Semana</th>
+                            <th>L</th>
+                            <th class="class-session">M<span class="subtitle">13h00 – 15h00</span></th>
+                            <th class="class-session">X<span class="subtitle">08h00 – 10h00</span></th>
+                            <th>J</th>
+                            <th class="tutoring-slot">V<span class="subtitle">11h00 – 12h00</span></th>
+                            <th>S</th>
+                            <th>D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-col">5</td>
+                            <td>3<span class="note holiday">Feriado Difuntos e Independencia de Cuenca</span></td>
+                            <td class="class-session">4<span class="note holiday">Independencia de Cuenca</span></td>
+                            <td class="class-session">5<span class="note event">Evaluación Diagnóstica</span></td>
+                            <td>6</td>
+                            <td class="tutoring-slot">7</td>
+                            <td>8</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">6</td>
+                            <td>10<span class="note event">10-14 Semana de vinculación</span></td>
+                            <td class="class-session">11</td>
+                            <td class="class-session">12</td>
+                            <td>13</td>
+                            <td class="tutoring-slot">14</td>
+                            <td>15<span class="note event">Recuperación feriado de Difuntos</span></td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">7</td>
+                            <td>17<span class="note holiday">Feriado Independencia de Loja (pendiente)</span></td>
+                            <td class="class-session">18</td>
+                            <td class="class-session">19</td>
+                            <td>20</td>
+                            <td class="tutoring-slot">21<span class="note event">Último día de retiro voluntario</span></td>
+                            <td>22<span class="note event">Recuperación feriado Independencia de Loja</span></td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">8</td>
+                            <td>24<span class="note event">24-29 Evaluación diagnóstica</span></td>
+                            <td class="class-session">25</td>
+                            <td class="class-session">26</td>
+                            <td>27</td>
+                            <td class="tutoring-slot">28</td>
+                            <td>29<span class="note event">Ceremonia de graduación</span></td>
+                            <td>30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- DICIEMBRE -->
+            <section>
+                <h2>Diciembre 2025 · Semanas 9 – 12</h2>
+                <table class="academic-calendar" aria-label="Calendario de diciembre 2025">
+                    <thead>
+                        <tr>
+                            <th class="week-col">Semana</th>
+                            <th>L</th>
+                            <th class="class-session">M<span class="subtitle">13h00 – 15h00</span></th>
+                            <th class="class-session">X<span class="subtitle">08h00 – 10h00</span></th>
+                            <th>J</th>
+                            <th class="tutoring-slot">V<span class="subtitle">11h00 – 12h00</span></th>
+                            <th>S</th>
+                            <th>D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-col">9</td>
+                            <td>1<span class="note event">01-06 Comparación de notas</span></td>
+                            <td class="class-session">2</td>
+                            <td class="class-session">3</td>
+                            <td>4</td>
+                            <td class="tutoring-slot">5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">10</td>
+                            <td>8<span class="note holiday">Feriado Fundación de Loja</span><span class="note event">08-10 Publicación de notas</span></td>
+                            <td class="class-session">9</td>
+                            <td class="class-session">10<span class="note event">Evaluación Formativa</span></td>
+                            <td>11<span class="note event">11-12 Rectificación de notas</span></td>
+                            <td class="tutoring-slot">12</td>
+                            <td>13<span class="note event">Recuperación feriado Fundación de Loja</span></td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">11</td>
+                            <td>15</td>
+                            <td class="class-session">16</td>
+                            <td class="class-session">17</td>
+                            <td>18</td>
+                            <td class="tutoring-slot">19</td>
+                            <td>20</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">12</td>
+                            <td>22<span class="note event">Inicio receso Navidad y Año Nuevo</span></td>
+                            <td class="class-session">23</td>
+                            <td class="class-session">24<span class="note recess">Receso · Sin clase</span><span class="note event">Nochebuena</span></td>
+                            <td>25</td>
+                            <td class="tutoring-slot">26<span class="note recess">Receso · Sin tutoría</span></td>
+                            <td>27</td>
+                            <td>28</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ENERO -->
+            <section>
+                <h2>Enero 2026 · Semanas 13 – 16</h2>
+                <table class="academic-calendar" aria-label="Calendario de enero 2026">
+                    <thead>
+                        <tr>
+                            <th class="week-col">Semana</th>
+                            <th>L</th>
+                            <th class="class-session">M<span class="subtitle">13h00 – 15h00</span></th>
+                            <th class="class-session">X<span class="subtitle">08h00 – 10h00</span></th>
+                            <th>J</th>
+                            <th class="tutoring-slot">V<span class="subtitle">11h00 – 12h00</span></th>
+                            <th>S</th>
+                            <th>D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-col">13</td>
+                            <td class="other-month">5<span class="note event">Retorno del receso</span><span class="note event">05-10 Evaluación docente</span></td>
+                            <td class="class-session">6</td>
+                            <td class="class-session">7</td>
+                            <td>8</td>
+                            <td class="tutoring-slot">9</td>
+                            <td>10<span class="note event">Cierre evaluación docente</span></td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">14</td>
+                            <td>12<span class="note event">12-17 Evaluación formativa</span></td>
+                            <td class="class-session">13</td>
+                            <td class="class-session">14</td>
+                            <td>15</td>
+                            <td class="tutoring-slot">16</td>
+                            <td>17<span class="note event">Cierre evaluación formativa</span></td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">15</td>
+                            <td>19<span class="note event">19-24 Comparación de notas</span></td>
+                            <td class="class-session">20</td>
+                            <td class="class-session">21</td>
+                            <td>22</td>
+                            <td class="tutoring-slot">23</td>
+                            <td>24<span class="note event">Cierre comparación de notas</span></td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">16</td>
+                            <td>26<span class="note event">26-28 Ingreso de notas</span></td>
+                            <td class="class-session">27</td>
+                            <td class="class-session">28</td>
+                            <td>29<span class="note event">29-30 Rectificación de notas</span></td>
+                            <td class="tutoring-slot">30<span class="note event">Cierre rectificación de notas</span></td>
+                            <td>31</td>
+                            <td class="other-month">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- FEBRERO -->
+            <section>
+                <h2>Febrero 2026 · Cierre del Período</h2>
+                <table class="academic-calendar" aria-label="Calendario de febrero 2026">
+                    <thead>
+                        <tr>
+                            <th class="week-col">Semana</th>
+                            <th>L</th>
+                            <th class="class-session">M<span class="subtitle">13h00 – 15h00</span></th>
+                            <th class="class-session">X<span class="subtitle">08h00 – 10h00</span></th>
+                            <th>J</th>
+                            <th class="tutoring-slot">V<span class="subtitle">11h00 – 12h00</span></th>
+                            <th>S</th>
+                            <th>D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week-col">Cierre</td>
+                            <td>2<span class="note event">Entrega de programación</span><span class="note event">02-07 Evaluación NPS</span></td>
+                            <td class="class-session">3<span class="note event">Rectificación de notas</span></td>
+                            <td class="class-session">4<span class="note alert">Cierre de clases</span></td>
+                            <td>5</td>
+                            <td class="tutoring-slot">6</td>
+                            <td>7</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">Interperíodo</td>
+                            <td>9<span class="note event">Inicio de clases interperíodo</span></td>
+                            <td class="class-session">10</td>
+                            <td class="class-session">11</td>
+                            <td>12</td>
+                            <td class="tutoring-slot">13</td>
+                            <td>14</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">Carnaval</td>
+                            <td>16<span class="note holiday">Feriado de Carnaval</span></td>
+                            <td class="class-session">17<span class="note holiday">Feriado de Carnaval</span></td>
+                            <td class="class-session">18</td>
+                            <td>19</td>
+                            <td class="tutoring-slot">20</td>
+                            <td>21</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td class="week-col">Final</td>
+                            <td>23<span class="note event">23-28 Evaluación sumativa</span></td>
+                            <td class="class-session">24</td>
+                            <td class="class-session">25<span class="note event">25-28 Publicación de notas</span></td>
+                            <td>26</td>
+                            <td class="tutoring-slot">27</td>
+                            <td>28</td>
+                            <td class="other-month">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/zoom/zoom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/search/search.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+        });
+    </script>
+</body>
+
+</html>
