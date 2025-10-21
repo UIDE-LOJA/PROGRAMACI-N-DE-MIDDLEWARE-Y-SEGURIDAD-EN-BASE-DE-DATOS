@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 3 - Protocolos y Formatos de Datos</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Enhanced concept-box styling */
+        .concept-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .concept-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--uide-primary);
+        }
+
+        .concept-box.warning {
+            border-left: 4px solid #ffc107;
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .concept-box.info {
+            border-left: 4px solid var(--uide-secondary);
+            background: rgba(35, 53, 110, 0.05);
+        }
+
+        .concept-box.success {
+            border-left: 4px solid #28a745;
+            background: rgba(40, 167, 69, 0.05);
+        }
+
+        /* Protocol comparison styles */
+        .protocol-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .protocol-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .protocol-card:hover {
+            border-color: var(--uide-primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .protocol-card h5 {
+            color: var(--uide-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Format comparison table */
+        .format-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9em;
+        }
+
+        .format-table th,
+        .format-table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .format-table th {
+            background: var(--uide-primary);
+            color: white;
+            font-weight: bold;
+        }
+
+        .format-table tr:nth-child(even) {
+            background: rgba(233, 171, 33, 0.1);
+        }
+
+        /* Code block styling */
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8em;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .r-hstack .column {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack {
+                flex-direction: column;
+            }
+
+            .concept-box {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+
+            .protocol-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .format-table {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Enhanced list styling */
+        .concept-box ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .concept-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Highlight styling */
+        mark {
+            background: rgba(233, 171, 33, 0.3);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+
+        /* Performance indicators */
+        .performance-indicator {
+            display: inline-block;
+            padding: 0.2em 0.5em;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 0.2em;
+        }
+
+        .performance-high {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .performance-medium {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .performance-low {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Protocolos y Formatos de Datos</h1>
+                    <h2>Semana 3</h2>
+
+                    <div class="course-info">
+                        <strong>LTI_05A_458</strong> • Cuarto Nivel<br>
+                        <strong>Programación de Middleware y Seguridad en Base de Datos</strong><br>
+                        <em>Prof. Charlie Alexander Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Unidad 2: Protocolos y Seguridad en Middleware</strong><br>
+                        <em>Semana 3 de 16 • Comunicación y serialización de datos</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        HTTP/2, WebSockets, gRPC, formatos: JSON, Protobuf, MessagePack, XML básico y rol enterprise
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Slide -->
+            <section data-background-color="#f8f8f8">
+                <blockquote style="font-size: 1.2em; text-align: center;">
+                    <p><strong>"En las arquitecturas de software contemporáneas, especialmente en los microservicios, la elección del protocolo de comunicación es crucial para minimizar la latencia y maximizar el rendimiento."</strong></p>
+                    <footer style="margin-top: 1em; color: var(--uide-secondary);">
+                        — Principios de Comunicación en Sistemas Distribuidos
+                    </footer>
+                </blockquote>
+            </section>
+
+            <!-- Curriculum Context -->
+            <section data-background-color="#f8f8f8">
+                <h2>Contexto en la Unidad 2</h2>
+
+                <section>
+                    <h3>Progresión Temática</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Semana 2 (Anterior)</h4>
+                            <div style="background: rgba(145, 0, 72, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Arquitectura 3 Capas y MVC</strong><br>
+                                <small>Patrones arquitectónicos, comparación de estilos</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h4>Semana 3 (Actual)</h4>
+                            <div
+                                style="background: rgba(233, 171, 33, 0.2); padding: 1em; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                                <strong>Protocolos y Formatos</strong><br>
+                                <small>Comunicación de alto rendimiento, serialización</small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Próximamente</h4>
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Semana 4</strong><br>
+                                <small>Seguridad: CIA y criptografía</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Temas de la Semana 3</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Contenidos Principales</h4>
+                            <ul>
+                                <li><mark>Protocolos de Alto Rendimiento</mark></li>
+                                <li><mark>Formatos de Serialización</mark></li>
+                                <li><mark>XML y Servicios Web</mark></li>
+                                <li><mark>Análisis de Rendimiento</mark></li>
+                            </ul>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Objetivos de Aprendizaje</h4>
+                            <ul>
+                                <li><strong>Explicar:</strong> Protocolos de comunicación</li>
+                                <li><strong>Implementar:</strong> Conversiones entre formatos</li>
+                                <li><strong>Analizar:</strong> Rendimiento y casos de uso</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Protocolos de Comunicación -->
+            <section data-transition="convex">
+                <h2>Protocolos de Comunicación de Alto Rendimiento</h2>
+
+                <section>
+                    <h3>Panorama de Protocolos Modernos</h3>
+                    <div class="protocol-comparison">
+                        <div class="protocol-card fragment">
+                            <h5>🚀 gRPC</h5>
+                            <p>RPC de alto rendimiento</p>
+                            <span class="performance-indicator performance-high">Alta Eficiencia</span>
+                        </div>
+                        <div class="protocol-card fragment">
+                            <h5>🌐 HTTP/2</h5>
+                            <p>Protocolo web moderno</p>
+                            <span class="performance-indicator performance-high">Multiplexing</span>
+                        </div>
+                        <div class="protocol-card fragment">
+                            <h5>🔄 WebSockets</h5>
+                            <p>Conexión persistente</p>
+                            <span class="performance-indicator performance-medium">Tiempo Real</span>
+                        </div>
+                    </div>
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar cada protocolo en detalle
+                    </p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>gRPC (Google Remote Procedure Call)</h3>
+                    <div class="concept-box">
+                        <h4>🚀 Enfoque Moderno de RPC</h4>
+                        <p>gRPC es un ejemplo de un enfoque moderno de <mark>Llamada a Procedimiento Remoto (RPC)</mark>, diseñado para comunicación síncrona y en tiempo real.</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Ventajas Clave</h5>
+                                <ul>
+                                    <li><strong>Alta eficiencia:</strong> Serialización binaria</li>
+                                    <li><strong>Baja latencia:</strong> Optimizado para velocidad</li>
+                                    <li><strong>HTTP/2:</strong> Protocolo de transporte moderno</li>
+                                    <li><strong>Multiplataforma:</strong> Soporte múltiples lenguajes</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Casos de Uso</h5>
+                                <ul>
+                                    <li>Comunicación entre microservicios</li>
+                                    <li>APIs de alto rendimiento</li>
+                                    <li>Sistemas de observabilidad (OTLP)</li>
+                                    <li>Aplicaciones en tiempo real</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>gRPC - Consideraciones y Limitaciones</h3>
+                    <div class="concept-box warning">
+                        <h4>⚠️ Desafíos de Implementación</h4>
+                        
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>Acoplamiento Fuerte</h5>
+                                <p>La implementación RPC requiere que el cliente instale <mark>librerías específicas (stubs)</mark> que solo funcionan con una única API</p>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Complejidad Operativa</h5>
+                                <blockquote style="font-style: italic; font-size: 0.9em;">
+                                    "gRPC generalmente tiene muchas más dependencias que HTTP. El resultado neto es que gRPC y sus dependencias pueden necesitar ser actualizadas más a menudo"
+                                </blockquote>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>Trade-off Fundamental</h5>
+                            <p>gRPC ofrece <mark>reducción significativa de latencia</mark> a costa de <mark>servicios fuertemente acoplados</mark></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>gRPC en Observabilidad</h3>
+                    <div class="concept-box info">
+                        <h4>📊 OpenTelemetry Protocol (OTLP)</h4>
+                        <p>El protocolo OTLP utiliza gRPC para la codificación, transporte y entrega de datos de telemetría</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Características Técnicas</h5>
+                                <ul>
+                                    <li><strong>Transporte:</strong> HTTP 2.0</li>
+                                    <li><strong>Serialización:</strong> Protocol Buffers</li>
+                                    <li><strong>Puerto por defecto:</strong> 4317</li>
+                                    <li><strong>Datos:</strong> Trazas y métricas</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Beneficios</h5>
+                                <ul>
+                                    <li>Mejor rendimiento que HTTP/1.1</li>
+                                    <li>Serialización binaria eficiente</li>
+                                    <li>Soporte nativo para streaming</li>
+                                    <li>Compresión automática</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>HTTP/2 (Hypertext Transfer Protocol Version 2)</h3>
+                    <div class="concept-box">
+                        <h4>🌐 Protocolo de Transporte Moderno</h4>
+                        <p>HTTP/2 es un protocolo de transporte subyacente crucial para las comunicaciones modernas y base de gRPC</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Mejoras sobre HTTP/1.1</h5>
+                                <ul>
+                                    <li><strong>Multiplexing:</strong> Múltiples streams</li>
+                                    <li><strong>Compresión de headers:</strong> HPACK</li>
+                                    <li><strong>Server Push:</strong> Envío proactivo</li>
+                                    <li><strong>Binario:</strong> Protocolo binario</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Aplicaciones</h5>
+                                <ul>
+                                    <li>Base de gRPC</li>
+                                    <li>Servidores web modernos</li>
+                                    <li>APIs de alto rendimiento</li>
+                                    <li>Aplicaciones Node.js</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>WebSockets</h3>
+                    <div class="concept-box">
+                        <h4>🔄 Conexión Persistente Bidireccional</h4>
+                        <p>WebSockets proporciona una conexión persistente que se distingue del HTTP tradicional</p>
+                        
+                        <div class="concept-box warning fragment">
+                            <blockquote style="font-style: italic;">
+                                "WebSockets, por ejemplo, tiene muy poco que ver con la Web. Después del handshake HTTP inicial, es solo una conexión TCP entre cliente y servidor"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Características</h5>
+                                <ul>
+                                    <li><strong>Conexión persistente:</strong> No HTTP tradicional</li>
+                                    <li><strong>Bidireccional:</strong> Cliente y servidor</li>
+                                    <li><strong>Baja latencia:</strong> Sin overhead HTTP</li>
+                                    <li><strong>Streaming:</strong> Datos en tiempo real</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Casos de Uso</h5>
+                                <ul>
+                                    <li>Aplicaciones en tiempo real</li>
+                                    <li>Chat y mensajería</li>
+                                    <li>Gaming online</li>
+                                    <li>APIs de integración frontend</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Formatos de Serialización -->
+            <section>
+                <h2>Formatos de Serialización y Transferencia de Datos</h2>
+
+                <section>
+                    <h3>Panorama de Formatos de Serialización</h3>
+                    <div class="concept-box">
+                        <p>Los <mark>formatos de serialización</mark> definen cómo se estructuran y empaquetan los datos para su intercambio entre sistemas</p>
+                    </div>
+                    
+                    <table class="format-table fragment">
+                        <thead>
+                            <tr>
+                                <th>Formato</th>
+                                <th>Tipo</th>
+                                <th>Rendimiento</th>
+                                <th>Casos de Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>JSON</strong></td>
+                                <td>Textual</td>
+                                <td><span class="performance-indicator performance-medium">Medio</span></td>
+                                <td>APIs REST, configuración</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Protocol Buffers</strong></td>
+                                <td>Binario</td>
+                                <td><span class="performance-indicator performance-high">Alto</span></td>
+                                <td>gRPC, sistemas distribuidos</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MessagePack</strong></td>
+                                <td>Binario</td>
+                                <td><span class="performance-indicator performance-high">Alto</span></td>
+                                <td>Serialización multiplataforma</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XML</strong></td>
+                                <td>Textual</td>
+                                <td><span class="performance-indicator performance-low">Bajo</span></td>
+                                <td>Servicios web, enterprise</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar cada formato
+                    </p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>JSON (JavaScript Object Notation)</h3>
+                    <div class="concept-box">
+                        <h4>📄 Formato Textual Popular</h4>
+                        <p>JSON es un <mark>formato de serialización textual</mark> muy popular que se utiliza como formato intermedio estándar</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Ventajas</h5>
+                                <ul>
+                                    <li><strong>Simplicidad:</strong> Fácil de leer y escribir</li>
+                                    <li><strong>Popularidad:</strong> Amplio soporte</li>
+                                    <li><strong>Compacidad:</strong> Más compacto que XML</li>
+                                    <li><strong>Nativo web:</strong> Soporte JavaScript</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Aplicaciones</h5>
+                                <ul>
+                                    <li>APIs REST</li>
+                                    <li>JSON Web Tokens (JWT)</li>
+                                    <li>Logs estructurados</li>
+                                    <li>Configuración de aplicaciones</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="concept-box warning fragment">
+                            <h5>⚠️ Limitación: Hipermedia</h5>
+                            <p>JSON no define controles de enlace similares a XML para implementar hipermedia, requiriendo estándares como <mark>HAL (Hypertext Application Language)</mark></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejemplo JSON</h3>
+                    <div class="concept-box">
+                        <h4>📝 Estructura JSON Típica</h4>
+                        <div class="code-example">
+{
+  "usuario": {
+    "id": 123,
+    "nombre": "Juan Pérez",
+    "email": "juan@ejemplo.com",
+    "activo": true,
+    "roles": ["admin", "usuario"],
+    "metadata": {
+      "ultimoAcceso": "2025-01-20T10:30:00Z",
+      "intentosLogin": 3
+    }
+  }
+}
+                        </div>
+                        <p class="fragment">JSON es ideal para <mark>intercambio de datos web</mark> y <mark>configuraciones simples</mark></p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Protocol Buffers (Protobuf)</h3>
+                    <div class="concept-box">
+                        <h4>⚡ Serialización Binaria Eficiente</h4>
+                        <p>Protocol Buffers es un método de serialización altamente eficiente desarrollado por Google para datos estructurados</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Ventajas Clave</h5>
+                                <ul>
+                                    <li><strong>Eficiencia:</strong> Más rápido que XML/JSON</li>
+                                    <li><strong>Compacto:</strong> Representación binaria</li>
+                                    <li><strong>Evolutivo:</strong> Compatibilidad retroactiva</li>
+                                    <li><strong>Multiplataforma:</strong> Múltiples lenguajes</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Características Técnicas</h5>
+                                <ul>
+                                    <li>Serialización por etiquetas integrales</li>
+                                    <li>Generación de código automática</li>
+                                    <li>Esquemas versionados (.proto)</li>
+                                    <li>Soporte para campos opcionales</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Protobuf - Serialización Evolutiva</h3>
+                    <div class="concept-box success">
+                        <h4>🔄 Evolución Sin Romper Compatibilidad</h4>
+                        <p>Una ventaja crítica de Protobuf es su capacidad para acomodar la evolución de la serialización</p>
+                        
+                        <div class="fragment">
+                            <h5>Mecanismo de Etiquetas</h5>
+                            <p>Protobuf rastrea los miembros del contrato mediante <mark>etiquetas integrales, no por nombres</mark></p>
+                            <blockquote style="font-style: italic; margin: 1rem 0;">
+                                "Permite renombrar las propiedades de los Eventos sin preocuparse por la compatibilidad retroactiva"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>Aplicación Avanzada: Netflix</h5>
+                            <p>Netflix utiliza <mark>Protocol Buffer FieldMask</mark> en gRPC APIs para permitir a los clientes especificar exactamente qué campos desean recibir, evitando sobrecarga de datos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejemplo Protobuf</h3>
+                    <div class="concept-box">
+                        <h4>📋 Definición .proto</h4>
+                        <div class="code-example">
+syntax = "proto3";
+
+message Usuario {
+  int32 id = 1;
+  string nombre = 2;
+  string email = 3;
+  bool activo = 4;
+  repeated string roles = 5;
+  
+  message Metadata {
+    string ultimo_acceso = 1;
+    int32 intentos_login = 2;
+  }
+  
+  Metadata metadata = 6;
+}
+                        </div>
+                        <p class="fragment">El compilador protoc genera código fuente (stubs) en múltiples lenguajes a partir de esta definición</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>MessagePack</h3>
+                    <div class="concept-box">
+                        <h4>📦 Serialización Multiplataforma</h4>
+                        <p>MessagePack es una de las herramientas de serialización multiplataforma disponibles, junto con Apache Thrift y Avro</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Características</h5>
+                                <ul>
+                                    <li><strong>Binario eficiente:</strong> Más compacto que JSON</li>
+                                    <li><strong>Esquema-less:</strong> Sin definición previa</li>
+                                    <li><strong>Rápido:</strong> Serialización/deserialización</li>
+                                    <li><strong>Compatible:</strong> Múltiples lenguajes</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Comparación</h5>
+                                <ul>
+                                    <li>Más eficiente que JSON</li>
+                                    <li>Menos rígido que Protobuf</li>
+                                    <li>Alternativa a Apache Thrift</li>
+                                    <li>Competidor de Apache Avro</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- XML y Rol Empresarial -->
+            <section>
+                <h2>XML: Rol Básico y Empresarial</h2>
+
+                <section>
+                    <h3>XML en el Contexto Moderno</h3>
+                    <div class="concept-box">
+                        <p>XML (eXtensible Markup Language) ha sido un <mark>formato fundamental</mark> para el intercambio de información y la estandarización en el ámbito empresarial durante décadas</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Ventajas Históricas</h5>
+                                <ul>
+                                    <li><strong>Estándares maduros:</strong> XPath, XSLT</li>
+                                    <li><strong>Ecosistema robusto:</strong> Herramientas establecidas</li>
+                                    <li><strong>Semántica rica:</strong> Metadatos incluidos</li>
+                                    <li><strong>Interoperabilidad:</strong> Estándares abiertos</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Desventajas</h5>
+                                <ul>
+                                    <li><strong>Verbosidad:</strong> Documentos grandes</li>
+                                    <li><strong>Costo de procesamiento:</strong> Parsing complejo</li>
+                                    <li><strong>Ineficiencia:</strong> vs formatos binarios</li>
+                                    <li><strong>Complejidad:</strong> Esquemas complejos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>XML en Servicios Web y SOA</h3>
+                    <div class="concept-box info">
+                        <h4>🌐 Fundamento de los Servicios Web</h4>
+                        <p>El rol empresarial de XML es indisociable de los <mark>Servicios Web</mark> y la <mark>Arquitectura Orientada a Servicios (SOA)</mark></p>
+                        
+                        <div class="fragment">
+                            <h5>SOAP (Simple Object Access Protocol)</h5>
+                            <p>XML es el lenguaje base del protocolo SOAP, un framework RPC más antiguo que facilita la interoperabilidad entre una amplia gama de programas y plataformas</p>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>Definición W3C de Servicio Web</h5>
+                            <blockquote style="font-style: italic; margin: 1rem 0;">
+                                "Un sistema de software diseñado para soportar la interacción interoperable de máquina a máquina a través de una red, utilizando mensajes SOAP (normalmente transportados usando HTTP con serialización XML) y un interfaz descrito en formato WSDL"
+                            </blockquote>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>XML - Integración y Semántica</h3>
+                    <div class="concept-box success">
+                        <h4>🔗 Capacidades de Integración</h4>
+                        
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>Fortalezas Semánticas</h5>
+                                <ul>
+                                    <li><strong>Etiquetas contextuales:</strong> Significado de datos</li>
+                                    <li><strong>Esquemas XML (XSD):</strong> Validación</li>
+                                    <li><strong>Reutilización:</strong> Modelos de datos</li>
+                                    <li><strong>Interoperabilidad:</strong> Estándares abiertos</li>
+                                </ul>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Arquitecturas Heterogéneas</h5>
+                                <p>XML es <mark>"bien adecuado para el procesamiento transaccional en una arquitectura heterogénea, asíncrona, abierta y distribuida"</mark></p>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>Impacto en SOA</h5>
+                            <p>Los esquemas XML tuvieron <mark>"una profunda influencia en el desarrollo de las tecnologías de servicios web y proporcionan los bloques de construcción fundamentales para los servicios web y las arquitecturas orientadas a servicios"</mark></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>SOI y Desacoplamiento</h3>
+                    <div class="concept-box">
+                        <h4>🔄 Integración Orientada a Servicios</h4>
+                        <p>En la SOI, la mensajería basada en XML y XSD resulta en un <mark>sistema de tipos altamente portable</mark>, reduciendo el acoplamiento</p>
+                        
+                        <div class="fragment">
+                            <h5>Recomendación para Interoperabilidad</h5>
+                            <p>Para sistemas altamente interoperables, se recomienda utilizar el estilo de mensaje <mark>documento con codificación literal (doc/literal)</mark></p>
+                        </div>
+                        
+                        <div class="code-example fragment">
+&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;soap:Body&gt;
+    &lt;obtenerUsuario xmlns="http://ejemplo.com/servicios"&gt;
+      &lt;id&gt;123&lt;/id&gt;
+    &lt;/obtenerUsuario&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Análisis de Rendimiento -->
+            <section>
+                <h2>Análisis de Rendimiento y Casos de Uso</h2>
+
+                <section>
+                    <h3>Comparación de Rendimiento</h3>
+                    <div class="concept-box">
+                        <h4>📊 Métricas de Rendimiento por Formato</h4>
+                        
+                        <table class="format-table">
+                            <thead>
+                                <tr>
+                                    <th>Formato</th>
+                                    <th>Tamaño</th>
+                                    <th>Velocidad Serialización</th>
+                                    <th>Velocidad Deserialización</th>
+                                    <th>Legibilidad Humana</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Protocol Buffers</strong></td>
+                                    <td><span class="performance-indicator performance-high">Muy Compacto</span></td>
+                                    <td><span class="performance-indicator performance-high">Muy Rápida</span></td>
+                                    <td><span class="performance-indicator performance-high">Muy Rápida</span></td>
+                                    <td><span class="performance-indicator performance-low">Baja</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MessagePack</strong></td>
+                                    <td><span class="performance-indicator performance-high">Compacto</span></td>
+                                    <td><span class="performance-indicator performance-high">Rápida</span></td>
+                                    <td><span class="performance-indicator performance-high">Rápida</span></td>
+                                    <td><span class="performance-indicator performance-low">Baja</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>JSON</strong></td>
+                                    <td><span class="performance-indicator performance-medium">Medio</span></td>
+                                    <td><span class="performance-indicator performance-medium">Media</span></td>
+                                    <td><span class="performance-indicator performance-medium">Media</span></td>
+                                    <td><span class="performance-indicator performance-high">Alta</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>XML</strong></td>
+                                    <td><span class="performance-indicator performance-low">Grande</span></td>
+                                    <td><span class="performance-indicator performance-low">Lenta</span></td>
+                                    <td><span class="performance-indicator performance-low">Lenta</span></td>
+                                    <td><span class="performance-indicator performance-high">Alta</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Casos de Uso Recomendados</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box" style="background: rgba(40, 167, 69, 0.1);">
+                                <h4>🚀 Alto Rendimiento</h4>
+                                <h5>Protocol Buffers + gRPC</h5>
+                                <ul>
+                                    <li>Comunicación entre microservicios</li>
+                                    <li>APIs internas de alto volumen</li>
+                                    <li>Sistemas de telemetría</li>
+                                    <li>Gaming y tiempo real</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box" style="background: rgba(255, 193, 7, 0.1);">
+                                <h4>🌐 Web y APIs Públicas</h4>
+                                <h5>JSON + HTTP/REST</h5>
+                                <ul>
+                                    <li>APIs REST públicas</li>
+                                    <li>Aplicaciones web</li>
+                                    <li>Configuración de aplicaciones</li>
+                                    <li>Intercambio de datos simples</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="r-hstack fragment">
+                        <div class="column">
+                            <div class="concept-box" style="background: rgba(220, 53, 69, 0.1);">
+                                <h4>🏢 Sistemas Empresariales</h4>
+                                <h5>XML + SOAP/WSDL</h5>
+                                <ul>
+                                    <li>Integración con sistemas legacy</li>
+                                    <li>Servicios web empresariales</li>
+                                    <li>Transacciones complejas</li>
+                                    <li>Cumplimiento normativo</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box" style="background: rgba(35, 53, 110, 0.1);">
+                                <h4>🔄 Tiempo Real</h4>
+                                <h5>WebSockets + MessagePack</h5>
+                                <ul>
+                                    <li>Chat y mensajería</li>
+                                    <li>Notificaciones push</li>
+                                    <li>Streaming de datos</li>
+                                    <li>Colaboración en tiempo real</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Matriz de Decisión</h3>
+                    <div class="concept-box">
+                        <h4>🎯 Guía de Selección de Protocolo/Formato</h4>
+                        
+                        <div class="protocol-comparison">
+                            <div class="protocol-card">
+                                <h5>¿Necesitas máximo rendimiento?</h5>
+                                <p><strong>→ gRPC + Protobuf</strong></p>
+                                <small>Microservicios internos</small>
+                            </div>
+                            <div class="protocol-card">
+                                <h5>¿API pública web?</h5>
+                                <p><strong>→ HTTP/REST + JSON</strong></p>
+                                <small>Máxima compatibilidad</small>
+                            </div>
+                            <div class="protocol-card">
+                                <h5>¿Tiempo real bidireccional?</h5>
+                                <p><strong>→ WebSockets + MessagePack</strong></p>
+                                <small>Aplicaciones interactivas</small>
+                            </div>
+                            <div class="protocol-card">
+                                <h5>¿Integración empresarial?</h5>
+                                <p><strong>→ SOAP + XML</strong></p>
+                                <small>Sistemas legacy</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Actividades y Evaluación -->
+            <section data-background-color="#f8f8f8">
+                <h2>Actividades Calificadas - Semana 3</h2>
+
+                <section>
+                    <h3>Actividades Calificadas de la Semana 3</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>PE-1.3: Lab Eco-Service</h4>
+                                <p><strong>Tipo:</strong> Práctica de Experimentación</p>
+                                <p><strong>Entregable:</strong> Eco-service en Node que responde en JSON y Protobuf</p>
+                                <p><strong>Objetivo:</strong> Implementar un servicio que demuestre la conversión entre formatos de datos, comparando rendimiento y casos de uso</p>
+                                <small><strong>Valor:</strong> 2.25 puntos</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>TA-1.3: Postman Collection + Script</h4>
+                                <p><strong>Tipo:</strong> Trabajo Autónomo</p>
+                                <p><strong>Entregable:</strong> Postman collection + script de cliente</p>
+                                <p><strong>Objetivo:</strong> Crear herramientas de testing para validar diferentes protocolos y formatos, documentando el proceso de pruebas</p>
+                                <small><strong>Valor:</strong> 2.25 puntos</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Actividad Adicional</h3>
+                    <div class="concept-box info">
+                        <h4>📋 GA-1.1: Sondeo de Protocolos</h4>
+                        <p><strong>Tipo:</strong> Gestión de Aprendizaje</p>
+                        <p><strong>Descripción:</strong> Sondeo: ¿cuándo usar HTTP/2, WebSockets, gRPC?</p>
+                        <p><strong>Objetivo:</strong> Evaluar comprensión de casos de uso apropiados para cada protocolo</p>
+                        <p><strong>Valor:</strong> 1 punto</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Resumen de Evaluación - Semana 3</h3>
+                    <div class="concept-box info">
+                        <h4>📊 Total de Actividades Calificadas</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>Prácticas de Experimentación</h5>
+                                <ul>
+                                    <li>PE-1.3: Lab eco-service JSON/Protobuf</li>
+                                    <li><strong>Subtotal PE: 2.25 puntos</strong></li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Trabajo Autónomo</h5>
+                                <ul>
+                                    <li>TA-1.3: Postman collection + script</li>
+                                    <li><strong>Subtotal TA: 2.25 puntos</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 1em;">
+                            <p><strong>GA-1.1:</strong> 1 punto</p>
+                            <p style="font-size: 1.2em;"><strong>Total Semana 3: 5.5 puntos</strong></p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Conceptos Clave - Flashcards Interactivas -->
+            <section>
+                <h2>Conceptos Clave - Flashcards Interactivas</h2>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 1 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>gRPC vs HTTP/REST</h4>
+                                    <p>¿Cuáles son las principales diferencias entre gRPC y HTTP/REST?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Binario vs Textual, RPC vs Resource</h4>
+                                    <p><strong>gRPC:</strong> serialización binaria, HTTP/2, RPC, alto rendimiento. <strong>REST:</strong> JSON textual, HTTP/1.1+, recursos, amplia compatibilidad.</p>
+                                    <small>gRPC optimizado para microservicios internos, REST para APIs públicas</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Protocol Buffers</h4>
+                                    <p>¿Qué ventajas ofrece Protobuf sobre JSON y XML?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Eficiencia, Evolución, Compacidad</h4>
+                                    <p><strong>Eficiencia:</strong> serialización binaria rápida, <strong>Evolución:</strong> compatibilidad retroactiva por etiquetas, <strong>Compacidad:</strong> menor tamaño que formatos textuales.</p>
+                                    <small>Ideal para comunicación entre microservicios de alto rendimiento</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 3 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>WebSockets</h4>
+                                    <p>¿Cuándo es apropiado usar WebSockets en lugar de HTTP?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Tiempo Real, Bidireccional, Persistente</h4>
+                                    <p><strong>Casos de uso:</strong> chat, gaming, notificaciones push, streaming. <strong>Característica:</strong> conexión TCP persistente después del handshake HTTP inicial.</p>
+                                    <small>"Tiene muy poco que ver con la Web" - es solo TCP cliente-servidor</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>JSON vs XML</h4>
+                                    <p>¿Cuáles son las ventajas y desventajas de JSON frente a XML?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Simplicidad vs Semántica</h4>
+                                    <p><strong>JSON:</strong> simple, compacto, nativo web, pero sin hipermedia nativa. <strong>XML:</strong> semántica rica, herramientas maduras, pero verboso y lento.</p>
+                                    <small>JSON para APIs modernas, XML para sistemas empresariales legacy</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 5 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>HTTP/2 Mejoras</h4>
+                                    <p>¿Qué mejoras introduce HTTP/2 sobre HTTP/1.1?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Multiplexing, Compresión, Server Push</h4>
+                                    <p><strong>Multiplexing:</strong> múltiples streams, <strong>HPACK:</strong> compresión de headers, <strong>Server Push:</strong> envío proactivo, <strong>Binario:</strong> protocolo binario eficiente.</p>
+                                    <small>Base tecnológica de gRPC y aplicaciones modernas</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>SOAP y Servicios Web</h4>
+                                    <p>¿Cuál es el rol de XML en los servicios web empresariales?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Interoperabilidad, Estándares, SOA</h4>
+                                    <p><strong>SOAP:</strong> protocolo basado en XML, <strong>WSDL:</strong> descripción de servicios, <strong>Interoperabilidad:</strong> máquina a máquina, <strong>SOA:</strong> arquitectura orientada a servicios.</p>
+                                    <small>Fundamental para integración empresarial y sistemas heterogéneos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 7 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>MessagePack</h4>
+                                    <p>¿Qué posición ocupa MessagePack entre los formatos de serialización?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Binario Eficiente, Schema-less</h4>
+                                    <p><strong>Características:</strong> más eficiente que JSON, menos rígido que Protobuf, serialización multiplataforma. <strong>Competidores:</strong> Apache Thrift, Apache Avro.</p>
+                                    <small>Ideal para casos donde se necesita eficiencia sin esquemas rígidos</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>OTLP y Observabilidad</h4>
+                                    <p>¿Cómo se utilizan gRPC y Protobuf en sistemas de observabilidad?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>OpenTelemetry Protocol</h4>
+                                    <p><strong>OTLP:</strong> protocolo para telemetría, <strong>Transporte:</strong> gRPC sobre HTTP/2, <strong>Serialización:</strong> Protocol Buffers, <strong>Puerto:</strong> 4317, <strong>Datos:</strong> trazas y métricas.</p>
+                                    <small>Estándar para observabilidad en sistemas distribuidos modernos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Conclusiones -->
+            <section data-background-color="#f8f8f8">
+                <h2>Conclusiones de la Semana 3</h2>
+                
+                <div class="concept-box">
+                    <h4>Conceptos Clave Aprendidos</h4>
+                    <ul>
+                        <li>Los <mark>protocolos de comunicación</mark> deben elegirse según requisitos de rendimiento y casos de uso</li>
+                        <li>Los <mark>formatos de serialización</mark> impactan significativamente en el rendimiento del sistema</li>
+                        <li><mark>gRPC y Protobuf</mark> ofrecen máximo rendimiento para comunicación interna</li>
+                        <li><mark>JSON y REST</mark> mantienen su relevancia para APIs públicas y compatibilidad web</li>
+                        <li><mark>XML y SOAP</mark> siguen siendo importantes en entornos empresariales legacy</li>
+                    </ul>
+                </div>
+
+                <div class="fragment">
+                    <div class="concept-box info">
+                        <h4>Preparación para la Próxima Semana</h4>
+                        <p>En la <strong>Semana 4</strong> profundizaremos en:</p>
+                        <ul>
+                            <li>Principios CIA (Confidencialidad, Integridad, Disponibilidad)</li>
+                            <li>Modelos de amenaza y análisis de riesgos</li>
+                            <li>Criptografía aplicada: hash, simétrica, asimétrica</li>
+                            <li>TLS y PKI orientados a APIs</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Referencias -->
+            <section data-background-color="#f8f8f8">
+                <h2>Referencias Bibliográficas</h2>
+                <div style="font-size: 0.7em; text-align: left; max-height: 500px; overflow-y: auto;">
+                    <div class="references-container">
+                        <p>Belshe, M., Peon, R., & Thomson, M. (2015). Hypertext Transfer Protocol Version 2 (HTTP/2). RFC 7540.</p>
+                        <p>Borysov, A., & Gardiner, R. (2021). Practical API Design at Netflix, Part 1: Using Protobuf FieldMask. Netflix Technology Blog.</p>
+                        <p>Google Developers. (2008). Protocol Buffers.</p>
+                        <p>Gudgin, M., Hadley, M., Mendelsohn, N., Moreau, J. J., & Nielsen, H. F. (2003). SOAP 1.2 Part 1: Messaging Framework. W3C Recommendation.</p>
+                        <p>Hohpe, G., & Woolf, B. (2004). Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions. Addison-Wesley.</p>
+                        <p>Jones, M., Bradley, J., & Sakimura, N. (2015). JSON Web Token (JWT). RFC 7519.</p>
+                        <p>Melnikov, A., & Fette, I. (2011). The WebSocket Protocol. RFC 6455.</p>
+                        <p>Newman, S. (2015). Building Microservices: Designing Fine-Grained Systems. O'Reilly Media Inc.</p>
+                        <p>Tilkov, S., & Vinoski, S. (2010). Protocol buffers: an efficient serialization format. IEEE Internet Computing, 14(6).</p>
+                        <p>W3C. (2004). Web Services Description Language (WSDL) Version 2.0 Part 1: Core Language.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            
+            // Navigation
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            
+            // Presentation size
+            width: 1024,
+            height: 768,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Simple Flashcard System
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+
+</html>
