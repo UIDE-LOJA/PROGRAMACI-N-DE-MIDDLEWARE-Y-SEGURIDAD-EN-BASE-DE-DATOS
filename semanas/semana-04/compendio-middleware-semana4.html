@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 4 - Seguridad: CIA y Criptografía</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+    
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Enhanced concept-box styling */
+        .concept-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .concept-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--uide-primary);
+        }
+
+        .concept-box.warning {
+            border-left: 4px solid #ffc107;
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .concept-box.info {
+            border-left: 4px solid var(--uide-secondary);
+            background: rgba(35, 53, 110, 0.05);
+        }
+
+        .concept-box.success {
+            border-left: 4px solid #28a745;
+            background: rgba(40, 167, 69, 0.05);
+        }
+
+        .concept-box.danger {
+            border-left: 4px solid #dc3545;
+            background: rgba(220, 53, 69, 0.05);
+        }
+      
+  /* CIA Triad styling */
+        .cia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cia-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cia-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--uide-primary), var(--uide-accent));
+        }
+
+        .cia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .cia-card h5 {
+            color: var(--uide-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3em;
+        }
+
+        /* Threat model styling */
+        .threat-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .threat-item {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .threat-item h6 {
+            color: #dc3545;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Cryptography comparison table */
+        .crypto-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9em;
+        }
+
+        .crypto-table th,
+        .crypto-table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .crypto-table th {
+            background: var(--uide-primary);
+            color: white;
+            font-weight: bold;
+        }
+
+        .crypto-table tr:nth-child(even) {
+            background: rgba(233, 171, 33, 0.1);
+        }
+
+        /* Security indicators */
+        .security-indicator {
+            display: inline-block;
+            padding: 0.3em 0.8em;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 0.2em;
+        }
+
+        .security-high {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .security-medium {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .security-low {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Mathematical notation */
+        .math-notation {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            background: rgba(35, 53, 110, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        /* Process flow */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(233, 171, 33, 0.1);
+            border-radius: 10px;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .process-arrow {
+            font-size: 1.5em;
+            color: var(--uide-accent);
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .r-hstack .column {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack {
+                flex-direction: column;
+            }
+
+            .concept-box {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+
+            .cia-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crypto-table {
+                font-size: 0.8em;
+            }
+
+            .process-flow {
+                flex-direction: column;
+            }
+
+            .process-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Enhanced list styling */
+        .concept-box ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .concept-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Highlight styling */
+        mark {
+            background: rgba(233, 171, 33, 0.3);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+     
+       <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Seguridad: CIA y Criptografía</h1>
+                    <h2>Semana 4</h2>
+
+                    <div class="course-info">
+                        <strong>LTI_05A_458</strong> • Cuarto Nivel<br>
+                        <strong>Programación de Middleware y Seguridad en Base de Datos</strong><br>
+                        <em>Prof. Charlie Alexander Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Unidad 2: Protocolos y Seguridad en Middleware</strong><br>
+                        <em>Semana 4 de 16 • Fundamentos de ciberseguridad y criptografía aplicada</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        CIA, modelos de amenaza, criptografía aplicada (hash, sim/asim, TLS, PKI) orientada a APIs
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Slide -->
+            <section data-background-color="#f8f8f8">
+                <blockquote style="font-size: 1.2em; text-align: center;">
+                    <p><strong>"La Triada CIA define los tres objetivos complementarios de cualquier programa de ciberseguridad. Los profesionales de la seguridad utilizan estos objetivos para caracterizar riesgos, ataques y controles."</strong></p>
+                    <footer style="margin-top: 1em; color: var(--uide-secondary);">
+                        — Fundamentos de Ciberseguridad
+                    </footer>
+                </blockquote>
+            </section>
+
+            <!-- Curriculum Context -->
+            <section data-background-color="#f8f8f8">
+                <h2>Contexto en la Unidad 2</h2>
+
+                <section>
+                    <h3>Progresión Temática</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Semana 3 (Anterior)</h4>
+                            <div style="background: rgba(145, 0, 72, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Protocolos y Formatos</strong><br>
+                                <small>Comunicación de alto rendimiento, serialización</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h4>Semana 4 (Actual)</h4>
+                            <div
+                                style="background: rgba(233, 171, 33, 0.2); padding: 1em; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                                <strong>Seguridad: CIA y Criptografía</strong><br>
+                                <small>Fundamentos de seguridad, modelos de amenaza</small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Próximamente</h4>
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Semana 5</strong><br>
+                                <small>Evaluación diagnóstica</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Temas de la Semana 4</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Contenidos Principales</h4>
+                            <ul>
+                                <li><mark>Triada CIA</mark></li>
+                                <li><mark>Modelos de Amenaza</mark></li>
+                                <li><mark>Criptografía Aplicada</mark></li>
+                                <li><mark>TLS y PKI para APIs</mark></li>
+                            </ul>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Objetivos de Aprendizaje</h4>
+                            <ul>
+                                <li><strong>Describir:</strong> Principios y modelos de seguridad</li>
+                                <li><strong>Evaluar:</strong> Vulnerabilidades en middleware</li>
+                                <li><strong>Investigar:</strong> Ataques y medidas preventivas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+           <!-- La Triada CIA -->
+            <section data-transition="convex">
+                <h2>La Triada CIA: Objetivos Fundamentales</h2>
+
+                <section>
+                    <h3>Fundamentos de la Ciberseguridad</h3>
+                    <div class="concept-box">
+                        <p>La <mark>Triada CIA</mark> (Confidencialidad, Integridad y Disponibilidad) define los tres objetivos complementarios de cualquier programa de ciberseguridad</p>
+                        <p class="fragment">Los profesionales de la seguridad utilizan estos objetivos para <strong>caracterizar riesgos, ataques y controles</strong></p>
+                    </div>
+                    
+                    <div class="cia-grid fragment">
+                        <div class="cia-card">
+                            <h5><i class="fas fa-lock"></i> Confidencialidad</h5>
+                            <p>Protección contra acceso no autorizado</p>
+                        </div>
+                        <div class="cia-card">
+                            <h5><i class="fas fa-shield-alt"></i> Integridad</h5>
+                            <p>Prevención de modificaciones no autorizadas</p>
+                        </div>
+                        <div class="cia-card">
+                            <h5><i class="fas fa-bolt"></i> Disponibilidad</h5>
+                            <p>Acceso oportuno para usuarios legítimos</p>
+                        </div>
+                    </div>
+                    
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar cada principio en detalle
+                    </p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Confidencialidad (Confidentiality)</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-lock"></i> Protección de Información Sensible</h4>
+                        <p>La confidencialidad garantiza que los <mark>individuos no autorizados no puedan acceder</mark> a información sensible</p>
+                        
+                        <div class="fragment">
+                            <h5>Estados de los Datos</h5>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <div class="concept-box info">
+                                        <h6><i class="fas fa-folder"></i> Datos en Reposo</h6>
+                                        <p>Información almacenada en discos duros, tapes o en la nube</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="concept-box info">
+                                        <h6><i class="fas fa-globe"></i> Datos en Tránsito</h6>
+                                        <p>Datos que se envían a través de una red</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="concept-box info">
+                                        <h6><i class="fas fa-cog"></i> Datos en Uso</h6>
+                                        <p>Datos que están siendo procesados activamente</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Integridad (Integrity)</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-shield-alt"></i> Prevención de Modificaciones No Autorizadas</h4>
+                        <p>La integridad garantiza que <mark>no existan modificaciones no autorizadas</mark> a la información o a los sistemas</p>
+                        
+                        <div class="fragment">
+                            <blockquote style="font-style: italic; margin: 1rem 0; padding: 1rem; background: rgba(40, 167, 69, 0.1); border-left: 3px solid #28a745;">
+                                "Las alteraciones a los activos de un sistema se pueden realizar solo de una manera autorizada"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Tipos de Modificaciones</h5>
+                                <ul>
+                                    <li><strong>Intencionales:</strong> Ataques maliciosos</li>
+                                    <li><strong>No intencionales:</strong> Errores del sistema</li>
+                                    <li><strong>Corrupción:</strong> Fallos de hardware</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Controles de Integridad</h5>
+                                <ul>
+                                    <li>Funciones hash criptográficas</li>
+                                    <li>Firmas digitales</li>
+                                    <li>Checksums y validaciones</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Disponibilidad (Availability)</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-bolt"></i> Acceso Oportuno y Confiable</h4>
+                        <p>La disponibilidad asegura que la información y los sistemas estén <mark>listos para satisfacer las necesidades</mark> de los usuarios legítimos</p>
+                        
+                        <div class="fragment">
+                            <h5>Sistema Altamente Disponible</h5>
+                            <p>Un sistema que tiene la <mark>mayor probabilidad de estar funcionando</mark> en un instante dado</p>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Amenazas a la Disponibilidad</h5>
+                                <ul>
+                                    <li><strong>Ataques DDoS:</strong> Denegación de servicio</li>
+                                    <li><strong>Fallos de hardware:</strong> Componentes críticos</li>
+                                    <li><strong>Sobrecarga:</strong> Recursos insuficientes</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Medidas de Protección</h5>
+                                <ul>
+                                    <li>Redundancia y respaldos</li>
+                                    <li>Balanceadores de carga</li>
+                                    <li>Monitoreo continuo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>No Repudio (Nonrepudiation)</h3>
+                    <div class="concept-box warning">
+                        <h4><i class="fas fa-edit"></i> Objetivo Adicional de Seguridad</h4>
+                        <p>Aunque no forma parte de la triada CIA, el <mark>no repudio</mark> es un objetivo de seguridad importante</p>
+                        
+                        <div class="fragment">
+                            <blockquote style="font-style: italic; margin: 1rem 0;">
+                                "Alguien que realizó alguna acción, como enviar un mensaje, no puede negar más tarde haber realizado esa acción"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>Implementación</h5>
+                            <p>Las <mark>firmas digitales</mark> son un ejemplo común de control que proporciona no repudio</p>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+           <!-- Modelos de Amenaza -->
+            <section>
+                <h2>Modelos de Amenaza y Agentes de Riesgo</h2>
+
+                <section>
+                    <h3>¿Qué es un Modelo de Amenaza?</h3>
+                    <div class="concept-box">
+                        <blockquote style="font-style: italic; margin: 1rem 0; padding: 1rem; background: rgba(220, 53, 69, 0.1); border-left: 3px solid #dc3545;">
+                            "Un proceso estratégico destinado a considerar posibles escenarios de ataque y vulnerabilidades dentro de un entorno de aplicación propuesto o existente con el propósito de identificar claramente los niveles de riesgo e impacto"
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>La Triada DAD (Amenazas)</h3>
+                    <div class="concept-box danger">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Tres Amenazas Clave</h4>
+                        <p>Así como la CIA define los objetivos, la triada <mark>DAD</mark> describe las tres amenazas clave a los esfuerzos de ciberseguridad</p>
+                        
+                        <div class="threat-matrix fragment">
+                            <div class="threat-item">
+                                <h6><i class="fas fa-share"></i> Divulgación (Disclosure)</h6>
+                                <p>Exposición de información sensible a individuos no autorizados</p>
+                                <small><strong>Viola:</strong> Confidencialidad</small>
+                            </div>
+                            <div class="threat-item">
+                                <h6><i class="fas fa-edit"></i> Alteración (Alteration)</h6>
+                                <p>Modificación no autorizada de la información</p>
+                                <small><strong>Viola:</strong> Integridad</small>
+                            </div>
+                            <div class="threat-item">
+                                <h6><i class="fas fa-ban"></i> Denegación (Denial)</h6>
+                                <p>Interrupción del acceso legítimo de usuarios autorizados</p>
+                                <small><strong>Viola:</strong> Disponibilidad</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Agentes de Amenaza y Motivaciones</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-crosshairs"></i> Actores de Amenaza</h4>
+                        <p>Los actores de amenaza están motivados por diversos factores para atacar activos de alto valor</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Motivaciones Principales</h5>
+                                <ul>
+                                    <li><strong>Lucro monetario:</strong> Robo de información financiera</li>
+                                    <li><strong>Venganza:</strong> Empleados descontentos</li>
+                                    <li><strong>Ventajas estratégicas:</strong> Espionaje corporativo</li>
+                                    <li><strong>Interés en información de negocio</strong></li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Tipos de Atacantes</h5>
+                                <ul>
+                                    <li><strong>Ciberdelincuentes:</strong> Motivación económica</li>
+                                    <li><strong>Hacktivistas:</strong> Motivación ideológica</li>
+                                    <li><strong>Espías estatales:</strong> Intereses nacionales</li>
+                                    <li><strong>Insiders maliciosos:</strong> Acceso privilegiado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Vulnerabilidades Específicas en APIs</h3>
+                    <div class="concept-box danger">
+                        <h4><i class="fas fa-plug"></i> APIs como Objetivos Lucrativos</h4>
+                        <p>Las APIs son objetivos lucrativos porque, al ser <mark>puertas de enlace</mark>, una vulnerabilidad puede tener efectos en cascada</p>
+                        
+                        <div class="fragment">
+                            <blockquote style="font-style: italic; margin: 1rem 0;">
+                                "Una vulnerabilidad puede poner en peligro su integridad y provocar lapses de seguridad en cascada a través de todos los sistemas vinculados a ella"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Vulnerabilidades Comunes</h5>
+                                <ul>
+                                    <li><strong>Canales no cifrados:</strong> Comunicación insegura</li>
+                                    <li><strong>Almacenamiento no cifrado:</strong> Datos expuestos</li>
+                                    <li><strong>Uso no autorizado:</strong> Funciones expuestas</li>
+                                    <li><strong>Autenticación débil:</strong> Acceso no controlado</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Impacto en Microservicios</h5>
+                                <ul>
+                                    <li>Propagación de vulnerabilidades</li>
+                                    <li>Compromiso de múltiples servicios</li>
+                                    <li>Pérdida de confianza en el ecosistema</li>
+                                    <li>Dificultad de contención</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>  
+          <!-- Criptografía Aplicada -->
+            <section>
+                <h2>Criptografía Aplicada</h2>
+
+                <section>
+                    <h3>Fundamentos de la Criptografía</h3>
+                    <div class="concept-box">
+                        <p>La <mark>Criptografía</mark> es la ciencia de proteger la información para que dos o más personas puedan comunicarse sin que sus mensajes sean leídos o manipulados por nadie más</p>
+                        
+                        <div class="fragment">
+                            <h4>Objetivos de la Criptografía</h4>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <ul>
+                                        <li><strong>Confidencialidad:</strong> Protección contra lectura no autorizada</li>
+                                        <li><strong>Integridad:</strong> Detección de modificaciones</li>
+                                    </ul>
+                                </div>
+                                <div class="column">
+                                    <ul>
+                                        <li><strong>Autenticación:</strong> Verificación de identidad</li>
+                                        <li><strong>No repudio:</strong> Prueba de origen</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar cada tipo de criptografía
+                    </p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Funciones de Hashing</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-hashtag"></i> Función Criptográfica Unidireccional</h4>
+                        <p>Una función hash toma una <mark>entrada (input)</mark> y genera una <mark>salida única y repetible</mark> de longitud fija</p>
+                        
+                        <div class="math-notation fragment">
+                            <p><strong>h = Hash(m)</strong></p>
+                            <p>Donde <em>m</em> es el mensaje y <em>h</em> es el hash resultante</p>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Propiedades Clave</h5>
+                                <ul>
+                                    <li><strong>Unidireccional:</strong> Computacionalmente inviable invertir</li>
+                                    <li><strong>Determinística:</strong> Mismo input = mismo output</li>
+                                    <li><strong>Longitud fija:</strong> Output siempre del mismo tamaño</li>
+                                    <li><strong>Avalanche effect:</strong> Pequeño cambio = gran diferencia</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Aplicaciones</h5>
+                                <ul>
+                                    <li><strong>Verificación de integridad:</strong> Checksums</li>
+                                    <li><strong>Almacenamiento de contraseñas</strong></li>
+                                    <li><strong>Firmas digitales:</strong> Message digest</li>
+                                    <li><strong>Blockchain:</strong> Proof of work</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>HMAC en APIs</h3>
+                    <div class="concept-box success">
+                        <h4><i class="fas fa-key"></i> Código de Autenticación de Mensajes</h4>
+                        <p>Para proteger la integridad de las peticiones en APIs, se puede usar <mark>HMAC</mark> (Hash-based Message Authentication Code)</p>
+                        
+                        <div class="process-flow fragment">
+                            <div class="process-step">
+                                <h6>1. Preparación</h6>
+                                <p>Cuerpo de solicitud + Clave privada</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>2. Hashing</h6>
+                                <p>HMAC(mensaje, clave)</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>3. Envío</h6>
+                                <p>Solicitud + Hash</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>4. Verificación</h6>
+                                <p>Validación de integridad</p>
+                            </div>
+                        </div>
+                        
+                        <p class="fragment">Esto asegura que <mark>"ningún tercero haya manipulado la solicitud"</mark></p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Criptografía Simétrica vs Asimétrica</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-key"></i> Distinción Fundamental</h4>
+                        <p>Existe una distinción fundamental basada en si las <mark>claves de cifrado y descifrado son las mismas</mark></p>
+                        
+                        <table class="crypto-table fragment">
+                            <thead>
+                                <tr>
+                                    <th>Criterio</th>
+                                    <th>Criptografía Simétrica</th>
+                                    <th>Criptografía Asimétrica</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Claves</strong></td>
+                                    <td>Una sola clave secreta compartida</td>
+                                    <td>Par de claves: pública y privada</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Velocidad</strong></td>
+                                    <td><span class="security-indicator security-high">Muy rápida</span><br><small>1,000-10,000x más rápida</small></td>
+                                    <td><span class="security-indicator security-low">Lenta</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>No Repudio</strong></td>
+                                    <td><span class="security-indicator security-low">No implementa</span><br><small>Ambas partes tienen la clave</small></td>
+                                    <td><span class="security-indicator security-high">Sí proporciona</span><br><small>Firmas digitales</small></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Escalabilidad</strong></td>
+                                    <td><span class="security-indicator security-low">No escalable</span><br><small>Una clave por par</small></td>
+                                    <td><span class="security-indicator security-high">Muy escalable</span><br><small>Un par por usuario</small></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Uso Típico</strong></td>
+                                    <td>Cifrado masivo (bulk encryption)</td>
+                                    <td>Intercambio de claves, firmas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Criptografía Híbrida</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-sync-alt"></i> Combinando lo Mejor de Ambos Mundos</h4>
+                        <p>Debido a la lentitud de los algoritmos asimétricos, la práctica estándar es usar <mark>criptografía híbrida</mark></p>
+                        
+                        <div class="process-flow fragment">
+                            <div class="process-step">
+                                <h6>1. Establecimiento</h6>
+                                <p>Criptografía asimétrica para intercambio seguro de clave</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>2. Comunicación</h6>
+                                <p>Criptografía simétrica para el resto de la sesión</p>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>Beneficios</h5>
+                            <ul>
+                                <li><strong>Seguridad:</strong> Intercambio seguro de claves</li>
+                                <li><strong>Rendimiento:</strong> Cifrado rápido de datos</li>
+                                <li><strong>Escalabilidad:</strong> Gestión eficiente de claves</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Firmas Digitales</h3>
+                    <div class="concept-box success">
+                        <h4><i class="fas fa-signature"></i> Integridad y No Repudio</h4>
+                        <p>Las firmas digitales son un control criptográfico que proporciona <mark>integridad y no repudio</mark></p>
+                        
+                        <div class="process-flow fragment">
+                            <div class="process-step">
+                                <h6>1. Firma</h6>
+                                <p>Cifrar hash del mensaje con clave privada</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>2. Envío</h6>
+                                <p>Mensaje + Firma digital</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>3. Verificación</h6>
+                                <p>Descifrar firma con clave pública</p>
+                            </div>
+                            <div class="process-arrow">→</div>
+                            <div class="process-step">
+                                <h6>4. Validación</h6>
+                                <p>Comparar hashes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Garantías</h5>
+                                <ul>
+                                    <li><strong>Integridad:</strong> Mensaje no alterado</li>
+                                    <li><strong>No repudio:</strong> Origen verificable</li>
+                                    <li><strong>Autenticación:</strong> Identidad del remitente</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Aplicaciones</h5>
+                                <ul>
+                                    <li>Contratos digitales</li>
+                                    <li>Certificados SSL/TLS</li>
+                                    <li>Transacciones financieras</li>
+                                    <li>APIs críticas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>   
+         <!-- TLS y PKI -->
+            <section>
+                <h2>Criptografía Orientada a APIs: TLS y PKI</h2>
+
+                <section>
+                    <h3>TLS y HTTPS</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-lock"></i> Seguridad en el Canal de Comunicación</h4>
+                        <p><mark>HTTPS</mark> es el nombre de HTTP ejecutándose sobre una conexión segura utilizando el protocolo <mark>Transport Layer Security (TLS)</mark></p>
+                        
+                        <div class="fragment">
+                            <blockquote style="font-style: italic; margin: 1rem 0; padding: 1rem; background: rgba(40, 167, 69, 0.1); border-left: 3px solid #28a745;">
+                                "TLS es el protocolo que se activa cuando se ve el candado en la barra de herramientas del navegador"
+                            </blockquote>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Garantías de TLS</h5>
+                                <ul>
+                                    <li><strong>Confidencialidad:</strong> Cifrado de datos</li>
+                                    <li><strong>Integridad:</strong> Detección de alteraciones</li>
+                                    <li><strong>Autenticación:</strong> Verificación de identidad</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Protección Contra</h5>
+                                <ul>
+                                    <li><strong>Eavesdropping:</strong> Espionaje de mensajes</li>
+                                    <li><strong>Man-in-the-middle:</strong> Interceptación</li>
+                                    <li><strong>Tampering:</strong> Modificación de datos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Importancia Crítica para APIs</h3>
+                    <div class="concept-box warning">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Transporte Seguro de Secretos</h4>
+                        <p>Es fundamental que los <mark>tokens y claves de API</mark>, al ser secretos compartidos, se transporten <strong>"solo a través de una conexión segura como HTTPS"</strong></p>
+                        
+                        <div class="fragment">
+                            <h5>Terminación SSL/TLS</h5>
+                            <p>Es común que un <mark>load balancer o reverse proxy</mark> realice la "terminación SSL", manejando la conexión TLS del cliente antes de que la solicitud llegue al servidor API</p>
+                            
+                            <div class="process-flow">
+                                <div class="process-step">
+                                    <h6>Cliente</h6>
+                                    <p>HTTPS Request</p>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step">
+                                    <h6>Load Balancer</h6>
+                                    <p>SSL Termination</p>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step">
+                                    <h6>API Server</h6>
+                                    <p>HTTP Request</p>
+                                </div>
+                            </div>
+                            
+                            <p><strong>Beneficio:</strong> Libera al servidor de la costosa operación de cifrado</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>PKI - Infraestructura de Clave Pública</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-building"></i> Infraestructura de Confianza</h4>
+                        <blockquote style="font-style: italic; margin: 1rem 0;">
+                            "La PKI se refiere a la tecnología, infraestructura y prácticas que apoyan la implementación y operación de certificados digitales y autoridades de certificación que verifican y autentican la validez de las partes involucradas en las transacciones de Internet"
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Componentes Clave de PKI</h3>
+                    <div class="r-vstack">
+                        <div class="concept-box fragment">
+                            <h4><i class="fas fa-certificate"></i> Certificado Digital</h4>
+                            <p>Una <mark>declaración firmada digitalmente</mark> por una Autoridad de Certificación (CA) que vincula un valor de clave pública a la identidad del sujeto</p>
+                            <ul>
+                                <li><strong>Sujeto:</strong> Persona, dispositivo o servicio</li>
+                                <li><strong>Clave pública:</strong> Para verificación</li>
+                                <li><strong>Firma de CA:</strong> Garantía de autenticidad</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="concept-box fragment">
+                            <h4><i class="fas fa-university"></i> Autoridad de Certificación (CA)</h4>
+                            <p><mark>Entidad de confianza</mark> que crea y firma certificados digitales, atestiguando que la clave privada asociada está en posesión del sujeto nombrado</p>
+                            <ul>
+                                <li><strong>Emisión:</strong> Crear certificados</li>
+                                <li><strong>Validación:</strong> Verificar identidades</li>
+                                <li><strong>Revocación:</strong> Cancelar certificados comprometidos</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="concept-box fragment">
+                            <h4><i class="fas fa-times-circle"></i> Revocación de Certificados</h4>
+                            <p>Los certificados pueden ser <mark>revocados (cancelados)</mark> si la clave privada se ve comprometida</p>
+                            <ul>
+                                <li><strong>CRL:</strong> Certificate Revocation List</li>
+                                <li><strong>OCSP:</strong> Online Certificate Status Protocol</li>
+                                <li><strong>Razones:</strong> Compromiso, cambio de afiliación, cese de operaciones</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Autenticación Mutua (mTLS)</h3>
+                    <div class="concept-box success">
+                        <h4><i class="fas fa-handshake"></i> Two-Way SSL para Microservicios</h4>
+                        <p>En la comunicación de microservicios, la <mark>autenticación Mutua TLS (mTLS)</mark> es un mecanismo clave para asegurar la comunicación servicio-a-servicio</p>
+                        
+                        <div class="fragment">
+                            <h5>Proceso mTLS</h5>
+                            <div class="process-flow">
+                                <div class="process-step">
+                                    <h6>Cliente</h6>
+                                    <p>Presenta certificado</p>
+                                </div>
+                                <div class="process-arrow">⟷</div>
+                                <div class="process-step">
+                                    <h6>Servidor</h6>
+                                    <p>Presenta certificado</p>
+                                </div>
+                            </div>
+                            <p style="text-align: center; margin-top: 1rem;"><strong>Ambos se autentican mutuamente</strong></p>
+                        </div>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Beneficios</h5>
+                                <ul>
+                                    <li><strong>Autenticación bidireccional:</strong> Cliente y servidor</li>
+                                    <li><strong>Zero Trust:</strong> Verificación continua</li>
+                                    <li><strong>Seguridad en capa de transporte</strong></li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Casos de Uso</h5>
+                                <ul>
+                                    <li>Comunicación entre microservicios</li>
+                                    <li>APIs internas críticas</li>
+                                    <li>Service mesh (Istio, Linkerd)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>          
+  <!-- Actividades y Evaluación -->
+            <section data-background-color="#f8f8f8">
+                <h2>Actividades Calificadas - Semana 4</h2>
+
+                <section>
+                    <h3>Actividades Calificadas de la Semana 4</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>PE-1.4: Lab TLS y JWT/PASETO</h4>
+                                <p><strong>Tipo:</strong> Práctica de Experimentación</p>
+                                <p><strong>Entregable:</strong> Configurar TLS local y firmar/verificar JWT (o PASETO) con IA</p>
+                                <p><strong>Objetivo:</strong> Implementar seguridad práctica en APIs mediante configuración de TLS y manejo de tokens seguros</p>
+                                <small><strong>Valor:</strong> 2.25 puntos</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>TA-1.4: Modelo de Amenaza STRIDE</h4>
+                                <p><strong>Tipo:</strong> Trabajo Autónomo</p>
+                                <p><strong>Entregable:</strong> Mini informe: modelo de amenaza (STRIDE) de la API</p>
+                                <p><strong>Objetivo:</strong> Aplicar metodología STRIDE para identificar y analizar amenazas específicas en APIs</p>
+                                <small><strong>Valor:</strong> 2.25 puntos</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Metodología STRIDE</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-crosshairs"></i> Framework de Modelado de Amenazas</h4>
+                        <p>STRIDE es una metodología para identificar amenazas de seguridad de manera sistemática</p>
+                        
+                        <div class="threat-matrix fragment">
+                            <div class="threat-item">
+                                <h6>S - Spoofing</h6>
+                                <p>Suplantación de identidad</p>
+                            </div>
+                            <div class="threat-item">
+                                <h6>T - Tampering</h6>
+                                <p>Alteración de datos</p>
+                            </div>
+                            <div class="threat-item">
+                                <h6>R - Repudiation</h6>
+                                <p>Negación de acciones</p>
+                            </div>
+                            <div class="threat-item">
+                                <h6>I - Information Disclosure</h6>
+                                <p>Divulgación de información</p>
+                            </div>
+                            <div class="threat-item">
+                                <h6>D - Denial of Service</h6>
+                                <p>Denegación de servicio</p>
+                            </div>
+                            <div class="threat-item">
+                                <h6>E - Elevation of Privilege</h6>
+                                <p>Escalación de privilegios</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Resumen de Evaluación - Semana 4</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-chart-bar"></i> Total de Actividades Calificadas</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>Prácticas de Experimentación</h5>
+                                <ul>
+                                    <li>PE-1.4: Lab TLS y JWT/PASETO con IA</li>
+                                    <li><strong>Subtotal PE: 2.25 puntos</strong></li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Trabajo Autónomo</h5>
+                                <ul>
+                                    <li>TA-1.4: Modelo de amenaza STRIDE</li>
+                                    <li><strong>Subtotal TA: 2.25 puntos</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p style="text-align: center; margin-top: 1em; font-size: 1.2em;"><strong>Total Semana 4: 4.5 puntos</strong></p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Conceptos Clave - Flashcards Interactivas -->
+            <section>
+                <h2>Conceptos Clave - Flashcards Interactivas</h2>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 1 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Triada CIA</h4>
+                                    <p>¿Cuáles son los tres objetivos fundamentales de la ciberseguridad?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Confidencialidad, Integridad, Disponibilidad</h4>
+                                    <p><strong>Confidencialidad:</strong> protección contra acceso no autorizado, <strong>Integridad:</strong> prevención de modificaciones no autorizadas, <strong>Disponibilidad:</strong> acceso oportuno para usuarios legítimos.</p>
+                                    <small>Objetivos complementarios para caracterizar riesgos, ataques y controles</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Triada DAD</h4>
+                                    <p>¿Cuáles son las tres amenazas clave que violan los principios CIA?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Divulgación, Alteración, Denegación</h4>
+                                    <p><strong>Divulgación:</strong> viola confidencialidad (pérdida de datos), <strong>Alteración:</strong> viola integridad (modificación no autorizada), <strong>Denegación:</strong> viola disponibilidad (interrupción de acceso).</p>
+                                    <small>Amenazas que los profesionales de seguridad deben mitigar</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 3 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Funciones Hash</h4>
+                                    <p>¿Qué características tienen las funciones hash criptográficas?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Unidireccional, Determinística, Longitud Fija</h4>
+                                    <p><strong>Unidireccional:</strong> computacionalmente inviable invertir, <strong>Determinística:</strong> mismo input = mismo output, <strong>Longitud fija:</strong> output siempre del mismo tamaño.</p>
+                                    <small>Usadas para verificación de integridad y HMAC en APIs</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Criptografía Simétrica vs Asimétrica</h4>
+                                    <p>¿Cuáles son las principales diferencias entre ambos tipos?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Velocidad vs Escalabilidad</h4>
+                                    <p><strong>Simétrica:</strong> una clave, muy rápida, no escalable, no repudio. <strong>Asimétrica:</strong> par de claves, lenta, muy escalable, sí repudio con firmas digitales.</p>
+                                    <small>Se combinan en criptografía híbrida para obtener lo mejor de ambas</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 5 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>TLS y HTTPS</h4>
+                                    <p>¿Qué garantías proporciona TLS en las comunicaciones de APIs?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Confidencialidad, Integridad, Autenticación</h4>
+                                    <p><strong>Confidencialidad:</strong> cifrado de datos, <strong>Integridad:</strong> detección de alteraciones, <strong>Autenticación:</strong> verificación de identidad. Protege contra eavesdropping y man-in-the-middle.</p>
+                                    <small>Fundamental para transporte seguro de tokens y claves de API</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>PKI - Infraestructura de Clave Pública</h4>
+                                    <p>¿Cuáles son los componentes clave de PKI?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Certificados, CA, Revocación</h4>
+                                    <p><strong>Certificados digitales:</strong> vinculan clave pública a identidad, <strong>CA:</strong> entidad de confianza que firma certificados, <strong>Revocación:</strong> cancelación de certificados comprometidos.</p>
+                                    <small>Base tecnológica para comunicación segura a escala en Internet</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 7 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>mTLS - Autenticación Mutua</h4>
+                                    <p>¿Cómo funciona la autenticación mutua TLS en microservicios?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Two-Way SSL</h4>
+                                    <p>Tanto el <strong>servidor como el cliente</strong> deben presentar un certificado y autenticarse mutuamente. Verifica la identidad del cliente en la capa de transporte.</p>
+                                    <small>Clave para comunicación segura servicio-a-servicio en arquitecturas Zero Trust</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Vulnerabilidades en APIs</h4>
+                                    <p>¿Por qué las APIs son objetivos lucrativos para los atacantes?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Puertas de Enlace, Efecto Cascada</h4>
+                                    <p>Al ser <strong>puertas de enlace</strong>, una vulnerabilidad puede "poner en peligro su integridad y provocar lapses de seguridad en cascada a través de todos los sistemas vinculados".</p>
+                                    <small>Canales no cifrados, almacenamiento inseguro, uso no autorizado de funciones</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Conclusiones -->
+            <section data-background-color="#f8f8f8">
+                <h2>Conclusiones de la Semana 4</h2>
+                
+                <div class="concept-box">
+                    <h4>Conceptos Clave Aprendidos</h4>
+                    <ul>
+                        <li>La <mark>Triada CIA</mark> define los objetivos fundamentales de cualquier programa de ciberseguridad</li>
+                        <li>Los <mark>modelos de amenaza</mark> son procesos estratégicos para identificar riesgos y vulnerabilidades</li>
+                        <li>La <mark>criptografía aplicada</mark> proporciona herramientas para confidencialidad, integridad y autenticación</li>
+                        <li><mark>TLS y PKI</mark> son fundamentales para la seguridad de APIs y comunicaciones distribuidas</li>
+                        <li>Las <mark>APIs son objetivos lucrativos</mark> que requieren protección especial por su efecto cascada</li>
+                    </ul>
+                </div>
+
+                <div class="fragment">
+                    <div class="concept-box info">
+                        <h4>Preparación para la Próxima Semana</h4>
+                        <p>En la <strong>Semana 5</strong> tendremos:</p>
+                        <ul>
+                            <li><strong>Evaluación Diagnóstica:</strong> Conocimientos teóricos y prácticos</li>
+                            <li><strong>Consolidación:</strong> Repaso de las primeras 4 semanas</li>
+                            <li><strong>Proyecto Fase I:</strong> Aplicación práctica de conceptos aprendidos</li>
+                            <li><strong>Preparación:</strong> Para la Unidad 3 - Desarrollo de APIs</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Referencias -->
+            <section data-background-color="#f8f8f8">
+                <h2>Referencias Bibliográficas</h2>
+                <div style="font-size: 0.7em; text-align: left; max-height: 500px; overflow-y: auto;">
+                    <div class="references-container">
+                        <p>Kurose, J. F., & Ross, K. W. (2017). Computer Networking - a Top-Down Approach (7th Edition). Pearson.</p>
+                        <p>Madden, N. (n.d.). API Security in Action 1st Edition. Manning Publications.</p>
+                        <p>Newman, S. (2015). Building Microservices: Designing Fine-Grained Systems. O'Reilly Media Inc.</p>
+                        <p>Raymond, R., et al. (2023). CompTIA Security+ Study Guide with over 500 Practice Test Questions. Technet24.</p>
+                        <p>Schneier, B. (1996). Security Engineering: A Guide to Building Dependable Distributed Systems (3rd ed.). Department of Computer Science and Technology.</p>
+                        <p>UcedaVélez, T., & Morana, M. M. (2015). Risk Centric Threat Modeling: Process for Attack Simulation and Threat Analysis. John Wiley & Sons, Inc.</p>
+                        <p>Voelter, M., Kircher, M., & Zdun, U. (2022). Patterns for API Design: Simplifying Integration with Loosely Coupled Message Exchanges.</p>
+                        <p>Zuquete, A. (2021). Segurança em Redes Informáticas (6ª edição). FCA – Editora de Informática.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            
+            // Navigation
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            
+            // Presentation size
+            width: 1024,
+            height: 768,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Simple Flashcard System
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+
+</html>
