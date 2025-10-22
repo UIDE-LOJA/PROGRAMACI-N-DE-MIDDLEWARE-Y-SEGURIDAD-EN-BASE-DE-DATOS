@@ -46,7 +46,7 @@ Los cursos indicados con el logotipo de ASU indican cursos que se complementan c
 
 **Correquisito(s):** Ninguno
 
-**Número de sesiones:** 48/16 semanas
+**Número de sesiones:** 48 horas/16 semanas
 
 **Horario de clases:** martes, 13:00 – 15:00; miércoles, 08:00 – 10:00
 
@@ -55,6 +55,8 @@ Los cursos indicados con el logotipo de ASU indican cursos que se complementan c
 ---
 
 ## DESCRIPCIÓN Y COMO APORTA AL PERFIL PROFESIONAL
+
+La asignatura Programación de Middleware y Seguridad en Base de Datos ha sido enriquecida con material Arizona State University (ASU) tomada del sílabo IFT-458 Programación de Middleware y Seguridad en Base de Datos, así como las Cintana Education Master Classes.
 
 La asignatura "Programación de Middleware y Seguridad de Base de Datos" forma a los estudiantes en el desarrollo de software intermedio que facilita la comunicación entre sistemas distribuidos y en la implementación de estrategias de seguridad para bases de datos. Combina fundamentos teóricos con aplicaciones prácticas, equipando al futuro ingeniero en Tecnologías de la información con las habilidades necesarias para crear infraestructuras de comunicación confiables y mecanismos efectivos de protección de datos, competencias altamente valoradas en entornos empresariales modernos donde la seguridad informacional resulta crítica.
 
@@ -86,7 +88,7 @@ Al finalizar la asignatura, el estudiante estará en capacidad de:
 
 **Nombre del Coordinador/a Académico:** Mgs. Darío Javier Valarezo León
 
-**Ubicación / Dirección del establecimiento educativo:** C. Agustín Carrión Palacios, Loja
+**Ubicación / Dirección del establecimiento educativo:** Calle Agustín Carrión Palacios entre Av. Salvador Bustamante Celi y Beethoven. Sector Jipiro
 
 **Teléfono del establecimiento educativo:** +593 22985600 Ext. 6008
 
@@ -193,7 +195,7 @@ Gestión de aprendizaje:
 
 • GA-2.1: Preguntas sobre NestJS – 1
 
-• GA-2.2: Cuestionario OAuth2/OIDC – 1
+• GA-2.2: Master Class: A Practitioner's Guide to Generative AI - April 2024 – 1
 
 • GA-2.3: Evaluación Teórica – 2
 
