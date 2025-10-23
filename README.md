@@ -50,7 +50,7 @@ Los cursos indicados con el logotipo de ASU indican cursos que se complementan c
 
 **Horario de clases:** martes, 13:00 – 15:00; miércoles, 08:00 – 10:00
 
-**Horario de tutorías:** viernes, 11:00 – 12:00
+**Horario de tutorías:** lunes, 10:00 – 12:00; viernes, 08:00 – 09:00
 
 ---
 
