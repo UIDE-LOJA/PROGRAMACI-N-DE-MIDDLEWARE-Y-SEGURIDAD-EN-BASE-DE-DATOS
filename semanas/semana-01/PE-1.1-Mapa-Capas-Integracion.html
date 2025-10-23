@@ -1,0 +1,145 @@
+<p>Esta actividad práctica te permitirá aplicar los <strong>conceptos fundamentales de
+        sistemas distribuidos</strong> mediante el diseño y visualización de arquitecturas multicapa. Te
+    enfocarás en <em>identificar capas lógicas</em>, <em>mapear puntos de integración</em>, y
+    <em>justificar decisiones arquitectónicas</em> usando criterios técnicos.
+</p>
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)"
+            style="border-collapse: collapse; width: 99.9997%; height: 289.556px;" border="1">
+            <thead>
+                <tr style="height: 26.5875px;">
+                    <th style="width: 23.5306%; height: 26.5875px;" data-col-size="sm">Actividad</th>
+                    <th style="width: 47.0612%; height: 26.5875px;" data-col-size="xl">Instrucciones específicas
+                    </th>
+                    <th style="width: 29.3864%; height: 26.5875px;" data-col-size="md">Entregable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="height: 52.5937px;">
+                    <td style="height: 52.5937px; width: 23.5306%;" data-col-size="sm">Preparación individual
+                    </td>
+                    <td style="height: 52.5937px; width: 47.0612%;" data-col-size="xl">Revisa Compendio Semana 1:
+                        conceptos de SD, roles del middleware y estilos arquitectónicos.</td>
+                    <td style="height: 52.5937px; width: 29.3864%;" data-col-size="md">Comprensión de
+                        fundamentos de sistemas distribuidos.</td>
+                </tr>
+                <tr style="height: 52.5937px;">
+                    <td style="height: 52.5937px; width: 23.5306%;" data-col-size="sm">Análisis del caso</td>
+                    <td style="height: 52.5937px; width: 47.0612%;" data-col-size="xl">Analiza el sistema asignado e
+                        identifica las capas lógicas (presentación, negocio, datos) y componentes middleware.</td>
+                    <td style="height: 52.5937px; width: 29.3864%;" data-col-size="md">Identificación clara de capas y
+                        componentes del sistema.</td>
+                </tr>
+                <tr style="height: 52.5937px;">
+                    <td style="height: 52.5937px; width: 23.5306%;" data-col-size="sm">Diseño del diagrama</td>
+                    <td style="height: 52.5937px; width: 47.0612%;" data-col-size="xl">Crea un diagrama visual que
+                        muestre las capas, componentes y puntos de integración entre ellos.</td>
+                    <td style="height: 52.5937px; width: 29.3864%;" data-col-size="md">Diagrama arquitectónico completo
+                        y legible.</td>
+                </tr>
+                <tr style="height: 52.5937px;">
+                    <td style="height: 52.5937px; width: 23.5306%;" data-col-size="sm">Documentación técnica</td>
+                    <td style="height: 52.5937px; width: 47.0612%;" data-col-size="xl">Completa la matriz de análisis
+                        explicando cada capa, sus responsabilidades y puntos de integración.</td>
+                    <td style="height: 52.5937px; width: 29.3864%;" data-col-size="md">Matriz de análisis con
+                        justificaciones técnicas.</td>
+                </tr>
+                <tr style="height: 52.5937px;">
+                    <td style="height: 52.5937px; width: 23.5306%;" data-col-size="sm">Entrega final</td>
+                    <td style="height: 52.5937px; width: 47.0612%;" data-col-size="xl">Presenta diagrama final con
+                        matriz completada y reflexión sobre decisiones arquitectónicas tomadas.</td>
+                    <td style="height: 52.5937px; width: 29.3864%;" data-col-size="md">Diagrama final con documentación
+                        técnica completa.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Matriz de análisis arquitectónico a completar</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 20%;" data-col-size="sm">Capa/Componente</th>
+                    <th style="width: 25%;" data-col-size="md">Responsabilidades</th>
+                    <th style="width: 25%;" data-col-size="md">Tecnologías/Middleware</th>
+                    <th style="width: 30%;" data-col-size="xl">Puntos de Integración</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="sm">Capa de Presentación</td>
+                    <td data-col-size="md">Interfaz de usuario, captura de datos, validación básica</td>
+                    <td data-col-size="md">Especifica tecnologías frontend utilizadas</td>
+                    <td data-col-size="xl">Describe cómo se conecta con la capa de negocio.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Capa de Negocio</td>
+                    <td data-col-size="md">Lógica de negocio, procesamiento, reglas</td>
+                    <td data-col-size="md">APIs, servicios, middleware de aplicación</td>
+                    <td data-col-size="xl">Conexiones con presentación y datos.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Capa de Datos</td>
+                    <td data-col-size="md">Persistencia, acceso a datos, transacciones</td>
+                    <td data-col-size="md">SGBD, ORM, middleware de datos</td>
+                    <td data-col-size="xl">Interfaces con capa de negocio.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Middleware de Comunicación</td>
+                    <td data-col-size="md">Comunicación entre componentes distribuidos</td>
+                    <td data-col-size="md">HTTP/REST, gRPC, WebSockets, MOM</td>
+                    <td data-col-size="xl">Protocolos y formatos de intercambio.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Middleware de Seguridad</td>
+                    <td data-col-size="md">Autenticación, autorización, cifrado</td>
+                    <td data-col-size="md">JWT, OAuth2, TLS, firewalls</td>
+                    <td data-col-size="xl">Puntos de control de acceso.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Servicios Externos</td>
+                    <td data-col-size="md">Integración con sistemas terceros</td>
+                    <td data-col-size="md">APIs externas, servicios cloud</td>
+                    <td data-col-size="xl">Interfaces y adaptadores de integración.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Casos de estudio disponibles:</strong></p>
+<ul>
+    <li><strong>Sistema de E-commerce:</strong> Plataforma de comercio electrónico con múltiples vendedores</li>
+    <li><strong>Sistema Bancario Digital:</strong> Aplicación móvil y web para servicios financieros</li>
+    <li><strong>Plataforma Educativa:</strong> LMS con videoconferencias y gestión de contenidos</li>
+    <li><strong>Sistema de Salud:</strong> Historia clínica electrónica con telemedicina</li>
+    <li><strong>Red Social Empresarial:</strong> Plataforma de colaboración interna</li>
+    <li><strong>Sistema IoT Industrial:</strong> Monitoreo y control de dispositivos industriales</li>
+</ul>
+
+<p><strong>Materiales:</strong> Compendio Semana 1 - Fundamentos de sistemas distribuidos, roles del middleware y
+    estilos arquitectónicos.</p>
+<p><strong>Información importante</strong></p>
+<ul>
+    <li>
+        <p><strong>Modalidad:</strong> Práctica de experimentación presencial — <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>Duración:</strong> 90 minutos.</p>
+    </li>
+    <li>
+        <p><strong>Entrega:</strong> Diagrama y matriz completada al final de la clase.</p>
+    </li>
+    <li>
+        <p><strong>Herramientas sugeridas:</strong> Papel y lápiz, Lucidchart, Draw.io, o cualquier herramienta de
+            diagramación.</p>
+    </li>
+</ul>
+
+<p>Si tienes dudas durante la actividad, levanta la mano o utiliza el <strong>horario de tutorías (viernes
+        11:00-12:00)</strong>.</p>
