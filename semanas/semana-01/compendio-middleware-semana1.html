@@ -28,6 +28,9 @@
         href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
     <!-- Custom Styles -->
     <style>
         /* Enhanced concept-box styling */
@@ -111,6 +114,28 @@
             background: rgba(233, 171, 33, 0.3);
             padding: 0.1em 0.3em;
             border-radius: 3px;
+        }
+
+        /* D3 SVG Icon styling */
+        .d3-tooltip {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-width: 200px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Asegurar que FontAwesome funcione en foreignObject */
+        svg foreignObject div {
+            font-family: inherit;
+        }
+
+        svg foreignObject i {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+            font-weight: 900 !important;
         }
     </style>
 </head>
@@ -224,254 +249,7 @@
                             style="width: 100%; height: 700px; border-radius: 8px;"></div>
                     </div>
 
-                    <script>
-                        // Timeline de Sistemas Distribuidos con Timeline.js
-                        function createDistributedSystemsTimeline() {
-                            // Verificar que el elemento existe
-                            const container = document.getElementById('timeline-sistemas-distribuidos');
-                            if (!container) {
-                                console.warn('Elemento timeline-sistemas-distribuidos no encontrado');
-                                return;
-                            }
 
-                            // Verificar que Timeline.js está cargado
-                            if (typeof TL === 'undefined' || typeof TL.Timeline === 'undefined') {
-                                console.warn('Timeline.js no está cargado');
-                                setTimeout(createDistributedSystemsTimeline, 500);
-                                return;
-                            }
-
-                            // Limpiar el contenedor si ya tiene contenido
-                            container.innerHTML = '';
-                            const timelineData = {
-                                "title": {
-                                    "media": {
-                                        "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
-                                        "caption": "Evolución de los Sistemas Distribuidos",
-                                        "credit": "Unsplash"
-                                    },
-                                    "text": {
-                                        "headline": "Evolución de Sistemas Distribuidos<br/>1970 - 2025",
-                                        "text": "<p>Un recorrido histórico por los hitos más importantes en el desarrollo de sistemas distribuidos y middleware, desde las primeras redes hasta la computación moderna en la nube y edge computing.</p>"
-                                    }
-                                },
-                                "events": [
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600",
-                                            "caption": "ARPANET - La primera red de computadoras",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "1969"
-                                        },
-                                        "text": {
-                                            "headline": "ARPANET - Primeras Redes",
-                                            "text": "<p>ARPANET fue la primera red de computadoras que implementó el protocolo TCP/IP, sentando las bases para Internet y los sistemas distribuidos modernos. Conectó universidades y centros de investigación en Estados Unidos.</p>"
-                                        },
-                                        "group": "Redes Pioneras"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
-                                            "caption": "RPC - Llamadas a Procedimientos Remotos",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "1984"
-                                        },
-                                        "text": {
-                                            "headline": "RPC - Cliente-Servidor",
-                                            "text": "<p>Las Llamadas a Procedimientos Remotos (RPC) revolucionaron la programación distribuida al permitir que las aplicaciones invoquen funciones en sistemas remotos como si fueran locales, estableciendo el paradigma cliente-servidor.</p>"
-                                        },
-                                        "group": "Middleware Básico"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600",
-                                            "caption": "CORBA - Middleware Orientado a Objetos",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "1991"
-                                        },
-                                        "text": {
-                                            "headline": "CORBA - Middleware Orientado a Objetos",
-                                            "text": "<p>CORBA (Common Object Request Broker Architecture) introdujo la programación orientada a objetos en sistemas distribuidos, permitiendo que objetos en diferentes lenguajes y plataformas se comuniquen seamlessly.</p>"
-                                        },
-                                        "group": "Middleware Avanzado"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=600",
-                                            "caption": "World Wide Web - La revolución de Internet",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "1991"
-                                        },
-                                        "text": {
-                                            "headline": "World Wide Web",
-                                            "text": "<p>Tim Berners-Lee crea la World Wide Web, introduciendo HTTP, HTML y URLs. Esta innovación democratizó el acceso a sistemas distribuidos y sentó las bases para las aplicaciones web modernas.</p>"
-                                        },
-                                        "group": "Web Technologies"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600",
-                                            "caption": "SOA - Arquitectura Orientada a Servicios",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "2000"
-                                        },
-                                        "text": {
-                                            "headline": "SOA - Service Oriented Architecture",
-                                            "text": "<p>La Arquitectura Orientada a Servicios (SOA) introduce el concepto de servicios reutilizables y débilmente acoplados, permitiendo mayor flexibilidad y escalabilidad en sistemas empresariales.</p>"
-                                        },
-                                        "group": "Arquitecturas Empresariales"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
-                                            "caption": "Web Services - XML y SOAP",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "2002"
-                                        },
-                                        "text": {
-                                            "headline": "Web Services - XML/SOAP",
-                                            "text": "<p>Los Web Services estandarizan la comunicación entre aplicaciones usando XML, SOAP y WSDL, facilitando la integración entre sistemas heterogéneos en entornos empresariales.</p>"
-                                        },
-                                        "group": "Estándares Web"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600",
-                                            "caption": "Microservicios - Arquitectura Distribuida Moderna",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "2011"
-                                        },
-                                        "text": {
-                                            "headline": "Microservicios - Arquitectura Distribuida",
-                                            "text": "<p>Los microservicios revolucionan el desarrollo de software al descomponer aplicaciones monolíticas en servicios pequeños, independientes y desplegables por separado, mejorando la escalabilidad y mantenibilidad.</p>"
-                                        },
-                                        "group": "Arquitecturas Modernas"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=600",
-                                            "caption": "Docker y Kubernetes - Revolución de Contenedores",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "2013"
-                                        },
-                                        "text": {
-                                            "headline": "Docker/Kubernetes - Contenedores",
-                                            "text": "<p>Docker populariza los contenedores y Kubernetes los orquesta, transformando cómo se despliegan y gestionan aplicaciones distribuidas, proporcionando portabilidad y escalabilidad automática.</p>"
-                                        },
-                                        "group": "Containerización"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600",
-                                            "caption": "Edge Computing - Computación en el Borde",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "2020"
-                                        },
-                                        "text": {
-                                            "headline": "Edge Computing - Computación Distribuida",
-                                            "text": "<p>Edge Computing acerca el procesamiento a los datos y usuarios finales, reduciendo latencia y mejorando la experiencia en aplicaciones IoT, realidad aumentada y sistemas autónomos.</p>"
-                                        },
-                                        "group": "Computación Moderna"
-                                    },
-                                    {
-                                        "media": {
-                                            "url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
-                                            "caption": "AI/ML Distribuido - Inteligencia Artificial",
-                                            "credit": "Unsplash"
-                                        },
-                                        "start_date": {
-                                            "year": "2023"
-                                        },
-                                        "text": {
-                                            "headline": "AI/ML Distribuido - Inteligencia Artificial",
-                                            "text": "<p>La inteligencia artificial y machine learning distribuido permiten entrenar y ejecutar modelos complejos en múltiples nodos, democratizando el acceso a capacidades de IA avanzadas.</p>"
-                                        },
-                                        "group": "IA Distribuida"
-                                    }
-                                ]
-                            };
-
-                            // Opciones del timeline
-                            const options = {
-                                start_at_end: false,
-                                default_bg_color: { r: 255, g: 255, b: 255 },
-                                timenav_height: 200,
-                                timenav_height_percentage: 30,
-                                hash_bookmark: false,
-                                zoom_sequence: [0.5, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
-                                language: 'es',
-                                slide_padding_lr: 100,
-                                slide_default_fade: '0%'
-                            };
-
-                            // Crear el timeline con manejo de errores
-                            try {
-                                // Verificar una vez más que el elemento existe
-                                if (document.getElementById('timeline-sistemas-distribuidos')) {
-                                    window.distributedSystemsTimeline = new TL.Timeline('timeline-sistemas-distribuidos', timelineData, options);
-                                    console.log('Timeline creado exitosamente');
-                                } else {
-                                    throw new Error('Elemento no encontrado al momento de crear el timeline');
-                                }
-                            } catch (error) {
-                                console.error('Error al crear el timeline:', error);
-                                // Mostrar mensaje de error amigable
-                                const errorDiv = document.createElement('div');
-                                errorDiv.innerHTML = `
-                                    <div style="text-align: center; padding: 2rem; color: #666;">
-                                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                                        <p>Error al cargar el timeline. Por favor, recarga la página.</p>
-                                    </div>
-                                `;
-                                container.appendChild(errorDiv);
-                            }
-                        }
-
-                        // Función para verificar si el elemento existe y está visible
-                        function initTimelineWhenReady() {
-                            const container = document.getElementById('timeline-sistemas-distribuidos');
-                            if (container && container.offsetParent !== null) {
-                                // El elemento existe y es visible
-                                try {
-                                    createDistributedSystemsTimeline();
-                                } catch (error) {
-                                    console.warn('Error al crear timeline:', error);
-                                    // Reintentar después de un momento
-                                    setTimeout(initTimelineWhenReady, 500);
-                                }
-                            } else {
-                                // El elemento no existe o no es visible, reintentar
-                                setTimeout(initTimelineWhenReady, 200);
-                            }
-                        }
-
-                        // Inicializar cuando el DOM esté listo
-                        if (document.readyState === 'loading') {
-                            document.addEventListener('DOMContentLoaded', () => {
-                                setTimeout(initTimelineWhenReady, 500);
-                            });
-                        } else {
-                            setTimeout(initTimelineWhenReady, 500);
-                        }
-                    </script>
                 </section>
 
                 <section data-auto-animate>
@@ -486,26 +264,104 @@
                     </div>
                 </section>
 
-                <section data-auto-animate>
+                <section>
                     <h3>Ventajas de los Sistemas Distribuidos</h3>
-                    <div class="r-hstack">
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4><i class="fas fa-share-alt"></i> Compartición de Recursos</h4>
-                                <p>Reflejo de la arquitectura organizacional moderna, permitiendo compartir recursos a
-                                    través de la red</p>
+                    <div class="concept-box">
+                        <p>Los sistemas distribuidos ofrecen múltiples beneficios que los hacen esenciales en la
+                            computación moderna</p>
+                    </div>
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar cada ventaja
+                    </p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Compartición de Recursos</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-share-alt"></i> Reflejo de la Arquitectura Organizacional</h4>
+                        <p>Los sistemas distribuidos permiten compartir recursos a través de la red, reflejando la
+                            arquitectura organizacional moderna donde diferentes departamentos y equipos necesitan
+                            acceder a recursos comunes.</p>
+
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Recursos Compartibles</h5>
+                                <ul>
+                                    <li>Bases de datos centralizadas</li>
+                                    <li>Servicios de autenticación</li>
+                                    <li>Sistemas de archivos distribuidos</li>
+                                    <li>Capacidad de procesamiento</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Beneficios Organizacionales</h5>
+                                <ul>
+                                    <li>Reducción de costos operativos</li>
+                                    <li>Consistencia de datos</li>
+                                    <li>Centralización de políticas</li>
+                                    <li>Mejor colaboración entre equipos</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4><i class="fas fa-chart-line"></i> Escalabilidad</h4>
-                                <p>Incrementar recursos según demanda, superando limitaciones monolíticas</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Escalabilidad</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-chart-line"></i> Superando Limitaciones Monolíticas</h4>
+                        <p>La capacidad de incrementar recursos según la demanda es una de las principales ventajas,
+                            permitiendo que los sistemas crezcan horizontalmente sin las limitaciones de arquitecturas
+                            monolíticas.</p>
+
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Escalabilidad Horizontal</h5>
+                                <ul>
+                                    <li>Añadir más servidores</li>
+                                    <li>Distribución de carga</li>
+                                    <li>Particionamiento de datos</li>
+                                    <li>Replicación de servicios</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Escalabilidad Vertical</h5>
+                                <ul>
+                                    <li>Aumento de CPU y memoria</li>
+                                    <li>Mejora de almacenamiento</li>
+                                    <li>Optimización de red</li>
+                                    <li>Actualización de hardware</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4><i class="fas fa-shield-alt"></i> Tolerancia a Fallos</h4>
-                                <p>Replicación de recursos para asegurar disponibilidad ante fallos</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3. Tolerancia a Fallos</h3>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-shield-alt"></i> Replicación y Disponibilidad</h4>
+                        <p>La replicación de recursos asegura la disponibilidad del sistema incluso ante fallos de
+                            componentes individuales, proporcionando robustez y confiabilidad.</p>
+
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Estrategias de Replicación</h5>
+                                <ul>
+                                    <li>Replicación de datos</li>
+                                    <li>Servicios redundantes</li>
+                                    <li>Balanceadores de carga</li>
+                                    <li>Failover automático</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Niveles de Disponibilidad</h5>
+                                <ul>
+                                    <li>99.9% - 8.76 horas/año downtime</li>
+                                    <li>99.99% - 52.56 minutos/año</li>
+                                    <li>99.999% - 5.26 minutos/año</li>
+                                    <li>99.9999% - 31.5 segundos/año</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -517,40 +373,50 @@
                         <p>Balance entre beneficios y complejidades en sistemas distribuidos</p>
                     </div>
 
-                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
-                        <div class="mermaid">
-                            graph LR
-                            subgraph "VENTAJAS"
-                            V1[<i class='fas fa-share-alt'></i> Compartición<br />de Recursos]
-                            V2[<i class='fas fa-chart-line'></i> Escalabilidad<br />Horizontal]
-                            V3[<i class='fas fa-shield-alt'></i> Tolerancia<br />a Fallos]
-                            V4[<i class='fas fa-globe'></i> Distribución<br />Geográfica]
-                            end
-
-                            subgraph "DESAFÍOS"
-                            D1[<i class='fas fa-clock'></i> Sincronización<br />de Tiempo]
-                            D2[<i class='fas fa-database'></i> Consistencia<br />de Datos]
-                            D3[<i class='fas fa-exclamation-triangle'></i> Manejo<br />de Fallos]
-                            D4[<i class='fas fa-network-wired'></i> Latencia<br />de Red]
-                            end
-
-                            V1 -.-> D2
-                            V2 -.-> D4
-                            V3 -.-> D3
-                            V4 -.-> D1
-
-                            classDef ventaja fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-                            classDef desafio fill:#ffebee,stroke:#f44336,stroke-width:2px
-
-                            class V1,V2,V3,V4 ventaja
-                            class D1,D2,D3,D4 desafio
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative;">
+                        <div id="ventajas-desafios-d3" style="width: 100%; height: 500px;"></div>
+                        <div
+                            style="position: absolute; top: 1rem; right: 1rem; font-size: 0.9em; color: var(--uide-secondary);">
+                            <i class="fas fa-mouse-pointer"></i> Haz clic en los nodos para explorar conexiones
                         </div>
                     </div>
 
-                    <div class="concept-box warning fragment">
-                        <h4><i class="fas fa-balance-scale"></i> Consideraciones de Diseño</h4>
+
+
+                </section>
+
+                <section>
+                    <h3>Consideraciones de Diseño</h3>
+                    <div class="concept-box warning">
+                        <h4><i class="fas fa-balance-scale"></i> Balance Ventajas vs Complejidad</h4>
                         <p>Cada ventaja introduce complejidades que deben ser gestionadas mediante <mark>patrones
                                 arquitectónicos</mark> y <mark>middleware especializado</mark></p>
+                    </div>
+
+                    <div class="r-hstack fragment">
+                        <div class="column">
+                            <div class="concept-box info">
+                                <h4><i class="fas fa-lightbulb"></i> Patrones Arquitectónicos</h4>
+                                <ul>
+                                    <li>Microservicios</li>
+                                    <li>Event-driven architecture</li>
+                                    <li>CQRS y Event Sourcing</li>
+                                    <li>Circuit Breaker</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box info">
+                                <h4><i class="fas fa-cogs"></i> Middleware Especializado</h4>
+                                <ul>
+                                    <li>Message brokers (Kafka, RabbitMQ)</li>
+                                    <li>Service mesh (Istio, Linkerd)</li>
+                                    <li>API Gateways</li>
+                                    <li>Distributed caching (Redis)</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </section>
@@ -611,116 +477,148 @@
                     <h3>TP Monitors</h3>
                     <h4>Monitores de Procesamiento de Transacciones</h4>
 
-                    <div class="r-hstack">
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4>Características</h4>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-cogs"></i> Características Principales</h4>
+                        <div class="r-hstack">
+                            <div class="column">
                                 <ul>
-                                    <li>Entorno para aplicaciones distribuidas</li>
-                                    <li>Basadas en transacciones ACID</li>
-                                    <li>Gestión de concurrencia</li>
-                                    <li>Recuperación ante fallos</li>
+                                    <li><strong>Entorno distribuido:</strong> Aplicaciones multi-servidor</li>
+                                    <li><strong>Transacciones ACID:</strong> Atomicidad, Consistencia, Aislamiento,
+                                        Durabilidad</li>
+                                    <li><strong>Gestión de concurrencia:</strong> Control de acceso simultáneo</li>
+                                    <li><strong>Recuperación ante fallos:</strong> Rollback automático</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <ul>
+                                    <li><strong>Protocolo 2PC:</strong> Two-Phase Commit</li>
+                                    <li><strong>Load balancing:</strong> Distribución de carga</li>
+                                    <li><strong>Monitoring:</strong> Supervisión en tiempo real</li>
+                                    <li><strong>Escalabilidad:</strong> Horizontal y vertical</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="mermaid">
-                                graph TD
-                                A[Cliente] --> B[TP Monitor]
-                                B --> C[Gestor de Transacciones]
-                                C --> D[Base de Datos 1]
-                                C --> E[Base de Datos 2]
-                                C --> F[Base de Datos 3]
-
-                                B --> G[Control de Concurrencia]
-                                B --> H[Recuperación]
-
-                                style B fill:#e1f5fe
-                                style C fill:#f3e5f5
-                                style G fill:#e8f5e8
-                                style H fill:#fff3e0
-                            </div>
-                        </div>
                     </div>
+
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar la arquitectura interactiva
+                    </p>
+                </section>
+
+                <section>
+                    <h3>TP Monitor - Simulación Bancaria en Tiempo Real</h3>
+                    <div class="concept-box">
+                        <p>Observa cómo un TP Monitor maneja <mark>transacciones bancarias reales</mark> con simulación
+                            automática de transferencias internacionales, pagos de nómina y compras con tarjeta de
+                            crédito</p>
+                    </div>
+
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative;">
+                        <div id="tp-monitor-d3-diagram" style="width: 100%; height: 500px;"></div>
+
+                    </div>
+
                 </section>
 
                 <section data-auto-animate>
                     <h3>RPC</h3>
                     <h4>Llamadas a Procedimientos Remotos</h4>
 
-                    <div class="r-hstack">
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4>Características</h4>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-network-wired"></i> Características Principales</h4>
+                        <div class="r-hstack">
+                            <div class="column">
                                 <ul>
-                                    <li>Distribución de lógica a través de la red</li>
-                                    <li>Invocación remota como rutina local</li>
-                                    <li>Transparencia de ubicación</li>
-                                    <li>Marshalling/Unmarshalling de datos</li>
+                                    <li><strong>Transparencia de ubicación:</strong> Llamadas remotas como locales</li>
+                                    <li><strong>Marshalling automático:</strong> Serialización de parámetros</li>
+                                    <li><strong>Gestión de errores:</strong> Timeouts y reconexión</li>
+                                    <li><strong>Múltiples protocolos:</strong> HTTP, gRPC, JSON-RPC</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <ul>
+                                    <li><strong>Stub generation:</strong> Código cliente/servidor automático</li>
+                                    <li><strong>Load balancing:</strong> Distribución de llamadas</li>
+                                    <li><strong>Service discovery:</strong> Localización automática de servicios</li>
+                                    <li><strong>Monitoring:</strong> Métricas y trazabilidad</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="mermaid">
-                                sequenceDiagram
-                                participant C as Cliente
-                                participant S as Stub Cliente
-                                participant R as RPC Runtime
-                                participant SS as Stub Servidor
-                                participant Sv as Servidor
-
-                                C->>S: Llamada Local
-                                S->>R: Marshall Parámetros
-                                R->>SS: Envío por Red
-                                SS->>Sv: Llamada Local
-                                Sv->>SS: Resultado
-                                SS->>R: Marshall Resultado
-                                R->>S: Envío por Red
-                                S->>C: Resultado Local
-                            </div>
-                        </div>
                     </div>
+
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar la simulación de microservicios
+                    </p>
+                </section>
+
+                <section>
+                    <h3>RPC - Simulación de Microservicios E-commerce</h3>
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative;">
+                        <div id="rpc-d3-diagram" style="width: 100%; height: 500px;"></div>
+                    </div>
+
                 </section>
 
                 <section data-auto-animate>
                     <h3>MOM</h3>
                     <h4>Middleware Orientado a Mensajes</h4>
 
-                    <div class="r-hstack">
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4>Características</h4>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-envelope"></i> Características Principales</h4>
+                        <div class="r-hstack">
+                            <div class="column">
                                 <ul>
-                                    <li>Intercambio de datos aplicación a aplicación</li>
-                                    <li>Comunicación asíncrona</li>
-                                    <li>Desacoplamiento temporal</li>
-                                    <li>Ejemplos: RabbitMQ, Kafka</li>
+                                    <li><strong>Intercambio de datos:</strong> Aplicación a aplicación</li>
+                                    <li><strong>Comunicación asíncrona:</strong> Sin bloqueo de procesos</li>
+                                    <li><strong>Desacoplamiento temporal:</strong> Productores y consumidores
+                                        independientes</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <ul>
+                                    <li><strong>Persistencia:</strong> Mensajes almacenados de forma segura</li>
+                                    <li><strong>Escalabilidad:</strong> Múltiples productores y consumidores</li>
+                                    <li><strong>Tolerancia a fallos:</strong> Garantías de entrega</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="mermaid">
-                                graph LR
-                                A[Aplicación A] --> B[Cola de Mensajes]
-                                C[Aplicación B] --> B
-                                D[Aplicación C] --> B
+                    </div>
 
-                                B --> E[Aplicación D]
-                                B --> F[Aplicación E]
-                                B --> G[Aplicación F]
-
-                                H[Message Broker] --> B
-
-                                subgraph "Características"
-                                I[Asíncrono]
-                                J[Persistente]
-                                K[Escalable]
-                                end
-
-                                style B fill:#e1f5fe
-                                style H fill:#f3e5f5
+                    <div class="concept-box fragment">
+                        <h4><i class="fas fa-tools"></i> Tecnologías Populares</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(255, 87, 34, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-rabbit"></i> RabbitMQ</h5>
+                                    <p>Ideal para comandos y workflows complejos</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(33, 150, 243, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-stream"></i> Apache Kafka</h5>
+                                    <p>Perfecto para eventos a gran escala</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para ver la visualización animada del flujo de mensajes
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Flujo de Mensajes en MOM</h3>
+                    <div class="concept-box">
+                        <p>Visualización interactiva del proceso de envío y recepción de mensajes a través del
+                            middleware</p>
+                    </div>
+
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div id="mom-d3-diagram" style="width: 100%; height: 500px;"></div>
                     </div>
                 </section>
 
@@ -728,41 +626,64 @@
                     <h3>ORBs</h3>
                     <h4>Agentes de Solicitud de Objetos</h4>
 
-                    <div class="r-hstack">
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4>Características</h4>
+                    <div class="concept-box">
+                        <h4><i class="fas fa-network-wired"></i> Características Principales</h4>
+                        <div class="r-hstack">
+                            <div class="column">
                                 <ul>
-                                    <li>Comunicación entre objetos distribuidos</li>
-                                    <li>Interoperabilidad entre plataformas</li>
-                                    <li>Ejemplos: CORBA, COM/DCOM</li>
-                                    <li>Interface Definition Language (IDL)</li>
+                                    <li><strong>Transparencia de ubicación:</strong> Objetos remotos como locales</li>
+                                    <li><strong>Interoperabilidad:</strong> Diferentes lenguajes y plataformas</li>
+                                    <li><strong>IDL (Interface Definition Language):</strong> Definición de interfaces
+                                    </li>
+                                    <li><strong>Servicios integrados:</strong> Naming, Trading, Security</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <ul>
+                                    <li><strong>Object Adapter:</strong> Gestión del ciclo de vida</li>
+                                    <li><strong>Interface Repository:</strong> Metadatos de interfaces</li>
+                                    <li><strong>Dynamic Invocation:</strong> Llamadas en tiempo de ejecución</li>
+                                    <li><strong>CORBA/COM/DCOM:</strong> Implementaciones estándar</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="mermaid">
-                                graph TD
-                                A[Objeto Cliente] --> B[ORB Cliente]
-                                B --> C[Interface Repository]
-                                B --> D[Red]
+                    </div>
 
-                                D --> E[ORB Servidor]
-                                E --> F[Object Adapter]
-                                F --> G[Objeto Servidor]
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar la red de objetos distribuidos
+                    </p>
+                </section>
 
-                                C --> H[IDL Definitions]
+                <section>
+                    <h3>ORB - Red de Objetos Distribuidos Empresariales</h3>
+                    <div class="concept-box">
+                        <p>Observa cómo un <mark>ORB conecta objetos distribuidos</mark> en una arquitectura empresarial
+                            con simulación de invocaciones entre sistemas ERP, CRM y servicios de negocio</p>
+                    </div>
 
-                                subgraph "Servicios ORB"
-                                I[Naming Service]
-                                J[Trading Service]
-                                K[Security Service]
-                                end
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative;">
+                        <div id="orb-d3-diagram" style="width: 100%; height: 500px;"></div>
+                    </div>
 
-                                style B fill:#e1f5fe
-                                style E fill:#e1f5fe
-                                style C fill:#f3e5f5
-                                style F fill:#e8f5e8
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-lightbulb"></i> Arquitectura Empresarial con ORB</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>🏢 Sistemas Empresariales</h5>
+                                <ul>
+                                    <li>ERP (Enterprise Resource Planning)</li>
+                                    <li>CRM (Customer Relationship Management)</li>
+                                    <li>Servicios de inventario y facturación</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>⚡ Comunicación ORB</h5>
+                                <ul>
+                                    <li>Invocaciones transparentes entre objetos</li>
+                                    <li>Marshalling automático de parámetros</li>
+                                    <li>Servicios de directorio y seguridad</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1690,46 +1611,14 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
 
-    <script>
-        Reveal.initialize({
-            hash: true,
-            transition: 'slide',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-
-            // Navigation
-            controls: true,
-            progress: true,
-            center: true,
-            touch: true,
-            loop: false,
-
-            // Presentation size
-            width: 1024,
-            height: 768,
-            margin: 0.1,
-            minScale: 0.2,
-            maxScale: 2.0
-        });
-
-        // Simple Flashcard System
-        function flipCard(card) {
-            card.classList.toggle('flipped');
-        }
-
-        // Initialize Mermaid
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            themeVariables: {
-                primaryColor: '#233570',
-                primaryTextColor: '#233570',
-                primaryBorderColor: '#233570',
-                lineColor: '#666666'
-            }
-        });
-    </script>
+    <!-- Custom JavaScript Files -->
+    <script src="js/timeline-sistemas-distribuidos.js"></script>
+    <script src="js/ventajas-desafios-d3.js"></script>
+    <script src="js/mom-d3-diagram.js"></script>
+    <script src="js/tp-monitor-d3-diagram.js"></script>
+    <script src="js/rpc-d3-diagram.js"></script>
+    <script src="js/orb-d3-diagram.js"></script>
+    <script src="js/reveal-config.js"></script>
 
 </body>
 
