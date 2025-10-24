@@ -20,6 +20,14 @@
     <!-- Mermaid for diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Timeline.js -->
+    <link title="timeline-styles" rel="stylesheet"
+        href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
     <!-- Custom Styles -->
     <style>
         /* Enhanced concept-box styling */
@@ -140,7 +148,8 @@
             <!-- Quote Slide -->
             <section data-background-color="#f8f8f8">
                 <blockquote style="font-size: 1.2em; text-align: center;">
-                    <p><strong>"Un sistema distribuido es una red de ordenadores independientes que aparecen como un sistema coherente a sus usuarios."</strong></p>
+                    <p><strong>"Un sistema distribuido es una red de ordenadores independientes que aparecen como un
+                            sistema coherente a sus usuarios."</strong></p>
                     <footer style="margin-top: 1em; color: var(--uide-secondary);">
                         — Tanenbaum & Van Steen (2017)
                     </footer>
@@ -207,13 +216,273 @@
             <section data-transition="convex">
                 <h2>Conceptos de Sistemas Distribuidos</h2>
 
+                <section>
+                    <h3>Evolución de los Sistemas Distribuidos</h3>
+                    <div
+                        style="background: white; padding: 1rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div id='timeline-sistemas-distribuidos'
+                            style="width: 100%; height: 700px; border-radius: 8px;"></div>
+                    </div>
+
+                    <script>
+                        // Timeline de Sistemas Distribuidos con Timeline.js
+                        function createDistributedSystemsTimeline() {
+                            // Verificar que el elemento existe
+                            const container = document.getElementById('timeline-sistemas-distribuidos');
+                            if (!container) {
+                                console.warn('Elemento timeline-sistemas-distribuidos no encontrado');
+                                return;
+                            }
+
+                            // Verificar que Timeline.js está cargado
+                            if (typeof TL === 'undefined' || typeof TL.Timeline === 'undefined') {
+                                console.warn('Timeline.js no está cargado');
+                                setTimeout(createDistributedSystemsTimeline, 500);
+                                return;
+                            }
+
+                            // Limpiar el contenedor si ya tiene contenido
+                            container.innerHTML = '';
+                            const timelineData = {
+                                "title": {
+                                    "media": {
+                                        "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+                                        "caption": "Evolución de los Sistemas Distribuidos",
+                                        "credit": "Unsplash"
+                                    },
+                                    "text": {
+                                        "headline": "Evolución de Sistemas Distribuidos<br/>1970 - 2025",
+                                        "text": "<p>Un recorrido histórico por los hitos más importantes en el desarrollo de sistemas distribuidos y middleware, desde las primeras redes hasta la computación moderna en la nube y edge computing.</p>"
+                                    }
+                                },
+                                "events": [
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600",
+                                            "caption": "ARPANET - La primera red de computadoras",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "1969"
+                                        },
+                                        "text": {
+                                            "headline": "ARPANET - Primeras Redes",
+                                            "text": "<p>ARPANET fue la primera red de computadoras que implementó el protocolo TCP/IP, sentando las bases para Internet y los sistemas distribuidos modernos. Conectó universidades y centros de investigación en Estados Unidos.</p>"
+                                        },
+                                        "group": "Redes Pioneras"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
+                                            "caption": "RPC - Llamadas a Procedimientos Remotos",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "1984"
+                                        },
+                                        "text": {
+                                            "headline": "RPC - Cliente-Servidor",
+                                            "text": "<p>Las Llamadas a Procedimientos Remotos (RPC) revolucionaron la programación distribuida al permitir que las aplicaciones invoquen funciones en sistemas remotos como si fueran locales, estableciendo el paradigma cliente-servidor.</p>"
+                                        },
+                                        "group": "Middleware Básico"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600",
+                                            "caption": "CORBA - Middleware Orientado a Objetos",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "1991"
+                                        },
+                                        "text": {
+                                            "headline": "CORBA - Middleware Orientado a Objetos",
+                                            "text": "<p>CORBA (Common Object Request Broker Architecture) introdujo la programación orientada a objetos en sistemas distribuidos, permitiendo que objetos en diferentes lenguajes y plataformas se comuniquen seamlessly.</p>"
+                                        },
+                                        "group": "Middleware Avanzado"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=600",
+                                            "caption": "World Wide Web - La revolución de Internet",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "1991"
+                                        },
+                                        "text": {
+                                            "headline": "World Wide Web",
+                                            "text": "<p>Tim Berners-Lee crea la World Wide Web, introduciendo HTTP, HTML y URLs. Esta innovación democratizó el acceso a sistemas distribuidos y sentó las bases para las aplicaciones web modernas.</p>"
+                                        },
+                                        "group": "Web Technologies"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600",
+                                            "caption": "SOA - Arquitectura Orientada a Servicios",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "2000"
+                                        },
+                                        "text": {
+                                            "headline": "SOA - Service Oriented Architecture",
+                                            "text": "<p>La Arquitectura Orientada a Servicios (SOA) introduce el concepto de servicios reutilizables y débilmente acoplados, permitiendo mayor flexibilidad y escalabilidad en sistemas empresariales.</p>"
+                                        },
+                                        "group": "Arquitecturas Empresariales"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600",
+                                            "caption": "Web Services - XML y SOAP",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "2002"
+                                        },
+                                        "text": {
+                                            "headline": "Web Services - XML/SOAP",
+                                            "text": "<p>Los Web Services estandarizan la comunicación entre aplicaciones usando XML, SOAP y WSDL, facilitando la integración entre sistemas heterogéneos en entornos empresariales.</p>"
+                                        },
+                                        "group": "Estándares Web"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600",
+                                            "caption": "Microservicios - Arquitectura Distribuida Moderna",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "2011"
+                                        },
+                                        "text": {
+                                            "headline": "Microservicios - Arquitectura Distribuida",
+                                            "text": "<p>Los microservicios revolucionan el desarrollo de software al descomponer aplicaciones monolíticas en servicios pequeños, independientes y desplegables por separado, mejorando la escalabilidad y mantenibilidad.</p>"
+                                        },
+                                        "group": "Arquitecturas Modernas"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=600",
+                                            "caption": "Docker y Kubernetes - Revolución de Contenedores",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "2013"
+                                        },
+                                        "text": {
+                                            "headline": "Docker/Kubernetes - Contenedores",
+                                            "text": "<p>Docker populariza los contenedores y Kubernetes los orquesta, transformando cómo se despliegan y gestionan aplicaciones distribuidas, proporcionando portabilidad y escalabilidad automática.</p>"
+                                        },
+                                        "group": "Containerización"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600",
+                                            "caption": "Edge Computing - Computación en el Borde",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "2020"
+                                        },
+                                        "text": {
+                                            "headline": "Edge Computing - Computación Distribuida",
+                                            "text": "<p>Edge Computing acerca el procesamiento a los datos y usuarios finales, reduciendo latencia y mejorando la experiencia en aplicaciones IoT, realidad aumentada y sistemas autónomos.</p>"
+                                        },
+                                        "group": "Computación Moderna"
+                                    },
+                                    {
+                                        "media": {
+                                            "url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
+                                            "caption": "AI/ML Distribuido - Inteligencia Artificial",
+                                            "credit": "Unsplash"
+                                        },
+                                        "start_date": {
+                                            "year": "2023"
+                                        },
+                                        "text": {
+                                            "headline": "AI/ML Distribuido - Inteligencia Artificial",
+                                            "text": "<p>La inteligencia artificial y machine learning distribuido permiten entrenar y ejecutar modelos complejos en múltiples nodos, democratizando el acceso a capacidades de IA avanzadas.</p>"
+                                        },
+                                        "group": "IA Distribuida"
+                                    }
+                                ]
+                            };
+
+                            // Opciones del timeline
+                            const options = {
+                                start_at_end: false,
+                                default_bg_color: { r: 255, g: 255, b: 255 },
+                                timenav_height: 200,
+                                timenav_height_percentage: 30,
+                                hash_bookmark: false,
+                                zoom_sequence: [0.5, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
+                                language: 'es',
+                                slide_padding_lr: 100,
+                                slide_default_fade: '0%'
+                            };
+
+                            // Crear el timeline con manejo de errores
+                            try {
+                                // Verificar una vez más que el elemento existe
+                                if (document.getElementById('timeline-sistemas-distribuidos')) {
+                                    window.distributedSystemsTimeline = new TL.Timeline('timeline-sistemas-distribuidos', timelineData, options);
+                                    console.log('Timeline creado exitosamente');
+                                } else {
+                                    throw new Error('Elemento no encontrado al momento de crear el timeline');
+                                }
+                            } catch (error) {
+                                console.error('Error al crear el timeline:', error);
+                                // Mostrar mensaje de error amigable
+                                const errorDiv = document.createElement('div');
+                                errorDiv.innerHTML = `
+                                    <div style="text-align: center; padding: 2rem; color: #666;">
+                                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                                        <p>Error al cargar el timeline. Por favor, recarga la página.</p>
+                                    </div>
+                                `;
+                                container.appendChild(errorDiv);
+                            }
+                        }
+
+                        // Función para verificar si el elemento existe y está visible
+                        function initTimelineWhenReady() {
+                            const container = document.getElementById('timeline-sistemas-distribuidos');
+                            if (container && container.offsetParent !== null) {
+                                // El elemento existe y es visible
+                                try {
+                                    createDistributedSystemsTimeline();
+                                } catch (error) {
+                                    console.warn('Error al crear timeline:', error);
+                                    // Reintentar después de un momento
+                                    setTimeout(initTimelineWhenReady, 500);
+                                }
+                            } else {
+                                // El elemento no existe o no es visible, reintentar
+                                setTimeout(initTimelineWhenReady, 200);
+                            }
+                        }
+
+                        // Inicializar cuando el DOM esté listo
+                        if (document.readyState === 'loading') {
+                            document.addEventListener('DOMContentLoaded', () => {
+                                setTimeout(initTimelineWhenReady, 500);
+                            });
+                        } else {
+                            setTimeout(initTimelineWhenReady, 500);
+                        }
+                    </script>
+                </section>
+
                 <section data-auto-animate>
                     <h3>Definición Formal</h3>
                     <div class="concept-box">
                         <blockquote>
-                            <p><strong>"Un conjunto de computadores independientes, interconectados a través de una red y con capacidad de colaborar con el fin de realizar una tarea."</strong></p>
+                            <p><strong>"Un conjunto de computadores independientes, interconectados a través de una red
+                                    y con capacidad de colaborar con el fin de realizar una tarea."</strong></p>
                         </blockquote>
-                        <p class="fragment">Académicamente: <em>"Una red de ordenadores independientes que aparecen como un sistema coherente a sus usuarios"</em></p>
+                        <p class="fragment">Académicamente: <em>"Una red de ordenadores independientes que aparecen como
+                                un sistema coherente a sus usuarios"</em></p>
                     </div>
                 </section>
 
@@ -222,19 +491,20 @@
                     <div class="r-hstack">
                         <div class="column fragment">
                             <div class="concept-box">
-                                <h4>🔗 Compartición de Recursos</h4>
-                                <p>Reflejo de la arquitectura organizacional moderna, permitiendo compartir recursos a través de la red</p>
+                                <h4><i class="fas fa-share-alt"></i> Compartición de Recursos</h4>
+                                <p>Reflejo de la arquitectura organizacional moderna, permitiendo compartir recursos a
+                                    través de la red</p>
                             </div>
                         </div>
                         <div class="column fragment">
                             <div class="concept-box">
-                                <h4>📈 Escalabilidad</h4>
+                                <h4><i class="fas fa-chart-line"></i> Escalabilidad</h4>
                                 <p>Incrementar recursos según demanda, superando limitaciones monolíticas</p>
                             </div>
                         </div>
                         <div class="column fragment">
                             <div class="concept-box">
-                                <h4>🛡️ Tolerancia a Fallos</h4>
+                                <h4><i class="fas fa-shield-alt"></i> Tolerancia a Fallos</h4>
                                 <p>Replicación de recursos para asegurar disponibilidad ante fallos</p>
                             </div>
                         </div>
@@ -242,14 +512,45 @@
                 </section>
 
                 <section data-auto-animate>
-                    <h3>Desafíos de los Sistemas Distribuidos</h3>
-                    <div class="concept-box warning">
-                        <h4>Complejidades Inherentes</h4>
-                        <ul>
-                            <li><strong>Problema del reloj global:</strong> Dificultad para mantener tiempo consistente</li>
-                            <li><strong>Consistencia de datos:</strong> Asegurar coherencia en diferentes ubicaciones</li>
-                            <li><strong>Manejo de fallos:</strong> Gestionar cuando partes del sistema dejan de comunicarse</li>
-                        </ul>
+                    <h3>Ventajas vs Desafíos</h3>
+                    <div class="concept-box">
+                        <p>Balance entre beneficios y complejidades en sistemas distribuidos</p>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph LR
+                            subgraph "VENTAJAS"
+                            V1[<i class='fas fa-share-alt'></i> Compartición<br />de Recursos]
+                            V2[<i class='fas fa-chart-line'></i> Escalabilidad<br />Horizontal]
+                            V3[<i class='fas fa-shield-alt'></i> Tolerancia<br />a Fallos]
+                            V4[<i class='fas fa-globe'></i> Distribución<br />Geográfica]
+                            end
+
+                            subgraph "DESAFÍOS"
+                            D1[<i class='fas fa-clock'></i> Sincronización<br />de Tiempo]
+                            D2[<i class='fas fa-database'></i> Consistencia<br />de Datos]
+                            D3[<i class='fas fa-exclamation-triangle'></i> Manejo<br />de Fallos]
+                            D4[<i class='fas fa-network-wired'></i> Latencia<br />de Red]
+                            end
+
+                            V1 -.-> D2
+                            V2 -.-> D4
+                            V3 -.-> D3
+                            V4 -.-> D1
+
+                            classDef ventaja fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+                            classDef desafio fill:#ffebee,stroke:#f44336,stroke-width:2px
+
+                            class V1,V2,V3,V4 ventaja
+                            class D1,D2,D3,D4 desafio
+                        </div>
+                    </div>
+
+                    <div class="concept-box warning fragment">
+                        <h4><i class="fas fa-balance-scale"></i> Consideraciones de Diseño</h4>
+                        <p>Cada ventaja introduce complejidades que deben ser gestionadas mediante <mark>patrones
+                                arquitectónicos</mark> y <mark>middleware especializado</mark></p>
                     </div>
                 </section>
             </section>
@@ -261,10 +562,12 @@
                 <section>
                     <h3>Definición y Propósito</h3>
                     <div class="concept-box">
-                        <p><strong>Middleware (Mw):</strong> Capa de software que establece conexión entre el sistema operativo y las aplicaciones, datos y usuarios.</p>
+                        <p><strong>Middleware (Mw):</strong> Capa de software que establece conexión entre el sistema
+                            operativo y las aplicaciones, datos y usuarios.</p>
                         <div class="fragment">
                             <h4>Función Principal</h4>
-                            <p>Proporcionar <mark>servicios y funciones comunes</mark> como Single Sign-On (SSO) o gestión de APIs</p>
+                            <p>Proporcionar <mark>servicios y funciones comunes</mark> como Single Sign-On (SSO) o
+                                gestión de APIs</p>
                         </div>
                     </div>
                 </section>
@@ -274,44 +577,192 @@
                     <div class="r-vstack">
                         <div class="concept-box fragment">
                             <h4>1. Abstracción y Conectividad</h4>
-                            <p>APIs más funcionales que el SO, transparencia de localización, independencia de servicios de red</p>
+                            <p>El middleware proporciona un conjunto de interfaces de programación de aplicaciones
+                                (APIs) <em>"más funcional que el sistema operativo y los servicios de red"</em>,
+                                permitiendo transparencia de localización, independencia de servicios de red y
+                                escalabilidad</p>
                         </div>
                         <div class="concept-box fragment">
                             <h4>2. Integración y Heterogeneidad</h4>
-                            <p>Comunicación entre procesos en plataformas heterogéneas, transformación, mensajería empresarial</p>
+                            <p>El middleware es fundamental para <em>"soportar la comunicación entre procesos a través
+                                    de plataformas heterogéneas"</em>. Las herramientas de integración conectan sistemas
+                                mediante transformación, mensajería empresarial y autenticación SSO</p>
                         </div>
                         <div class="concept-box fragment">
                             <h4>3. Desacoplamiento</h4>
-                            <p>Opera como "espacio de memoria compartida" permitiendo desacoplamiento temporal y referencial</p>
+                            <p>Opera como "espacio de memoria compartida" permitiendo desacoplamiento temporal y
+                                referencial</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Tipos de Middleware</h3>
+                    <div class="concept-box">
+                        <p>El middleware puede tomar diversas formas según las necesidades de comunicación y
+                            procesamiento en sistemas distribuidos</p>
+                    </div>
+                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
+                        Navega verticalmente (↓) para explorar cada tipo
+                    </p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>TP Monitors</h3>
+                    <h4>Monitores de Procesamiento de Transacciones</h4>
+
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>Características</h4>
+                                <ul>
+                                    <li>Entorno para aplicaciones distribuidas</li>
+                                    <li>Basadas en transacciones ACID</li>
+                                    <li>Gestión de concurrencia</li>
+                                    <li>Recuperación ante fallos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="mermaid">
+                                graph TD
+                                A[Cliente] --> B[TP Monitor]
+                                B --> C[Gestor de Transacciones]
+                                C --> D[Base de Datos 1]
+                                C --> E[Base de Datos 2]
+                                C --> F[Base de Datos 3]
+
+                                B --> G[Control de Concurrencia]
+                                B --> H[Recuperación]
+
+                                style B fill:#e1f5fe
+                                style C fill:#f3e5f5
+                                style G fill:#e8f5e8
+                                style H fill:#fff3e0
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 <section data-auto-animate>
-                    <h3>Tipos de Middleware</h3>
+                    <h3>RPC</h3>
+                    <h4>Llamadas a Procedimientos Remotos</h4>
+
                     <div class="r-hstack">
                         <div class="column">
-                            <div class="concept-box fragment">
-                                <h4>TP Monitors</h4>
-                                <p><strong>Monitores de Procesamiento de Transacciones</strong></p>
-                                <small>Entorno para aplicaciones distribuidas basadas en transacciones</small>
-                            </div>
-                            <div class="concept-box fragment">
-                                <h4>RPC</h4>
-                                <p><strong>Llamadas a Procedimientos Remotos</strong></p>
-                                <small>Distribución de lógica a través de la red</small>
+                            <div class="concept-box">
+                                <h4>Características</h4>
+                                <ul>
+                                    <li>Distribución de lógica a través de la red</li>
+                                    <li>Invocación remota como rutina local</li>
+                                    <li>Transparencia de ubicación</li>
+                                    <li>Marshalling/Unmarshalling de datos</li>
+                                </ul>
                             </div>
                         </div>
                         <div class="column">
-                            <div class="concept-box fragment">
-                                <h4>MOM</h4>
-                                <p><strong>Middleware Orientado a Mensajes</strong></p>
-                                <small>Intercambio de datos aplicación a aplicación (RabbitMQ, Kafka)</small>
+                            <div class="mermaid">
+                                sequenceDiagram
+                                participant C as Cliente
+                                participant S as Stub Cliente
+                                participant R as RPC Runtime
+                                participant SS as Stub Servidor
+                                participant Sv as Servidor
+
+                                C->>S: Llamada Local
+                                S->>R: Marshall Parámetros
+                                R->>SS: Envío por Red
+                                SS->>Sv: Llamada Local
+                                Sv->>SS: Resultado
+                                SS->>R: Marshall Resultado
+                                R->>S: Envío por Red
+                                S->>C: Resultado Local
                             </div>
-                            <div class="concept-box fragment">
-                                <h4>ORBs</h4>
-                                <p><strong>Agentes de Solicitud de Objetos</strong></p>
-                                <small>Comunicación entre objetos distribuidos (CORBA, COM/DCOM)</small>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>MOM</h3>
+                    <h4>Middleware Orientado a Mensajes</h4>
+
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>Características</h4>
+                                <ul>
+                                    <li>Intercambio de datos aplicación a aplicación</li>
+                                    <li>Comunicación asíncrona</li>
+                                    <li>Desacoplamiento temporal</li>
+                                    <li>Ejemplos: RabbitMQ, Kafka</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="mermaid">
+                                graph LR
+                                A[Aplicación A] --> B[Cola de Mensajes]
+                                C[Aplicación B] --> B
+                                D[Aplicación C] --> B
+
+                                B --> E[Aplicación D]
+                                B --> F[Aplicación E]
+                                B --> G[Aplicación F]
+
+                                H[Message Broker] --> B
+
+                                subgraph "Características"
+                                I[Asíncrono]
+                                J[Persistente]
+                                K[Escalable]
+                                end
+
+                                style B fill:#e1f5fe
+                                style H fill:#f3e5f5
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>ORBs</h3>
+                    <h4>Agentes de Solicitud de Objetos</h4>
+
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>Características</h4>
+                                <ul>
+                                    <li>Comunicación entre objetos distribuidos</li>
+                                    <li>Interoperabilidad entre plataformas</li>
+                                    <li>Ejemplos: CORBA, COM/DCOM</li>
+                                    <li>Interface Definition Language (IDL)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="mermaid">
+                                graph TD
+                                A[Objeto Cliente] --> B[ORB Cliente]
+                                B --> C[Interface Repository]
+                                B --> D[Red]
+
+                                D --> E[ORB Servidor]
+                                E --> F[Object Adapter]
+                                F --> G[Objeto Servidor]
+
+                                C --> H[IDL Definitions]
+
+                                subgraph "Servicios ORB"
+                                I[Naming Service]
+                                J[Trading Service]
+                                K[Security Service]
+                                end
+
+                                style B fill:#e1f5fe
+                                style E fill:#e1f5fe
+                                style C fill:#f3e5f5
+                                style F fill:#e8f5e8
                             </div>
                         </div>
                     </div>
@@ -320,19 +771,81 @@
                 <section>
                     <h3>Capas de Middleware Modernas (Red Hat)</h3>
                     <div class="concept-box">
-                        <p>En el desarrollo de aplicaciones modernas, el middleware se estructura en <mark>cuatro capas principales</mark> que proporcionan funciones básicas unificadas</p>
+                        <p>En el desarrollo de aplicaciones modernas, el middleware se estructura en <mark>cuatro capas
+                                principales</mark> que proporcionan funciones básicas unificadas</p>
                     </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TB
+                            subgraph "CAPA 4: AUTOMATIZACIÓN Y GESTIÓN"
+                            A1[<i class='fas fa-brain'></i> Inteligencia Artificial]
+                            A2[<i class='fas fa-robot'></i> Automatización de Procesos]
+                            A3[<i class='fas fa-chart-bar'></i> Análisis Predictivo]
+                            A4[<i class='fas fa-cogs'></i> Gestión de Decisiones]
+                            end
+
+                            subgraph "CAPA 3: INTEGRACIÓN"
+                            I1[<i class='fas fa-link'></i> APIs de Integración]
+                            I2[<i class='fas fa-exchange-alt'></i> Transformación de Datos]
+                            I3[<i class='fas fa-cloud'></i> Recursos SaaS]
+                            I4[<i class='fas fa-envelope'></i> Mensajería Empresarial]
+                            end
+
+                            subgraph "CAPA 2: TIEMPOS DE EJECUCIÓN"
+                            R1[<i class='fas fa-bolt'></i> Microservicios Ligeros]
+                            R2[<i class='fas fa-memory'></i> Caché en Memoria]
+                            R3[<i class='fas fa-tachometer-alt'></i> Aceleración de Datos]
+                            R4[<i class='fas fa-server'></i> Gestión de Recursos]
+                            end
+
+                            subgraph "CAPA 1: CONTENEDORES"
+                            C1[<i class='fab fa-docker'></i> Gestión de Contenedores]
+                            C2[<i class='fas fa-infinity'></i> CI/CD Pipeline]
+                            C3[<i class='fas fa-project-diagram'></i> Service Mesh]
+                            C4[<i class='fas fa-shield-alt'></i> Políticas de Seguridad]
+                            end
+
+                            %% Conexiones entre capas
+                            A1 --> I1
+                            A2 --> I2
+                            A3 --> I3
+                            A4 --> I4
+
+                            I1 --> R1
+                            I2 --> R2
+                            I3 --> R3
+                            I4 --> R4
+
+                            R1 --> C1
+                            R2 --> C2
+                            R3 --> C3
+                            R4 --> C4
+
+                            %% Estilos
+                            classDef automation fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+                            classDef integration fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+                            classDef runtime fill:#e0f2f1,stroke:#4caf50,stroke-width:2px
+                            classDef container fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+
+                            class A1,A2,A3,A4 automation
+                            class I1,I2,I3,I4 integration
+                            class R1,R2,R3,R4 runtime
+                            class C1,C2,C3,C4 container
+                        </div>
+                    </div>
+
                     <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
-                        Navega verticalmente (↓) para explorar cada capa
+                        Navega verticalmente (↓) para explorar cada capa en detalle
                     </p>
                 </section>
 
                 <section data-auto-animate>
                     <h3>1. Capa de Contenedores</h3>
                     <div class="concept-box">
-                        <h4>🐳 Gestión de Distribución Uniforme</h4>
+                        <h4><i class="fab fa-docker"></i> Gestión de Distribución Uniforme</h4>
                         <p>Gestiona la distribución de los ciclos de vida de las aplicaciones de forma uniforme</p>
-                        
+
                         <div class="r-hstack fragment">
                             <div class="column">
                                 <h5>Funciones DevOps</h5>
@@ -357,9 +870,9 @@
                 <section data-auto-animate>
                     <h3>2. Capa de Tiempos de Ejecución</h3>
                     <div class="concept-box">
-                        <h4>⚡ Entornos de Ejecución Optimizados</h4>
+                        <h4><i class="fas fa-bolt"></i> Entornos de Ejecución Optimizados</h4>
                         <p>Incluye entornos de ejecución ligeros para microservicios y servicios de aceleración</p>
-                        
+
                         <div class="r-hstack fragment">
                             <div class="column">
                                 <h5>Microservicios</h5>
@@ -384,9 +897,9 @@
                 <section data-auto-animate>
                     <h3>3. Capa de Integración</h3>
                     <div class="concept-box">
-                        <h4>🔗 Conectividad Universal</h4>
+                        <h4><i class="fas fa-link"></i> Conectividad Universal</h4>
                         <p>Conecta aplicaciones compradas y personalizadas, y recursos SaaS</p>
-                        
+
                         <div class="r-hstack fragment">
                             <div class="column">
                                 <h5>Tipos de Integración</h5>
@@ -411,9 +924,9 @@
                 <section data-auto-animate>
                     <h3>4. Capa de Automatización y Gestión</h3>
                     <div class="concept-box">
-                        <h4>🧠 Inteligencia y Automatización</h4>
+                        <h4><i class="fas fa-brain"></i> Inteligencia y Automatización</h4>
                         <p>Agrega inteligencia esencial, optimización, automatización y gestión de decisiones</p>
-                        
+
                         <div class="r-hstack fragment">
                             <div class="column">
                                 <h5>Capacidades Inteligentes</h5>
@@ -442,57 +955,138 @@
 
                 <section>
                     <h3>Tecnologías de Comunicación</h3>
-                    <div class="r-hstack">
-                        <div class="column fragment">
+                    <div class="concept-box">
+                        <p>Comparación de protocolos de comunicación en sistemas distribuidos</p>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TB
+                            subgraph "CLIENTE"
+                            C[<i class='fas fa-laptop'></i> Aplicación Cliente]
+                            end
+
+                            subgraph "PROTOCOLOS DE COMUNICACIÓN"
+                            REST[<i class='fas fa-globe'></i> REST/HTTP<br />• JSON/XML<br />• Stateless<br />•
+                            Cacheable]
+                            GRPC[<i class='fas fa-bolt'></i> gRPC/HTTP2<br />• Protocol Buffers<br />• Streaming<br />•
+                            Eficiente]
+                            WS[<i class='fas fa-exchange-alt'></i> WebSockets<br />• Full-duplex<br />• Tiempo
+                            real<br />• Persistente]
+                            MQ[<i class='fas fa-envelope'></i> Message Queue<br />• Asíncrono<br />• Desacoplado<br />•
+                            Confiable]
+                            end
+
+                            subgraph "SERVIDOR"
+                            S[<i class='fas fa-server'></i> Servicios Backend]
+                            end
+
+                            C --> REST
+                            C --> GRPC
+                            C --> WS
+                            C --> MQ
+
+                            REST --> S
+                            GRPC --> S
+                            WS --> S
+                            MQ --> S
+
+                            %% Estilos
+                            classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+                            classDef protocol fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+                            classDef server fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+
+                            class C client
+                            class REST,GRPC,WS,MQ protocol
+                            class S server
+                        </div>
+                    </div>
+
+                    <div class="r-hstack fragment">
+                        <div class="column">
                             <div class="concept-box">
                                 <h4>gRPC</h4>
-                                <p><strong>Esquema binario sobre HTTP2</strong></p>
-                                <ul>
-                                    <li>Serialización con Protocol Buffers</li>
-                                    <li>Más eficiente que REST/JSON</li>
-                                    <li>Compilable en múltiples lenguajes</li>
-                                </ul>
+                                <p>Marco de comunicación que utiliza un <em>"esquema de solicitud/respuesta
+                                        binario que utiliza HTTP2"</em></p>
+                                <small style="color: var(--uide-secondary); font-style: italic;">— Wallarm
+                                    (2025)</small>
                             </div>
                         </div>
-                        <div class="column fragment">
+                        <div class="column">
                             <div class="concept-box">
                                 <h4>WebSockets</h4>
-                                <p><strong>Esquema dúplex completo</strong></p>
-                                <ul>
-                                    <li>Conexión TCP de larga duración</li>
-                                    <li>Flujo de datos constante</li>
-                                    <li>Protocolo de transporte</li>
-                                </ul>
+                                <p>Constituye un <em>"esquema dúplex completo que utiliza una conexión TCP de larga
+                                        duración"</em></p>
+                                <small style="color: var(--uide-secondary); font-style: italic;">— Wallarm
+                                    (2025)</small>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Sistemas de Mensajería</h3>
-                    <div class="r-hstack">
-                        <div class="column fragment">
+                    <h3>Sistemas de Mensajería: Kafka vs RabbitMQ</h3>
+                    <div class="concept-box">
+                        <p>Comparación arquitectónica de sistemas de mensajería distribuida</p>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TB
+                            subgraph "APACHE KAFKA - Event Streaming"
+                            P1[Producer 1] --> T1[Topic A<br />Partition 0]
+                            P2[Producer 2] --> T2[Topic A<br />Partition 1]
+                            P3[Producer 3] --> T3[Topic A<br />Partition 2]
+
+                            T1 --> CG1[Consumer Group 1]
+                            T2 --> CG1
+                            T3 --> CG1
+
+                            T1 --> CG2[Consumer Group 2]
+                            T2 --> CG2
+                            T3 --> CG2
+
+                            K_DESC["• Event Sourcing<br />• High Throughput<br />• Distributed Log<br />• Horizontal
+                            Scaling"]
+                            end
+
+                            subgraph "RABBITMQ - Message Broker"
+                            PROD[Producer] --> EX[Exchange]
+                            EX --> Q1[Queue 1]
+                            EX --> Q2[Queue 2]
+                            EX --> Q3[Queue 3]
+
+                            Q1 --> C1[Consumer 1]
+                            Q2 --> C2[Consumer 2]
+                            Q3 --> C3[Consumer 3]
+
+                            R_DESC["• Message Routing<br />• Low Latency<br />• Complex Routing<br />• Guaranteed
+                            Delivery"]
+                            end
+
+                            classDef kafka fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+                            classDef rabbitmq fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+                            classDef description fill:#f5f5f5,stroke:#757575,stroke-width:1px
+
+                            class P1,P2,P3,T1,T2,T3,CG1,CG2 kafka
+                            class PROD,EX,Q1,Q2,Q3,C1,C2,C3 rabbitmq
+                            class K_DESC,R_DESC description
+                        </div>
+                    </div>
+
+                    <div class="r-hstack fragment">
+                        <div class="column">
                             <div class="concept-box">
-                                <h4>Apache Kafka</h4>
-                                <p><strong>Sistemas orientados a eventos</strong></p>
-                                <ul>
-                                    <li>Streaming de datos en tiempo real</li>
-                                    <li>Event Sourcing y CQRS</li>
-                                    <li>Pub/Sub a gran escala</li>
-                                    <li>Topic como registro particionado</li>
-                                </ul>
+                                <h4><i class="fas fa-stream"></i> Apache Kafka</h4>
+                                <p><strong>Sistemas orientados a eventos</strong> - Ideal para streaming de datos y
+                                    event sourcing</p>
                             </div>
                         </div>
-                        <div class="column fragment">
+                        <div class="column">
                             <div class="concept-box">
-                                <h4>RabbitMQ</h4>
-                                <p><strong>Flujos impulsados por comandos</strong></p>
-                                <ul>
-                                    <li>Tareas de latencia crítica</li>
-                                    <li>Comunicación IoT</li>
-                                    <li>Workflows event-driven</li>
-                                    <li>Exchange, Queue y Binding</li>
-                                </ul>
+                                <h4><i class="fas fa-rabbit"></i> RabbitMQ</h4>
+                                <p><strong>Flujos impulsados por comandos</strong> - Perfecto para tareas críticas y
+                                    routing complejo</p>
                             </div>
                         </div>
                     </div>
@@ -502,19 +1096,23 @@
                     <h3>Protocolo de Contexto de Modelo (MCP)</h3>
                     <div class="concept-box info">
                         <h4>Estándar Abierto de Anthropic</h4>
-                        <p>Simplifica y estandariza la interacción entre LLMs y herramientas externas</p>
-                        
+                        <p>Un nuevo estándar desarrollado por Anthropic que busca <em>"simplificar y estandarizar"</em>
+                            la manera en que los Grandes Modelos de Lenguaje (LLMs) interactúan con herramientas
+                            externas y obtienen datos</p>
+                        <small style="color: var(--uide-secondary); font-style: italic;">— Hou, Zhao, Wang & Wang
+                            (2025)</small>
+
                         <div class="r-hstack fragment">
                             <div class="column">
-                                <h5>🛠️ Tools</h5>
+                                <h5><i class="fas fa-tools"></i> Tools</h5>
                                 <p>Invocar APIs o servicios externos</p>
                             </div>
                             <div class="column">
-                                <h5>📊 Resources</h5>
+                                <h5><i class="fas fa-database"></i> Resources</h5>
                                 <p>Acceso a conjuntos de datos como memoria externa</p>
                             </div>
                             <div class="column">
-                                <h5>📝 Prompts</h5>
+                                <h5><i class="fas fa-file-alt"></i> Prompts</h5>
                                 <p>Plantillas reutilizables para workflows</p>
                             </div>
                         </div>
@@ -548,10 +1146,11 @@
                 <section>
                     <h3>Middleware como Integrador de Capas</h3>
                     <div class="concept-box info">
-                        <h4>🔧 Middleware Transversal</h4>
-                        <p>El middleware no solo conecta capas, sino que proporciona <mark>servicios transversales</mark> que atraviesan toda la arquitectura</p>
+                        <h4><i class="fas fa-tools"></i> Middleware Transversal</h4>
+                        <p>El middleware no solo conecta capas, sino que proporciona <mark>servicios
+                                transversales</mark> que atraviesan toda la arquitectura</p>
                     </div>
-                    
+
                     <div class="r-hstack">
                         <div class="column fragment">
                             <div class="concept-box">
@@ -584,97 +1183,118 @@
                 <section>
                     <h3>Arquitecturas Multicapa</h3>
                     <div class="concept-box">
-                        <p>Dividir aplicación en <mark>capas que colaboran</mark> mediante interfaces bien definidas</p>
-                        <p class="fragment">El diseño más utilizado actualmente es el <strong>diseño en tres capas</strong></p>
+                        <p>La arquitectura de una aplicación puede referirse a sus capas lógicas (layers), que son
+                            <em>"capas de software que nosotros, los desarrolladores/as, creamos"</em>. El principio es
+                            dividir una aplicación en <mark>capas que colaboran</mark> mediante interfaces bien
+                            definidas
+                        </p>
+                        <small style="color: var(--uide-secondary); font-style: italic;">— DWES DOCS, IES Celia
+                            Viñas</small>
+                        <p class="fragment">El diseño más utilizado actualmente es el <strong>diseño en tres
+                                capas</strong></p>
                     </div>
+
+                    <div class="concept-box fragment">
+                        <h4><i class="fas fa-layer-group"></i> Ventajas del Diseño Multicapa</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <ul>
+                                    <li><strong>Separación de responsabilidades</strong></li>
+                                    <li><strong>Mantenibilidad y escalabilidad</strong></li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <ul>
+                                    <li><strong>Reutilización de componentes</strong></li>
+                                    <li><strong>Testabilidad independiente</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
-                        Navega verticalmente (↓) para explorar cada capa
+                        Navega verticalmente (↓) para ver el diagrama arquitectónico
                     </p>
                 </section>
 
-                <section data-auto-animate>
-                    <h3>1. Capa de Presentación</h3>
+                <section>
+                    <h3>Diagrama de Arquitectura 3 Capas</h3>
                     <div class="concept-box">
-                        <h4>👤 Interfaz de Usuario</h4>
-                        <p>Presenta el sistema al usuario, comunica información y captura datos del usuario</p>
-                        
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Responsabilidades</h5>
-                                <ul>
-                                    <li>Mostrar información al usuario</li>
-                                    <li>Capturar entrada de datos</li>
-                                    <li>Validación básica de formularios</li>
-                                    <li>Navegación y experiencia de usuario</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <h5>Tecnologías Típicas</h5>
-                                <ul>
-                                    <li>HTML, CSS, JavaScript</li>
-                                    <li>Frameworks frontend (React, Vue, Angular)</li>
-                                    <li>Aplicaciones móviles</li>
-                                    <li>Interfaces de escritorio</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>Representación visual completa de la arquitectura multicapa con componentes y flujos de
+                            comunicación</p>
                     </div>
-                </section>
 
-                <section data-auto-animate>
-                    <h3>2. Capa de Negocio</h3>
-                    <div class="concept-box">
-                        <h4>⚙️ Lógica del Negocio</h4>
-                        <p>Reside la lógica que procesa las peticiones del usuario y donde se establecen todas las reglas que deben cumplirse</p>
-                        
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Responsabilidades</h5>
-                                <ul>
-                                    <li>Procesamiento de peticiones</li>
-                                    <li>Aplicación de reglas de negocio</li>
-                                    <li>Validación de datos complejos</li>
-                                    <li>Coordinación entre capas</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <h5>Componentes Típicos</h5>
-                                <ul>
-                                    <li>Servicios de aplicación</li>
-                                    <li>Controladores</li>
-                                    <li>Procesadores de workflow</li>
-                                    <li>Gestores de transacciones</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TB
+                            subgraph "CAPA DE PRESENTACIÓN"
+                            direction TB
+                            UI[<i class='fas fa-desktop'></i> Interfaz Web]
+                            MOB[<i class='fas fa-mobile-alt'></i> App Móvil]
+                            DESK[<i class='fas fa-window-maximize'></i> App Escritorio]
 
-                <section data-auto-animate>
-                    <h3>3. Capa de Datos</h3>
-                    <div class="concept-box">
-                        <h4>🗄️ Persistencia y Acceso</h4>
-                        <p>Se encarga de acceder a los datos, formada por uno o más gestores de bases de datos</p>
-                        
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Responsabilidades</h5>
-                                <ul>
-                                    <li>Almacenamiento de datos</li>
-                                    <li>Recuperación de información</li>
-                                    <li>Integridad referencial</li>
-                                    <li>Optimización de consultas</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <h5>Tecnologías Típicas</h5>
-                                <ul>
-                                    <li>Bases de datos relacionales (MySQL, PostgreSQL)</li>
-                                    <li>Bases de datos NoSQL (MongoDB, Redis)</li>
-                                    <li>ORMs (Prisma, TypeORM, Sequelize)</li>
-                                    <li>Sistemas de archivos</li>
-                                </ul>
-                            </div>
+                            UI_DESC["• Mostrar información al usuario<br />• Capturar entrada de datos<br />• Validación
+                            básica<br />• UX/UI"]
+                            end
+
+                            subgraph "CAPA DE NEGOCIO"
+                            direction TB
+                            API[<i class='fas fa-server'></i> API REST/GraphQL]
+                            BL[<i class='fas fa-cogs'></i> Lógica de Negocio]
+                            AUTH[<i class='fas fa-shield-alt'></i> Autenticación]
+                            VALID[<i class='fas fa-check-circle'></i> Validación]
+
+                            BL_DESC["• Procesamiento de peticiones<br />• Reglas de negocio<br />• Coordinación entre
+                            capas<br />• Gestión de transacciones"]
+                            end
+
+                            subgraph "CAPA DE DATOS"
+                            direction TB
+                            DB[(<i class='fas fa-database'></i> Base de Datos)]
+                            CACHE[(<i class='fas fa-memory'></i> Cache Redis)]
+                            FILES[<i class='fas fa-folder'></i> Sistema Archivos]
+
+                            DB_DESC["• Almacenamiento persistente<br />• Integridad referencial<br />• Optimización de
+                            consultas<br />• Backup y recuperación"]
+                            end
+
+                            subgraph "MIDDLEWARE TRANSVERSAL"
+                            direction LR
+                            SEC[<i class='fas fa-lock'></i> Seguridad]
+                            LOG[<i class='fas fa-file-alt'></i> Logging]
+                            MON[<i class='fas fa-chart-line'></i> Monitoreo]
+                            end
+
+                            %% Conexiones principales
+                            UI --> API
+                            MOB --> API
+                            DESK --> API
+
+                            API --> BL
+                            BL --> AUTH
+                            BL --> VALID
+
+                            BL --> DB
+                            BL --> CACHE
+                            BL --> FILES
+
+                            %% Middleware transversal (líneas punteadas)
+                            SEC -.-> API
+                            LOG -.-> BL
+                            MON -.-> DB
+
+                            %% Estilos
+                            classDef presentation fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+                            classDef business fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+                            classDef data fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+                            classDef middleware fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+                            classDef description fill:#f5f5f5,stroke:#757575,stroke-width:1px
+
+                            class UI,MOB,DESK presentation
+                            class API,BL,AUTH,VALID business
+                            class DB,CACHE,FILES data
+                            class SEC,LOG,MON middleware
+                            class UI_DESC,BL_DESC,DB_DESC description
                         </div>
                     </div>
                 </section>
@@ -682,10 +1302,11 @@
                 <section>
                     <h3>Puntos de Integración entre Capas</h3>
                     <div class="concept-box info">
-                        <h4>🔗 Conectividad y Comunicación</h4>
-                        <p>Los <mark>puntos de integración</mark> definen cómo las capas se comunican e intercambian información de manera controlada</p>
+                        <h4><i class="fas fa-network-wired"></i> Conectividad y Comunicación</h4>
+                        <p>Los <mark>puntos de integración</mark> definen cómo las capas se comunican e intercambian
+                            información de manera controlada</p>
                     </div>
-                    
+
                     <div class="r-hstack">
                         <div class="column fragment">
                             <div class="concept-box">
@@ -712,68 +1333,7 @@
                     </div>
                 </section>
 
-                <section>
-                    <h3>Diagrama de Arquitectura 3 Capas</h3>
-                    <div class="concept-box">
-                        <p>Ejemplo visual de una arquitectura multicapa con puntos de integración</p>
-                    </div>
-                    
-                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 1rem 0;">
-                        <div class="mermaid">
-                            graph TB
-                                subgraph "🖥️ Capa de Presentación"
-                                    UI[Interface de Usuario]
-                                    WEB[Aplicación Web]
-                                    MOB[App Móvil]
-                                end
-                                
-                                subgraph "⚙️ Capa de Negocio"
-                                    API[API REST/GraphQL]
-                                    BL[Lógica de Negocio]
-                                    AUTH[Autenticación]
-                                    VALID[Validación]
-                                end
-                                
-                                subgraph "🗄️ Capa de Datos"
-                                    DB[(Base de Datos)]
-                                    CACHE[(Cache Redis)]
-                                    FILES[Sistema Archivos]
-                                end
-                                
-                                subgraph "🔒 Middleware Transversal"
-                                    SEC[Seguridad/JWT]
-                                    LOG[Logging]
-                                    MON[Monitoreo]
-                                end
-                                
-                                UI --> API
-                                WEB --> API
-                                MOB --> API
-                                
-                                API --> BL
-                                BL --> AUTH
-                                BL --> VALID
-                                
-                                BL --> DB
-                                BL --> CACHE
-                                BL --> FILES
-                                
-                                SEC -.-> API
-                                LOG -.-> BL
-                                MON -.-> DB
-                                
-                                classDef presentation fill:#e1f5fe
-                                classDef business fill:#f3e5f5
-                                classDef data fill:#e8f5e8
-                                classDef middleware fill:#fff3e0
-                                
-                                class UI,WEB,MOB presentation
-                                class API,BL,AUTH,VALID business
-                                class DB,CACHE,FILES data
-                                class SEC,LOG,MON middleware
-                        </div>
-                    </div>
-                </section>
+
 
                 <section>
                     <h3>Capas vs Niveles</h3>
@@ -789,7 +1349,8 @@
                             <div class="concept-box">
                                 <h4>Nivel (Tier)</h4>
                                 <p><strong>Referencia física</strong></p>
-                                <small>Distribución física en hardware (ej: 3 capas en 1 máquina = 3 capas, 1 nivel)</small>
+                                <small>Distribución física en hardware (ej: 3 capas en 1 máquina = 3 capas, 1
+                                    nivel)</small>
                             </div>
                         </div>
                     </div>
@@ -800,7 +1361,7 @@
                     <div class="concept-box">
                         <p>Caso particular de arquitectura 3 capas con responsabilidades estandarizadas</p>
                     </div>
-                    
+
                     <div class="r-hstack">
                         <div class="column fragment">
                             <div class="concept-box">
@@ -828,15 +1389,18 @@
                     <div class="r-vstack">
                         <div class="concept-box fragment">
                             <h4>Cliente-Servidor (C-S)</h4>
-                            <p>Modelo popular en aplicaciones web. Servidor espera peticiones pasivamente, cliente invoca y espera respuestas</p>
+                            <p>Modelo popular en aplicaciones web. Servidor espera peticiones pasivamente, cliente
+                                invoca y espera respuestas</p>
                         </div>
                         <div class="concept-box fragment">
                             <h4>Peer-to-Peer (P2P)</h4>
-                            <p>Procesos con capacidades idénticas, interacciones directas. Descentralización, distribución, balance de carga</p>
+                            <p>Procesos con capacidades idénticas, interacciones directas. Descentralización,
+                                distribución, balance de carga</p>
                         </div>
                         <div class="concept-box fragment">
                             <h4>Microservicios</h4>
-                            <p>Separación en módulos independientes. API Gateway como punto de entrada, escalabilidad y resiliencia</p>
+                            <p>Separación en módulos independientes. API Gateway como punto de entrada, escalabilidad y
+                                resiliencia</p>
                         </div>
                     </div>
                 </section>
@@ -854,7 +1418,8 @@
                                 <h4>PE-1.1: Mapa de Capas y Puntos de Integración</h4>
                                 <p><strong>Tipo:</strong> Práctica de Experimentación</p>
                                 <p><strong>Entregable:</strong> Diagrama de capas y puntos de integración</p>
-                                <p><strong>Objetivo:</strong> Visualizar la arquitectura de un sistema distribuido identificando las capas lógicas y sus puntos de integración</p>
+                                <p><strong>Objetivo:</strong> Visualizar la arquitectura de un sistema distribuido
+                                    identificando las capas lógicas y sus puntos de integración</p>
                                 <small><strong>Valor:</strong> 2.25 puntos</small>
                             </div>
                         </div>
@@ -863,7 +1428,8 @@
                                 <h4>TA-1.1: Ficha de Caso Real de SD</h4>
                                 <p><strong>Tipo:</strong> Trabajo Autónomo</p>
                                 <p><strong>Entregable:</strong> Ficha de 1 página</p>
-                                <p><strong>Objetivo:</strong> Investigar y documentar un caso real de implementación de Sistemas Distribuidos en la industria</p>
+                                <p><strong>Objetivo:</strong> Investigar y documentar un caso real de implementación de
+                                    Sistemas Distribuidos en la industria</p>
                                 <small><strong>Valor:</strong> 2.25 puntos</small>
                             </div>
                         </div>
@@ -873,7 +1439,7 @@
                 <section>
                     <h3>Resumen de Evaluación - Semana 1</h3>
                     <div class="concept-box info">
-                        <h4>📊 Total de Actividades Calificadas</h4>
+                        <h4><i class="fas fa-chart-bar"></i> Total de Actividades Calificadas</h4>
                         <div class="r-hstack">
                             <div class="column">
                                 <h5>Prácticas de Experimentación</h5>
@@ -890,7 +1456,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <p style="text-align: center; margin-top: 1em; font-size: 1.2em;"><strong>Total Semana 1: 4.5 puntos</strong></p>
+                        <p style="text-align: center; margin-top: 1em; font-size: 1.2em;"><strong>Total Semana 1: 4.5
+                                puntos</strong></p>
                     </div>
                 </section>
             </section>
@@ -911,7 +1478,9 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>Conjunto de Computadores Colaborativos</h4>
-                                    <p>Un <strong>conjunto de computadores independientes</strong>, interconectados a través de una red y con capacidad de <strong>colaborar</strong> con el fin de realizar una tarea.</p>
+                                    <p>Un <strong>conjunto de computadores independientes</strong>, interconectados a
+                                        través de una red y con capacidad de <strong>colaborar</strong> con el fin de
+                                        realizar una tarea.</p>
                                     <small>Aparecen como un sistema coherente a sus usuarios</small>
                                 </div>
                             </div>
@@ -927,7 +1496,9 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>Capa de Software Intermedia</h4>
-                                    <p><strong>Capa de software</strong> que establece conexión entre el sistema operativo y las aplicaciones, datos y usuarios. Proporciona <strong>servicios comunes</strong> como SSO y gestión de APIs.</p>
+                                    <p><strong>Capa de software</strong> que establece conexión entre el sistema
+                                        operativo y las aplicaciones, datos y usuarios. Proporciona <strong>servicios
+                                            comunes</strong> como SSO y gestión de APIs.</p>
                                     <small>Base tecnológica de arquitecturas modernas para la nube</small>
                                 </div>
                             </div>
@@ -947,7 +1518,9 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>Presentación, Negocio, Datos</h4>
-                                    <p><strong>1. Presentación:</strong> interfaz de usuario, <strong>2. Negocio:</strong> lógica y reglas, <strong>3. Datos:</strong> acceso y persistencia mediante gestores de BD.</p>
+                                    <p><strong>1. Presentación:</strong> interfaz de usuario, <strong>2.
+                                            Negocio:</strong> lógica y reglas, <strong>3. Datos:</strong> acceso y
+                                        persistencia mediante gestores de BD.</p>
                                     <small>Capas que colaboran mediante interfaces bien definidas</small>
                                 </div>
                             </div>
@@ -963,7 +1536,9 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>Lógico vs Físico</h4>
-                                    <p><strong>Capa (Layer):</strong> referencia lógica - segmentación desde punto de vista lógico. <strong>Nivel (Tier):</strong> referencia física - distribución física en hardware.</p>
+                                    <p><strong>Capa (Layer):</strong> referencia lógica - segmentación desde punto de
+                                        vista lógico. <strong>Nivel (Tier):</strong> referencia física - distribución
+                                        física en hardware.</p>
                                     <small>Ej: 3 capas en 1 máquina = 3 capas, 1 nivel</small>
                                 </div>
                             </div>
@@ -983,7 +1558,10 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>Modelo-Vista-Controlador</h4>
-                                    <p>Caso particular de arquitectura 3 capas. <strong>Modelo:</strong> lógica de negocio, <strong>Vista:</strong> interfaz de usuario, <strong>Controlador:</strong> gestiona eventos y coordina.</p>
+                                    <p>Caso particular de arquitectura 3 capas. <strong>Modelo:</strong> lógica de
+                                        negocio, <strong>Vista:</strong> interfaz de usuario,
+                                        <strong>Controlador:</strong> gestiona eventos y coordina.
+                                    </p>
                                     <small>Responsabilidades y relaciones estandarizadas</small>
                                 </div>
                             </div>
@@ -999,7 +1577,10 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>Compartición, Escalabilidad, Tolerancia</h4>
-                                    <p><strong>Compartición de recursos:</strong> reflejo organizacional, <strong>Escalabilidad:</strong> incrementar según demanda, <strong>Tolerancia a fallos:</strong> replicación para disponibilidad.</p>
+                                    <p><strong>Compartición de recursos:</strong> reflejo organizacional,
+                                        <strong>Escalabilidad:</strong> incrementar según demanda, <strong>Tolerancia a
+                                            fallos:</strong> replicación para disponibilidad.
+                                    </p>
                                     <small>Superan limitaciones de sistemas monolíticos</small>
                                 </div>
                             </div>
@@ -1019,7 +1600,10 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>TP, RPC, MOM, ORBs</h4>
-                                    <p><strong>TP Monitors:</strong> transacciones, <strong>RPC:</strong> procedimientos remotos, <strong>MOM:</strong> mensajería (RabbitMQ/Kafka), <strong>ORBs:</strong> objetos distribuidos (CORBA).</p>
+                                    <p><strong>TP Monitors:</strong> transacciones, <strong>RPC:</strong> procedimientos
+                                        remotos, <strong>MOM:</strong> mensajería (RabbitMQ/Kafka),
+                                        <strong>ORBs:</strong> objetos distribuidos (CORBA).
+                                    </p>
                                     <small>Evolución histórica del middleware</small>
                                 </div>
                             </div>
@@ -1035,7 +1619,10 @@
                                 </div>
                                 <div class="flashcard-back">
                                     <h4>gRPC, WebSockets, Kafka, RabbitMQ</h4>
-                                    <p><strong>gRPC:</strong> binario sobre HTTP2, <strong>WebSockets:</strong> dúplex completo, <strong>Kafka:</strong> eventos a gran escala, <strong>RabbitMQ:</strong> comandos y workflows.</p>
+                                    <p><strong>gRPC:</strong> binario sobre HTTP2, <strong>WebSockets:</strong> dúplex
+                                        completo, <strong>Kafka:</strong> eventos a gran escala,
+                                        <strong>RabbitMQ:</strong> comandos y workflows.
+                                    </p>
                                     <small>Tecnologías para sistemas distribuidos modernos</small>
                                 </div>
                             </div>
@@ -1047,14 +1634,17 @@
             <!-- Conclusiones -->
             <section data-background-color="#f8f8f8">
                 <h2>Conclusiones de la Semana 1</h2>
-                
+
                 <div class="concept-box">
                     <h4>Conceptos Clave Aprendidos</h4>
                     <ul>
-                        <li>Los <mark>sistemas distribuidos</mark> son fundamentales para aplicaciones modernas a gran escala</li>
-                        <li>El <mark>middleware</mark> actúa como capa de abstracción crucial entre SO y aplicaciones</li>
+                        <li>Los <mark>sistemas distribuidos</mark> son fundamentales para aplicaciones modernas a gran
+                            escala</li>
+                        <li>El <mark>middleware</mark> actúa como capa de abstracción crucial entre SO y aplicaciones
+                        </li>
                         <li>Las <mark>arquitecturas multicapa</mark> proporcionan estructura y organización</li>
-                        <li>Los <mark>patrones arquitectónicos</mark> ofrecen soluciones probadas a problemas comunes</li>
+                        <li>Los <mark>patrones arquitectónicos</mark> ofrecen soluciones probadas a problemas comunes
+                        </li>
                     </ul>
                 </div>
 
@@ -1077,10 +1667,12 @@
                 <h2>Referencias Bibliográficas</h2>
                 <div style="font-size: 0.7em; text-align: left; max-height: 500px; overflow-y: auto;">
                     <ul>
-                        <li>Ahmad, I., et al. (2021). Implementation of RESTful API Web Services Architecture in Takeaway Application Development.</li>
+                        <li>Ahmad, I., et al. (2021). Implementation of RESTful API Web Services Architecture in
+                            Takeaway Application Development.</li>
                         <li>Antanavicius, A., et al. (2025). PulseMCP. https://www.pulsemcp.com</li>
                         <li>Editorial Red Hat. (2022). Middleware: qué es, su importancia y tipos.</li>
-                        <li>Hou, X., Zhao, Y., Wang, S., & Wang, H. (2025). Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions.</li>
+                        <li>Hou, X., Zhao, Y., Wang, S., & Wang, H. (2025). Model Context Protocol (MCP): Landscape,
+                            Security Threats, and Future Research Directions.</li>
                         <li>Marteen Van Steen, A. S. (2017). Distributed systems Principles and Paradigms.</li>
                         <li>Paradigmas de Computación Distribuida: cliente-servidor. Universidad de Valladolid.</li>
                         <li>Q2BStudio. RabbitMQ vs Kafka: Elige la base de mensajería para microservicios.</li>
@@ -1105,14 +1697,14 @@
             transitionSpeed: 'default',
             backgroundTransition: 'fade',
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-            
+
             // Navigation
             controls: true,
             progress: true,
             center: true,
             touch: true,
             loop: false,
-            
+
             // Presentation size
             width: 1024,
             height: 768,
@@ -1127,7 +1719,7 @@
         }
 
         // Initialize Mermaid
-        mermaid.initialize({ 
+        mermaid.initialize({
             startOnLoad: true,
             theme: 'default',
             themeVariables: {
