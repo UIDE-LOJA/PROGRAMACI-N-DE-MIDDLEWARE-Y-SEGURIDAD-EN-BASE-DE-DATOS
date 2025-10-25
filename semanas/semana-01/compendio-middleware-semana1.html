@@ -181,6 +181,77 @@
                 </blockquote>
             </section>
 
+            <!-- Mapa Conceptual -->
+            <section data-background-color="#f8f8f8">
+                <h2>Mapa Conceptual de la Semana 1</h2>
+
+                <section>
+                    <h3>Relación entre Todos los Temas</h3>
+                    <div class="concept-box">
+                        <p>Visualización de cómo los <mark>conceptos fundamentales</mark> se conectan con las
+                            <mark>arquitecturas</mark> y se implementan mediante <mark>tecnologías específicas</mark>
+                        </p>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TD
+                            subgraph "1. FUNDAMENTOS"
+                            SD[Sistemas Distribuidos<br />• Compartición<br />• Escalabilidad<br />• Tolerancia a
+                            fallos]
+                            MW[Middleware<br />• TP Monitors<br />• RPC<br />• MOM<br />• ORBs]
+                            end
+
+                            subgraph "2. ARQUITECTURA"
+                            ARCH[Arquitecturas Multicapa<br />• Presentación<br />• Negocio<br />• Datos]
+                            MVC[Patrón MVC<br />• Modelo<br />• Vista<br />• Controlador]
+                            STYLES[Estilos Arquitectónicos<br />• Cliente-Servidor<br />• P2P<br />• Microservicios]
+                            end
+
+                            subgraph "3. TECNOLOGÍAS"
+                            COMM[Comunicación<br />• gRPC<br />• WebSockets<br />• REST]
+                            MSG[Mensajería<br />• Kafka<br />• RabbitMQ]
+                            SEC[Seguridad<br />• JWT<br />• OAuth2<br />• TLS]
+                            end
+
+                            SD --> ARCH
+                            MW --> ARCH
+                            ARCH --> MVC
+                            ARCH --> STYLES
+                            MVC --> COMM
+                            STYLES --> COMM
+                            MW --> MSG
+                            ARCH --> SEC
+
+                            classDef fundamentos fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+                            classDef arquitectura fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+                            classDef tecnologias fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+
+                            class SD,MW fundamentos
+                            class ARCH,MVC,STYLES arquitectura
+                            class COMM,MSG,SEC tecnologias
+                        </div>
+                    </div>
+
+                    <div class="r-hstack fragment">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>🏗️ Progresión Lógica</h4>
+                                <p><strong>Fundamentos → Arquitectura → Tecnologías</strong></p>
+                                <small>Cada nivel construye sobre el anterior</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>🔗 Conexiones Clave</h4>
+                                <p><strong>Middleware implementa arquitecturas que soportan SD</strong></p>
+                                <small>Las tecnologías materializan los conceptos</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
             <!-- Curriculum Context -->
             <section data-background-color="#f8f8f8">
                 <h2>Contexto en la Unidad 1</h2>
@@ -214,23 +285,27 @@
                 </section>
 
                 <section>
-                    <h3>Temas de la Semana 1</h3>
+                    <h3>Temas de la Semana 1 - Secuencia Optimizada</h3>
                     <div class="r-hstack">
                         <div class="column">
-                            <h4>Contenidos Principales</h4>
-                            <ul>
-                                <li><mark>Conceptos de Sistemas Distribuidos</mark></li>
-                                <li><mark>Roles del middleware</mark></li>
-                                <li><mark>Panorama de tecnologías</mark></li>
-                                <li><mark>Estilos y capas arquitectónicas</mark></li>
-                            </ul>
+                            <h4>Secuencia de Contenidos</h4>
+                            <ol>
+                                <li><mark>1. Conceptos de Sistemas Distribuidos</mark></li>
+                                <li><mark>2. Roles del middleware</mark></li>
+                                <li><mark>3. Estilos y capas arquitectónicas</mark></li>
+                                <li><mark>4. Panorama de tecnologías</mark></li>
+                            </ol>
+                            <small style="color: var(--uide-secondary); font-style: italic;">
+                                Progresión: Conceptos → Arquitectura → Implementación
+                            </small>
                         </div>
                         <div class="column fragment">
                             <h4>Objetivos de Aprendizaje</h4>
                             <ul>
                                 <li><strong>Explicar:</strong> Evolución y características de SD</li>
-                                <li><strong>Identificar:</strong> Tipos de middleware</li>
-                                <li><strong>Investigar:</strong> Tecnologías middleware actuales</li>
+                                <li><strong>Identificar:</strong> Tipos de middleware y arquitecturas</li>
+                                <li><strong>Conectar:</strong> Conceptos teóricos con tecnologías</li>
+                                <li><strong>Investigar:</strong> Implementaciones actuales</li>
                             </ul>
                         </div>
                     </div>
@@ -691,74 +766,10 @@
 
                 <section>
                     <h3>Capas de Middleware Modernas (Red Hat)</h3>
-                    <div class="concept-box">
-                        <p>En el desarrollo de aplicaciones modernas, el middleware se estructura en <mark>cuatro capas
-                                principales</mark> que proporcionan funciones básicas unificadas</p>
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div id="middleware-layers-d3-diagram" style="width: 100%; height: 600px;"></div>
                     </div>
-
-                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
-                        <div class="mermaid">
-                            graph TB
-                            subgraph "CAPA 4: AUTOMATIZACIÓN Y GESTIÓN"
-                            A1[<i class='fas fa-brain'></i> Inteligencia Artificial]
-                            A2[<i class='fas fa-robot'></i> Automatización de Procesos]
-                            A3[<i class='fas fa-chart-bar'></i> Análisis Predictivo]
-                            A4[<i class='fas fa-cogs'></i> Gestión de Decisiones]
-                            end
-
-                            subgraph "CAPA 3: INTEGRACIÓN"
-                            I1[<i class='fas fa-link'></i> APIs de Integración]
-                            I2[<i class='fas fa-exchange-alt'></i> Transformación de Datos]
-                            I3[<i class='fas fa-cloud'></i> Recursos SaaS]
-                            I4[<i class='fas fa-envelope'></i> Mensajería Empresarial]
-                            end
-
-                            subgraph "CAPA 2: TIEMPOS DE EJECUCIÓN"
-                            R1[<i class='fas fa-bolt'></i> Microservicios Ligeros]
-                            R2[<i class='fas fa-memory'></i> Caché en Memoria]
-                            R3[<i class='fas fa-tachometer-alt'></i> Aceleración de Datos]
-                            R4[<i class='fas fa-server'></i> Gestión de Recursos]
-                            end
-
-                            subgraph "CAPA 1: CONTENEDORES"
-                            C1[<i class='fab fa-docker'></i> Gestión de Contenedores]
-                            C2[<i class='fas fa-infinity'></i> CI/CD Pipeline]
-                            C3[<i class='fas fa-project-diagram'></i> Service Mesh]
-                            C4[<i class='fas fa-shield-alt'></i> Políticas de Seguridad]
-                            end
-
-                            %% Conexiones entre capas
-                            A1 --> I1
-                            A2 --> I2
-                            A3 --> I3
-                            A4 --> I4
-
-                            I1 --> R1
-                            I2 --> R2
-                            I3 --> R3
-                            I4 --> R4
-
-                            R1 --> C1
-                            R2 --> C2
-                            R3 --> C3
-                            R4 --> C4
-
-                            %% Estilos
-                            classDef automation fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
-                            classDef integration fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-                            classDef runtime fill:#e0f2f1,stroke:#4caf50,stroke-width:2px
-                            classDef container fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-
-                            class A1,A2,A3,A4 automation
-                            class I1,I2,I3,I4 integration
-                            class R1,R2,R3,R4 runtime
-                            class C1,C2,C3,C4 container
-                        </div>
-                    </div>
-
-                    <p style="text-align: center; color: var(--uide-secondary); font-style: italic; margin-top: 2em;">
-                        Navega verticalmente (↓) para explorar cada capa en detalle
-                    </p>
                 </section>
 
                 <section data-auto-animate>
@@ -870,233 +881,6 @@
                 </section>
             </section>
 
-            <!-- Panorama de Tecnologías -->
-            <section>
-                <h2>Panorama de Tecnologías</h2>
-
-                <section>
-                    <h3>Tecnologías de Comunicación</h3>
-                    <div class="concept-box">
-                        <p>Comparación de protocolos de comunicación en sistemas distribuidos</p>
-                    </div>
-
-                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
-                        <div class="mermaid">
-                            graph TB
-                            subgraph "CLIENTE"
-                            C[<i class='fas fa-laptop'></i> Aplicación Cliente]
-                            end
-
-                            subgraph "PROTOCOLOS DE COMUNICACIÓN"
-                            REST[<i class='fas fa-globe'></i> REST/HTTP<br />• JSON/XML<br />• Stateless<br />•
-                            Cacheable]
-                            GRPC[<i class='fas fa-bolt'></i> gRPC/HTTP2<br />• Protocol Buffers<br />• Streaming<br />•
-                            Eficiente]
-                            WS[<i class='fas fa-exchange-alt'></i> WebSockets<br />• Full-duplex<br />• Tiempo
-                            real<br />• Persistente]
-                            MQ[<i class='fas fa-envelope'></i> Message Queue<br />• Asíncrono<br />• Desacoplado<br />•
-                            Confiable]
-                            end
-
-                            subgraph "SERVIDOR"
-                            S[<i class='fas fa-server'></i> Servicios Backend]
-                            end
-
-                            C --> REST
-                            C --> GRPC
-                            C --> WS
-                            C --> MQ
-
-                            REST --> S
-                            GRPC --> S
-                            WS --> S
-                            MQ --> S
-
-                            %% Estilos
-                            classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-                            classDef protocol fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-                            classDef server fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-
-                            class C client
-                            class REST,GRPC,WS,MQ protocol
-                            class S server
-                        </div>
-                    </div>
-
-                    <div class="r-hstack fragment">
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4>gRPC</h4>
-                                <p>Marco de comunicación que utiliza un <em>"esquema de solicitud/respuesta
-                                        binario que utiliza HTTP2"</em></p>
-                                <small style="color: var(--uide-secondary); font-style: italic;">— Wallarm
-                                    (2025)</small>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4>WebSockets</h4>
-                                <p>Constituye un <em>"esquema dúplex completo que utiliza una conexión TCP de larga
-                                        duración"</em></p>
-                                <small style="color: var(--uide-secondary); font-style: italic;">— Wallarm
-                                    (2025)</small>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Sistemas de Mensajería: Kafka vs RabbitMQ</h3>
-                    <div class="concept-box">
-                        <p>Comparación arquitectónica de sistemas de mensajería distribuida</p>
-                    </div>
-
-                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
-                        <div class="mermaid">
-                            graph TB
-                            subgraph "APACHE KAFKA - Event Streaming"
-                            P1[Producer 1] --> T1[Topic A<br />Partition 0]
-                            P2[Producer 2] --> T2[Topic A<br />Partition 1]
-                            P3[Producer 3] --> T3[Topic A<br />Partition 2]
-
-                            T1 --> CG1[Consumer Group 1]
-                            T2 --> CG1
-                            T3 --> CG1
-
-                            T1 --> CG2[Consumer Group 2]
-                            T2 --> CG2
-                            T3 --> CG2
-
-                            K_DESC["• Event Sourcing<br />• High Throughput<br />• Distributed Log<br />• Horizontal
-                            Scaling"]
-                            end
-
-                            subgraph "RABBITMQ - Message Broker"
-                            PROD[Producer] --> EX[Exchange]
-                            EX --> Q1[Queue 1]
-                            EX --> Q2[Queue 2]
-                            EX --> Q3[Queue 3]
-
-                            Q1 --> C1[Consumer 1]
-                            Q2 --> C2[Consumer 2]
-                            Q3 --> C3[Consumer 3]
-
-                            R_DESC["• Message Routing<br />• Low Latency<br />• Complex Routing<br />• Guaranteed
-                            Delivery"]
-                            end
-
-                            classDef kafka fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-                            classDef rabbitmq fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-                            classDef description fill:#f5f5f5,stroke:#757575,stroke-width:1px
-
-                            class P1,P2,P3,T1,T2,T3,CG1,CG2 kafka
-                            class PROD,EX,Q1,Q2,Q3,C1,C2,C3 rabbitmq
-                            class K_DESC,R_DESC description
-                        </div>
-                    </div>
-
-                    <div class="r-hstack fragment">
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4><i class="fas fa-stream"></i> Apache Kafka</h4>
-                                <p><strong>Sistemas orientados a eventos</strong> - Ideal para streaming de datos y
-                                    event sourcing</p>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="concept-box">
-                                <h4><i class="fas fa-rabbit"></i> RabbitMQ</h4>
-                                <p><strong>Flujos impulsados por comandos</strong> - Perfecto para tareas críticas y
-                                    routing complejo</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Protocolo de Contexto de Modelo (MCP)</h3>
-                    <div class="concept-box info">
-                        <h4>Estándar Abierto de Anthropic</h4>
-                        <p>Un nuevo estándar desarrollado por Anthropic que busca <em>"simplificar y estandarizar"</em>
-                            la manera en que los Grandes Modelos de Lenguaje (LLMs) interactúan con herramientas
-                            externas y obtienen datos</p>
-                        <small style="color: var(--uide-secondary); font-style: italic;">— Hou, Zhao, Wang & Wang
-                            (2025)</small>
-
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5><i class="fas fa-tools"></i> Tools</h5>
-                                <p>Invocar APIs o servicios externos</p>
-                            </div>
-                            <div class="column">
-                                <h5><i class="fas fa-database"></i> Resources</h5>
-                                <p>Acceso a conjuntos de datos como memoria externa</p>
-                            </div>
-                            <div class="column">
-                                <h5><i class="fas fa-file-alt"></i> Prompts</h5>
-                                <p>Plantillas reutilizables para workflows</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Tecnologías de Seguridad y Documentación</h3>
-                    <div class="r-hstack">
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>OpenAPI & JSON Schema</h4>
-                                <ul>
-                                    <li><strong>OpenAPI:</strong> Diseño y documentación de APIs</li>
-                                    <li><strong>JSON Schema:</strong> Validación de datos JSON</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>Autenticación</h4>
-                                <ul>
-                                    <li><strong>JWT:</strong> Tokens para autenticación/autorización</li>
-                                    <li><strong>OAuth2/OIDC:</strong> Delegación y login estándar</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Middleware como Integrador de Capas</h3>
-                    <div class="concept-box info">
-                        <h4><i class="fas fa-tools"></i> Middleware Transversal</h4>
-                        <p>El middleware no solo conecta capas, sino que proporciona <mark>servicios
-                                transversales</mark> que atraviesan toda la arquitectura</p>
-                    </div>
-
-                    <div class="r-hstack">
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>Middleware de Comunicación</h4>
-                                <ul>
-                                    <li><strong>gRPC:</strong> Entre microservicios</li>
-                                    <li><strong>WebSockets:</strong> Tiempo real UI-Backend</li>
-                                    <li><strong>Kafka/RabbitMQ:</strong> Mensajería asíncrona</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>Middleware de Seguridad</h4>
-                                <ul>
-                                    <li><strong>JWT/OAuth2:</strong> Autenticación entre capas</li>
-                                    <li><strong>TLS:</strong> Cifrado de comunicaciones</li>
-                                    <li><strong>API Gateways:</strong> Control de acceso</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </section>
-
             <!-- Estilos y Capas Arquitectónicas -->
             <section>
                 <h2>Estilos y Capas Arquitectónicas</h2>
@@ -1139,83 +923,67 @@
                 </section>
 
                 <section>
-                    <h3>Diagrama de Arquitectura 3 Capas</h3>
+                    <h3>Arquitectura 3 Capas con Patrón MVC</h3>
                     <div class="concept-box">
-                        <p>Representación visual completa de la arquitectura multicapa con componentes y flujos de
-                            comunicación</p>
+                        <p>Visualización clara de la <mark>arquitectura de 3 capas</mark> integrada con el
+                            <mark>patrón MVC</mark>, mostrando flujos de comunicación y responsabilidades
+                        </p>
                     </div>
 
-                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                         <div class="mermaid">
                             graph TB
-                            subgraph "CAPA DE PRESENTACIÓN"
-                            direction TB
-                            UI[<i class='fas fa-desktop'></i> Interfaz Web]
-                            MOB[<i class='fas fa-mobile-alt'></i> App Móvil]
-                            DESK[<i class='fas fa-window-maximize'></i> App Escritorio]
-
-                            UI_DESC["• Mostrar información al usuario<br />• Capturar entrada de datos<br />• Validación
-                            básica<br />• UX/UI"]
+                            subgraph PRES["🖥️ PRESENTACIÓN"]
+                            VIEW["👁️ Vista"]
                             end
 
-                            subgraph "CAPA DE NEGOCIO"
-                            direction TB
-                            API[<i class='fas fa-server'></i> API REST/GraphQL]
-                            BL[<i class='fas fa-cogs'></i> Lógica de Negocio]
-                            AUTH[<i class='fas fa-shield-alt'></i> Autenticación]
-                            VALID[<i class='fas fa-check-circle'></i> Validación]
-
-                            BL_DESC["• Procesamiento de peticiones<br />• Reglas de negocio<br />• Coordinación entre
-                            capas<br />• Gestión de transacciones"]
+                            subgraph NEG["⚙️ NEGOCIO"]
+                            CTRL["🎮 Controlador"]
+                            MODEL["📦 Modelo"]
                             end
 
-                            subgraph "CAPA DE DATOS"
-                            direction TB
-                            DB[(<i class='fas fa-database'></i> Base de Datos)]
-                            CACHE[(<i class='fas fa-memory'></i> Cache Redis)]
-                            FILES[<i class='fas fa-folder'></i> Sistema Archivos]
-
-                            DB_DESC["• Almacenamiento persistente<br />• Integridad referencial<br />• Optimización de
-                            consultas<br />• Backup y recuperación"]
+                            subgraph DAT["🗄️ DATOS"]
+                            DB["💾 Base de Datos"]
                             end
 
-                            subgraph "MIDDLEWARE TRANSVERSAL"
-                            direction LR
-                            SEC[<i class='fas fa-lock'></i> Seguridad]
-                            LOG[<i class='fas fa-file-alt'></i> Logging]
-                            MON[<i class='fas fa-chart-line'></i> Monitoreo]
-                            end
+                            VIEW -->|Evento| CTRL
+                            CTRL -->|Actualiza| MODEL
+                            MODEL -.->|Notifica| VIEW
+                            MODEL -->|Persiste| DB
 
-                            %% Conexiones principales
-                            UI --> API
-                            MOB --> API
-                            DESK --> API
+                            classDef presentation fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+                            classDef business fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
+                            classDef data fill:#fff3e0,stroke:#ff9800,stroke-width:3px
 
-                            API --> BL
-                            BL --> AUTH
-                            BL --> VALID
+                            class VIEW presentation
+                            class CTRL,MODEL business
+                            class DB data
+                        </div>
+                    </div>
 
-                            BL --> DB
-                            BL --> CACHE
-                            BL --> FILES
-
-                            %% Middleware transversal (líneas punteadas)
-                            SEC -.-> API
-                            LOG -.-> BL
-                            MON -.-> DB
-
-                            %% Estilos
-                            classDef presentation fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-                            classDef business fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-                            classDef data fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
-                            classDef middleware fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-                            classDef description fill:#f5f5f5,stroke:#757575,stroke-width:1px
-
-                            class UI,MOB,DESK presentation
-                            class API,BL,AUTH,VALID business
-                            class DB,CACHE,FILES data
-                            class SEC,LOG,MON middleware
-                            class UI_DESC,BL_DESC,DB_DESC description
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-lightbulb"></i> Flujos de Comunicación</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>🔄 Patrón MVC (líneas punteadas)</h5>
+                                <ol>
+                                    <li><strong>Usuario</strong> interactúa con la Vista</li>
+                                    <li><strong>Vista</strong> notifica evento al Controlador</li>
+                                    <li><strong>Controlador</strong> actualiza el Modelo</li>
+                                    <li><strong>Modelo</strong> notifica cambios a la Vista</li>
+                                    <li><strong>Vista</strong> se actualiza para el Usuario</li>
+                                </ol>
+                            </div>
+                            <div class="column">
+                                <h5>⚡ Flujo entre Capas (líneas sólidas)</h5>
+                                <ul>
+                                    <li><strong>Presentación:</strong> Interfaz y Vista</li>
+                                    <li><strong>Negocio:</strong> Controlador, Lógica y Modelo</li>
+                                    <li><strong>Datos:</strong> Acceso y Persistencia</li>
+                                    <li><strong>Separación clara</strong> de responsabilidades</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1280,26 +1048,35 @@
                 <section>
                     <h3>Patrón Modelo-Vista-Controlador (MVC)</h3>
                     <div class="concept-box">
-                        <p>Caso particular de arquitectura 3 capas con responsabilidades estandarizadas</p>
+                        <p>Caso particular de arquitectura 3 capas con <mark>responsabilidades estandarizadas</mark> que
+                            separa la lógica de presentación, control y datos</p>
                     </div>
 
-                    <div class="r-hstack">
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>Modelo</h4>
-                                <p>Lógica de negocio, acceso a datos, filtros y restricciones del sistema</p>
+                    <div
+                        style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div id="mvc-pattern-d3-diagram" style="width: 100%; height: 500px;"></div>
+                    </div>
+
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-lightbulb"></i> Flujo de Comunicación MVC</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>🔄 Flujo Principal</h5>
+                                <ul>
+                                    <li><strong>1.</strong> Usuario interactúa con la Vista</li>
+                                    <li><strong>2.</strong> Vista notifica al Controlador</li>
+                                    <li><strong>3.</strong> Controlador procesa y actualiza Modelo</li>
+                                    <li><strong>4.</strong> Modelo notifica cambios a la Vista</li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>Vista</h4>
-                                <p>Interfaz de usuario, obtiene datos del Modelo para generar la interfaz</p>
-                            </div>
-                        </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
-                                <h4>Controlador</h4>
-                                <p>Gestiona eventos, accede al Modelo y delega a la Vista</p>
+                            <div class="column">
+                                <h5>✨ Beneficios del Patrón</h5>
+                                <ul>
+                                    <li><strong>Separación clara</strong> de responsabilidades</li>
+                                    <li><strong>Reutilización</strong> de componentes</li>
+                                    <li><strong>Testabilidad</strong> independiente</li>
+                                    <li><strong>Mantenibilidad</strong> mejorada</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1322,6 +1099,324 @@
                             <h4>Microservicios</h4>
                             <p>Separación en módulos independientes. API Gateway como punto de entrada, escalabilidad y
                                 resiliencia</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Transición: De Conceptos a Implementación</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-bridge"></i> Conectando Teoría y Práctica</h4>
+                        <p>Ahora que hemos establecido los <mark>fundamentos conceptuales</mark> y las <mark>estructuras
+                                arquitectónicas</mark>,
+                            exploraremos las <strong>tecnologías específicas</strong> que implementan estos conceptos en
+                            sistemas distribuidos modernos.</p>
+
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>🏗️ Marco Conceptual Establecido</h5>
+                                <ul>
+                                    <li>Sistemas distribuidos y sus ventajas</li>
+                                    <li>Roles y tipos de middleware</li>
+                                    <li>Arquitecturas multicapa y MVC</li>
+                                    <li>Estilos arquitectónicos</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>⚡ Implementaciones Tecnológicas</h5>
+                                <ul>
+                                    <li>Protocolos de comunicación</li>
+                                    <li>Sistemas de mensajería</li>
+                                    <li>Tecnologías de seguridad</li>
+                                    <li>Herramientas de integración</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Panorama de Tecnologías -->
+            <section>
+                <h2>Panorama de Tecnologías</h2>
+
+                <section>
+                    <h3>Implementación de Conceptos Arquitectónicos</h3>
+                    <div class="concept-box">
+                        <p>Las tecnologías modernas implementan los conceptos arquitectónicos que hemos estudiado,
+                            proporcionando <mark>soluciones concretas</mark> para la comunicación, integración y gestión
+                            en sistemas distribuidos</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Tecnologías de Comunicación</h3>
+                    <div class="concept-box">
+                        <p>Comparación de protocolos de comunicación que implementan los patrones de middleware
+                            estudiados</p>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TB
+                            subgraph "CLIENTE"
+                            C[<i class='fas fa-laptop'></i> Aplicación Cliente]
+                            end
+
+                            subgraph "PROTOCOLOS DE COMUNICACIÓN"
+                            REST[<i class='fas fa-globe'></i> REST/HTTP<br />• JSON/XML<br />• Stateless<br />•
+                            Cacheable]
+                            GRPC[<i class='fas fa-bolt'></i> gRPC/HTTP2<br />• Protocol Buffers<br />• Streaming<br />•
+                            Eficiente]
+                            WS[<i class='fas fa-exchange-alt'></i> WebSockets<br />• Full-duplex<br />• Tiempo
+                            real<br />• Persistente]
+                            MQ[<i class='fas fa-envelope'></i> Message Queue<br />• Asíncrono<br />• Desacoplado<br />•
+                            Confiable]
+                            end
+
+                            subgraph "SERVIDOR"
+                            S[<i class='fas fa-server'></i> Servicios Backend]
+                            end
+
+                            C --> REST
+                            C --> GRPC
+                            C --> WS
+                            C --> MQ
+
+                            REST --> S
+                            GRPC --> S
+                            WS --> S
+                            MQ --> S
+
+                            %% Estilos
+                            classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+                            classDef protocol fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+                            classDef server fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+
+                            class C client
+                            class REST,GRPC,WS,MQ protocol
+                            class S server
+                        </div>
+                    </div>
+
+                    <div class="r-hstack fragment">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>gRPC - Implementa RPC</h4>
+                                <p>Marco de comunicación que utiliza un <em>"esquema de solicitud/respuesta
+                                        binario que utiliza HTTP2"</em>, implementando el patrón RPC estudiado</p>
+                                <small style="color: var(--uide-secondary); font-style: italic;">— Wallarm
+                                    (2025)</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>WebSockets - Comunicación Bidireccional</h4>
+                                <p>Constituye un <em>"esquema dúplex completo que utiliza una conexión TCP de larga
+                                        duración"</em>, ideal para aplicaciones en tiempo real</p>
+                                <small style="color: var(--uide-secondary); font-style: italic;">— Wallarm
+                                    (2025)</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Sistemas de Mensajería: Implementando MOM</h3>
+                    <div class="concept-box">
+                        <p>Kafka y RabbitMQ son implementaciones modernas del <mark>Middleware Orientado a Mensajes
+                                (MOM)</mark>
+                            que estudiamos anteriormente</p>
+                    </div>
+
+                    <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                        <div class="mermaid">
+                            graph TB
+                            subgraph "APACHE KAFKA - Event Streaming"
+                            P1[Producer 1] --> T1[Topic A<br />Partition 0]
+                            P2[Producer 2] --> T2[Topic A<br />Partition 1]
+                            P3[Producer 3] --> T3[Topic A<br />Partition 2]
+
+                            T1 --> CG1[Consumer Group 1]
+                            T2 --> CG1
+                            T3 --> CG1
+
+                            T1 --> CG2[Consumer Group 2]
+                            T2 --> CG2
+                            T3 --> CG2
+
+                            K_DESC["• Event Sourcing<br />• High Throughput<br />• Distributed Log<br />• Horizontal
+                            Scaling"]
+                            end
+
+                            subgraph "RABBITMQ - Message Broker"
+                            PROD[Producer] --> EX[Exchange]
+                            EX --> Q1[Queue 1]
+                            EX --> Q2[Queue 2]
+                            EX --> Q3[Queue 3]
+
+                            Q1 --> C1[Consumer 1]
+                            Q2 --> C2[Consumer 2]
+                            Q3 --> C3[Consumer 3]
+
+                            R_DESC["• Message Routing<br />• Low Latency<br />• Complex Routing<br />• Guaranteed
+                            Delivery"]
+                            end
+
+                            classDef kafka fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+                            classDef rabbitmq fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+                            classDef description fill:#f5f5f5,stroke:#757575,stroke-width:1px
+
+                            class P1,P2,P3,T1,T2,T3,CG1,CG2 kafka
+                            class PROD,EX,Q1,Q2,Q3,C1,C2,C3 rabbitmq
+                            class K_DESC,R_DESC description
+                        </div>
+                    </div>
+
+                    <div class="r-hstack fragment">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4><i class="fas fa-stream"></i> Apache Kafka</h4>
+                                <p><strong>Sistemas orientados a eventos</strong> - Implementa MOM para streaming de
+                                    datos y
+                                    event sourcing a gran escala</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4><i class="fas fa-rabbit"></i> RabbitMQ</h4>
+                                <p><strong>Flujos impulsados por comandos</strong> - Implementa MOM para tareas críticas
+                                    y
+                                    routing complejo</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Protocolo de Contexto de Modelo (MCP)</h3>
+                    <div class="concept-box info">
+                        <h4>Estándar Abierto de Anthropic - Nuevo Paradigma de Middleware</h4>
+                        <p>Un nuevo estándar desarrollado por Anthropic que busca <em>"simplificar y estandarizar"</em>
+                            la manera en que los Grandes Modelos de Lenguaje (LLMs) interactúan con herramientas
+                            externas y obtienen datos</p>
+                        <small style="color: var(--uide-secondary); font-style: italic;">— Hou, Zhao, Wang & Wang
+                            (2025)</small>
+
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5><i class="fas fa-tools"></i> Tools</h5>
+                                <p>Invocar APIs o servicios externos</p>
+                            </div>
+                            <div class="column">
+                                <h5><i class="fas fa-database"></i> Resources</h5>
+                                <p>Acceso a conjuntos de datos como memoria externa</p>
+                            </div>
+                            <div class="column">
+                                <h5><i class="fas fa-file-alt"></i> Prompts</h5>
+                                <p>Plantillas reutilizables para workflows</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Tecnologías de Seguridad y Documentación</h3>
+                    <div class="concept-box">
+                        <p>Tecnologías que implementan <mark>servicios transversales</mark> de seguridad y documentación
+                            en las arquitecturas multicapa</p>
+                    </div>
+
+                    <div class="r-hstack">
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4>OpenAPI & JSON Schema</h4>
+                                <ul>
+                                    <li><strong>OpenAPI:</strong> Diseño y documentación de APIs</li>
+                                    <li><strong>JSON Schema:</strong> Validación de datos JSON</li>
+                                </ul>
+                                <small>Operan en la <mark>capa de presentación</mark></small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4>Autenticación</h4>
+                                <ul>
+                                    <li><strong>JWT:</strong> Tokens para autenticación/autorización</li>
+                                    <li><strong>OAuth2/OIDC:</strong> Delegación y login estándar</li>
+                                </ul>
+                                <small>Servicios <mark>transversales</mark> entre capas</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Middleware como Integrador de Capas</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-tools"></i> Middleware Transversal en la Práctica</h4>
+                        <p>El middleware no solo conecta capas, sino que proporciona <mark>servicios
+                                transversales</mark> que atraviesan toda la arquitectura, implementando los conceptos
+                            teóricos estudiados</p>
+                    </div>
+
+                    <div class="r-hstack">
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4>Middleware de Comunicación</h4>
+                                <ul>
+                                    <li><strong>gRPC:</strong> Entre microservicios (implementa RPC)</li>
+                                    <li><strong>WebSockets:</strong> Tiempo real UI-Backend</li>
+                                    <li><strong>Kafka/RabbitMQ:</strong> Mensajería asíncrona (implementa MOM)</li>
+                                </ul>
+                                <small>Conectan <mark>capa de presentación</mark> con <mark>capa de
+                                        negocio</mark></small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4>Middleware de Seguridad</h4>
+                                <ul>
+                                    <li><strong>JWT/OAuth2:</strong> Autenticación entre capas</li>
+                                    <li><strong>TLS:</strong> Cifrado de comunicaciones</li>
+                                    <li><strong>API Gateways:</strong> Control de acceso</li>
+                                </ul>
+                                <small>Servicios <mark>transversales</mark> en toda la arquitectura</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Síntesis: Tecnologías y Arquitectura</h3>
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-puzzle-piece"></i> Integrando Conceptos y Tecnologías</h4>
+                        <p>Las tecnologías estudiadas implementan directamente los <mark>patrones arquitectónicos</mark>
+                            y <mark>tipos de middleware</mark> analizados anteriormente</p>
+                    </div>
+
+                    <div class="r-hstack">
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4>🏗️ Mapeo Conceptual</h4>
+                                <ul>
+                                    <li><strong>RPC → gRPC:</strong> Llamadas remotas modernas</li>
+                                    <li><strong>MOM → Kafka/RabbitMQ:</strong> Mensajería distribuida</li>
+                                    <li><strong>3 Capas → REST APIs:</strong> Separación de responsabilidades</li>
+                                    <li><strong>MVC → Frameworks web:</strong> Patrones de presentación</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4>⚡ Implementación Práctica</h4>
+                                <ul>
+                                    <li><strong>Microservicios:</strong> Combinan múltiples tecnologías</li>
+                                    <li><strong>API Gateway:</strong> Punto de entrada unificado</li>
+                                    <li><strong>Service Mesh:</strong> Comunicación inter-servicios</li>
+                                    <li><strong>Event Sourcing:</strong> Arquitectura basada en eventos</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1557,16 +1652,52 @@
                 <h2>Conclusiones de la Semana 1</h2>
 
                 <div class="concept-box">
-                    <h4>Conceptos Clave Aprendidos</h4>
-                    <ul>
-                        <li>Los <mark>sistemas distribuidos</mark> son fundamentales para aplicaciones modernas a gran
-                            escala</li>
-                        <li>El <mark>middleware</mark> actúa como capa de abstracción crucial entre SO y aplicaciones
-                        </li>
-                        <li>Las <mark>arquitecturas multicapa</mark> proporcionan estructura y organización</li>
-                        <li>Los <mark>patrones arquitectónicos</mark> ofrecen soluciones probadas a problemas comunes
-                        </li>
-                    </ul>
+                    <h4>Progresión de Aprendizaje Lograda</h4>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h5>🏗️ Fundamentos Establecidos</h5>
+                            <ul>
+                                <li>Los <mark>sistemas distribuidos</mark> y sus ventajas fundamentales</li>
+                                <li>El <mark>middleware</mark> como capa de abstracción crucial</li>
+                                <li>Tipos históricos de middleware (TP, RPC, MOM, ORBs)</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h5>🎯 Arquitectura y Práctica</h5>
+                            <ul>
+                                <li>Las <mark>arquitecturas multicapa</mark> y el patrón MVC</li>
+                                <li>Estilos arquitectónicos modernos</li>
+                                <li><mark>Tecnologías actuales</mark> que implementan los conceptos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fragment">
+                    <div class="concept-box info">
+                        <h4><i class="fas fa-bridge"></i> Conexión Teoría-Práctica Lograda</h4>
+                        <p>La secuencia optimizada permitió establecer <mark>bases conceptuales sólidas</mark> antes de
+                            explorar implementaciones tecnológicas, facilitando la comprensión integral</p>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h5>✅ Marco Conceptual</h5>
+                                <ul>
+                                    <li>Sistemas distribuidos → Ventajas y desafíos</li>
+                                    <li>Middleware → Tipos y funciones</li>
+                                    <li>Arquitecturas → Capas y patrones</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>⚡ Implementaciones</h5>
+                                <ul>
+                                    <li>gRPC → Implementa RPC moderno</li>
+                                    <li>Kafka/RabbitMQ → Implementa MOM</li>
+                                    <li>REST/WebSockets → Comunicación entre capas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="fragment">
@@ -1574,10 +1705,10 @@
                         <h4>Preparación para la Próxima Semana</h4>
                         <p>En la <strong>Semana 2</strong> profundizaremos en:</p>
                         <ul>
-                            <li>Arquitectura de 3 capas en detalle</li>
-                            <li>Implementación práctica de MVC</li>
+                            <li>Arquitectura de 3 capas en detalle con casos prácticos</li>
+                            <li>Implementación práctica de MVC en diferentes frameworks</li>
                             <li>Comparación exhaustiva de estilos arquitectónicos</li>
-                            <li>Middleware como herramienta de integración</li>
+                            <li>Middleware como herramienta de integración empresarial</li>
                         </ul>
                     </div>
                 </div>
@@ -1618,6 +1749,9 @@
     <script src="js/tp-monitor-d3-diagram.js"></script>
     <script src="js/rpc-d3-diagram.js"></script>
     <script src="js/orb-d3-diagram.js"></script>
+    <script src="js/middleware-layers-d3-diagram.js"></script>
+
+    <script src="js/mvc-pattern-d3-diagram.js"></script>
     <script src="js/reveal-config.js"></script>
 
 </body>
