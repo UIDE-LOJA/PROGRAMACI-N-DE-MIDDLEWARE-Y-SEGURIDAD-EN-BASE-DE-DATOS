@@ -1,0 +1,285 @@
+{
+  "title": {
+    "text": {
+      "headline": "Evolución de los Sistemas Distribuidos",
+      "text": "Hitos técnicos desde ARPANET (1969) hasta Kubernetes y serverless. Recursos multimedia verificados de Wikimedia Commons."
+    },
+    "media": {
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Internet%20map%201024.jpg",
+      "caption": "Mapa visual del Internet",
+      "credit": "Wikimedia Commons"
+    }
+  },
+  "events": [
+    {
+      "start_date": {
+        "year": 1969,
+        "month": 10,
+        "day": 29
+      },
+      "text": {
+        "headline": "Primer mensaje ARPANET",
+        "text": "Registro IMP del primer mensaje (\"LO\")."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/First-arpanet-imp-log.jpg",
+        "caption": "IMP log (UCLA)",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 1983
+      },
+      "text": {
+        "headline": "Nace el DNS",
+        "text": "Sistema de Nombres de Dominio estandariza la resolución de nombres."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DNS%20Logo.svg",
+        "caption": "Logo DNS",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 1984
+      },
+      "text": {
+        "headline": "RPC (Birrell & Nelson)",
+        "text": "Modelo de llamadas a procedimiento remoto popularizado desde Xerox PARC."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Xerox%20PARC%20logo.svg",
+        "caption": "Xerox PARC",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 1984
+      },
+      "text": {
+        "headline": "Sun NFS",
+        "text": "Compartición de archivos en red a gran escala."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sun-Logo.svg",
+        "caption": "Sun Microsystems",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 1991
+      },
+      "text": {
+        "headline": "CORBA 1.0 (OMG)",
+        "text": "Interoperabilidad de objetos distribuidos."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Omglogo.svg",
+        "caption": "Object Management Group",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 1997
+      },
+      "text": {
+        "headline": "Java 1.1 + RMI",
+        "text": "Invocación remota de métodos en Java."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/OpenJDK%20logo.svg",
+        "caption": "OpenJDK",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 1999
+      },
+      "text": {
+        "headline": "Napster (P2P masivo)",
+        "text": "Populariza el intercambio P2P de archivos."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Napster%20logo.svg",
+        "caption": "Napster",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2001
+      },
+      "text": {
+        "headline": "BitTorrent",
+        "text": "Protocolo de distribución P2P eficiente."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/BitTorrent%20logo.svg",
+        "caption": "BitTorrent",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2004
+      },
+      "text": {
+        "headline": "MapReduce (Google)",
+        "text": "Modelo de programación para procesamiento masivo."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mapreduce.png",
+        "caption": "Diagrama MapReduce",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2006
+      },
+      "text": {
+        "headline": "Bigtable (Google)",
+        "text": "Base de datos distribuida de gran escala."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Google%20%22G%22%20logo.svg",
+        "caption": "Google",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2006
+      },
+      "text": {
+        "headline": "Amazon EC2 (IaaS)",
+        "text": "La nube comercial a escala."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazon%20Web%20Services%20Logo.svg",
+        "caption": "AWS",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2007
+      },
+      "text": {
+        "headline": "Dynamo (Amazon)",
+        "text": "Diseño de almacén clave-valor altamente disponible."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Dynamo%20consistent%20hashing.svg",
+        "caption": "Consistent hashing (Dynamo)",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2013
+      },
+      "text": {
+        "headline": "Docker (contenedores)",
+        "text": "Estandariza el empaquetado y despliegue."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Docker_Logo.svg",
+        "caption": "Docker",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2014
+      },
+      "text": {
+        "headline": "Kubernetes (orquestación)",
+        "text": "Automatiza despliegue, escalado y gestión de contenedores."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kubernetes%20logo.svg",
+        "caption": "Kubernetes",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2014
+      },
+      "text": {
+        "headline": "AWS Lambda (serverless)",
+        "text": "Ejecución bajo demanda sin servidores."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazon%20Lambda%20architecture%20logo.svg",
+        "caption": "AWS Lambda",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2015
+      },
+      "text": {
+        "headline": "gRPC",
+        "text": "RPC moderno sobre HTTP/2 con Protobuf."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Grpc-client-server-communication.svg",
+        "caption": "Esquema gRPC",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2017
+      },
+      "text": {
+        "headline": "Istio (Service Mesh)",
+        "text": "Gestión de tráfico, observabilidad y seguridad a nivel de malla."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Istio-bluelogo-nobackground-unframed.svg",
+        "caption": "Istio",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2018
+      },
+      "text": {
+        "headline": "Edge/Fog (NIST)",
+        "text": "Computación cercana al borde, latencias bajas."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/NIST%20logo.svg",
+        "caption": "NIST",
+        "credit": "Wikimedia Commons"
+      }
+    },
+    {
+      "start_date": {
+        "year": 2024,
+        "month": 6,
+        "day": 6
+      },
+      "text": {
+        "headline": "10 años de Kubernetes",
+        "text": "Décimo aniversario del primer commit de K8s."
+      },
+      "media": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kubernetes%20logo%20without%20workmark.svg",
+        "caption": "Kubernetes cumple 10 años",
+        "credit": "Kubernetes.io / CNCF (post conmemorativo)"
+      }
+    }
+  ]
+}

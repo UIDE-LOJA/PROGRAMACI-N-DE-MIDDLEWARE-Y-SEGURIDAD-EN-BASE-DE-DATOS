@@ -1,0 +1,224 @@
+/* Mermaid diagram styling */
+.mermaid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mermaid:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fullscreen view for diagrams - TRUE FULLSCREEN */
+.diagram-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 99999;
+    display: none;
+    overflow: auto;
+}
+
+.diagram-fullscreen-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.diagram-fullscreen-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    z-index: 100000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.diagram-fullscreen-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #233570;
+    margin: 0;
+}
+
+.diagram-fullscreen-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.diagram-fullscreen-close {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.diagram-fullscreen-close:hover {
+    background: #d32f2f;
+    transform: translateY(-1px);
+}
+
+.diagram-fullscreen-zoom-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.diagram-zoom-btn {
+    background: #233570;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.diagram-zoom-btn:hover {
+    background: #1a2557;
+    transform: translateY(-1px);
+}
+
+.diagram-fullscreen-body {
+    flex: 1;
+    padding: 5rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 6rem);
+    overflow: auto;
+    background: #fafafa;
+}
+
+.diagram-fullscreen-body .mermaid {
+    cursor: default;
+    transform: none !important;
+    box-shadow: none !important;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.diagram-fullscreen-body .mermaid svg {
+    max-width: 100% !important;
+    max-height: calc(100vh - 150px) !important;
+    width: auto !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+}
+
+/* Fullscreen icon overlay */
+.mermaid-fullscreen-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(35, 53, 112, 0.8);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.mermaid:hover .mermaid-fullscreen-icon {
+    opacity: 1;
+}
+
+.mermaid-fullscreen-icon:hover {
+    background: rgba(35, 53, 112, 1);
+    transform: scale(1.1);
+}
+
+/* Zoom levels */
+.diagram-zoom-50 { transform: scale(0.5); }
+.diagram-zoom-75 { transform: scale(0.75); }
+.diagram-zoom-100 { transform: scale(1); }
+.diagram-zoom-125 { transform: scale(1.25); }
+.diagram-zoom-150 { transform: scale(1.5); }
+.diagram-zoom-200 { transform: scale(2); }
+
+/* Estilos específicos para diagramas detallados */
+.diagram-fullscreen-body .mermaid#detailed-mvc svg {
+    min-width: 90% !important;
+    min-height: 80% !important;
+}
+
+/* Auto-ajuste para diagramas complejos */
+.diagram-fullscreen-body .mermaid svg[viewBox] {
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Mejoras para texto en diagramas grandes */
+.diagram-fullscreen-body .mermaid svg text {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.diagram-fullscreen-body .mermaid svg .node rect,
+.diagram-fullscreen-body .mermaid svg .node circle,
+.diagram-fullscreen-body .mermaid svg .node polygon {
+    stroke-width: 2px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .diagram-fullscreen-header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .diagram-fullscreen-title {
+        font-size: 1.1em;
+    }
+    
+    .diagram-fullscreen-body {
+        padding: 6rem 1rem 1rem 1rem;
+    }
+    
+    .diagram-fullscreen-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

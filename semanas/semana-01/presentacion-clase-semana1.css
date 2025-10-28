@@ -1,0 +1,360 @@
+/* Custom Styles for Middleware Presentation */
+
+/* Enhanced concept-box styling */
+.concept-box {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.concept-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--uide-primary);
+}
+
+.concept-box.warning {
+    border-left: 4px solid #ffc107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.concept-box.info {
+    border-left: 4px solid var(--uide-secondary);
+    background: rgba(35, 53, 110, 0.05);
+}
+
+/* Interactive elements */
+.interactive-box {
+    background: rgba(233, 171, 33, 0.1);
+    border: 2px solid var(--uide-accent);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.discussion-point {
+    background: rgba(40, 167, 69, 0.1);
+    border-left: 4px solid var(--uide-primary);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.timer-box {
+    background: rgba(145, 0, 72, 0.1);
+    border: 2px solid var(--uide-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.activity-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+}
+
+/* Title slide styling */
+.title-slide {
+    text-align: center;
+    padding: 2rem;
+}
+
+.course-info {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Layout helpers */
+.r-hstack {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.r-vstack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .r-hstack {
+        flex-direction: column;
+    }
+    
+    .concept-box {
+        padding: 1rem;
+        font-size: 0.9em;
+    }
+    
+    .concept-box h4 {
+        font-size: 1.1em;
+    }
+    
+    .title-slide {
+        padding: 1rem;
+    }
+    
+    .course-info {
+        font-size: 0.8em;
+    }
+}
+
+/* Enhanced list styling */
+.concept-box ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.concept-box li {
+    margin-bottom: 0.3rem;
+}
+
+/* Highlight styling */
+mark {
+    background: rgba(233, 171, 33, 0.3);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+
+/* Animation classes */
+.fragment {
+    opacity: 0;
+}
+
+.fragment.visible {
+    opacity: 1;
+}
+
+/* Custom colors for different sections */
+.middleware-primary {
+    color: #2196F3;
+}
+
+.middleware-secondary {
+    color: #FF9800;
+}
+
+.middleware-accent {
+    color: #4CAF50;
+}
+
+/* Special styling for code blocks */
+.concept-box code {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Blockquote styling */
+blockquote {
+    border-left: 4px solid var(--uide-primary);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+blockquote footer {
+    font-size: 0.8em;
+    margin-top: 0.5rem;
+}
+
+/* Button-like elements */
+.btn-like {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--uide-primary);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-like:hover {
+    background: var(--uide-secondary);
+}
+
+/* Progress indicators */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.progress-dot.active {
+    background: var(--uide-primary);
+}
+
+/* Special styling for important notes */
+.important-note {
+    background: rgba(255, 87, 34, 0.1);
+    border: 2px solid #FF5722;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.important-note::before {
+    content: "⚠️ ";
+    font-size: 1.2em;
+}
+
+/* Styling for success messages */
+.success-message {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.success-message::before {
+    content: "✅ ";
+    font-size: 1.2em;
+}
+
+/* Asegura que los SVG de Mermaid ocupen el ancho del contenedor */
+.reveal .slides .mermaid,
+.reveal .slides .mermaid svg {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+}
+
+/* Mermaid diagram responsive styling */
+.mermaid {
+    max-width: 100%;
+    overflow: auto;
+}
+
+/* Tipografías y colores coherentes con tema UIDE */
+:root {
+    --uide-primary: #910048;
+    --uide-secondary: #23356E;
+    --uide-accent: #E9AB21;
+}
+
+/* Colores por defecto de nodos/aristas en Mermaid */
+.reveal .slides .mermaid .node rect,
+.reveal .slides .mermaid .node path {
+    stroke: var(--uide-secondary) !important;
+}
+
+.reveal .slides .mermaid .edgePath path {
+    stroke: var(--uide-primary) !important;
+}
+
+.reveal .slides .mermaid .label,
+.reveal .slides .mermaid text {
+    fill: #222 !important;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+/* Responsive adjustments for diagrams */
+@media (max-width: 1024px) {
+    .mermaid {
+        height: 300px !important;
+        max-height: 70vh !important;
+    }
+    
+    /* Stack columns on tablets */
+    .r-hstack {
+        flex-direction: column !important;
+    }
+    
+    .column {
+        flex: 1 !important;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mermaid {
+        height: 250px !important;
+        max-height: 60vh !important;
+        font-size: 0.8em;
+    }
+    
+    /* Ensure columns stack properly on mobile */
+    .r-hstack {
+        flex-direction: column !important;
+        gap: 0.5rem;
+    }
+    
+    .column {
+        flex: 1 !important;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mermaid {
+        height: 200px !important;
+        max-height: 50vh !important;
+        font-size: 0.7em;
+    }
+    
+    .concept-box {
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Diagram container improvements */
+.diagram-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 1rem 0;
+}
+
+.diagram-container h5 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--uide-primary);
+    font-size: 1.1em;
+}
+/* Estilos para diagrama simplificado */
+.simple-diagram {
+    width: 100%;
+    height: auto;
+}
+
+.simple-diagram svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px !important;
+}
+

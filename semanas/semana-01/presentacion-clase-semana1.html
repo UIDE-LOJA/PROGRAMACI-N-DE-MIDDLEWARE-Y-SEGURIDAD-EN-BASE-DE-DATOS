@@ -1,0 +1,2110 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 1 - Programación de Middleware y Seguridad en Base de Datos</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Timeline.js CSS -->
+    <link title="timeline-styles" rel="stylesheet" href="//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="presentacion-clase-semana1.css">
+
+    <!-- Diagram Fullscreen CSS -->
+    <link rel="stylesheet" href="css/diagram-fullscreen.css">
+
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h2>Programación de Middleware y Seguridad en Base de Datos</h2>
+                    <h3>¡Bienvenidos! - Semana 1</h3>
+
+                    <div class="course-info">
+                        <strong>LTI_05A_458</strong> • Cuarto Nivel<br>
+                        <strong>Programación de Middleware y Seguridad en BD</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Fundamentos de Sistemas Distribuidos</strong><br>
+                        <em>Semana 1 • Primer día de clases</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Conceptos de SD, roles del middleware, panorama de tecnologías, estilos y capas a alto nivel
+                    </div>
+                </div>
+            </section>
+
+            <!-- Presentación del Sílabo -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-scroll"></i> Presentación del Sílabo</h2>
+
+                <section>
+                    <h3>Información General del Curso</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-info-circle"></i>
+                            LTI_05A_458 Programación de Middleware y Seguridad en BD</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clock"></i> Horas</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>Docencia:</strong> 3 horas</li>
+                                        <li><strong>Prácticas:</strong> 1 hora</li>
+                                        <li><strong>Autónomo:</strong> 5 horas</li>
+                                        <li><strong>Créditos:</strong> 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-calendar"></i> Periodo</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>Duración:</strong> 16 semanas</li>
+                                        <li><strong>Periodo:</strong> Oct 2025 - Feb 2026</li>
+                                        <li><strong>Horario:</strong> Mar 13:00-15:00, Mié 08:00-10:00</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-graduation-cap"></i> <strong>Nivel 4 • Unidad Profesional</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Descripción de la Asignatura</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 1em; text-align: left; line-height: 1.6;">
+                                La asignatura <strong>"Programación de Middleware y Seguridad de Base de Datos"</strong>
+                                forma a los estudiantes en el desarrollo de software intermedio que facilita la
+                                comunicación entre sistemas distribuidos y en la implementación de estrategias de
+                                seguridad para bases de datos.
+                            </p>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-cogs"></i> Middleware</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Sistemas distribuidos</li>
+                                        <li>APIs y servicios web</li>
+                                        <li>Integración de sistemas</li>
+                                        <li>Arquitecturas modernas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-shield-alt"></i> Seguridad</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Protección de datos</li>
+                                        <li>Autenticación y autorización</li>
+                                        <li>Criptografía aplicada</li>
+                                        <li>Auditoría y monitoreo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Objetivos de Aprendizaje</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Al finalizar la asignatura, el
+                            estudiante estará en capacidad de:</h4>
+
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <ol style="font-size: 0.9em; text-align: left; line-height: 1.6;">
+                                <li><strong>Crear</strong> soluciones middleware adaptadas perfectamente a sistemas
+                                    distribuidos</li>
+                                <li><strong>Construir</strong> APIs que crezcan con el negocio y sistemas de integración
+                                    robustos</li>
+                                <li><strong>Convertir</strong> bases de datos en fortalezas digitales mediante
+                                    estrategias de seguridad avanzadas</li>
+                                <li><strong>Dirigir</strong> sistemas middleware y bases de datos al límite de su
+                                    potencial</li>
+                                <li><strong>Desplegar</strong> y administrar soluciones middleware y bases de datos con
+                                    total seguridad</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Sistema de Evaluación: TA, PE y GA</h3>
+                    <div class="concept-box">
+                        <div class="interactive-box" style="margin: 1rem 0;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Cada actividad del curso está clasificada en
+                                    uno de estos tres tipos:</strong></p>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <div style="display: inline-block; margin: 0 2rem;">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.2); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5 style="color: var(--uide-accent); margin: 0;"><i class="fas fa-home"></i> TA
+                                    </h5>
+                                    <small>Trabajo Autónomo</small>
+                                </div>
+                            </div>
+                            <div style="display: inline-block; margin: 0 2rem;">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.2); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5 style="color: var(--uide-primary); margin: 0;"><i class="fas fa-flask"></i> PE
+                                    </h5>
+                                    <small>Práctica Experimental</small>
+                                </div>
+                            </div>
+                            <div style="display: inline-block; margin: 0 2rem;">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.2); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5 style="color: var(--uide-secondary); margin: 0;"><i
+                                            class="fas fa-chart-line"></i> GA</h5>
+                                    <small>Gestión de Aprendizaje</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Semana 1: Fundamentos de Sistemas Distribuidos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-foundation"></i>
+                            Unidad 1</h4>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
+                            <ul style="font-size: 0.9em; text-align: left;">
+                                <li>Conceptos de sistemas distribuidos</li>
+                                <li>Roles del middleware</li>
+                                <li>Panorama de tecnologías</li>
+                                <li>Estilos y capas a alto nivel</li>
+                            </ul>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>PE-1.1:</strong> Mapa de capas y puntos de integración (2.25)</li>
+                                        <li><strong>TA-1.1:</strong> Ficha de un caso real de SD (2.25)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
+                                    <p style="font-size: 0.8em;">Explicar la evolución y características de los sistemas
+                                        distribuidos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Recordatorio Flipped Classroom -->
+            <section>
+                <h2><i class="fas fa-sync-alt"></i> Recordatorio: Flipped Classroom</h2>
+
+                <section>
+                    <h3>Metodología Conocida</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.2em;">Ya conocen la metodología, pero recordemos cómo
+                            aplicará específicamente en <strong>Middleware y Seguridad</strong></p>
+                    </div>
+
+                    <div class="interactive-box">
+                        <p><i class="fas fa-info-circle"></i> <strong>Diferencia clave:</strong> En middleware
+                            trabajaremos intensivamente con arquitecturas distribuidas y casos de seguridad reales</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Antes de Clase</h3>
+                    <div class="activity-card" style="padding: 2rem;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-home"></i> Su
+                            Preparación Previa</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-book-open"></i> Material de Estudio</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>Compendio semanal</strong> - Material completo</li>
+                                        <li><strong>Casos reales</strong> - Para análisis previo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-check-circle"></i> Verificación</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>Autoevaluaciones</strong> - Verificar comprensión</li>
+                                        <li><strong>Dudas específicas</strong> - Anotar para clase</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>En Clase</h3>
+                    <div class="activity-card" style="padding: 2rem;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-school"></i> Aplicación
+                            Práctica</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-clipboard-check"></i> Evaluación</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>PE evaluadas</strong> - Aplicación inmediata</li>
+                                        <li><strong>Análisis de arquitecturas</strong> - Individual y grupal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-comments"></i> Interacción</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>Resolución de dudas</strong> - Conceptos complejos</li>
+                                        <li><strong>Discusión técnica</strong> - Justificación de decisiones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- El Mundo Digital que Vivimos -->
+            <section data-transition="convex">
+                <h2>El Mundo Digital que Vivimos</h2>
+
+                <section>
+                    <h3>Una Pregunta Fascinante</h3>
+                    <div class="interactive-box">
+                        <h3>¿Alguna vez nos hemos puesto a pensar cómo es posible que millones de personas estemos
+                            viendo una serie en streaming o haciendo una compra en línea todo al mismo tiempo?</h3>
+                    </div>
+
+                    <div class="concept-box fragment">
+                        <p style="text-align: center; font-size: 1.2em;">
+                            <strong>La respuesta está en una idea potentísima:</strong><br>
+                            <span style="color: var(--uide-primary); font-size: 1.3em;">La Arquitectura
+                                Distribuida</span>
+                        </p>
+                        <p style="text-align: center; font-style: italic; margin-top: 1rem;">
+                            Es literalmente la columna vertebral de nuestro mundo digital
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Por qué no una Supercomputadora?</h3>
+                    <div class="concept-box">
+                        <div class="interactive-box" style="margin-bottom: 1.5rem;">
+                            <p><i class="fas fa-question-circle"></i> <strong>Pregunta:</strong> Con miles de millones
+                                de personas conectadas, ¿por qué no simplemente usamos una supercomputadora gigante para
+                                manejarlo todo?</p>
+                        </div>
+
+                        <div class="fragment">
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                <strong>Suena fácil, ¿no?</strong>
+                            </p>
+                            <div
+                                style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--uide-secondary);">
+                                <p style="font-size: 1em; text-align: center;">
+                                    <strong>El problema:</strong> Hasta el sistema más poderoso del mundo tiene un
+                                    límite, un punto de quiebre.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Arquitectura Monolítica</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4 style="color: var(--uide-secondary); margin-bottom: 1.5rem;">
+                                <i class="fas fa-building"></i> Ejemplo: E-commerce Tradicional
+                            </h4>
+
+                            <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                                <div class="mermaid">
+                                    graph LR
+                                    U[👥 Usuarios<br />Web/Móvil] --> LB[⚖️ Load<br />Balancer]
+                                    LB --> APP[Aplicación E-commerce<br />• Catálogo de productos<br />• Carrito de
+                                    compras<br />• Procesamiento de pagos<br />• Gestión de usuarios<br />•
+                                    Inventario<br />• Reportes]
+                                    APP --> DB[(🗄️ Base de Datos<br />Única)]
+
+                                    style APP fill:#ff6b6b,stroke:#d63031,stroke-width:3px,color:#fff
+                                    style DB fill:#74b9ff,stroke:#0984e3,stroke-width:2px,color:#fff
+                                    style LB fill:#fdcb6e,stroke:#e17055,stroke-width:2px,color:#000
+                                    style U fill:#ddd,stroke:#999,stroke-width:2px,color:#000
+                                </div>
+
+                                <div
+                                    style="margin-top: 1rem; padding: 1rem; background: rgba(255, 107, 107, 0.1); border-radius: 6px;">
+                                    <p style="font-size: 0.9em; color: var(--uide-secondary); font-weight: bold;">
+                                        ⚠️ <strong>Riesgo:</strong> Si la aplicación falla, todo el e-commerce se
+                                        detiene
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Arquitectura Distribuida</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4 style="color: var(--uide-primary); margin-bottom: 1.5rem;">
+                                <i class="fas fa-network-wired"></i> Ejemplo: Netflix Microservicios
+                            </h4>
+
+                            <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                                <div class="mermaid" id="netflix-microservices">
+                                    flowchart TB
+                                    subgraph CLIENT["👥 CLIENTES GLOBALES"]
+                                    WEB["🌐 Web Browser<br />React SPA"]
+                                    MOBILE["📱 Mobile Apps<br />iOS/Android"]
+                                    TV["📺 Smart TV<br />Roku/AppleTV"]
+                                    GAME["🎮 Gaming Console<br />PS5/Xbox"]
+                                    end
+
+                                    subgraph EDGE["🌍 EDGE LAYER"]
+                                    CDN["🚀 AWS CloudFront<br />• 200+ Edge Locations<br />• Video Caching<br />• DDoS
+                                    Protection"]
+                                    LB["⚖️ Load Balancer<br />• ELB/ALB<br />• Health Checks<br />• Auto Scaling"]
+                                    end
+
+                                    subgraph GATEWAY["🚪 API GATEWAY LAYER"]
+                                    ZUUL["🌐 Zuul Gateway<br />• Dynamic Routing<br />• Circuit Breaker<br />• Rate
+                                    Limiting<br />• A/B Testing"]
+                                    HYSTRIX["🛡️ Hystrix<br />• Fault Tolerance<br />• Bulkhead Pattern<br />• Fallback
+                                    Mechanism"]
+                                    end
+
+                                    subgraph CORE_SERVICES["🔧 SERVICIOS PRINCIPALES"]
+                                    direction TB
+                                    subgraph AUTH_CLUSTER["🔐 Authentication Cluster"]
+                                    AUTH["👤 User Service<br />• OAuth 2.0/JWT<br />• Multi-factor Auth<br />• Session
+                                    Management"]
+                                    PROFILE["👥 Profile Service<br />• User Preferences<br />• Viewing History<br />•
+                                    Parental Controls"]
+                                    end
+
+                                    subgraph CONTENT_CLUSTER["📺 Content Management"]
+                                    CATALOG["🎬 Catalog Service<br />• Metadata API<br />• Content Search<br />• Genre
+                                    Classification"]
+                                    ENCODING["🎞️ Encoding Service<br />• Video Processing<br />• Multiple
+                                    Formats<br />• Quality Adaptation"]
+                                    end
+
+                                    subgraph RECOMMENDATION_CLUSTER["🎯 Recommendation Engine"]
+                                    ML["🤖 ML Pipeline<br />• Collaborative Filtering<br />• Deep Learning<br />•
+                                    Real-time Scoring"]
+                                    PERSONALIZATION["🎨 Personalization<br />• A/B Testing<br />• Content Ranking<br />•
+                                    UI Customization"]
+                                    end
+
+                                    subgraph STREAMING_CLUSTER["▶️ Streaming Services"]
+                                    PLAYBACK["▶️ Playback Service<br />• Adaptive Bitrate<br />• Seek/Resume<br />•
+                                    Quality Control"]
+                                    SUBTITLE["📝 Subtitle Service<br />• Multi-language<br />• Auto-generation<br />•
+                                    Accessibility"]
+                                    end
+
+                                    subgraph BUSINESS_CLUSTER["💼 Business Services"]
+                                    BILLING["💳 Billing Service<br />• Stripe Integration<br />• Subscription
+                                    Mgmt<br />• Payment Processing"]
+                                    ANALYTICS["📊 Analytics Service<br />• Real-time Metrics<br />• User Behavior<br />•
+                                    Performance KPIs"]
+                                    end
+                                    end
+
+                                    subgraph INFRASTRUCTURE["🏗️ INFRAESTRUCTURA"]
+                                    subgraph DATABASES["💾 Bases de Datos"]
+                                    CASSANDRA[("🗄️ Cassandra<br />Content Metadata<br />Distributed NoSQL")]
+                                    MYSQL[("🐬 MySQL<br />User Data<br />ACID Transactions")]
+                                    REDIS[("⚡ Redis<br />Session Cache<br />Real-time Data")]
+                                    ELASTICSEARCH[("🔍 Elasticsearch<br />Search Index<br />Log Analytics")]
+                                    end
+
+                                    subgraph MESSAGING["📨 Message Queues"]
+                                    KAFKA["📬 Apache Kafka<br />• Event Streaming<br />• Real-time Processing<br />•
+                                    Microservice Communication"]
+                                    SQS["📮 Amazon SQS<br />• Async Processing<br />• Dead Letter Queue<br />• Batch
+                                    Operations"]
+                                    end
+
+                                    subgraph MONITORING["📈 OBSERVABILIDAD"]
+                                    ATLAS["📊 Netflix Atlas<br />• Metrics Collection<br />• Time Series DB<br />•
+                                    Alerting"]
+                                    JAEGER["🔍 Distributed Tracing<br />• Request Tracking<br />• Performance
+                                    Analysis<br />• Debugging"]
+                                    end
+                                    end
+
+                                    %% Conexiones de clientes
+                                    WEB --> CDN
+                                    MOBILE --> CDN
+                                    TV --> CDN
+                                    GAME --> CDN
+
+                                    %% Edge to Gateway
+                                    CDN --> LB
+                                    LB --> ZUUL
+                                    ZUUL --> HYSTRIX
+
+                                    %% Gateway to Services
+                                    HYSTRIX --> AUTH
+                                    HYSTRIX --> CATALOG
+                                    HYSTRIX --> ML
+                                    HYSTRIX --> PLAYBACK
+                                    HYSTRIX --> BILLING
+
+                                    %% Inter-service Communication
+                                    AUTH -.->|"JWT Validation"| PROFILE
+                                    CATALOG -.->|"Content Metadata"| ML
+                                    ML -.->|"Recommendations"| PERSONALIZATION
+                                    PLAYBACK -.->|"Viewing Events"| ANALYTICS
+                                    ENCODING -.->|"Processed Content"| CATALOG
+                                    BILLING -.->|"Subscription Status"| AUTH
+
+                                    %% Database Connections
+                                    AUTH --> MYSQL
+                                    PROFILE --> REDIS
+                                    CATALOG --> CASSANDRA
+                                    ML --> ELASTICSEARCH
+                                    PLAYBACK --> REDIS
+                                    ANALYTICS --> KAFKA
+                                    BILLING --> MYSQL
+
+                                    %% Monitoring Connections
+                                    AUTH -.->|"Metrics"| ATLAS
+                                    CATALOG -.->|"Traces"| JAEGER
+                                    ML -.->|"Performance"| ATLAS
+                                    PLAYBACK -.->|"Logs"| ELASTICSEARCH
+
+                                    %% Message Queue Flows
+                                    ANALYTICS --> KAFKA
+                                    KAFKA -.->|"Events"| ML
+                                    KAFKA -.->|"Notifications"| SQS
+
+                                    %% Estilos mejorados
+                                    classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+                                    classDef edge fill:#fff8e1,stroke:#ff8f00,stroke-width:2px,color:#000
+                                    classDef gateway fill:#fff3e0,stroke:#ff9800,stroke-width:3px,color:#000
+                                    classDef auth fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:#000
+                                    classDef content fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
+                                    classDef ml fill:#fce4ec,stroke:#e91e63,stroke-width:2px,color:#000
+                                    classDef streaming fill:#e0f2f1,stroke:#009688,stroke-width:2px,color:#000
+                                    classDef business fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,color:#000
+                                    classDef database fill:#ffebee,stroke:#f44336,stroke-width:2px,color:#000
+                                    classDef messaging fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px,color:#000
+                                    classDef monitoring fill:#f1f8e9,stroke:#689f38,stroke-width:2px,color:#000
+
+                                    %% Aplicar estilos
+                                    class WEB,MOBILE,TV,GAME client
+                                    class CDN,LB edge
+                                    class ZUUL,HYSTRIX gateway
+                                    class AUTH,PROFILE auth
+                                    class CATALOG,ENCODING content
+                                    class ML,PERSONALIZATION ml
+                                    class PLAYBACK,SUBTITLE streaming
+                                    class BILLING,ANALYTICS business
+                                    class CASSANDRA,MYSQL,REDIS,ELASTICSEARCH database
+                                    class KAFKA,SQS messaging
+                                    class ATLAS,JAEGER monitoring
+                                </div>
+
+                                <div
+                                    style="margin-top: 1rem; padding: 1rem; background: rgba(0, 184, 148, 0.1); border-radius: 6px;">
+                                    <p style="font-size: 0.9em; color: var(--uide-primary); font-weight: bold;">
+                                        ✅ <strong>Ventaja:</strong> Si falla el servicio de pagos, el streaming continúa
+                                        funcionando
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Definición de Sistemas Distribuidos</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4 style="color: var(--uide-secondary);"><i class="fas fa-network-wired"></i> ¿Qué es
+                                exactamente un sistema distribuido?</h4>
+                            <div class="fragment">
+                                <div
+                                    style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                                    <p style="font-size: 1.1em; line-height: 1.6; text-align: center;">
+                                        <strong>"Conjunto de computadores independientes, interconectados por red, que
+                                            colaboran para realizar una tarea"</strong>
+                                    </p>
+                                    <div style="margin-top: 1rem; font-size: 0.9em;">
+                                        • Aparecen como sistema coherente<br>
+                                        • Métodos de sincronización<br>
+                                        • Protocolos de comunicación
+                                    </div>
+                                    <p
+                                        style="margin-top: 1rem; font-style: italic; color: var(--uide-accent); font-size: 0.8em;">
+                                        Como una orquesta coordinada
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Ventajas de los Sistemas Distribuidos</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
+                            <strong>La adopción de la computación distribuida ofrece varias ventajas clave:</strong>
+                        </p>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-share-alt"></i> Compartición de Recursos</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Recursos compartidos a través de la red</strong><br><br>
+                                            <em style="font-size: 0.8em;">Ej: Múltiples sistemas usan la misma BD</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-chart-line"></i> Escalabilidad</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Incrementar recursos según demanda</strong><br>
+                                            Sin límites de un solo ordenador<br><br>
+                                            <em style="font-size: 0.8em;">Como añadir músicos a la orquesta</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-shield-alt"></i> Tolerancia a Fallos</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Replicación de recursos</strong><br>
+                                            Disponibilidad ante fallos<br><br>
+                                            <em style="font-size: 0.8em;">Si falla uno, el resto continúa</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>El Gran Reto: La Coordinación</h3>
+                    <div class="concept-box">
+                        <div class="fragment">
+                            <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                <h4 style="text-align: center; color: var(--uide-accent);">Desafíos Reales</h4>
+                                <ul style="font-size: 0.9em; line-height: 1.6;">
+                                    <li><strong>Sincronización temporal:</strong> ¿Cómo sabe Instagram el orden exacto
+                                        de los comentarios si llegan desde diferentes países?</li>
+                                    <li><strong>Consistencia de datos:</strong> Si actualizas tu foto de perfil en
+                                        WhatsApp, ¿cómo se asegura que todos tus contactos vean la nueva imagen?</li>
+                                    <li><strong>Tolerancia a fallos:</strong> Cuando se cae un servidor de Netflix, ¿por
+                                        qué puedes seguir viendo tu serie?</li>
+                                    <li><strong>Interoperabilidad:</strong> ¿Cómo puede Uber integrar mapas de Google,
+                                        pagos de Visa y notificaciones push?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="fragment" style="margin-top: 1rem;">
+                            <p style="text-align: center; font-size: 1em; font-style: italic;">
+                                Sin coordinación adecuada, los sistemas distribuidos pueden volverse
+                                <strong>inmanejables</strong>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>La Solución: Middleware</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4 style="color: var(--uide-secondary);"><i class="fas fa-language"></i> El Traductor
+                                Universal</h4>
+                            <p style="font-size: 1.1em; margin: 1.5rem 0;">
+                                <strong>La solución a todo este posible caos tiene un nombre:</strong><br>
+                                <span style="color: var(--uide-accent); font-size: 1.3em;">MIDDLEWARE</span>
+                            </p>
+                            <div class="fragment">
+                                <p style="font-size: 1em; line-height: 1.6;">
+                                    Pensemos en él como <strong>el traductor universal</strong> o <strong>el diplomático
+                                        del mundo digital</strong>.<br><br>
+                                    Es esa pieza que se asegura de que todos hablen el mismo idioma y colaboren en paz.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Evolución Histórica de los Sistemas Distribuidos</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: white; padding: 1rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <div id='timeline-embed' style="width: 100%; height: 450px"></div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Middleware en Detalle -->
+            <section data-transition="convex">
+                <h2>Middleware: El Pegamento Invisible</h2>
+
+                <section>
+                    <h3>¿Qué es técnicamente el Middleware?</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px;">
+                            <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                                <p style="font-size: 1.1em; line-height: 1.6; text-align: center;">
+                                    <strong>Capa de software que conecta el SO con aplicaciones, datos y
+                                        usuarios</strong>
+                                </p>
+                                <div style="margin-top: 1rem; font-size: 0.9em;">
+                                    • Servicios comunes: SSO, APIs<br>
+                                    • Base de arquitecturas modernas en la nube
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Las Tres Funciones Clave del Middleware</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-eye-slash"></i> 1. Abstracción</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>APIs más funcionales que el SO</strong><br>
+                                            • Transparencia de localización<br>
+                                            • Independencia de servicios de red<br><br>
+                                            <em style="font-size: 0.8em;">Como un coche automático</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-language"></i> 2. Integración</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Comunicación entre plataformas heterogéneas</strong><br>
+                                            • Transformación de datos<br>
+                                            • Mensajería empresarial<br>
+                                            • Autenticación SSO<br><br>
+                                            <em style="font-size: 0.8em;">Traductor universal</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-plug"></i> 3. Desacoplamiento</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Espacio de memoria compartida en Pub/Sub</strong><br>
+                                            • Desacoplamiento temporal<br>
+                                            • Desacoplamiento referencial<br><br>
+                                            <em style="font-size: 0.8em;">Como enchufes estándar</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Herramientas del Mundo Real -->
+            <section data-transition="convex">
+                <h2>Herramientas del Mundo Real</h2>
+
+                <section>
+                    <h3>Tecnologías de Comunicación y Mensajería</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
+                            <strong>Tecnologías clave para la comunicación entre servicios:</strong>
+                        </p>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-bolt"></i> gRPC</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Solicitud/respuesta binario sobre HTTP2</strong><br>
+                                            • Protocol Buffers (Protobuf)<br>
+                                            • Más eficiente que REST/JSON<br>
+                                            • Multi-lenguaje<br><br>
+                                            <em style="font-size: 0.8em;">Mensaje súper rápido</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-video"></i> WebSockets</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Dúplex completo sobre TCP</strong><br>
+                                            • Conexión de larga duración<br>
+                                            • Flujo de datos constante<br>
+                                            • Ideal para tiempo real<br><br>
+                                            <em style="font-size: 0.8em;">Como videollamada</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Sistemas de Mensajería</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-stream"></i> Kafka</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Ideal para sistemas orientados a eventos (event driven), pipelines
+                                                de streaming de datos, analítica y monitorización en tiempo real, Event
+                                                Sourcing y CQRS, y sistemas pub sub a gran escala.</strong> Un topic es
+                                            un registro particionado (append only) de eventos.<br><br>
+                                            <em style="font-size: 0.8em;">Como el feed de noticias de una red
+                                                social - un río de eventos</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-envelope-open-text"></i> RabbitMQ</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Se utiliza para flujos impulsados por comandos (ej., procesar
+                                                pagos), tareas de latencia crítica, comunicación con dispositivos IoT, y
+                                                workflows event driven de menor escala.</strong> Se organiza mediante
+                                            Exchange, Queue y Binding.<br><br>
+                                            <em style="font-size: 0.8em;">Como un servicio de mensajería
+                                                urgente - entrega garantizada</em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Tecnologías de Seguridad</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
+                            <strong>Tecnologías fundamentales para la seguridad en sistemas distribuidos</strong>
+                        </p>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <p style="font-size: 0.9em; color: var(--uide-secondary);">
+                                <i class="fas fa-shield-alt"></i> Autenticación • Autorización • Delegación Segura
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section>
+                    <h3>JWT (JSON Web Tokens)</h3>
+                    <div class="concept-box">
+                        <!-- Primera fila: Información teórica -->
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <h4 style="text-align: center; margin-bottom: 1rem;"><i class="fas fa-id-card"></i> Token de
+                                Autenticación y Autorización</h4>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <p style="font-size: 0.9em; margin-bottom: 1rem;">
+                                        <strong>Formato estándar para autenticación y autorización en arquitecturas
+                                            distribuidas</strong>
+                                    </p>
+                                    <ul style="font-size: 0.8em; text-align: left; margin: 0;">
+                                        <li>Gestiona identidad de usuarios</li>
+                                        <li>Controla permisos y roles</li>
+                                        <li>Funciona en microservicios</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Segunda fila: Estructura JWT completa -->
+                        <div
+                            style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px; border: 2px solid #4caf50;">
+                            <h5 style="text-align: center; margin-bottom: 1rem;">🔐 Estructura JWT Completa</h5>
+
+                            <!-- Token completo en una sola línea -->
+                            <div
+                                style="background: #f5f5f5; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; overflow-x: auto;">
+                                <div
+                                    style="font-family: monospace; font-size: 0.7em; white-space: nowrap; text-align: center;">
+                                    <span style="color: #ff6b6b; font-weight: bold;">eyJhbGciOiJIUzI1NiJ9</span><span
+                                        style="color: #666;">.</span><span
+                                        style="color: #4ecdc4; font-weight: bold;">eyJ1c2VyIjoiam9obiJ9</span><span
+                                        style="color: #666;">.</span><span
+                                        style="color: #45b7d1; font-weight: bold;">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+                                </div>
+                            </div>
+
+                            <!-- Explicación de cada parte -->
+                            <div class="r-hstack">
+                                <div class="column" style="text-align: center;">
+                                    <div
+                                        style="background: rgba(255, 107, 107, 0.1); padding: 0.8rem; border-radius: 4px;">
+                                        <div style="color: #ff6b6b; font-weight: bold; margin-bottom: 0.3rem;">
+                                            <i class="fas fa-file-code"></i> HEADER
+                                        </div>
+                                        <div style="font-size: 0.7em;">
+                                            Algoritmo de firma<br>
+                                            Tipo de token
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column" style="text-align: center;">
+                                    <div
+                                        style="background: rgba(78, 205, 196, 0.1); padding: 0.8rem; border-radius: 4px;">
+                                        <div style="color: #4ecdc4; font-weight: bold; margin-bottom: 0.3rem;">
+                                            <i class="fas fa-user"></i> PAYLOAD
+                                        </div>
+                                        <div style="font-size: 0.7em;">
+                                            Datos del usuario<br>
+                                            Claims y permisos
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column" style="text-align: center;">
+                                    <div
+                                        style="background: rgba(69, 183, 209, 0.1); padding: 0.8rem; border-radius: 4px;">
+                                        <div style="color: #45b7d1; font-weight: bold; margin-bottom: 0.3rem;">
+                                            <i class="fas fa-shield-alt"></i> SIGNATURE
+                                        </div>
+                                        <div style="font-size: 0.7em;">
+                                            Verificación<br>
+                                            Integridad del token
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>OAuth2 & OpenID Connect</h3>
+                    <div class="concept-box">
+                        <div style="display: flex; align-items: center; gap: 2rem;">
+                            <!-- Columna izquierda: Descripción -->
+                            <div style="flex: 1;">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h4><i class="fas fa-key"></i> Delegación de Identidad</h4>
+                                    <p style="font-size: 0.9em; margin: 1rem 0;">
+                                        <strong>Protocolos para acceso seguro a APIs</strong>
+                                    </p>
+                                    <ul style="font-size: 0.8em; text-align: left; margin: 0;">
+                                        <li><strong>OAuth2:</strong> Autorización a APIs</li>
+                                        <li><strong>OpenID Connect:</strong> Autenticación</li>
+                                        <li>Delegación segura de permisos</li>
+                                    </ul>
+                                    <div style="margin-top: 1rem; text-align: center;">
+                                        <button
+                                            style="background: #4285f4; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 0.8em; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                                            <i class="fab fa-google"></i> Iniciar sesión con Google
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Columna derecha: Ejemplo visual -->
+                            <div style="flex: 1;">
+                                <div
+                                    style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px; border: 2px solid #ff9800; position: relative;">
+                                    <h5 style="text-align: center; margin-bottom: 1rem;">🔄 Flujo OAuth2</h5>
+                                    <div class="mermaid simple-diagram" id="simple-oauth2">
+                                        flowchart LR
+                                        subgraph OAUTH["🔐 Flujo OAuth2"]
+                                        U["👤 Usuario"]
+                                        A["📱 Aplicación"]
+                                        G["🔐 Google<br />Auth Server"]
+                                        API["🌐 API<br />Protegida"]
+                                        end
+
+                                        U -->|"1. Login"| A
+                                        A -->|"2. Redirect"| G
+                                        G -->|"3. Autoriza"| A
+                                        A -->|"4. Token"| API
+
+                                        classDef user fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
+                                        classDef app fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000
+                                        classDef auth fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
+                                        classDef api fill:#fce4ec,stroke:#e91e63,stroke-width:2px,color:#000
+
+                                        class U user
+                                        class A app
+                                        class G auth
+                                        class API api
+                                    </div>
+                                    <div style="font-size: 0.7em; margin-top: 0.5rem;">
+                                        <div><i class="fas fa-circle" style="color: #4285f4;"></i> Usuario autoriza
+                                        </div>
+                                        <div><i class="fas fa-circle" style="color: #34a853;"></i> Google valida</div>
+                                        <div><i class="fas fa-circle" style="color: #ea4335;"></i> App accede a API
+                                        </div>
+                                    </div>
+                                    <!-- Botón para ver diagrama completo -->
+                                    <button onclick="openDetailedOAuth2Diagram()"
+                                        style="position: absolute; top: 15px; right: 15px; background: rgba(35, 53, 112, 0.8); color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; z-index: 10;"
+                                        title="Ver diagrama detallado (Click o F)">
+                                        <i class="fas fa-expand"></i> Detalle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Patrones de Arquitectura -->
+            <section data-transition="convex">
+                <h2>Organizando Todo: Patrones de Arquitectura</h2>
+
+                <section>
+                    <h3>Arquitecturas Multicapa (Multilayer)</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
+                            <strong>Capas de software que colaboran entre sí por medio de interfaces bien
+                                definidos</strong>
+                        </p>
+
+                        <div
+                            style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px; position: relative;">
+                            <!-- Diagrama simplificado para el slide -->
+                            <div class="mermaid simple-diagram" id="simple-multilayer">
+                                flowchart TD
+                                subgraph ARCH["🏗️ Arquitectura de 3 Capas"]
+                                PRES["🖥️ PRESENTACIÓN<br />UI & Templates"]
+                                BUS["⚙️ NEGOCIO<br />Lógica & Reglas"]
+                                DATA["💾 DATOS<br />Persistencia & Storage"]
+                                end
+
+                                PRES -->|Solicitudes| BUS
+                                BUS -->|Consultas| DATA
+                                DATA -.->|Respuestas| BUS
+                                BUS -.->|Resultados| PRES
+
+                                classDef presentation fill:#e8f5e8,stroke:#4caf50,stroke-width:3px,color:#000
+                                classDef business fill:#fff3e0,stroke:#ff9800,stroke-width:3px,color:#000
+                                classDef dataLayer fill:#fce4ec,stroke:#e91e63,stroke-width:3px,color:#000
+
+                                class PRES presentation
+                                class BUS business
+                                class DATA dataLayer
+                            </div>
+
+                            <!-- Botón para ver diagrama completo -->
+                            <button onclick="openDetailedMultilayerDiagram()" style="position: absolute; top: 15px; right: 15px; 
+                                           background: rgba(35, 53, 112, 0.8); color: white; 
+                                           border: none; padding: 8px 12px; border-radius: 6px; 
+                                           cursor: pointer; font-size: 0.9em; z-index: 10;"
+                                title="Ver diagrama detallado (Click o F)">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+
+                        <div class="fragment" style="margin-top: 1.5rem;">
+                            <p
+                                style="text-align: center; font-size: 1em; font-weight: bold; color: var(--uide-primary);">
+                                El diseño más utilizado: <strong>Arquitectura de 3 Capas</strong>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Capa vs Nivel: Una Distinción Importante</h3>
+                    <div class="concept-box">
+                        <div class="interactive-box" style="margin-bottom: 1.5rem;">
+                            <p><i class="fas fa-exclamation-circle"></i> <strong>Ojo, una distinción súper importante
+                                    que a veces se confunde:</strong></p>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-layer-group"></i> CAPA</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Separación lógica</strong><br>
+                                            Es un concepto<br><br>
+                                            Como decir en el plano de una casa: "esta es la zona de descanso y esta es
+                                            la zona social"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h4><i class="fas fa-server"></i> NIVEL</h4>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em;">
+                                            <strong>Separación física</strong><br>
+                                            Se refiere a en cuántas máquinas distintas están distribuidas esas capas
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Ejemplos Prácticos</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                            <h5><i class="fas fa-lightbulb"></i> Ejemplos Prácticos:</h5>
+                            <ul style="font-size: 0.9em; text-align: left;">
+                                <li><strong>3 capas, 1 nivel:</strong> Todo el restaurante (comedor, cocina y
+                                    despensa) en un solo edificio</li>
+                                <li><strong>3 capas, 3 niveles:</strong> Comedor en un edificio, cocina en otro al
+                                    otro lado de la calle, y despensa en un almacén aparte</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section>
+                    <h3>El Patrón Modelo-Vista-Controlador (MVC)</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
+                            <strong>Patrón arquitectural que separa la aplicación en tres componentes
+                                interconectados</strong>
+                        </p>
+
+                        <div
+                            style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px; position: relative;">
+                            <!-- Diagrama MVC Simplificado -->
+                            <div class="mermaid simple-diagram" id="simple-mvc">
+                                flowchart TD
+                                subgraph MVC["🏗️ Patrón MVC"]
+                                V["👁️ VISTA<br />Presentación"]
+                                C["🎮 CONTROLADOR<br />Coordinación"]
+                                M["💾 MODELO<br />Datos & Lógica"]
+                                end
+
+                                U["👤 Usuario"] --> V
+                                V -->|Eventos| C
+                                C -->|Consultas| M
+                                M -->|Datos| C
+                                C -->|Actualiza| V
+                                V --> U
+
+                                classDef view fill:#e8f5e8,stroke:#4caf50,stroke-width:3px,color:#000
+                                classDef controller fill:#fff3e0,stroke:#ff9800,stroke-width:3px,color:#000
+                                classDef model fill:#fce4ec,stroke:#e91e63,stroke-width:3px,color:#000
+                                classDef user fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
+
+                                class V view
+                                class C controller
+                                class M model
+                                class U user
+                            </div>
+
+                            <!-- Botón para ver diagrama completo -->
+                            <button onclick="openDetailedMvcDiagram()" style="position: absolute; top: 15px; right: 15px; 
+                                           background: rgba(35, 53, 112, 0.8); color: white; 
+                                           border: none; padding: 8px 12px; border-radius: 6px; 
+                                           cursor: pointer; font-size: 0.9em; z-index: 10;"
+                                title="Ver diagrama detallado (Click o F)">
+                                <i class="fas fa-expand"></i> Detalle
+                            </button>
+                        </div>
+
+                        <div class="fragment" style="margin-top: 1.5rem;">
+                            <p
+                                style="text-align: center; font-size: 1em; font-weight: bold; color: var(--uide-primary);">
+                                Separación clara de responsabilidades: <strong>Presentación • Control • Datos</strong>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Evolución: Microservicios</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 12px;">
+                            <h4 style="color: var(--uide-accent); text-align: center;"><i
+                                    class="fas fa-puzzle-piece"></i> La Evolución Moderna</h4>
+                            <p style="font-size: 1em; text-align: center; margin: 1.5rem 0;">
+                                <strong>Hoy en día, estas ideas han evolucionado.</strong><br>
+                                Los microservicios llevan este concepto de separación al extremo.
+                            </p>
+                            <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                                <p style="font-size: 0.9em; line-height: 1.6;">
+                                    En lugar de tener una sola gran aplicación, la dividen en <strong>docenas de
+                                        servicios pequeñitos y autónomos</strong>.<br><br>
+                                    • Uno se encarga de los pagos<br>
+                                    • Otro del catálogo<br>
+                                    • Otro de las recomendaciones<br><br>
+                                    <em style="color: var(--uide-primary);">Esto da una flexibilidad y una escalabilidad
+                                        brutales, pero como se podrán imaginar, coordinar todo eso es un desafío mucho,
+                                        mucho mayor.</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- El Futuro -->
+            <section data-transition="convex">
+                <h2>El Futuro del Middleware</h2>
+
+                <section>
+                    <h3>La Era de la Inteligencia Artificial</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 12px;">
+                            <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-robot"></i> Y
+                                con eso llegamos al futuro</h4>
+                            <p style="font-size: 1em; text-align: center; margin: 1.5rem 0;">
+                                Con la explosión de la inteligencia artificial, necesitamos una nueva forma de conectar
+                                estos modelos de IA con el mundo real, con nuestras aplicaciones.
+                            </p>
+                            <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                                <h5 style="text-align: center; color: var(--uide-accent);"><i class="fas fa-plug"></i>
+                                    Model Context Protocol (MCP)</h5>
+                                <p style="font-size: 0.9em; line-height: 1.6;">
+                                    El protocolo de contexto de modelo o <strong>MCP</strong> busca ser precisamente
+                                    eso: un nuevo estándar, un middleware de siguiente generación diseñado para que las
+                                    IAs puedan interactuar de forma segura y estandarizada con todo lo demás.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Qué es MCP exactamente?</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px;">
+                            <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-brain"></i>
+                                Protocolo de Contexto de Modelo (MCP)</h4>
+                            <p style="font-size: 1em; text-align: center; margin: 1.5rem 0;">
+                                <strong>Es un nuevo estándar abierto desarrollado por Anthropic que busca "simplificar y
+                                    estandarizar" la manera en que los Grandes Modelos de Lenguaje (LLMs) interactúan
+                                    con herramientas externas y obtienen datos.</strong> Según Hou, Zhao, Wang y Wang
+                                (2025), en sistemas de IA, el MCP redefine las interacciones de IA a herramienta,
+                                permitiendo flujos de trabajo interoperables, seguros y mantenibles a través de diversos
+                                sistemas.
+                            </p>
+
+
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section>
+                    <h3>Casos de Uso de MCP</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h4><i class="fas fa-database"></i> Acceso a Datos</h4>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>Bases de datos:</strong> Consultas SQL seguras</li>
+                                        <li><strong>APIs REST:</strong> Integración con servicios</li>
+                                        <li><strong>GraphQL:</strong> Consultas complejas</li>
+                                        <li><strong>Archivos:</strong> Lectura/escritura controlada</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h4><i class="fas fa-tools"></i> Herramientas Empresariales</h4>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>CRM:</strong> Salesforce, HubSpot</li>
+                                        <li><strong>Productividad:</strong> Slack, Teams</li>
+                                        <li><strong>Desarrollo:</strong> GitHub, Jira</li>
+                                        <li><strong>Análisis:</strong> Tableau, Power BI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h4><i class="fas fa-cloud"></i> Servicios en la Nube</h4>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>AWS:</strong> S3, Lambda, RDS</li>
+                                        <li><strong>Azure:</strong> Blob Storage, Functions</li>
+                                        <li><strong>GCP:</strong> Cloud Storage, BigQuery</li>
+                                        <li><strong>Kubernetes:</strong> Gestión de pods</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Beneficios de MCP</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px;">
+                            <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-star"></i>
+                                ¿Por qué MCP es revolucionario?</h4>
+
+                            <div class="r-hstack" style="margin-top: 1.5rem;">
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px;">
+                                        <h5><i class="fas fa-rocket"></i> Para Desarrolladores</h5>
+                                        <ul style="font-size: 0.9em; text-align: left;">
+                                            <li>Una sola integración para múltiples IAs</li>
+                                            <li>Reutilización de herramientas existentes</li>
+                                            <li>Desarrollo más rápido</li>
+                                            <li>Mantenimiento simplificado</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px;">
+                                        <h5><i class="fas fa-building"></i> Para Empresas</h5>
+                                        <ul style="font-size: 0.9em; text-align: left;">
+                                            <li>Control granular de acceso</li>
+                                            <li>Auditoría completa de acciones</li>
+                                            <li>Integración con sistemas existentes</li>
+                                            <li>Escalabilidad empresarial</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px;">
+                                        <h5><i class="fas fa-users"></i> Para Usuarios</h5>
+                                        <ul style="font-size: 0.9em; text-align: left;">
+                                            <li>IAs más capaces y útiles</li>
+                                            <li>Acceso a datos en tiempo real</li>
+                                            <li>Automatización inteligente</li>
+                                            <li>Experiencia más fluida</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Arquitectura Técnica de MCP</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                            <!-- Diagrama simplificado para el slide -->
+                            <div class="mermaid" id="mcp-architecture-simple"
+                                style="height: 400px; max-width: 100%; position: relative;">
+                                flowchart LR
+                                CLIENT["🤖 MCP CLIENT<br />App + LLM"]
+                                SERVER["🔧 MCP SERVER<br />Tools + Resources + Prompts"]
+                                EXTERNAL["🌐 SISTEMAS EXTERNOS<br />APIs + DB + Archivos"]
+
+                                CLIENT <-->|"JSON-RPC<br />stdio/HTTP"| SERVER
+                                    SERVER -->|"ejecuta"| EXTERNAL
+
+                                    %% Estilos compactos
+                                    classDef client
+                                    fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000,font-size:12px
+                                    classDef server
+                                    fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000,font-size:12px
+                                    classDef external
+                                    fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000,font-size:12px
+
+                                    class CLIENT client
+                                    class SERVER server
+                                    class EXTERNAL external
+                                    <button class="mermaid-fullscreen-icon" onclick="showDetailedMCPDiagram()"
+                                        title="Ver diagrama detallado">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                            </div>
+
+                            <!-- Diagrama detallado para pantalla completa (oculto) -->
+                            <div class="mermaid" id="mcp-architecture-detailed" style="display: none;">
+                                graph TD
+                                subgraph CLIENT["🤖 MCP CLIENT"]
+                                APP["💻 App/IDE/Agent<br />• Claude Desktop<br />• VS Code<br />• Custom Apps"]
+                                LLM["🧠 Large Language Model<br />• Claude 3.5<br />• GPT-4<br />• Gemini Pro"]
+                                end
+
+                                subgraph TRANSPORT["🌐 CAPA DE TRANSPORTE"]
+                                STDIO["📡 stdio<br />Local/Desktop"]
+                                HTTP["🌍 Streamable HTTP<br />Remoto/Web"]
+                                end
+
+                                subgraph SERVER["🔧 MCP SERVER"]
+                                MCP["⚙️ MCP Server<br />JSON-RPC Protocol"]
+                                TOOLS["🛠️ Tools<br />• Funciones ejecutables<br />• APIs externas<br />• Operaciones
+                                DB"]
+                                RESOURCES["📄 Resources<br />• Archivos<br />• Documentos<br />• Datasets"]
+                                PROMPTS["💭 Prompts<br />• Plantillas<br />• Templates<br />• Workflows"]
+                                end
+
+                                subgraph EXTERNAL["🌐 SISTEMAS EXTERNOS"]
+                                API["🔌 APIs/Servicios<br />• REST APIs<br />• GraphQL<br />• Microservicios"]
+                                DB[("💾 Bases de Datos<br />• SQL<br />• NoSQL<br />• Vector DB")]
+                                FS["📁 Sistema de Archivos<br />• Local FS<br />• Cloud Storage<br />• Git Repos"]
+                                end
+
+                                %% Conexiones principales
+                                APP -.->|"Descubrimiento"| STDIO
+                                APP -.->|"Descubrimiento"| HTTP
+                                STDIO --> MCP
+                                HTTP --> MCP
+                                APP <-.->|"JSON-RPC Messages"| MCP
+                                    LLM --> APP
+
+                                    MCP --> TOOLS
+                                    MCP --> RESOURCES
+                                    MCP --> PROMPTS
+
+                                    TOOLS -->|"ejecuta"| API
+                                    TOOLS --> DB
+                                    TOOLS --> FS
+
+                                    MCP -.->|"resultados + metadatos"| APP
+
+                                    %% Estilos mejorados
+                                    classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+                                    classDef transport fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:#000
+                                    classDef server fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000
+                                    classDef external fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000
+
+                                    class APP,LLM client
+                                    class STDIO,HTTP transport
+                                    class MCP,TOOLS,RESOURCES,PROMPTS server
+                                    class API,DB,FS external
+                            </div>
+
+                            <div
+                                style="margin-top: 1rem; padding: 1rem; background: rgba(35, 53, 110, 0.1); border-radius: 6px; text-align: center;">
+                                <p style="font-size: 0.9em; margin: 0;">
+                                    <strong><i class="fas fa-info-circle"></i> Transporte:</strong>
+                                    stdio (local/desktop) • Streamable HTTP (remoto/web)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Flujo de Comunicación MCP</h3>
+                    <div class="concept-box">
+                        <button onclick="showDetailedMCPSequence()"
+                            style="position: absolute; top: 5px; right: 15px; background: rgba(35, 53, 112, 0.8); color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; z-index: 10;"
+                            title="Ver diagrama detallado (Click o F)">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
+                            <!-- Diagrama simplificado para el slide -->
+
+                            <div class="mermaid" id="mcp-sequence-simple"
+                                style="height: 350px; max-width: 100%; position: relative;">
+                                sequenceDiagram
+                                participant U as 👤 Usuario
+                                participant C as 💻 Cliente
+                                participant S as ⚙️ Servidor
+                                participant E as 🌐 Externo
+
+                                U->>C: Solicitud
+                                C->>S: JSON-RPC call
+                                S->>E: Ejecuta
+                                E-->>S: Resultado
+                                S-->>C: Respuesta
+                                C-->>U: Resultado final
+
+                            </div>
+
+                            <!-- Diagrama detallado para pantalla completa (oculto) -->
+                            <div class="mermaid" id="mcp-sequence-detailed" style="display: none;">
+                                sequenceDiagram
+                                participant User as 👤 Usuario
+                                participant App as 💻 MCP Client
+                                participant LLM as 🧠 Modelo LLM
+                                participant Server as ⚙️ MCP Server
+                                participant Ext as 🌐 Sistema Externo
+
+                                Note over User,Ext: Ciclo típico de MCP
+
+                                User->>App: "Analiza las ventas del último trimestre"
+                                App->>Server: Descubre servidor
+                                Server-->>App: Lista tools/resources disponibles
+
+                                App->>LLM: Prompt + contexto + tools disponibles
+                                LLM-->>App: Plan: "Usar tool 'query_sales_db'"
+
+                                App->>Server: JSON-RPC call(query_sales_db, {period: "Q4"})
+                                Server->>Ext: Ejecuta consulta SQL
+                                Ext-->>Server: Datos de ventas + metadatos
+                                Server-->>App: JSON-RPC result + UI inline
+
+                                App->>LLM: Inserta resultado en contexto
+                                LLM-->>App: "Las ventas Q4 fueron $2.3M, +15% vs Q3..."
+                                App-->>User: Respuesta final + visualización
+
+                                Note over User,Ext: Resultado: Análisis completo con datos reales
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </section>
+
+            <!-- Actividades de la Semana -->
+            <section data-transition="convex">
+                <h2>Actividades de la Semana 1</h2>
+
+                <section>
+                    <h3>PE-1.1: Mapa de Capas y Puntos de Integración</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                            <h4><i class="fas fa-map"></i> Objetivo</h4>
+                            <p>Crear un diagrama que muestre las capas de una aplicación distribuida y identifique los
+                                puntos donde el middleware facilita la integración.</p>
+
+                            <div class="r-hstack" style="margin-top: 1rem;">
+                                <div class="column">
+                                    <h5>Elementos a incluir:</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Capa de presentación</li>
+                                        <li>Capa de lógica de negocio</li>
+                                        <li>Capa de datos</li>
+                                        <li>Puntos de integración</li>
+                                    </ul>
+                                </div>
+                                <div class="column">
+                                    <h5>Herramientas sugeridas:</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Draw.io / Lucidchart</li>
+                                        <li>Miro / Figma</li>
+                                        <li>Visio</li>
+                                        <li>Papel y lápiz</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>TA-1.1: Ficha de Caso Real de SD</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                            <h4><i class="fas fa-file-alt"></i> Objetivo</h4>
+                            <p>Investigar y documentar un caso real de sistema distribuido, analizando su arquitectura y
+                                componentes de middleware.</p>
+
+                            <div style="margin-top: 1rem;">
+                                <h5>Estructura de la ficha (1 página):</h5>
+                                <ol style="font-size: 0.9em;">
+                                    <li><strong>Descripción del sistema</strong> (¿Qué hace?)</li>
+                                    <li><strong>Arquitectura</strong> (¿Cómo está organizado?)</li>
+                                    <li><strong>Tecnologías de middleware</strong> (¿Qué usa para integrar?)</li>
+                                    <li><strong>Beneficios obtenidos</strong> (¿Por qué es distribuido?)</li>
+                                    <li><strong>Desafíos enfrentados</strong> (¿Qué problemas resolvió?)</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Ejemplos de Sistemas para Investigar</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-shopping-cart"></i> E-commerce</h5>
+                                    <ul style="font-size: 0.8em;">
+                                        <li>Amazon</li>
+                                        <li>MercadoLibre</li>
+                                        <li>Shopify</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-users"></i> Redes Sociales</h5>
+                                    <ul style="font-size: 0.8em;">
+                                        <li>Facebook/Meta</li>
+                                        <li>Twitter/X</li>
+                                        <li>LinkedIn</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-play"></i> Streaming</h5>
+                                    <ul style="font-size: 0.8em;">
+                                        <li>Netflix</li>
+                                        <li>Spotify</li>
+                                        <li>YouTube</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-car"></i> Transporte</h5>
+                                    <ul style="font-size: 0.8em;">
+                                        <li>Uber</li>
+                                        <li>Airbnb</li>
+                                        <li>Booking.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Próximos Pasos -->
+            <section data-background-color="#f8f8f8">
+                <h2>Próximos Pasos</h2>
+
+                <section>
+                    <h3>Para la Próxima Clase</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h4><i class="fas fa-book-open"></i> Estudiar</h4>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Compendio Semana 2</li>
+                                        <li>Arquitectura 3 capas</li>
+                                        <li>Patrón MVC</li>
+                                        <li>Estilos arquitectónicos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h4><i class="fas fa-tasks"></i> Preparar</h4>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Completar PE-1.1</li>
+                                        <li>Completar TA-1.1</li>
+                                        <li>Revisar dudas</li>
+                                        <li>Traer ejemplos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¡Gracias!</h3>
+                    <div class="concept-box">
+                        <div style="text-align: center; padding: 2rem;">
+                            <h4 style="color: var(--uide-primary);">¿Preguntas?</h4>
+                            <p style="margin: 1rem 0;">
+                                <i class="fas fa-envelope"></i> chcardenasto@uide.edu.ec<br>
+                                <i class="fas fa-clock"></i> Tutorías: Lunes 10:00-12:00, Viernes 08:00-09:00
+                            </p>
+                            <div style="margin-top: 2rem; font-size: 1.1em; color: var(--uide-secondary);">
+                                <strong>¡Nos vemos en la próxima clase!</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <!-- Timeline.js JavaScript -->
+    <script src="//cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+    <!-- Diagram Fullscreen JavaScript -->
+    <script src="js/diagram-fullscreen.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="presentacion-clase-semana1.js"></script>
+
+    <script>
+        // Initialize Reveal.js
+        Reveal.initialize({
+            hash: true,
+            transition: 'convex',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            // Display controls
+            controls: true,
+            // Display a presentation progress bar
+            progress: true,
+            // Display the page number of the current slide
+            slideNumber: true,
+            // Add the current slide number to the URL hash
+            hash: true,
+            // Push each slide change to the browser history
+            history: false,
+            // Enable keyboard shortcuts for navigation
+            keyboard: true,
+            // Enable the slide overview mode
+            overview: true,
+            // Vertical centering of slides
+            center: true,
+            // Enables touch navigation on devices with touch input
+            touch: true,
+            // Loop the presentation
+            loop: false,
+            // Change the presentation direction to be RTL
+            rtl: false,
+            // Randomizes the order of slides each time the presentation loads
+            shuffle: false,
+            // Turns fragments on and off globally
+            fragments: true,
+            // Flags whether to include the current fragment in the URL
+            fragmentInURL: false,
+            // Flags if the presentation is running in an embedded mode
+            embedded: false,
+            // Flags if we should show a help overlay when the questionmark key is pressed
+            help: true,
+            // Flags if speaker notes should be visible to all viewers
+            showNotes: false,
+            // Global override for autoplaying embedded media (video/audio/iframe)
+            autoPlayMedia: null,
+            // Number of milliseconds between automatically proceeding to the next slide
+            autoSlide: 0,
+            // Stop auto-sliding after user input
+            autoSlideStoppable: true,
+            // Use this method for navigation when auto-sliding
+            autoSlideMethod: null,
+            // Specify the average time in seconds that you think you will spend presenting each slide
+            defaultTiming: null,
+            // Enable slide navigation via mouse wheel
+            mouseWheel: false,
+            // Hide the address bar on mobile devices
+            hideAddressBar: true,
+            // Opens links in an iframe preview overlay
+            previewLinks: false,
+            // Transition style
+            transition: 'convex', // none/fade/slide/convex/concave/zoom
+            // Transition speed
+            transitionSpeed: 'default', // default/fast/slow
+            // Transition style for full page slide backgrounds
+            backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+            // Number of slides away from the current that are visible
+            viewDistance: 3,
+            // Number of slides away from the current that are visible on mobile devices
+            mobileViewDistance: 2,
+            // The display mode that will be used to show slides
+            display: 'block',
+            // The "normal" size of the presentation, aspect ratio will be preserved when the presentation is scaled to fit different resolutions
+            width: 960,
+            height: 700,
+            // Factor of the display size that should remain empty around the content
+            margin: 0.04,
+            // Bounds for smallest/largest possible scale to apply to content
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Initialize Timeline after Reveal.js is ready
+        Reveal.addEventListener('ready', function () {
+            // Initialize Timeline.js with local data
+            timeline = new TL.Timeline('timeline-embed', 'timeline-sistemas-distribuidos.json');
+
+            // Initialize robust mermaid system
+            initializeMermaid();
+        });
+
+        // Robust Mermaid initialization system (from compendium)
+        let mermaidInitialized = false;
+
+        function initializeMermaid() {
+            if (mermaidInitialized || typeof mermaid === 'undefined') {
+                return;
+            }
+
+            try {
+                // Clear any existing configuration
+                if (mermaid.initialize) {
+                    mermaid.initialize({
+                        startOnLoad: false, // We'll manually control rendering
+                        theme: 'default',
+                        themeVariables: {
+                            primaryColor: '#233570',
+                            primaryTextColor: '#233570',
+                            primaryBorderColor: '#233570',
+                            lineColor: '#666666'
+                        },
+                        securityLevel: 'loose',
+                        flowchart: {
+                            useMaxWidth: true,
+                            htmlLabels: true
+                        },
+                        sequence: {
+                            useMaxWidth: true
+                        },
+                        gantt: {
+                            useMaxWidth: true
+                        }
+                    });
+                }
+
+                mermaidInitialized = true;
+                console.log('Mermaid initialized successfully');
+
+                // Render diagrams after initialization
+                setTimeout(renderAllMermaidDiagrams, 200);
+
+            } catch (error) {
+                console.error('Error initializing Mermaid:', error);
+            }
+        }
+
+        function renderAllMermaidDiagrams() {
+            const mermaidElements = document.querySelectorAll('.mermaid');
+            console.log(`Found ${mermaidElements.length} mermaid elements to render`);
+
+            // Process diagrams sequentially with delays
+            let index = 0;
+
+            function renderNextDiagram() {
+                if (index >= mermaidElements.length) {
+                    console.log('All diagrams processed');
+                    return;
+                }
+
+                const element = mermaidElements[index];
+
+                if (!element.querySelector('svg') && element.textContent.trim()) {
+                    try {
+                        // Generate unique ID for each diagram
+                        const diagramId = element.id || `mermaid-diagram-${index}-${Date.now()}`;
+                        element.id = diagramId;
+
+                        // Get the diagram content
+                        const content = element.textContent.trim();
+
+                        // Add loading indicator
+                        const originalContent = element.innerHTML;
+                        element.innerHTML = '<div style="padding: 1rem; text-align: center; color: #666; font-size: 0.9em;"><i class="fas fa-spinner fa-spin"></i> Renderizando diagrama...</div>';
+
+                        // Use mermaid.render for better error handling
+                        if (mermaid.render) {
+                            mermaid.render(`${diagramId}-svg`, content)
+                                .then(({ svg }) => {
+                                    element.innerHTML = svg;
+                                    console.log(`Diagram ${index + 1}/${mermaidElements.length} rendered successfully: ${diagramId}`);
+
+                                    // Process next diagram after delay
+                                    index++;
+                                    setTimeout(renderNextDiagram, 150);
+                                })
+                                .catch(error => {
+                                    console.error(`Error rendering diagram ${index + 1}:`, error);
+                                    element.innerHTML = `<div style="color: #d32f2f; padding: 10px; border: 1px solid #d32f2f; border-radius: 4px; font-size: 0.8em;">
+                                        <strong>⚠️ Error renderizando diagrama</strong><br>
+                                        <button onclick="retryDiagramRender('${diagramId}')" style="background: #233570; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; margin-top: 5px; font-size: 0.8em;">
+                                            🔄 Reintentar
+                                        </button>
+                                    </div>`;
+
+                                    // Continue with next diagram
+                                    index++;
+                                    setTimeout(renderNextDiagram, 150);
+                                });
+                        } else {
+                            // Fallback to mermaid.init
+                            element.innerHTML = originalContent;
+                            mermaid.init(undefined, element);
+                            console.log(`Diagram ${index + 1}/${mermaidElements.length} initialized with mermaid.init: ${diagramId}`);
+
+                            // Process next diagram after delay
+                            index++;
+                            setTimeout(renderNextDiagram, 150);
+                        }
+
+                    } catch (error) {
+                        console.error(`Error processing diagram ${index + 1}:`, error);
+                        element.innerHTML = `<div style="color: #d32f2f; padding: 10px; font-size: 0.8em;">⚠️ Error: No se pudo procesar el diagrama</div>`;
+
+                        // Continue with next diagram
+                        index++;
+                        setTimeout(renderNextDiagram, 150);
+                    }
+                } else {
+                    // Skip this diagram and continue
+                    console.log(`Skipping diagram ${index + 1} (already rendered or no content)`);
+                    index++;
+                    setTimeout(renderNextDiagram, 50);
+                }
+            }
+
+            // Start rendering process
+            renderNextDiagram();
+        }
+
+        // Function to retry rendering a specific diagram
+        function retryDiagramRender(diagramId) {
+            const element = document.getElementById(diagramId);
+            if (!element) return;
+
+            const originalContent = element.getAttribute('data-original-content') || element.textContent;
+            element.innerHTML = originalContent;
+
+            // Re-render this specific diagram
+            setTimeout(() => {
+                if (element.textContent.trim()) {
+                    const content = element.textContent.trim();
+                    element.innerHTML = '<div style="padding: 1rem; text-align: center; color: #666; font-size: 0.9em;"><i class="fas fa-spinner fa-spin"></i> Reintentando...</div>';
+
+                    if (mermaid.render) {
+                        mermaid.render(`${diagramId}-retry-${Date.now()}`, content)
+                            .then(({ svg }) => {
+                                element.innerHTML = svg;
+                                console.log(`Diagram ${diagramId} retried successfully`);
+                            })
+                            .catch(error => {
+                                console.error(`Retry failed for diagram ${diagramId}:`, error);
+                                element.innerHTML = `<div style="color: #d32f2f; padding: 10px; border: 1px solid #d32f2f; border-radius: 4px; font-size: 0.8em;">
+                                    <strong>⚠️ Error persistente</strong><br>
+                                    <small>El diagrama no se puede renderizar</small>
+                                </div>`;
+                            });
+                    }
+                }
+            }, 100);
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMermaid);
+        } else {
+            setTimeout(initializeMermaid, 100);
+        }
+
+        // Specific fix for multilayer diagram issues
+        function fixMultilayerDiagram() {
+            const multilayerDiagram = document.getElementById('simple-multilayer');
+            if (multilayerDiagram && !multilayerDiagram.querySelector('svg')) {
+                console.log('Fixing multilayer diagram...');
+
+                // Clear any existing content
+                multilayerDiagram.innerHTML = `
+graph TD
+    PRES["🖥️ Presentación"]
+    BUS["⚙️ Negocio"]
+    DATA["💾 CAPA DE DATOS<br/>Almacenamiento"]
+
+    PRES --> BUS
+    BUS --> DATA
+
+    style PRES fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
+    style BUS fill:#fff3e0,stroke:#ff9800,stroke-width:3px
+    style DATA fill:#fce4ec,stroke:#e91e63,stroke-width:3px
+                `;
+
+                // Try to render it specifically
+                setTimeout(() => {
+                    if (typeof mermaid !== 'undefined' && mermaid.render) {
+                        const content = multilayerDiagram.textContent.trim();
+                        mermaid.render('multilayer-fix-' + Date.now(), content)
+                            .then(({ svg }) => {
+                                multilayerDiagram.innerHTML = svg;
+                                console.log('Multilayer diagram fixed successfully');
+                            })
+                            .catch(error => {
+                                console.error('Failed to fix multilayer diagram:', error);
+                                // Fallback: show a simple text representation
+                                multilayerDiagram.innerHTML = `
+                                    <div style="text-align: center; padding: 2rem; border: 2px solid #4caf50; border-radius: 8px; background: #f8f9fa;">
+                                        <div style="background: #e8f5e8; padding: 1rem; margin: 0.5rem; border-radius: 4px;">
+                                            🖥️ <strong>Capa de Presentación</strong>
+                                        </div>
+                                        <div style="font-size: 1.5em; margin: 0.5rem;">↓</div>
+                                        <div style="background: #fff3e0; padding: 1rem; margin: 0.5rem; border-radius: 4px;">
+                                            ⚙️ <strong>Capa de Negocio</strong>
+                                        </div>
+                                        <div style="font-size: 1.5em; margin: 0.5rem;">↓</div>
+                                        <div style="background: #fce4ec; padding: 1rem; margin: 0.5rem; border-radius: 4px;">
+                                            💾 <strong>Capa de Datos</strong><br/>
+                                            <small>Almacenamiento</small>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                    }
+                }, 500);
+            }
+        }
+
+        // Check for multilayer diagram after a delay
+        setTimeout(fixMultilayerDiagram, 2000);
+
+        // Also check when slide changes
+        if (typeof Reveal !== 'undefined') {
+            Reveal.addEventListener('slidechanged', () => {
+                setTimeout(fixMultilayerDiagram, 500);
+            });
+        }
+
+        // Function to show detailed MCP diagram
+        function showDetailedMCPDiagram() {
+            const detailedDiagram = document.getElementById('mcp-architecture-detailed');
+            if (detailedDiagram && typeof diagramFS !== 'undefined') {
+                // Make the detailed diagram visible temporarily
+                detailedDiagram.style.display = 'block';
+
+                // Open in fullscreen
+                diagramFS.open(detailedDiagram, 'Arquitectura Técnica Detallada de MCP');
+
+                // Hide it again after opening
+                setTimeout(() => {
+                    detailedDiagram.style.display = 'none';
+                }, 100);
+            } else {
+                console.warn('Detailed MCP diagram or fullscreen functionality not available');
+            }
+        }
+
+        // Function to show detailed MCP sequence diagram
+        function showDetailedMCPSequence() {
+            const detailedSequence = document.getElementById('mcp-sequence-detailed');
+            if (detailedSequence && typeof diagramFS !== 'undefined') {
+                // Make the detailed diagram visible temporarily
+                detailedSequence.style.display = 'block';
+
+                // Open in fullscreen
+                diagramFS.open(detailedSequence, 'Flujo de Comunicación Detallado de MCP');
+
+                // Hide it again after opening
+                setTimeout(() => {
+                    detailedSequence.style.display = 'none';
+                }, 100);
+            } else {
+                console.warn('Detailed MCP sequence diagram or fullscreen functionality not available');
+            }
+        }
+
+        // Make functions globally available
+        window.showDetailedMCPDiagram = showDetailedMCPDiagram;
+        window.showDetailedMCPSequence = showDetailedMCPSequence;
+
+
+    </script>
+
+</body>
+
+</html>
