@@ -1404,31 +1404,31 @@
                     <div class="concept-box">
                         <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 8px;">
                             <!-- Diagrama simplificado para el slide -->
-                            <div class="mermaid" id="mcp-architecture-simple"
-                                style="height: 400px; max-width: 100%; position: relative;">
-                                flowchart LR
-                                CLIENT["🤖 MCP CLIENT<br />App + LLM"]
-                                SERVER["🔧 MCP SERVER<br />Tools + Resources + Prompts"]
-                                EXTERNAL["🌐 SISTEMAS EXTERNOS<br />APIs + DB + Archivos"]
+                            <div style="position: relative;">
+                                <div class="mermaid" id="mcp-architecture-simple"
+                                    style="height: 400px; max-width: 100%;">
+                                    flowchart LR
+                                    CLIENT["🤖 MCP CLIENT<br />App + LLM"]
+                                    SERVER["🔧 MCP SERVER<br />Tools + Resources + Prompts"]
+                                    EXTERNAL["🌐 SISTEMAS EXTERNOS<br />APIs + DB + Archivos"]
 
-                                CLIENT <-->|"JSON-RPC<br />stdio/HTTP"| SERVER
+                                    CLIENT <-->|"JSON-RPC<br />stdio/HTTP"| SERVER
                                     SERVER -->|"ejecuta"| EXTERNAL
 
                                     %% Estilos compactos
-                                    classDef client
-                                    fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000,font-size:12px
-                                    classDef server
-                                    fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000,font-size:12px
-                                    classDef external
-                                    fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000,font-size:12px
+                                    classDef client fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000,font-size:12px
+                                    classDef server fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000,font-size:12px
+                                    classDef external fill:#e8f5e8,stroke:#4caf50,stroke-width:2px,color:#000,font-size:12px
 
                                     class CLIENT client
                                     class SERVER server
                                     class EXTERNAL external
-                                    <button class="mermaid-fullscreen-icon" onclick="showDetailedMCPDiagram()"
-                                        title="Ver diagrama detallado">
-                                        <i class="fas fa-expand"></i>
-                                    </button>
+                                </div>
+                                <button class="mermaid-fullscreen-icon" onclick="showDetailedMCPDiagram()"
+                                    title="Ver diagrama detallado"
+                                    style="position: absolute; top: 15px; right: 15px; background: rgba(35, 53, 112, 0.8); color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; z-index: 10;">
+                                    <i class="fas fa-expand"></i>
+                                </button>
                             </div>
 
                             <!-- Diagrama detallado para pantalla completa (oculto) -->
@@ -1995,70 +1995,10 @@
             setTimeout(initializeMermaid, 100);
         }
 
-        // Specific fix for multilayer diagram issues
-        function fixMultilayerDiagram() {
-            const multilayerDiagram = document.getElementById('simple-multilayer');
-            if (multilayerDiagram && !multilayerDiagram.querySelector('svg')) {
-                console.log('Fixing multilayer diagram...');
-
-                // Clear any existing content
-                multilayerDiagram.innerHTML = `
-graph TD
-    PRES["🖥️ Presentación"]
-    BUS["⚙️ Negocio"]
-    DATA["💾 CAPA DE DATOS<br/>Almacenamiento"]
-
-    PRES --> BUS
-    BUS --> DATA
-
-    style PRES fill:#e8f5e8,stroke:#4caf50,stroke-width:3px
-    style BUS fill:#fff3e0,stroke:#ff9800,stroke-width:3px
-    style DATA fill:#fce4ec,stroke:#e91e63,stroke-width:3px
-                `;
-
-                // Try to render it specifically
-                setTimeout(() => {
-                    if (typeof mermaid !== 'undefined' && mermaid.render) {
-                        const content = multilayerDiagram.textContent.trim();
-                        mermaid.render('multilayer-fix-' + Date.now(), content)
-                            .then(({ svg }) => {
-                                multilayerDiagram.innerHTML = svg;
-                                console.log('Multilayer diagram fixed successfully');
-                            })
-                            .catch(error => {
-                                console.error('Failed to fix multilayer diagram:', error);
-                                // Fallback: show a simple text representation
-                                multilayerDiagram.innerHTML = `
-                                    <div style="text-align: center; padding: 2rem; border: 2px solid #4caf50; border-radius: 8px; background: #f8f9fa;">
-                                        <div style="background: #e8f5e8; padding: 1rem; margin: 0.5rem; border-radius: 4px;">
-                                            🖥️ <strong>Capa de Presentación</strong>
-                                        </div>
-                                        <div style="font-size: 1.5em; margin: 0.5rem;">↓</div>
-                                        <div style="background: #fff3e0; padding: 1rem; margin: 0.5rem; border-radius: 4px;">
-                                            ⚙️ <strong>Capa de Negocio</strong>
-                                        </div>
-                                        <div style="font-size: 1.5em; margin: 0.5rem;">↓</div>
-                                        <div style="background: #fce4ec; padding: 1rem; margin: 0.5rem; border-radius: 4px;">
-                                            💾 <strong>Capa de Datos</strong><br/>
-                                            <small>Almacenamiento</small>
-                                        </div>
-                                    </div>
-                                `;
-                            });
-                    }
-                }, 500);
-            }
-        }
-
-        // Check for multilayer diagram after a delay
-        setTimeout(fixMultilayerDiagram, 2000);
-
-        // Also check when slide changes
-        if (typeof Reveal !== 'undefined') {
-            Reveal.addEventListener('slidechanged', () => {
-                setTimeout(fixMultilayerDiagram, 500);
-            });
-        }
+        // Multilayer diagram fix disabled - the original diagram works correctly
+        // function fixMultilayerDiagram() {
+        //     // This function was causing conflicts with the main Mermaid rendering
+        // }
 
         // Function to show detailed MCP diagram
         function showDetailedMCPDiagram() {
