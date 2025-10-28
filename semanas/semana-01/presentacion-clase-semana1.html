@@ -1086,8 +1086,8 @@
                                 DATA["💾 DATOS<br />Persistencia & Storage"]
                                 end
 
-                                PRES -->|Solicitudes| BUS
-                                BUS -->|Consultas| DATA
+                                PRES -.->|Solicitudes| BUS
+                                BUS -.->|Consultas| DATA
                                 DATA -.->|Respuestas| BUS
                                 BUS -.->|Resultados| PRES
 
