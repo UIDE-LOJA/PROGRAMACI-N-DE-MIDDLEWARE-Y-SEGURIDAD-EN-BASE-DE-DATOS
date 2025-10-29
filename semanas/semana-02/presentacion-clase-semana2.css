@@ -1,0 +1,354 @@
+/* Custom CSS for Semana 2 - Capas, MVC y Middleware de Integración */
+
+/* UIDE Color Variables - Using correct UIDE brand colors */
+:root {
+    --uide-primary: #910048;      /* UIDE Burgundy */
+    --uide-secondary: #23356E;    /* UIDE Navy */
+    --uide-accent: #E9AB21;       /* UIDE Gold */
+    --uide-light: #f8f8f8;        /* Light background for contrast */
+}
+
+/* Title Slide Styling */
+.title-slide {
+    text-align: center;
+    padding: 2rem;
+}
+
+.title-slide h2 {
+    color: var(--uide-primary);
+    font-size: 2.2em;
+    margin-bottom: 0.5rem;
+}
+
+.title-slide h3 {
+    color: var(--uide-secondary);
+    font-size: 1.6em;
+    margin-bottom: 1rem;
+}
+
+.course-info {
+    background: rgba(35, 53, 110, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-size: 0.9em;
+}
+
+/* Concept Boxes - Using UIDE theme styles */
+.concept-box {
+    background: rgba(145, 0, 72, 0.1);
+    border: 2px solid var(--uide-primary);
+    border-radius: 10px;
+    padding: 1em;
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+/* Interactive Elements - Using UIDE theme styles */
+.interactive-box {
+    background: rgba(233, 171, 33, 0.1);
+    border: 1px solid var(--uide-accent);
+    border-radius: 8px;
+    padding: 1em;
+    margin: 1em 0;
+    font-style: italic;
+    color: var(--uide-secondary);
+}
+
+.discussion-point {
+    background: rgba(145, 0, 72, 0.1);
+    border-left: 4px solid var(--uide-primary);
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+.timer-box {
+    background: rgba(35, 53, 110, 0.1);
+    border: 2px solid var(--uide-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Activity Cards */
+.activity-card {
+    background: linear-gradient(135deg, rgba(145, 0, 72, 0.1), rgba(35, 53, 110, 0.1));
+    border: 2px solid var(--uide-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+/* Column Layout */
+.r-hstack {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Icons */
+.fas {
+    margin-right: 0.5rem;
+}
+
+/* Tables */
+table {
+    font-size: 0.8em;
+    margin: 1rem 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th {
+    background: var(--uide-primary);
+    color: white;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+}
+
+table td {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+    background: rgba(248, 248, 248, 0.5);
+}
+
+/* Mermaid Diagrams - Using UIDE theme styles */
+.mermaid {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    border: 1px solid rgba(145, 0, 72, 0.1);
+}
+
+.mermaid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Architecture Layers Styling */
+.layer-presentation {
+    background: rgba(227, 242, 253, 0.8);
+    border: 2px solid #1976d2;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+.layer-business {
+    background: rgba(243, 229, 245, 0.8);
+    border: 2px solid #7b1fa2;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+.layer-data {
+    background: rgba(232, 245, 232, 0.8);
+    border: 2px solid #388e3c;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* MVC Components */
+.mvc-model {
+    background: rgba(232, 245, 232, 0.8);
+    border: 2px solid #388e3c;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.mvc-view {
+    background: rgba(227, 242, 253, 0.8);
+    border: 2px solid #1976d2;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.mvc-controller {
+    background: rgba(255, 236, 179, 0.8);
+    border: 2px solid #ff8f00;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Middleware Integration Styles */
+.integration-pattern {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--uide-accent);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.integration-pattern.distributed-objects {
+    border-color: #d32f2f;
+    background: rgba(255, 205, 210, 0.3);
+}
+
+.integration-pattern.mom {
+    border-color: #388e3c;
+    background: rgba(200, 230, 201, 0.3);
+}
+
+.integration-pattern.soi {
+    border-color: #0288d1;
+    background: rgba(225, 245, 254, 0.3);
+}
+
+/* Architecture Comparison */
+.architecture-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.architecture-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--uide-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.architecture-card.monolithic {
+    border-color: var(--uide-secondary);
+    background: rgba(145, 0, 72, 0.1);
+}
+
+.architecture-card.microservices {
+    border-color: var(--uide-primary);
+    background: rgba(40, 167, 69, 0.1);
+}
+
+/* CQRS Pattern Styling */
+.cqrs-command {
+    background: rgba(255, 205, 210, 0.5);
+    border: 2px solid #d32f2f;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.cqrs-query {
+    background: rgba(200, 230, 201, 0.5);
+    border: 2px solid #388e3c;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Fragments */
+.fragment {
+    opacity: 0.3;
+}
+
+.fragment.visible {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .r-hstack {
+        flex-direction: column;
+    }
+    
+    .title-slide h2 {
+        font-size: 1.8em;
+    }
+    
+    .title-slide h3 {
+        font-size: 1.4em;
+    }
+    
+    .architecture-comparison {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation for Interactive Elements */
+.interactive-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.concept-box:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Special Styling for Diagrams */
+.diagram-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Integration Broker Styling */
+.integration-broker {
+    background: rgba(255, 243, 224, 0.8);
+    border: 3px solid #f57c00;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* System Cards for Integration */
+.system-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #666;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.system-card.erp {
+    border-color: #388e3c;
+    background: rgba(232, 245, 232, 0.3);
+}
+
+.system-card.crm {
+    border-color: #1976d2;
+    background: rgba(227, 242, 253, 0.3);
+}
+
+.system-card.wms {
+    border-color: #7b1fa2;
+    background: rgba(243, 229, 245, 0.3);
+}
+
+.system-card.ecommerce {
+    border-color: #d32f2f;
+    background: rgba(255, 235, 238, 0.3);
+}

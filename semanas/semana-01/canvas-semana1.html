@@ -1,0 +1,101 @@
+<p data-start="0" data-end="349">Esta semana introducimos los <strong>fundamentos de sistemas distribuidos</strong> y el rol crucial del <strong>middleware</strong> como capa de conectividad. Exploraremos desde conceptos básicos hasta tecnologías modernas, estableciendo las bases para comprender arquitecturas empresariales complejas.</p>
+<p data-start="351" data-end="368"><strong>¿Qué veremos?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse;" border="1"
+            data-start="370" data-end="1868">
+            <thead data-start="370" data-end="407">
+                <tr data-start="370" data-end="407">
+                    <th data-start="370" data-end="377" data-col-size="sm">Tema</th>
+                    <th data-start="377" data-end="395" data-col-size="xl">Contenido clave</th>
+                    <th data-start="395" data-end="407" data-col-size="md">Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody data-start="422" data-end="1868">
+                <tr data-start="422" data-end="654">
+                    <td data-start="422" data-end="449" data-col-size="sm">Conceptos de Sistemas Distribuidos</td>
+                    <td data-col-size="xl" data-start="449" data-end="574">Definición de SD como conjunto de computadores independientes que colaboran; ventajas (compartición, escalabilidad, tolerancia a fallos) y desafíos (sincronización, consistencia).</td>
+                    <td data-col-size="md" data-start="574" data-end="654">Netflix, Google, Amazon - sistemas que manejan millones de usuarios simultáneamente.</td>
+                </tr>
+                <tr data-start="655" data-end="870">
+                    <td data-start="655" data-end="682" data-col-size="sm">Roles del Middleware</td>
+                    <td data-col-size="xl" data-start="682" data-end="812">Capa de software entre SO y aplicaciones; funciones de abstracción, integración y desacoplamiento; tipos históricos y modernos (TP Monitors, RPC, MOM, ORBs).</td>
+                    <td data-col-size="md" data-start="812" data-end="870">SSO empresarial, APIs de integración, sistemas de mensajería como Kafka.</td>
+                </tr>
+                <tr data-start="871" data-end="1046">
+                    <td data-start="871" data-end="911" data-col-size="sm">Panorama de Tecnologías</td>
+                    <td data-col-size="xl" data-start="911" data-end="972">Tecnologías modernas de comunicación (gRPC, WebSockets), mensajería (Kafka, RabbitMQ), seguridad (JWT, OAuth2) y documentación (OpenAPI).</td>
+                    <td data-col-size="md" data-start="972" data-end="1046">gRPC para microservicios, Kafka para eventos en tiempo real, JWT para autenticación distribuida.</td>
+                </tr>
+                <tr data-start="1047" data-end="1222">
+                    <td data-start="1047" data-end="1072" data-col-size="sm">Estilos Arquitectónicos</td>
+                    <td data-col-size="xl" data-start="1072" data-end="1136">Arquitecturas multicapa (3 capas lógicas), patrón MVC, separación de responsabilidades y principios de diseño modular.</td>
+                    <td data-col-size="md" data-start="1136" data-end="1222">Aplicaciones web con presentación, lógica de negocio y datos separados.</td>
+                </tr>
+                <tr data-start="1223" data-end="1400">
+                    <td data-start="1223" data-end="1238" data-col-size="sm">Capas de Middleware Modernas</td>
+                    <td data-col-size="xl" data-start="1238" data-end="1324">Modelo Red Hat de 4 capas: contenedores, tiempos de ejecución, integración, y automatización de procesos; DevOps y CI/CD.</td>
+                    <td data-col-size="md" data-start="1324" data-end="1400">Docker/Kubernetes (contenedores), microservicios, APIs de integración, automatización inteligente.</td>
+                </tr>
+                <tr data-start="1401" data-end="1576">
+                    <td data-start="1401" data-end="1438" data-col-size="sm">Evolución Histórica</td>
+                    <td data-col-size="xl" data-start="1438" data-end="1518">Línea temporal desde mainframes hasta cloud computing; hitos tecnológicos y su impacto en arquitecturas empresariales.</td>
+                    <td data-col-size="md" data-start="1518" data-end="1576">Desde ARPANET (1969) hasta microservicios y serverless computing actuales.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p data-start="1870" data-end="1898"><strong>Objetivos de aprendizaje</strong></p>
+<p data-start="1900" data-end="1930">Al finalizar la semana podrás:</p>
+<ul data-start="1932" data-end="2426">
+    <li data-start="1932" data-end="2044">
+        <p data-start="1934" data-end="2044">Explicar la evolución y características fundamentales de los sistemas distribuidos, incluyendo ventajas y desafíos.</p>
+    </li>
+    <li data-start="2045" data-end="2133">
+        <p data-start="2047" data-end="2133">Identificar los roles del <strong data-start="2058" data-end="2069">middleware</strong> como capa de <strong data-start="2071" data-end="2081">abstracción</strong>, <strong data-start="2084" data-end="2094">integración</strong> y <strong>desacoplamiento</strong>.</p>
+    </li>
+    <li data-start="2134" data-end="2249">Analizar tecnologías modernas de comunicación, mensajería y seguridad en arquitecturas distribuidas.</li>
+    <li data-start="2250" data-end="2300">Diseñar mapas de capas y puntos de integración para sistemas empresariales reales.</li>
+</ul>
+<p data-start="2428" data-end="2442"><strong>Materiales</strong></p>
+<ul data-start="2444" data-end="2647">
+    <li data-start="2444" data-end="2515">
+        <p data-start="2446" data-end="2515"><strong data-start="2446" data-end="2463">Compendio:</strong> <a
+                title="Compendio - Semana 1" href="https://uide.instructure.com/courses/30176/pages/compendio-semana-1"
+                data-course-type="wikiPages" data-published="true"
+                data-api-endpoint="https://uide.instructure.com/api/v1/courses/30176/pages/compendio-semana-1"
+                data-api-returntype="Page">Semana 1 — Fundamentos de Sistemas Distribuidos</a>.</p>
+    </li>
+    <li data-start="2444" data-end="2515"><strong>Podcast: </strong><a
+            href="https://open.spotify.com/show/32VcMZv4pFzpde5eyJkZ9y" target="_blank"
+            rel="noopener">https://open.spotify.com/show/32VcMZv4pFzpde5eyJkZ9y</a><strong>&nbsp;</strong></li>
+    <li><strong>Video complementario: </strong>Arquitectura Distribuida - Del Monolito a Microservicios<br>
+        <strong>URL:</strong> https://www.youtube.com/watch?v=arquitectura-distribuida
+    </li>
+    <li data-start="2516" data-end="2647">
+        <p data-start="2518" data-end="2647"><strong data-start="2518" data-end="2546">Bibliografía base:</strong> Tanenbaum & van Steen (2007); Krakowiak (2009); Chappell (2004); Hohpe & Woolf (2004); Newman (2015); Richardson (2018).</p>
+    </li>
+</ul>
+<p data-start="2649" data-end="2664"><strong>Actividades</strong></p>
+<ul data-start="2666" data-end="3004">
+    <li data-start="2666" data-end="2723">
+        <p data-start="2668" data-end="2723"><strong data-start="2668" data-end="2686">Lectura guiada</strong> del compendio y exploración de tecnologías actuales.</p>
+    </li>
+    <li data-start="2724" data-end="2841">
+        <p data-start="2726" data-end="2841"><strong data-start="2726" data-end="2761">PE-1.1: Mapa de capas y puntos de integración</strong> diseñando arquitectura de sistema distribuido con identificación de componentes y flujos — <strong data-start="2826"
+                data-end="2838">2.25 pts</strong>.</p>
+    </li>
+    <li data-start="2842" data-end="2941">
+        <p data-start="2844" data-end="2941"><strong data-start="2844" data-end="2890">TA-1.1: Ficha de caso real de SD</strong> investigando implementación industrial de sistemas distribuidos — <strong data-start="2926"
+                data-end="2938">2.25 pts</strong>.</p>
+    </li>
+    <li data-start="2942" data-end="3004">
+        <p data-start="2944" data-end="3004"><strong data-start="2944" data-end="2967">Total de la semana:</strong>
+            <strong data-start="2968" data-end="2978">4.5/30</strong> (Evaluación diagnóstica).
+        </p>
+    </li>
+</ul>
+<p data-start="3261" data-end="3358" data-is-last-node="" data-is-only-node="">Si tienes dudas, deja tu pregunta en el
+    canal de <strong data-start="3310" data-end="3321">DISCORD</strong> o envíame un mensaje por <strong
+        data-start="3347" data-end="3357">Canvas</strong>.</p>

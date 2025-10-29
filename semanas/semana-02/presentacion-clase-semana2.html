@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 2 - Capas, MVC y Middleware de Integración</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Timeline.js CSS -->
+    <link title="timeline-styles" rel="stylesheet" href="//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="presentacion-clase-semana2.css">
+
+    <!-- Diagram Fullscreen CSS -->
+    <link rel="stylesheet" href="css/diagram-fullscreen.css">
+
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h2>Programación de Middleware y Seguridad en Base de Datos</h2>
+                    <h3>Capas, MVC y Middleware de Integración - Semana 2</h3>
+
+                    <div class="course-info">
+                        <strong>LTI_05A_458</strong> • Cuarto Nivel<br>
+                        <strong>Programación de Middleware y Seguridad en BD</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Arquitecturas en Capas y Patrones de Integración</strong><br>
+                        <em>Semana 2 • Three-Layered Architecture • MVC • Integration Middleware</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Fundamentos arquitectónicos para sistemas distribuidos empresariales
+                    </div>
+                </div>
+            </section>           
+ <!-- Agenda de la Semana 2 -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-calendar-alt"></i> Agenda Semana 2</h2>
+
+                <section>
+                    <h3>Objetivos de Aprendizaje</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-target"></i>
+                            Al finalizar esta semana podrás:</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-layer-group"></i> Explicar</h5>
+                                    <p style="font-size: 0.9em;">Arquitectura de tres capas y su distribución física</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-sitemap"></i> Aplicar</h5>
+                                    <p style="font-size: 0.9em;">Patrón MVC en aplicaciones web modernas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="r-hstack" style="margin-top: 1rem;">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Identificar</h5>
+                                    <p style="font-size: 0.9em;">Roles del middleware en integración empresarial</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-balance-scale"></i> Comparar</h5>
+                                    <p style="font-size: 0.9em;">Arquitecturas monolíticas vs microservicios</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Contenido de Hoy</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-layer-group"></i> Parte 1: Arquitectura en Capas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Three-Layered Services</li>
+                                        <li>Distribución física</li>
+                                        <li>Separación de responsabilidades</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-sitemap"></i> Parte 2: Patrón MVC</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Modelo-Vista-Controlador</li>
+                                        <li>Separación de preocupaciones</li>
+                                        <li>Presentation Model</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="r-hstack" style="margin-top: 1rem;">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Parte 3: Middleware de Integración</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Integración funcional</li>
+                                        <li>Message-Oriented Middleware</li>
+                                        <li>Integration Broker</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-balance-scale"></i> Parte 4: Comparación Arquitectónica</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Monolito vs Microservicios</li>
+                                        <li>Principios de desacoplamiento</li>
+                                        <li>CQRS Pattern</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+           <!-- Arquitectura de Tres Capas -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-layer-group"></i> Arquitectura de Tres Capas</h2>
+
+                <section>
+                    <h3>El "Abuelo" de Todos los Patrones</h3>
+                    <div class="interactive-box">
+                        <h3>¿Por qué separar en capas?</h3>
+                        <p style="font-size: 0.9em; margin-top: 1rem;">La arquitectura de capas es considerada "el abuelo de todos" los patrones arquitectónicos</p>
+                    </div>
+
+                    <div class="concept-box fragment">
+                        <p style="text-align: center; font-size: 1.2em;">
+                            <strong>Principio Fundamental:</strong><br>
+                            <span style="color: var(--uide-primary); font-size: 1.3em;">Separación Rigurosa de Preocupaciones</span>
+                        </p>
+                        <p style="text-align: center; font-style: italic; margin-top: 1rem;">
+                            Cada capa tiene una responsabilidad específica y bien definida
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-layer-group"></i> Las Tres Capas Lógicas</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph TB
+                                subgraph "🖥️ CAPA DE PRESENTACIÓN"
+                                UI["👤 User Interface Level<br/>• Interfaz de usuario<br/>• Traducir comandos<br/>• Presentar datos procesados"]
+                                end
+                                
+                                subgraph "⚙️ CAPA DE LÓGICA DE NEGOCIO"
+                                BL["🧠 Processing Level<br/>• Aplicaciones y lógica<br/>• Procesar datos<br/>• Aplicar reglas de negocio"]
+                                end
+                                
+                                subgraph "💾 CAPA DE DATOS"
+                                DL["🗄️ Data Level<br/>• Gestión de datos reales<br/>• Acceso y recuperación<br/>• Almacenamiento y persistencia"]
+                                end
+                                
+                                UI --> BL
+                                BL --> DL
+                                
+                                style UI fill:#e3f2fd,stroke:#23356E,stroke-width:3px
+                                style BL fill:#f3e5f5,stroke:#910048,stroke-width:3px
+                                style DL fill:#fff8e1,stroke:#E9AB21,stroke-width:3px
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-server"></i> Distribución Física: Three-Tiered</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">De Capas Lógicas a Servidores Físicos</h4>
+
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph LR
+                                subgraph "🌐 SERVIDOR WEB"
+                                WS["Web Server<br/>• Punto de entrada<br/>• Interfaz de usuario<br/>• Presentación"]
+                                end
+                                
+                                subgraph "⚙️ SERVIDOR DE APLICACIONES"
+                                AS["Application Server<br/>• Procesamiento real<br/>• Lógica de negocio<br/>• Reglas empresariales"]
+                                end
+                                
+                                subgraph "🗄️ SERVIDOR DE BASE DE DATOS"
+                                DS["Database Server<br/>• Almacenamiento<br/>• Gestión de datos<br/>• Persistencia"]
+                                end
+                                
+                                WS --> AS
+                                AS --> DS
+                                
+                                style WS fill:#ffecb3,stroke:#E9AB21,stroke-width:3px
+                                style AS fill:#f3e5f5,stroke:#910048,stroke-width:3px
+                                style DS fill:#e8f5e8,stroke:#23356E,stroke-width:3px
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Beneficio:</strong> Optimización de escalabilidad y rendimiento mediante distribución física</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-plus"></i> Arquitectura de Cuatro Capas</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Especialización del Modelo de Tres Capas</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-database"></i> Capa de Persistencia</h5>
+                                    <p style="font-size: 0.9em;">Lógica de acceso a datos</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>ORMs (Object-Relational Mapping)</li>
+                                        <li>Data Access Objects (DAO)</li>
+                                        <li>Repository Pattern</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-hdd"></i> Capa de Base de Datos</h5>
+                                    <p style="font-size: 0.9em;">Almacenamiento físico</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>RDBMS (MySQL, PostgreSQL)</li>
+                                        <li>NoSQL (MongoDB, Cassandra)</li>
+                                        <li>Sistemas de archivos distribuidos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Ventaja:</strong> Separación clara entre lógica de acceso y almacenamiento físico</p>
+                        </div>
+                    </div>
+                </section>
+            </section>         
+   <!-- Patrón MVC -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-sitemap"></i> Patrón Modelo-Vista-Controlador (MVC)</h2>
+
+                <section>
+                    <h3>Fundamentos del MVC</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Patrón para Sistemas Interactivos</h4>
+
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px;">
+                            <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
+                                <strong>Objetivo:</strong> Separación de responsabilidades entre la lógica del negocio y la interfaz de usuario
+                            </p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Clave:</strong> Mantener consistencia y permitir múltiples vistas del mismo modelo</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-puzzle-piece"></i> Los Tres Componentes</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph TB
+                                subgraph "🎮 CONTROLADOR"
+                                C["Controller<br/>• Gestiona entrada del usuario<br/>• Handle user input<br/>• Coordina interacciones"]
+                                end
+                                
+                                subgraph "👁️ VISTA"
+                                V["View<br/>• Muestra información<br/>• Display information to users<br/>• Interfaz de usuario"]
+                                end
+                                
+                                subgraph "🧠 MODELO"
+                                M["Model<br/>• Funcionalidad central<br/>• Core functionality and data<br/>• Lógica de negocio"]
+                                end
+                                
+                                C --> M
+                                M --> V
+                                V --> C
+                                
+                                style C fill:#ffecb3,stroke:#E9AB21,stroke-width:3px
+                                style V fill:#e3f2fd,stroke:#23356E,stroke-width:3px
+                                style M fill:#f3e5f5,stroke:#910048,stroke-width:3px
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Nota:</strong> La Vista y el Controlador comprenden conjuntamente la interfaz de usuario</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-table"></i> Responsabilidades Detalladas</h3>
+                    <div class="concept-box">
+                        <table style="width: 100%; font-size: 0.9em; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: var(--uide-primary); color: white;">
+                                    <th style="padding: 1rem; border: 1px solid #ddd;">Componente</th>
+                                    <th style="padding: 1rem; border: 1px solid #ddd;">Responsabilidad</th>
+                                    <th style="padding: 1rem; border: 1px solid #ddd;">Ejemplos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 1rem; border: 1px solid #ddd; font-weight: bold; background: rgba(40, 167, 69, 0.1);">
+                                        <i class="fas fa-brain"></i> Modelo
+                                    </td>
+                                    <td style="padding: 1rem; border: 1px solid #ddd;">
+                                        Contiene la funcionalidad y los datos centrales
+                                    </td>
+                                    <td style="padding: 1rem; border: 1px solid #ddd;">
+                                        Entidades, servicios de negocio, validaciones
+                                    </td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 1rem; border: 1px solid #ddd; font-weight: bold; background: rgba(35, 53, 110, 0.1);">
+                                        <i class="fas fa-eye"></i> Vista
+                                    </td>
+                                    <td style="padding: 1rem; border: 1px solid #ddd;">
+                                        Muestra la información a los usuarios
+                                    </td>
+                                    <td style="padding: 1rem; border: 1px solid #ddd;">
+                                        HTML, JSP, React components, templates
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; border: 1px solid #ddd; font-weight: bold; background: rgba(233, 171, 33, 0.1);">
+                                        <i class="fas fa-gamepad"></i> Controlador
+                                    </td>
+                                    <td style="padding: 1rem; border: 1px solid #ddd;">
+                                        Gestiona la entrada del usuario
+                                    </td>
+                                    <td style="padding: 1rem; border: 1px solid #ddd;">
+                                        Servlets, Spring Controllers, Express routes
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-sync-alt"></i> Flujo de Interacción MVC</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                sequenceDiagram
+                                    participant U as 👤 Usuario
+                                    participant V as 👁️ Vista
+                                    participant C as 🎮 Controlador
+                                    participant M as 🧠 Modelo
+                                    
+                                    U->>V: 1. Interacción (click, input)
+                                    V->>C: 2. Envía evento
+                                    C->>M: 3. Actualiza modelo
+                                    M->>V: 4. Notifica cambios
+                                    V->>U: 5. Actualiza interfaz
+                                    
+                                    Note over U,M: Separación de responsabilidades
+                                    Note over V,C: Comprenden la UI conjuntamente
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-magic"></i> <strong>Magia del MVC:</strong> Si el usuario cambia el modelo a través de una vista, todas las demás vistas se actualizan automáticamente</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-layer-group"></i> Presentation Model</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Derivado del MVC</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-adapter"></i> Función de Adaptador</h5>
+                                    <p style="font-size: 0.9em;">Enmascara los detalles del modelo de dominio</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Propiedades diseñadas para la vista</li>
+                                        <li>Comportamientos específicos de UI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-wrench"></i> Resuelve Problemas</h5>
+                                    <p style="font-size: 0.9em;">"Desajuste de impedancia"</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Modelo de dominio rico vs UI frameworks</li>
+                                        <li>Expresiones fluidas vs getters públicos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+           <!-- Middleware de Integración -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-puzzle-piece"></i> Middleware de Integración Empresarial</h2>
+
+                <section>
+                    <h3>El Rol Crucial del Middleware</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Software de Conectividad</h4>
+
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
+                                <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
+                                    <strong>Definición:</strong>
+                                </p>
+                                <p style="font-size: 1em; text-align: left; line-height: 1.6;">
+                                    Software diseñado para <strong>"ayudar a gestionar la complejidad y la heterogeneidad inherente a los sistemas distribuidos"</strong> mediante la construcción de un puente entre diferentes sistemas, permitiendo así la comunicación y la transferencia de datos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-bridge"></i> <strong>Función:</strong> Punto de conexión para sistemas heterogéneos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-cogs"></i> Integración Funcional</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Tres Enfoques Principales</h4>
+
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph TB
+                                subgraph "🔗 INTEGRACIÓN FUNCIONAL"
+                                
+                                subgraph "🎯 Objetos Distribuidos"
+                                DO["Distributed Object Integration<br/>• .NET Remoting<br/>• COM+<br/>• CORBA<br/>⚠️ Fuertemente acoplado"]
+                                end
+                                
+                                subgraph "📨 Message-Oriented Middleware"
+                                MOM["MOM Integration<br/>• Colas de mensajes asíncronas<br/>• Comunicación duradera<br/>• Send and forget<br/>✅ Desacoplado"]
+                                end
+                                
+                                subgraph "🌐 Servicios Web"
+                                SOI["Service-Oriented Integration<br/>• XML-based Web Services<br/>• SOAP y WSDL<br/>• Sistema de tipos portable<br/>✅ Estándares abiertos"]
+                                end
+                                
+                                end
+                                
+                                style DO fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px
+                                style MOM fill:#c8e6c9,stroke:#388e3c,stroke-width:2px
+                                style SOI fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-exchange-alt"></i> Message-Oriented Middleware (MOM)</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-check-circle"></i> Ventajas</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>Asíncrono:</strong> No bloquea el emisor</li>
+                                        <li><strong>Duradero:</strong> Mensajes persistentes</li>
+                                        <li><strong>Confiable:</strong> Reduce pérdida de mensajes</li>
+                                        <li><strong>Desacoplado:</strong> Sistemas independientes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tools"></i> Tecnologías</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Apache Kafka</li>
+                                        <li>RabbitMQ</li>
+                                        <li>Amazon SQS</li>
+                                        <li>Apache ActiveMQ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-paper-plane"></i> <strong>Principio "Send and Forget":</strong> El emisor envía el mensaje y puede continuar con otro trabajo</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-hub"></i> Integration Broker</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;">Centro de Mediación</h4>
+
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph TB
+                                subgraph "🏢 SISTEMAS EMPRESARIALES"
+                                ERP["📊 ERP System"]
+                                CRM["👥 CRM System"]
+                                WMS["📦 WMS System"]
+                                ECOM["🛒 E-commerce"]
+                                end
+                                
+                                subgraph "🔄 INTEGRATION BROKER"
+                                IB["Integration Broker<br/>• Transformación de datos<br/>• Orquestación de actividades<br/>• Mantiene estado<br/>• Gestión centralizada"]
+                                end
+                                
+                                ERP <--> IB
+                                CRM <--> IB
+                                WMS <--> IB
+                                ECOM <--> IB
+                                
+                                style IB fill:#fff3e0,stroke:#E9AB21,stroke-width:3px
+                                style ERP fill:#f3e5f5,stroke:#910048,stroke-width:2px
+                                style CRM fill:#e3f2fd,stroke:#23356E,stroke-width:2px
+                                style WMS fill:#fff8e1,stroke:#E9AB21,stroke-width:2px
+                                style ECOM fill:#ffebee,stroke:#910048,stroke-width:2px
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-magic"></i> <strong>Beneficio:</strong> Cooperación transparente de sistemas heterogéneos sin que las aplicaciones necesiten información sobre las demás</p>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+           <!-- Comparación de Estilos Arquitectónicos -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-balance-scale"></i> Comparación de Estilos Arquitectónicos</h2>
+
+                <section>
+                    <h3>Monolito vs Microservicios</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Evolución Arquitectónica</h4>
+
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px;">
+                            <table style="width: 100%; font-size: 0.8em; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--uide-primary); color: white;">
+                                        <th style="padding: 0.8rem; border: 1px solid #ddd;">Característica</th>
+                                        <th style="padding: 0.8rem; border: 1px solid #ddd;">Arquitectura Monolítica</th>
+                                        <th style="padding: 0.8rem; border: 1px solid #ddd;">Arquitectura de Microservicios</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd; font-weight: bold;">Unidad de Despliegue</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Artefacto único y desplegable</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Múltiples servicios independientes</td>
+                                    </tr>
+                                    <tr style="background: #f8f9fa;">
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd; font-weight: bold;">Escalabilidad</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Escalado vertical de toda la aplicación</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Escalado horizontal por servicio</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd; font-weight: bold;">Gestión de Datos</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Base de datos centralizada</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Propiedad de datos descentralizada</td>
+                                    </tr>
+                                    <tr style="background: #f8f9fa;">
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd; font-weight: bold;">Impacto de Fallas</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Posibles fallas a nivel de todo el sistema</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Fallas de servicio aisladas</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd; font-weight: bold;">Tecnología</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Pila tecnológica uniforme</td>
+                                        <td style="padding: 0.8rem; border: 1px solid #ddd;">Habilita la programación políglota</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-unlink"></i> Principios de Desacoplamiento</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">De Fuerte Acoplamiento a Loose Coupling</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-link"></i> Fuerte Acoplamiento</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Dependencias directas</li>
+                                        <li>Cambios en cascada</li>
+                                        <li>Difícil evolución</li>
+                                        <li>Global coupling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-unlink"></i> Loose Coupling</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Sistemas menos dependientes</li>
+                                        <li>Evolución independiente</li>
+                                        <li>Mayor flexibilidad</li>
+                                        <li>Mejor mantenibilidad</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-cubes"></i> Elementos Clave para Microservicios</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph TB
+                                subgraph "🏗️ MICROSERVICIOS ARCHITECTURE"
+                                
+                                subgraph "🧩 Componentización"
+                                COMP["Componentization<br/>• Servicios independientes<br/>• Descomposición de aplicaciones<br/>• Responsabilidades específicas"]
+                                end
+                                
+                                subgraph "📡 Comunicación"
+                                COMM["Communication<br/>• APIs bien definidas<br/>• HTTP/REST<br/>• gRPC<br/>• Message Queues"]
+                                end
+                                
+                                subgraph "🎯 Coordinación"
+                                COORD["Coordination<br/>• Service Discovery<br/>• Load Balancing<br/>• Circuit Breakers<br/>• Health Checks"]
+                                end
+                                
+                                end
+                                
+                                COMP --> COMM
+                                COMM --> COORD
+                                COORD --> COMP
+                                
+                                style COMP fill:#f3e5f5,stroke:#910048,stroke-width:3px
+                                style COMM fill:#e3f2fd,stroke:#23356E,stroke-width:3px
+                                style COORD fill:#fff3e0,stroke:#E9AB21,stroke-width:3px
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-database"></i> CQRS Pattern</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;">Command-Query Responsibility Segregation</h4>
+
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph LR
+                                subgraph "📝 COMMAND SIDE (Escritura)"
+                                CMD["Commands<br/>• Create<br/>• Update<br/>• Delete"]
+                                CMDDB[("Write Database<br/>Optimized for<br/>Transactions")]
+                                end
+                                
+                                subgraph "📊 QUERY SIDE (Lectura)"
+                                QRY["Queries<br/>• Read<br/>• Search<br/>• Reports"]
+                                QRYDB[("Read Database<br/>Optimized for<br/>Queries")]
+                                end
+                                
+                                CMD --> CMDDB
+                                QRY --> QRYDB
+                                CMDDB -.->|Sync| QRYDB
+                                
+                                style CMD fill:#f3e5f5,stroke:#910048,stroke-width:2px
+                                style QRY fill:#e3f2fd,stroke:#23356E,stroke-width:2px
+                                style CMDDB fill:#f3e5f5,stroke:#910048,stroke-width:2px
+                                style QRYDB fill:#e3f2fd,stroke:#23356E,stroke-width:2px
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Beneficio:</strong> Separación del modelo de escritura del modelo de lectura para optimización específica</p>
+                        </div>
+                    </div>
+                </section>
+            </section>        
+    <!-- Actividades de la Semana -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-tasks"></i> Actividades Semana 2</h2>
+
+                <section>
+                    <h3>PE-1.2: Diagrama de Arquitectura MVC</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-flask"></i>
+                            Práctica Experimental (2.25 puntos)</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clipboard-check"></i> Objetivo</h5>
+                                    <p style="font-size: 0.9em;">Diseñar arquitectura de aplicación web usando MVC</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Identificar componentes M-V-C</li>
+                                        <li>Definir responsabilidades</li>
+                                        <li>Mapear flujo de datos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tools"></i> Entregables</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Diagrama de arquitectura</li>
+                                        <li>Descripción de componentes</li>
+                                        <li>Justificación de decisiones</li>
+                                        <li>Identificación de patrones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timer-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-clock"></i> <strong>Tiempo en clase:</strong> 45 minutos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>TA-1.2: Análisis de Middleware de Integración</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-home"></i>
+                            Trabajo Autónomo (2.25 puntos)</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-book-open"></i> Contenido</h5>
+                                    <p style="font-size: 0.9em;">Investigación de caso real de integración empresarial</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Identificar middleware utilizado</li>
+                                        <li>Analizar patrones de integración</li>
+                                        <li>Evaluar ventajas y desventajas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-pen"></i> Formato</h5>
+                                    <p style="font-size: 0.9em;">Reporte técnico estructurado</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Máximo 3 páginas</li>
+                                        <li>Diagramas de arquitectura</li>
+                                        <li>Conclusiones y recomendaciones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-calendar"></i> <strong>Entrega:</strong> Antes de la próxima clase</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Síntesis y Cierre -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-lightbulb"></i> Síntesis de la Semana</h2>
+
+                <section>
+                    <h3>Conceptos Clave Aprendidos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-layer-group"></i> Arquitectura en Capas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>Three-Layered:</strong> Presentación, Lógica, Datos</li>
+                                        <li><strong>Distribución física:</strong> Servidores especializados</li>
+                                        <li><strong>Separación:</strong> Responsabilidades bien definidas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-sitemap"></i> Patrón MVC</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>Modelo:</strong> Funcionalidad y datos centrales</li>
+                                        <li><strong>Vista:</strong> Presentación al usuario</li>
+                                        <li><strong>Controlador:</strong> Gestión de entrada</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="r-hstack" style="margin-top: 1rem;">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Middleware de Integración</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>MOM:</strong> Message-Oriented Middleware</li>
+                                        <li><strong>Integration Broker:</strong> Centro de mediación</li>
+                                        <li><strong>SOI:</strong> Service-Oriented Integration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-balance-scale"></i> Estilos Arquitectónicos</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>Monolito:</strong> Artefacto único</li>
+                                        <li><strong>Microservicios:</strong> Servicios independientes</li>
+                                        <li><strong>CQRS:</strong> Separación comando-consulta</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Próxima Semana: APIs y Servicios Web</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-forward"></i>
+                            Semana 3 - Unidad 2</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-book-open"></i> Temas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>REST vs SOAP</li>
+                                        <li>Diseño de APIs</li>
+                                        <li>Documentación con OpenAPI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tools"></i> Herramientas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Postman para testing</li>
+                                        <li>Swagger/OpenAPI</li>
+                                        <li>Spring Boot / Express.js</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¡Gracias por su Participación!</h3>
+                    <div class="concept-box">
+                        <div style="text-align: center; padding: 2rem;">
+                            <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> Programación de Middleware y Seguridad en BD</h4>
+                            <p style="font-size: 1.1em; margin: 1rem 0;">
+                                <strong>Semana 2 completada</strong>
+                            </p>
+                            <p style="font-size: 0.9em; color: var(--uide-secondary);">
+                                Prof. Charlie Cárdenas Toledo, M.Sc.<br>
+                                Universidad Internacional del Ecuador
+                            </p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-question-circle"></i> <strong>¿Preguntas?</strong> Este es el momento para aclarar dudas sobre arquitecturas y patrones</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="presentacion-clase-semana2.js"></script>
+
+    <script>
+        // Robust Mermaid initialization system (from compendium)
+        let mermaidInitialized = false;
+
+        function initializeMermaid() {
+            if (mermaidInitialized || typeof mermaid === 'undefined') {
+                return;
+            }
+
+            try {
+                // Clear any existing configuration
+                if (mermaid.initialize) {
+                    mermaid.initialize({
+                        startOnLoad: false, // We'll manually control rendering
+                        theme: 'default',
+                        themeVariables: {
+                            primaryColor: '#233570',
+                            primaryTextColor: '#233570',
+                            primaryBorderColor: '#233570',
+                            lineColor: '#666666'
+                        },
+                        securityLevel: 'loose',
+                        flowchart: {
+                            useMaxWidth: true,
+                            htmlLabels: true
+                        },
+                        sequence: {
+                            useMaxWidth: true
+                        },
+                        gantt: {
+                            useMaxWidth: true
+                        }
+                    });
+                }
+
+                mermaidInitialized = true;
+                console.log('Mermaid initialized successfully');
+
+                // Render diagrams after initialization
+                setTimeout(renderAllMermaidDiagrams, 200);
+
+            } catch (error) {
+                console.error('Error initializing Mermaid:', error);
+            }
+        }
+
+        function renderAllMermaidDiagrams() {
+            const mermaidElements = document.querySelectorAll('.mermaid');
+            console.log(`Found ${mermaidElements.length} mermaid elements to render`);
+
+            // Process diagrams sequentially with delays
+            let index = 0;
+
+            function renderNextDiagram() {
+                if (index >= mermaidElements.length) {
+                    console.log('All diagrams processed');
+                    return;
+                }
+
+                const element = mermaidElements[index];
+
+                if (!element.querySelector('svg') && element.textContent.trim()) {
+                    try {
+                        // Generate unique ID for each diagram
+                        const diagramId = element.id || `mermaid-diagram-${index}-${Date.now()}`;
+                        element.id = diagramId;
+
+                        // Get the diagram content
+                        const content = element.textContent.trim();
+
+                        // Add loading indicator
+                        const originalContent = element.innerHTML;
+                        element.innerHTML = '<div style="padding: 1rem; text-align: center; color: #666; font-size: 0.9em;"><i class="fas fa-spinner fa-spin"></i> Renderizando diagrama...</div>';
+
+                        // Use mermaid.render for better error handling
+                        if (mermaid.render) {
+                            mermaid.render(`${diagramId}-svg`, content)
+                                .then(({ svg }) => {
+                                    element.innerHTML = svg;
+                                    console.log(`Diagram ${index + 1}/${mermaidElements.length} rendered successfully: ${diagramId}`);
+
+                                    // Process next diagram after delay
+                                    index++;
+                                    setTimeout(renderNextDiagram, 150);
+                                })
+                                .catch(error => {
+                                    console.error(`Error rendering diagram ${index + 1}:`, error);
+                                    element.innerHTML = `<div style="color: #d32f2f; padding: 10px; border: 1px solid #d32f2f; border-radius: 4px; font-size: 0.8em;">
+                                        <strong>⚠️ Error renderizando diagrama</strong><br>
+                                        <button onclick="retryDiagramRender('${diagramId}')" style="background: #233570; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; margin-top: 5px; font-size: 0.8em;">
+                                            🔄 Reintentar
+                                        </button>
+                                    </div>`;
+
+                                    // Continue with next diagram
+                                    index++;
+                                    setTimeout(renderNextDiagram, 150);
+                                });
+                        } else {
+                            // Fallback to mermaid.init
+                            element.innerHTML = originalContent;
+                            mermaid.init(undefined, element);
+                            console.log(`Diagram ${index + 1}/${mermaidElements.length} initialized with mermaid.init: ${diagramId}`);
+
+                            // Process next diagram after delay
+                            index++;
+                            setTimeout(renderNextDiagram, 150);
+                        }
+
+                    } catch (error) {
+                        console.error(`Error processing diagram ${index + 1}:`, error);
+                        element.innerHTML = `<div style="color: #d32f2f; padding: 10px; font-size: 0.8em;">⚠️ Error: No se pudo procesar el diagrama</div>`;
+
+                        // Continue with next diagram
+                        index++;
+                        setTimeout(renderNextDiagram, 150);
+                    }
+                } else {
+                    // Skip this diagram and continue
+                    console.log(`Skipping diagram ${index + 1} (already rendered or no content)`);
+                    index++;
+                    setTimeout(renderNextDiagram, 50);
+                }
+            }
+
+            // Start rendering process
+            renderNextDiagram();
+        }
+
+        // Function to retry rendering a specific diagram
+        function retryDiagramRender(diagramId) {
+            const element = document.getElementById(diagramId);
+            if (!element) return;
+
+            const originalContent = element.getAttribute('data-original-content') || element.textContent;
+            element.innerHTML = originalContent;
+
+            // Re-render this specific diagram
+            setTimeout(() => {
+                if (element.textContent.trim()) {
+                    const content = element.textContent.trim();
+                    element.innerHTML = '<div style="padding: 1rem; text-align: center; color: #666; font-size: 0.9em;"><i class="fas fa-spinner fa-spin"></i> Reintentando...</div>';
+
+                    if (mermaid.render) {
+                        mermaid.render(`${diagramId}-retry-${Date.now()}`, content)
+                            .then(({ svg }) => {
+                                element.innerHTML = svg;
+                                console.log(`Diagram ${diagramId} retried successfully`);
+                            })
+                            .catch(error => {
+                                console.error(`Retry failed for diagram ${diagramId}:`, error);
+                                element.innerHTML = `<div style="color: #d32f2f; padding: 10px; border: 1px solid #d32f2f; border-radius: 4px; font-size: 0.8em;">
+                                    <strong>⚠️ Error persistente</strong><br>
+                                    <small>El diagrama no se puede renderizar</small>
+                                </div>`;
+                            });
+                    }
+                }
+            }, 100);
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeMermaid);
+        } else {
+            setTimeout(initializeMermaid, 100);
+        }
+
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            transition: 'convex',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+
+</body>
+
+</html>
