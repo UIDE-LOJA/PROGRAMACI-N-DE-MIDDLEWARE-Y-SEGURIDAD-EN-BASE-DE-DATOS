@@ -63,93 +63,37 @@
                 </div>
             </section>           
  <!-- Agenda de la Semana 2 -->
+            <!-- Pregunta Central -->
             <section data-transition="convex">
-                <h2><i class="fas fa-calendar-alt"></i> Agenda Semana 2</h2>
+                <h2><i class="fas fa-question-circle"></i> La Pregunta del Millón</h2>
 
                 <section>
-                    <h3>Objetivos de Aprendizaje</h3>
+                    <h3>El Reto Fundamental</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-target"></i>
-                            Al finalizar esta semana podrás:</h4>
+                        <h4 style="color: var(--uide-primary); text-align: center; font-size: 1.5em;">
+                            ¿Cómo crear sistemas que no solo funcionen hoy, sino que sean robustos y puedan crecer mañana?
+                        </h4>
+                    </div>
 
-                        <div class="r-hstack">
-                            <div class="column">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-layer-group"></i> Explicar</h5>
-                                    <p style="font-size: 0.9em;">Arquitectura de tres capas y su distribución física</p>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-sitemap"></i> Aplicar</h5>
-                                    <p style="font-size: 0.9em;">Patrón MVC en aplicaciones web modernas</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="r-hstack" style="margin-top: 1rem;">
-                            <div class="column">
-                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-puzzle-piece"></i> Identificar</h5>
-                                    <p style="font-size: 0.9em;">Roles del middleware en integración empresarial</p>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-balance-scale"></i> Comparar</h5>
-                                    <p style="font-size: 0.9em;">Arquitecturas monolíticas vs microservicios</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="interactive-box" style="margin-top: 2rem;">
+                        <p style="font-size: 1.1em;"><i class="fas fa-lightbulb"></i> <strong>Los patrones arquitectónicos intentan resolver este desafío</strong></p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Contenido de Hoy</h3>
+                    <h3>Nuestro Recorrido</h3>
                     <div class="concept-box">
-                        <div class="r-hstack">
-                            <div class="column">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-layer-group"></i> Parte 1: Arquitectura en Capas</h5>
-                                    <ul style="font-size: 0.8em; text-align: left;">
-                                        <li>Three-Layered Services</li>
-                                        <li>Distribución física</li>
-                                        <li>Separación de responsabilidades</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-sitemap"></i> Parte 2: Patrón MVC</h5>
-                                    <ul style="font-size: 0.8em; text-align: left;">
-                                        <li>Modelo-Vista-Controlador</li>
-                                        <li>Separación de preocupaciones</li>
-                                        <li>Presentation Model</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="r-hstack" style="margin-top: 1rem;">
-                            <div class="column">
-                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-puzzle-piece"></i> Parte 3: Middleware de Integración</h5>
-                                    <ul style="font-size: 0.8em; text-align: left;">
-                                        <li>Integración funcional</li>
-                                        <li>Message-Oriented Middleware</li>
-                                        <li>Integration Broker</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-balance-scale"></i> Parte 4: Comparación Arquitectónica</h5>
-                                    <ul style="font-size: 0.8em; text-align: left;">
-                                        <li>Monolito vs Microservicios</li>
-                                        <li>Principios de desacoplamiento</li>
-                                        <li>CQRS Pattern</li>
-                                    </ul>
-                                </div>
+                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
+                            <div class="mermaid">
+                                graph LR
+                                A["🏗️ Cimientos<br/>Arquitectura en Capas<br/>Patrón MVC"] --> B["🔗 Conexión<br/>Middleware<br/>Integración"]
+                                B --> C["⚖️ Gran Debate<br/>Monolito vs<br/>Microservicios"]
+                                C --> D["🎯 Objetivo Final<br/>Acoplamiento<br/>Débil"]
+                                
+                                style A fill:#f3e5f5,stroke:#910048,stroke-width:3px
+                                style B fill:#fff3e0,stroke:#E9AB21,stroke-width:3px
+                                style C fill:#e3f2fd,stroke:#23356E,stroke-width:3px
+                                style D fill:#e8f5e8,stroke:#910048,stroke-width:3px
                             </div>
                         </div>
                     </div>
@@ -178,62 +122,67 @@
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-layer-group"></i> Las Tres Capas Lógicas</h3>
+                    <h3><i class="fas fa-layer-group"></i> Las Tres Capas</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
-                            <div class="mermaid">
-                                graph TB
-                                subgraph "🖥️ CAPA DE PRESENTACIÓN"
-                                UI["👤 User Interface Level<br/>• Interfaz de usuario<br/>• Traducir comandos<br/>• Presentar datos procesados"]
-                                end
-                                
-                                subgraph "⚙️ CAPA DE LÓGICA DE NEGOCIO"
-                                BL["🧠 Processing Level<br/>• Aplicaciones y lógica<br/>• Procesar datos<br/>• Aplicar reglas de negocio"]
-                                end
-                                
-                                subgraph "💾 CAPA DE DATOS"
-                                DL["🗄️ Data Level<br/>• Gestión de datos reales<br/>• Acceso y recuperación<br/>• Almacenamiento y persistencia"]
-                                end
-                                
-                                UI --> BL
-                                BL --> DL
-                                
-                                style UI fill:#e3f2fd,stroke:#23356E,stroke-width:3px
-                                style BL fill:#f3e5f5,stroke:#910048,stroke-width:3px
-                                style DL fill:#fff8e1,stroke:#E9AB21,stroke-width:3px
+                        <h4 style="color: var(--uide-primary); text-align: center;">Separación de Responsabilidades</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-desktop"></i> Presentación</h5>
+                                    <p style="font-size: 0.9em;">La cara visible<br/>Lo que vemos en la pantalla</p>
+                                </div>
                             </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-brain"></i> Lógica de Negocio</h5>
+                                    <p style="font-size: 0.9em;">El cerebro de la operación<br/>Todas las reglas</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-database"></i> Datos</h5>
+                                    <p style="font-size: 0.9em;">La memoria<br/>Donde se guarda todo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-arrow-down"></i> <strong>Comunicación:</strong> Una sola dirección, de arriba a abajo. Así se mantiene el orden.</p>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-server"></i> Distribución Física: Three-Tiered</h3>
+                    <h3><i class="fas fa-server"></i> Distribución Física</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">De Capas Lógicas a Servidores Físicos</h4>
+                        <h4 style="color: var(--uide-primary); text-align: center;">Cada Capa en su Propio Servidor</h4>
 
-                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
-                            <div class="mermaid">
-                                graph LR
-                                subgraph "🌐 SERVIDOR WEB"
-                                WS["Web Server<br/>• Punto de entrada<br/>• Interfaz de usuario<br/>• Presentación"]
-                                end
-                                
-                                subgraph "⚙️ SERVIDOR DE APLICACIONES"
-                                AS["Application Server<br/>• Procesamiento real<br/>• Lógica de negocio<br/>• Reglas empresariales"]
-                                end
-                                
-                                subgraph "🗄️ SERVIDOR DE BASE DE DATOS"
-                                DS["Database Server<br/>• Almacenamiento<br/>• Gestión de datos<br/>• Persistencia"]
-                                end
-                                
-                                WS --> AS
-                                AS --> DS
-                                
-                                style WS fill:#ffecb3,stroke:#E9AB21,stroke-width:3px
-                                style AS fill:#f3e5f5,stroke:#910048,stroke-width:3px
-                                style DS fill:#e8f5e8,stroke:#23356E,stroke-width:3px
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-globe"></i> Servidor Web</h5>
+                                    <p style="font-size: 0.9em;">Máquina para la web<br/>Especializada en presentación</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cogs"></i> Servidor de Aplicación</h5>
+                                    <p style="font-size: 0.9em;">Máquina para la lógica<br/>Especializada en procesamiento</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-database"></i> Servidor de BD</h5>
+                                    <p style="font-size: 0.9em;">Máquina para los datos<br/>Especializada en almacenamiento</p>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Ventaja:</strong> Cada máquina especializada en su tarea</p>
+                        </div>
+                    </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
                             <p><i class="fas fa-lightbulb"></i> <strong>Beneficio:</strong> Optimización de escalabilidad y rendimiento mediante distribución física</p>
@@ -282,52 +231,61 @@
                 <h2><i class="fas fa-sitemap"></i> Patrón Modelo-Vista-Controlador (MVC)</h2>
 
                 <section>
-                    <h3>Fundamentos del MVC</h3>
+                    <h3>La Misión de MVC</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">Patrón para Sistemas Interactivos</h4>
+                        <h4 style="color: var(--uide-primary); text-align: center;">Separar lo que la gente ve y toca de la maquinaria</h4>
 
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px;">
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px;">
                             <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
-                                <strong>Objetivo:</strong> Separación de responsabilidades entre la lógica del negocio y la interfaz de usuario
+                                <strong>Gran Ventaja:</strong> El equipo de diseño y el de programación pueden trabajar a la vez, cada uno en lo suyo, sin pisarse
                             </p>
                         </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-lightbulb"></i> <strong>Clave:</strong> Mantener consistencia y permitir múltiples vistas del mismo modelo</p>
+                            <p><i class="fas fa-magic"></i> <strong>La Verdadera Magia:</strong> Cómo se coordinan los tres para que todo vaya como la seda</p>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-puzzle-piece"></i> Los Tres Componentes</h3>
+                    <h3><i class="fas fa-puzzle-piece"></i> Cada Pieza Tiene su Trabajo</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
-                            <div class="mermaid">
-                                graph TB
-                                subgraph "🎮 CONTROLADOR"
-                                C["Controller<br/>• Gestiona entrada del usuario<br/>• Handle user input<br/>• Coordina interacciones"]
-                                end
-                                
-                                subgraph "👁️ VISTA"
-                                V["View<br/>• Muestra información<br/>• Display information to users<br/>• Interfaz de usuario"]
-                                end
-                                
-                                subgraph "🧠 MODELO"
-                                M["Model<br/>• Funcionalidad central<br/>• Core functionality and data<br/>• Lógica de negocio"]
-                                end
-                                
-                                C --> M
-                                M --> V
-                                V --> C
-                                
-                                style C fill:#ffecb3,stroke:#E9AB21,stroke-width:3px
-                                style V fill:#e3f2fd,stroke:#23356E,stroke-width:3px
-                                style M fill:#f3e5f5,stroke:#910048,stroke-width:3px
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-brain"></i> Modelo</h5>
+                                    <p style="font-size: 0.9em;">El que sabe de datos<br/>y reglas de negocio</p>
+                                </div>
                             </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-eye"></i> Vista</h5>
+                                    <p style="font-size: 0.9em;">Se encarga de pintar<br/>la pantalla bonita</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-gamepad"></i> Controlador</h5>
+                                    <p style="font-size: 0.9em;">Está a la escucha<br/>esperando clics y escritura</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-sync-alt"></i> La Clave de Todo: Consistencia</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Si se cambia un dato en un sitio...</h4>
+                        
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 1.2em; text-align: center;">
+                                <strong>¡ZAS!</strong> Todas las partes donde aparece se actualizan solas al instante
+                            </p>
                         </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-info-circle"></i> <strong>Nota:</strong> La Vista y el Controlador comprenden conjuntamente la interfaz de usuario</p>
+                            <p><i class="fas fa-shield-alt"></i> <strong>Se evita:</strong> Que la información quede desincronizada</p>
                         </div>
                     </div>
                 </section>
@@ -445,23 +403,21 @@
                 <h2><i class="fas fa-puzzle-piece"></i> Middleware de Integración Empresarial</h2>
 
                 <section>
-                    <h3>El Rol Crucial del Middleware</h3>
+                    <h3>¿Qué pasa cuando sistemas diferentes necesitan hablarse?</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">Software de Conectividad</h4>
+                        <h4 style="color: var(--uide-primary); text-align: center;">El Middleware como Traductor Universal</h4>
 
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px;">
-                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
-                                <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
-                                    <strong>Definición:</strong>
-                                </p>
-                                <p style="font-size: 1em; text-align: left; line-height: 1.6;">
-                                    Software diseñado para <strong>"ayudar a gestionar la complejidad y la heterogeneidad inherente a los sistemas distribuidos"</strong> mediante la construcción de un puente entre diferentes sistemas, permitiendo así la comunicación y la transferencia de datos.
-                                </p>
-                            </div>
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px;">
+                            <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
+                                <strong>Escenario:</strong> Sistema bancario antiguo (COBOL) necesita enviar información a una app móvil moderna
+                            </p>
+                            <p style="font-size: 1em; text-align: center; line-height: 1.6;">
+                                El middleware se pone en medio y hace que se entiendan, traduciendo los mensajes y gestionando toda esa complejidad
+                            </p>
                         </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-bridge"></i> <strong>Función:</strong> Punto de conexión para sistemas heterogéneos</p>
+                            <p><i class="fas fa-language"></i> <strong>Función:</strong> Traductor entre sistemas de diferentes épocas y lenguajes</p>
                         </div>
                     </div>
                 </section>
@@ -499,35 +455,21 @@
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-exchange-alt"></i> Message-Oriented Middleware (MOM)</h3>
+                    <h3><i class="fas fa-exchange-alt"></i> La Gracia de este Enfoque</h3>
                     <div class="concept-box">
-                        <div class="r-hstack">
-                            <div class="column">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-check-circle"></i> Ventajas</h5>
-                                    <ul style="font-size: 0.9em; text-align: left;">
-                                        <li><strong>Asíncrono:</strong> No bloquea el emisor</li>
-                                        <li><strong>Duradero:</strong> Mensajes persistentes</li>
-                                        <li><strong>Confiable:</strong> Reduce pérdida de mensajes</li>
-                                        <li><strong>Desacoplado:</strong> Sistemas independientes</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-tools"></i> Tecnologías</h5>
-                                    <ul style="font-size: 0.9em; text-align: left;">
-                                        <li>Apache Kafka</li>
-                                        <li>RabbitMQ</li>
-                                        <li>Amazon SQS</li>
-                                        <li>Apache ActiveMQ</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <h4 style="color: var(--uide-primary); text-align: center;">Send and Forget</h4>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px;">
+                            <p style="font-size: 1.2em; text-align: center; margin-bottom: 1rem;">
+                                Un sistema puede lanzar un mensaje y olvidarse
+                            </p>
+                            <p style="font-size: 1em; text-align: center; line-height: 1.6;">
+                                No tiene que quedarse esperando una respuesta. Ya se encargará el Middleware de guardarlo en una cola y asegurarse de que llegue a su destino cuando el otro sistema esté listo para recibirlo.
+                            </p>
                         </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-paper-plane"></i> <strong>Principio "Send and Forget":</strong> El emisor envía el mensaje y puede continuar con otro trabajo</p>
+                            <p><i class="fas fa-gem"></i> <strong>Para la fiabilidad de un sistema:</strong> Esto es oro puro</p>
                         </div>
                     </div>
                 </section>
@@ -572,12 +514,36 @@
             </section> 
            <!-- Comparación de Estilos Arquitectónicos -->
             <section data-transition="convex">
-                <h2><i class="fas fa-balance-scale"></i> Comparación de Estilos Arquitectónicos</h2>
+                <h2><i class="fas fa-balance-scale"></i> El Gran Debate</h2>
 
                 <section>
-                    <h3>Monolito vs Microservicios</h3>
+                    <h3>La Gran Pelea de la Arquitectura de Software</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">Evolución Arquitectónica</h4>
+                        <h4 style="color: var(--uide-primary); text-align: center;">Un Choque de Filosofías</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cube"></i> A un lado del ring</h5>
+                                    <p style="font-size: 1.1em;"><strong>El Monolito</strong></p>
+                                    <p style="font-size: 0.9em;">Ese gran bloque donde todo está junto y se despliega como una sola pieza</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cubes"></i> Al otro lado</h5>
+                                    <p style="font-size: 1.1em;"><strong>Los Microservicios</strong></p>
+                                    <p style="font-size: 0.9em;">La aplicación se rompe en trocitos pequeños e independientes que se comunican entre sí</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Esta Tabla lo Resume Genial</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Comparación Directa</h4>
 
                         <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 8px;">
                             <table style="width: 100%; font-size: 0.8em; border-collapse: collapse;">
@@ -621,9 +587,84 @@
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-unlink"></i> Principios de Desacoplamiento</h3>
+                    <h3><i class="fas fa-chart-line"></i> Escalabilidad</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary); text-align: center;">De Fuerte Acoplamiento a Loose Coupling</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cube"></i> Monolito</h5>
+                                    <p style="font-size: 0.9em;">Si una parte necesita más potencia, hay que darle más potencia a <strong>todo el bloque</strong></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cubes"></i> Microservicios</h5>
+                                    <p style="font-size: 0.9em;">Solo se escala <strong>la piececita</strong> que lo necesita</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-shopping-cart"></i> <strong>Ejemplo:</strong> Sistema de pagos de una tienda online en Black Friday. Solo se refuerza esa parte, no toda la web.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-exclamation-triangle"></i> Impacto de Fallos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-bomb"></i> Monolito</h5>
+                                    <p style="font-size: 0.9em;">Un error grave puede <strong>tirar abajo todo el sistema</strong></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-shield-alt"></i> Microservicios</h5>
+                                    <p style="font-size: 0.9em;">Si un servicio falla, <strong>los demás suelen poder seguir funcionando</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-balance-scale"></i> <strong>Ventaja brutal:</strong> Pero a costa de que todo sea más complejo de gestionar</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-question-circle"></i> ¿Por qué toda esta Complicación?</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Todo se reduce a conseguir una cosa</h4>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 1.5em; text-align: center; font-weight: bold;">
+                                EL SANTO GRIAL DEL DISEÑO DE SOFTWARE
+                            </p>
+                            <p style="font-size: 1.2em; text-align: center; margin-top: 1rem;">
+                                <strong>ACOPLAMIENTO DÉBIL</strong>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-unlink"></i> Acoplamiento Débil</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Las distintas partes del sistema dependen lo mínimo posible unas de otras</h4>
+
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 1.1em; text-align: center;">
+                                <strong>Lo contrario del acoplamiento fuerte:</strong><br/>
+                                Donde tocas una cosa y de repente se rompe otra que no te esperabas
+                            </p>
+                            <p style="font-size: 1em; text-align: center; margin-top: 1rem; font-style: italic;">
+                                Un efecto dominó terrorífico
+                            </p>
+                        </div>
+                    </div>
 
                         <div class="r-hstack">
                             <div class="column">
@@ -653,35 +694,63 @@
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-cubes"></i> Elementos Clave para Microservicios</h3>
+                    <h3><i class="fas fa-list-ol"></i> Receta de Tres Pasos</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 12px;">
-                            <div class="mermaid">
-                                graph TB
-                                subgraph "🏗️ MICROSERVICIOS ARCHITECTURE"
-                                
-                                subgraph "🧩 Componentización"
-                                COMP["Componentization<br/>• Servicios independientes<br/>• Descomposición de aplicaciones<br/>• Responsabilidades específicas"]
-                                end
-                                
-                                subgraph "📡 Comunicación"
-                                COMM["Communication<br/>• APIs bien definidas<br/>• HTTP/REST<br/>• gRPC<br/>• Message Queues"]
-                                end
-                                
-                                subgraph "🎯 Coordinación"
-                                COORD["Coordination<br/>• Service Discovery<br/>• Load Balancing<br/>• Circuit Breakers<br/>• Health Checks"]
-                                end
-                                
-                                end
-                                
-                                COMP --> COMM
-                                COMM --> COORD
-                                COORD --> COMP
-                                
-                                style COMP fill:#f3e5f5,stroke:#910048,stroke-width:3px
-                                style COMM fill:#e3f2fd,stroke:#23356E,stroke-width:3px
-                                style COORD fill:#fff3e0,stroke:#E9AB21,stroke-width:3px
+                        <h4 style="color: var(--uide-primary); text-align: center;">Para conseguir ese desacoplamiento, ¿qué hace falta?</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> 1. Componentización</h5>
+                                    <p style="font-size: 0.9em;">Romper la aplicación en <strong>servicios independientes</strong></p>
+                                </div>
                             </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-comments"></i> 2. Comunicación</h5>
+                                    <p style="font-size: 0.9em;">Que todos hablen <strong>el mismo idioma</strong> a través de APIs</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-handshake"></i> 3. Coordinación</h5>
+                                    <p style="font-size: 0.9em;">Que los servicios sepan <strong>cómo encontrarse</strong> y hablar sin problemas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-history"></i> La Historia Completa</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Si echamos la vista atrás</h4>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 1.1em; text-align: center; line-height: 1.6;">
+                                Toda esta evolución es en el fondo una historia muy clara: la de pasar de construir <strong>grandes bloques rígidos</strong> y muy dependientes entre sí a construir sistemas con <strong>piezas más pequeñas, más flexibles e independientes</strong>.
+                            </p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-target"></i> <strong>Todo para conseguir:</strong> Sistemas que aguanten mejor los fallos, que puedan crecer más fácilmente y que se adapten mejor a los cambios</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-balance-scale"></i> La Gran Reflexión Final</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">La tensión constante</h4>
+
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 1.2em; text-align: center; line-height: 1.6;">
+                                Entre buscar la <strong>simplicidad</strong> de tenerlo todo junto y la <strong>flexibilidad</strong> de tenerlo todo separado
+                            </p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-palette"></i> <strong>Ahí está el arte:</strong> De la buena arquitectura de software</p>
                         </div>
                     </div>
                 </section>
