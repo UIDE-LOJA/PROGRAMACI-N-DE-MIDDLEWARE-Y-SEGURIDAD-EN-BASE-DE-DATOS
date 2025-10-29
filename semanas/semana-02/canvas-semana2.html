@@ -1,4 +1,7 @@
-<p data-start="0" data-end="349">Esta semana profundizamos en <strong>arquitecturas en capas</strong> y <strong>patrones de integración</strong>, explorando desde el "abuelo de todos los patrones" (arquitectura de tres capas) hasta el <strong>middleware de integración empresarial</strong>. Analizaremos el patrón MVC y compararemos estilos arquitectónicos modernos.</p>
+<p data-start="0" data-end="349">Esta semana profundizamos en <strong>arquitecturas en capas</strong> y <strong>patrones
+        de integración</strong>, explorando desde el "abuelo de todos los patrones" (arquitectura de tres capas) hasta
+    el <strong>middleware de integración empresarial</strong>. Analizaremos el patrón MVC y compararemos estilos
+    arquitectónicos modernos.</p>
 <p data-start="351" data-end="368"><strong>¿Qué veremos?</strong></p>
 <div class="_tableContainer_1rjym_1">
     <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
@@ -14,33 +17,51 @@
             <tbody data-start="422" data-end="1868">
                 <tr data-start="422" data-end="654">
                     <td data-start="422" data-end="449" data-col-size="sm">Arquitectura de Tres Capas</td>
-                    <td data-col-size="xl" data-start="449" data-end="574">Patrón fundamental de separación de responsabilidades: presentación, lógica de negocio y datos; distribución física en servidores especializados (three-tiered).</td>
-                    <td data-col-size="md" data-start="574" data-end="654">Aplicaciones web con servidor web, servidor de aplicaciones y servidor de base de datos separados.</td>
+                    <td data-col-size="xl" data-start="449" data-end="574">Patrón fundamental de separación de
+                        responsabilidades: presentación, lógica de negocio y datos; distribución física en servidores
+                        especializados (three-tiered).</td>
+                    <td data-col-size="md" data-start="574" data-end="654">Aplicaciones web con servidor web, servidor
+                        de aplicaciones y servidor de base de datos separados.</td>
                 </tr>
                 <tr data-start="655" data-end="870">
                     <td data-start="655" data-end="682" data-col-size="sm">Patrón MVC</td>
-                    <td data-col-size="xl" data-start="682" data-end="812">Modelo-Vista-Controlador para sistemas interactivos; separación entre lógica de negocio e interfaz de usuario; múltiples vistas del mismo modelo; Presentation Model.</td>
-                    <td data-col-size="md" data-start="812" data-end="870">Frameworks web (Spring MVC, ASP.NET MVC), aplicaciones móviles, interfaces de usuario complejas.</td>
+                    <td data-col-size="xl" data-start="682" data-end="812">Modelo-Vista-Controlador para sistemas
+                        interactivos; separación entre lógica de negocio e interfaz de usuario; múltiples vistas del
+                        mismo modelo; Presentation Model.</td>
+                    <td data-col-size="md" data-start="812" data-end="870">Frameworks web (Spring MVC, ASP.NET MVC),
+                        aplicaciones móviles, interfaces de usuario complejas.</td>
                 </tr>
                 <tr data-start="871" data-end="1046">
                     <td data-start="871" data-end="911" data-col-size="sm">Middleware de Integración</td>
-                    <td data-col-size="xl" data-start="911" data-end="972">Software de conectividad para sistemas heterogéneos; integración funcional mediante objetos distribuidos, MOM y SOI; gestión de complejidad y heterogeneidad.</td>
-                    <td data-col-size="md" data-start="972" data-end="1046">CORBA (objetos distribuidos), Kafka/RabbitMQ (MOM), SOAP/REST (SOI).</td>
+                    <td data-col-size="xl" data-start="911" data-end="972">Software de conectividad para sistemas
+                        heterogéneos; integración funcional mediante objetos distribuidos, MOM y SOI; gestión de
+                        complejidad y heterogeneidad.</td>
+                    <td data-col-size="md" data-start="972" data-end="1046">CORBA (objetos distribuidos), Kafka/RabbitMQ
+                        (MOM), SOAP/REST (SOI).</td>
                 </tr>
                 <tr data-start="1047" data-end="1222">
                     <td data-start="1047" data-end="1072" data-col-size="sm">Integration Broker</td>
-                    <td data-col-size="xl" data-start="1072" data-end="1136">Centro de mediación para sistemas dispares; orquestación de actividades, transformación de datos, cooperación transparente sin acoplamiento directo.</td>
-                    <td data-col-size="md" data-start="1136" data-end="1222">Apache Camel, MuleSoft, IBM Integration Bus, Spring Integration.</td>
+                    <td data-col-size="xl" data-start="1072" data-end="1136">Centro de mediación para sistemas dispares;
+                        orquestación de actividades, transformación de datos, cooperación transparente sin acoplamiento
+                        directo.</td>
+                    <td data-col-size="md" data-start="1136" data-end="1222">Apache Camel, MuleSoft, IBM Integration
+                        Bus, Spring Integration.</td>
                 </tr>
                 <tr data-start="1223" data-end="1400">
                     <td data-start="1223" data-end="1238" data-col-size="sm">Comparación Arquitectónica</td>
-                    <td data-col-size="xl" data-start="1238" data-end="1324">Monolito en capas vs microservicios; diferencias en escalabilidad, gestión de datos, impacto de fallas y tecnología; principios de desacoplamiento.</td>
-                    <td data-col-size="md" data-start="1324" data-end="1400">Netflix (microservicios) vs aplicaciones empresariales tradicionales (monolito).</td>
+                    <td data-col-size="xl" data-start="1238" data-end="1324">Monolito en capas vs microservicios;
+                        diferencias en escalabilidad, gestión de datos, impacto de fallas y tecnología; principios de
+                        desacoplamiento.</td>
+                    <td data-col-size="md" data-start="1324" data-end="1400">Netflix (microservicios) vs aplicaciones
+                        empresariales tradicionales (monolito).</td>
                 </tr>
                 <tr data-start="1401" data-end="1576">
                     <td data-start="1401" data-end="1438" data-col-size="sm">CQRS Pattern</td>
-                    <td data-col-size="xl" data-start="1438" data-end="1518">Command-Query Responsibility Segregation; separación del modelo de escritura del modelo de lectura; optimización específica para comandos y consultas.</td>
-                    <td data-col-size="md" data-start="1518" data-end="1576">Sistemas de alta concurrencia, Event Sourcing, arquitecturas de microservicios complejas.</td>
+                    <td data-col-size="xl" data-start="1438" data-end="1518">Command-Query Responsibility Segregation;
+                        separación del modelo de escritura del modelo de lectura; optimización específica para comandos
+                        y consultas.</td>
+                    <td data-col-size="md" data-start="1518" data-end="1576">Sistemas de alta concurrencia, Event
+                        Sourcing, arquitecturas de microservicios complejas.</td>
                 </tr>
             </tbody>
         </table>
@@ -50,13 +71,18 @@
 <p data-start="1900" data-end="1930">Al finalizar la semana podrás:</p>
 <ul data-start="1932" data-end="2426">
     <li data-start="1932" data-end="2044">
-        <p data-start="1934" data-end="2044">Explicar la arquitectura de tres capas y su distribución física en servidores especializados.</p>
+        <p data-start="1934" data-end="2044">Explicar la arquitectura de tres capas y su distribución física en
+            servidores especializados.</p>
     </li>
     <li data-start="2045" data-end="2133">
-        <p data-start="2047" data-end="2133">Aplicar el patrón <strong data-start="2058" data-end="2069">MVC</strong> en aplicaciones web modernas, identificando <strong data-start="2071" data-end="2081">modelo</strong>, <strong data-start="2084" data-end="2094">vista</strong> y <strong>controlador</strong>.</p>
+        <p data-start="2047" data-end="2133">Aplicar el patrón <strong data-start="2058" data-end="2069">MVC</strong> en
+            aplicaciones web modernas, identificando <strong data-start="2071" data-end="2081">modelo</strong>, <strong
+                data-start="2084" data-end="2094">vista</strong> y <strong>controlador</strong>.</p>
     </li>
-    <li data-start="2134" data-end="2249">Identificar roles del middleware en integración empresarial y sus diferentes enfoques (objetos distribuidos, MOM, SOI).</li>
-    <li data-start="2250" data-end="2300">Comparar arquitecturas monolíticas vs microservicios, analizando ventajas y desventajas de cada enfoque.</li>
+    <li data-start="2134" data-end="2249">Identificar roles del middleware en integración empresarial y sus diferentes
+        enfoques (objetos distribuidos, MOM, SOI).</li>
+    <li data-start="2250" data-end="2300">Comparar arquitecturas monolíticas vs microservicios, analizando ventajas y
+        desventajas de cada enfoque.</li>
 </ul>
 <p data-start="2428" data-end="2442"><strong>Materiales</strong></p>
 <ul data-start="2444" data-end="2647">
@@ -74,21 +100,26 @@
         <strong>URL:</strong> https://www.youtube.com/watch?v=mvc-microservicios
     </li>
     <li data-start="2516" data-end="2647">
-        <p data-start="2518" data-end="2647"><strong data-start="2518" data-end="2546">Bibliografía base:</strong> Fowler (2003); Buschmann et al. (1996); Newman (2015); Richardson (2018); Hohpe & Woolf (2004); Gamma et al. (1994).</p>
+        <p data-start="2518" data-end="2647"><strong data-start="2518" data-end="2546">Bibliografía base:</strong>
+            Fowler (2003); Buschmann et al. (1996); Newman (2015); Richardson (2018); Hohpe & Woolf (2004); Gamma et al.
+            (1994).</p>
     </li>
 </ul>
 <p data-start="2649" data-end="2664"><strong>Actividades</strong></p>
 <ul data-start="2666" data-end="3004">
     <li data-start="2666" data-end="2723">
-        <p data-start="2668" data-end="2723"><strong data-start="2668" data-end="2686">Lectura guiada</strong> del compendio y análisis de patrones arquitectónicos.</p>
+        <p data-start="2668" data-end="2723"><strong data-start="2668" data-end="2686">Lectura guiada</strong> del
+            compendio y análisis de patrones arquitectónicos.</p>
     </li>
     <li data-start="2724" data-end="2841">
-        <p data-start="2726" data-end="2841"><strong data-start="2726" data-end="2761">PE-1.2: Diagrama de arquitectura MVC</strong> diseñando aplicación web con identificación de componentes M-V-C y flujo de datos — <strong data-start="2826"
-                data-end="2838">2.25 pts</strong>.</p>
+        <p data-start="2726" data-end="2841"><strong data-start="2726" data-end="2761">PE-1.2: Diagrama de arquitectura
+                MVC</strong> diseñando aplicación web con identificación de componentes M-V-C y flujo de datos — <strong
+                data-start="2826" data-end="2838">2.25 pts</strong>.</p>
     </li>
     <li data-start="2842" data-end="2941">
-        <p data-start="2844" data-end="2941"><strong data-start="2844" data-end="2890">TA-1.2: Análisis de middleware de integración</strong> investigando caso real de integración empresarial con evaluación de patrones — <strong data-start="2926"
-                data-end="2938">2.25 pts</strong>.</p>
+        <p data-start="2844" data-end="2941"><strong data-start="2844" data-end="2890">TA-1.2: Análisis de middleware de
+                integración</strong> investigando caso real de integración empresarial con evaluación de patrones —
+            <strong data-start="2926" data-end="2938">2.25 pts</strong>.</p>
     </li>
     <li data-start="2942" data-end="3004">
         <p data-start="2944" data-end="3004"><strong data-start="2944" data-end="2967">Total de la semana:</strong>
