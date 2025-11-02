@@ -142,7 +142,7 @@ mark {
         flex-direction: column;
         gap: 0.8rem;
     }
-    
+
     .concept-box {
         padding: 1.2rem;
         font-size: 0.95em;
@@ -154,36 +154,37 @@ mark {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .concept-box {
         padding: 1rem;
         font-size: 0.9em;
     }
-    
+
     .concept-box h4 {
         font-size: 1.1em;
     }
-    
+
     .title-slide {
         padding: 1rem;
     }
-    
+
     .course-info {
         font-size: 0.8em;
     }
-    
+
     /* Grid adjustments for mobile */
     .classification-grid {
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-    
+
     /* Table responsive */
     table {
         font-size: 0.7em;
     }
-    
-    table th, table td {
+
+    table th,
+    table td {
         padding: 0.3rem;
     }
 }
@@ -193,15 +194,15 @@ mark {
         padding: 0.8rem;
         font-size: 0.85em;
     }
-    
+
     .interactive-box {
         padding: 1rem;
     }
-    
+
     .timer-box {
         padding: 0.8rem;
     }
-    
+
     /* Stack everything vertically on very small screens */
     .r-hstack {
         flex-direction: column;
@@ -369,11 +370,11 @@ blockquote footer {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 0.8rem;
     }
-    
+
     .gallery-item img {
         height: 100px;
     }
-    
+
     .gallery-item-content {
         padding: 0.6rem;
     }
@@ -384,23 +385,23 @@ blockquote footer {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 0.5rem;
     }
-    
+
     .gallery-item img {
         height: 80px;
     }
-    
+
     .gallery-item-content {
         padding: 0.5rem;
     }
-    
+
     .gallery-item h6 {
         font-size: 0.8em;
     }
-    
+
     .gallery-item p {
         font-size: 0.65em;
     }
-    
+
     .hybrid-features {
         flex-direction: column;
         gap: 0.3rem;
@@ -412,29 +413,31 @@ blockquote footer {
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
-    
+
     .gallery-item {
         display: flex;
         align-items: center;
         gap: 0.8rem;
     }
-    
+
     .gallery-item img {
         width: 80px;
         height: 60px;
         flex-shrink: 0;
     }
-    
+
     .gallery-item-content {
         flex: 1;
         padding: 0.5rem;
     }
-    
+
     .hybrid-features {
         flex-direction: row;
         gap: 0.3rem;
     }
-}/* Mermaid diagrams responsive styling */
+}
+
+/* Mermaid diagrams responsive styling */
 .mermaid-container {
     display: flex;
     justify-content: center;
@@ -500,12 +503,12 @@ blockquote footer {
         max-height: 70vh !important;
         padding: 1rem !important;
     }
-    
+
     /* Stack columns on tablets */
     .r-hstack {
         flex-direction: column !important;
     }
-    
+
     .column {
         flex: 1 !important;
         margin-bottom: 1rem;
@@ -519,13 +522,13 @@ blockquote footer {
         font-size: 0.8em;
         padding: 0.8rem !important;
     }
-    
+
     /* Ensure columns stack properly on mobile */
     .r-hstack {
         flex-direction: column !important;
         gap: 0.5rem;
     }
-    
+
     .column {
         flex: 1 !important;
         margin-bottom: 0.5rem;
@@ -539,7 +542,7 @@ blockquote footer {
         font-size: 0.7em;
         padding: 0.5rem !important;
     }
-    
+
     .concept-box {
         padding: 0.8rem;
         margin: 0.5rem 0;
@@ -754,6 +757,7 @@ table tr:nth-child(even) {
     font-size: 0.9em;
     color: var(--uide-secondary);
 }
+
 /* Timer St
 yles */
 .timer-box {
@@ -793,18 +797,38 @@ yles */
 
 /* Timer Animation */
 @keyframes flash {
-    0%, 50% { opacity: 1; }
-    25%, 75% { opacity: 0.3; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0.3;
+    }
 }
 
 @keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
 }
 
 /* Timer Display Styles */
-#timer1-display, #timer2-display {
+#timer1-display,
+#timer2-display {
     font-family: 'Courier New', monospace;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -817,13 +841,14 @@ yles */
         min-height: 100px;
         padding: 0.8rem;
     }
-    
+
     .timer-box button {
         font-size: 0.7em;
         padding: 0.3rem 0.6rem;
     }
-    
-    #timer1-display, #timer2-display {
+
+    #timer1-display,
+    #timer2-display {
         font-size: 1.5em;
     }
 }
@@ -833,17 +858,18 @@ yles */
         min-height: 80px;
         padding: 0.5rem;
     }
-    
+
     .timer-box button {
         font-size: 0.6em;
         padding: 0.2rem 0.4rem;
         margin: 0.1rem;
     }
-    
-    #timer1-display, #timer2-display {
+
+    #timer1-display,
+    #timer2-display {
         font-size: 1.2em;
     }
-    
+
     .timer-box div[style*="gap: 0.5rem"] {
         gap: 0.2rem !important;
         flex-wrap: wrap;
@@ -863,7 +889,7 @@ yles */
     font-size: 1.5em;
     font-weight: bold;
     z-index: 10000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     animation: pulse 0.5s ease-in-out;
 }
 
@@ -896,7 +922,8 @@ yles */
 }
 
 /* Simple dice styling without animations */
-.fa-dice, .fa-dice-six {
+.fa-dice,
+.fa-dice-six {
     display: inline-block;
 }
 
@@ -971,11 +998,14 @@ table tr:hover {
 }
 
 @keyframes floatPulse {
-    0%, 100% { 
+
+    0%,
+    100% {
         transform: translateY(0px) scale(1);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-    50% { 
+
+    50% {
         transform: translateY(-5px) scale(1.05);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
@@ -986,53 +1016,63 @@ table tr:hover {
     table tr:hover {
         background-color: transparent !important;
     }
-    
+
     .floating-help-emoji {
         animation: none;
     }
-    
+
     .floating-help-emoji:hover,
     .floating-help-emoji:hover i {
         transform: none;
     }
 }
+
 /* ====
 = ANIMACIONES AGENTE ASPIRADORA ===== */
 
 /* Rotación continua del ícono de la aspiradora */
 @keyframes vacuum-rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Animación de limpieza (aspirar) */
 @keyframes vacuum-clean {
-    0% { 
+    0% {
         transform: scale(1);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-    50% { 
+
+    50% {
         transform: scale(1.2);
         box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
     }
-    100% { 
+
+    100% {
         transform: scale(1);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 }
 
 /* Animación de celda siendo limpiada */
 @keyframes cell-cleaning {
-    0% { 
+    0% {
         background: #fff3cd;
         border-color: #dc3545;
     }
-    50% { 
+
+    50% {
         background: #d4edda;
         border-color: #28a745;
         transform: scale(1.05);
     }
-    100% { 
+
+    100% {
         background: #d4edda;
         border-color: #28a745;
         transform: scale(1);
@@ -1041,15 +1081,17 @@ table tr:hover {
 
 /* Animación de celda sucia */
 @keyframes dirt-appear {
-    0% { 
+    0% {
         opacity: 0;
         transform: scale(0);
     }
-    50% { 
+
+    50% {
         opacity: 1;
         transform: scale(1.2);
     }
-    100% { 
+
+    100% {
         opacity: 1;
         transform: scale(1);
     }
@@ -1057,10 +1099,11 @@ table tr:hover {
 
 /* Animación de celda limpia */
 @keyframes cell-clean {
-    0% { 
+    0% {
         background: #fff3cd;
     }
-    100% { 
+
+    100% {
         background: #d4edda;
     }
 }
@@ -1092,7 +1135,7 @@ table tr:hover {
 /* Animación de botones */
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
 button:active {
@@ -1101,11 +1144,12 @@ button:active {
 
 /* Animación de estado del agente */
 @keyframes status-update {
-    0% { 
+    0% {
         opacity: 0.7;
         transform: translateX(-10px);
     }
-    100% { 
+
+    100% {
         opacity: 1;
         transform: translateX(0);
     }
@@ -1117,8 +1161,13 @@ button:active {
 
 /* Animación de progreso */
 @keyframes progress-fill {
-    0% { width: 0%; }
-    100% { width: var(--progress-width); }
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: var(--progress-width);
+    }
 }
 
 /* Responsive para dispositivos móviles */
@@ -1127,51 +1176,56 @@ button:active {
         width: 50px !important;
         height: 50px !important;
     }
-    
+
     #vacuum-agent {
         width: 32px !important;
         height: 32px !important;
     }
-    
+
     #vacuum-agent i {
         font-size: 1em !important;
     }
-    
+
     /* Ajustar grid en móviles */
-    #vacuum-simulation > div:first-of-type {
+    #vacuum-simulation>div:first-of-type {
         max-width: 260px !important;
         gap: 4px !important;
     }
-}/* =====
+}
+
+/* =====
  ANIMACIONES MODAL RESULTADOS ===== */
 
 /* Animación de entrada del overlay */
 @keyframes fadeIn {
-    0% { 
+    0% {
         opacity: 0;
     }
-    100% { 
+
+    100% {
         opacity: 1;
     }
 }
 
 /* Animación de salida del overlay */
 @keyframes fadeOut {
-    0% { 
+    0% {
         opacity: 1;
     }
-    100% { 
+
+    100% {
         opacity: 0;
     }
 }
 
 /* Animación de entrada del modal */
 @keyframes slideIn {
-    0% { 
+    0% {
         opacity: 0;
         transform: scale(0.8) translateY(-20px);
     }
-    100% { 
+
+    100% {
         opacity: 1;
         transform: scale(1) translateY(0);
     }
@@ -1185,7 +1239,7 @@ kbd {
     font-family: monospace !important;
     font-size: 0.9em !important;
     border: 1px solid #ccc !important;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Mejoras para el overlay */
@@ -1200,12 +1254,12 @@ body.modal-open {
 
 /* Responsive para el modal */
 @media (max-width: 480px) {
-    #results-overlay > div {
+    #results-overlay>div {
         width: 95% !important;
         padding: 1.5rem !important;
         margin: 1rem !important;
     }
-    
+
     #results-overlay button {
         padding: 0.6rem 1rem !important;
         font-size: 0.9em !important;
@@ -1223,14 +1277,14 @@ body.modal-open {
     height: 120px !important;
     object-fit: cover !important;
     border-radius: 8px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
 /* Hover effect para las imágenes */
 .concept-box img:hover {
     transform: scale(1.03);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive para imágenes en móviles */
@@ -1246,7 +1300,9 @@ body.modal-open {
         width: 100% !important;
         height: 80px !important;
     }
-}/* 
+}
+
+/* 
 ===== VIDEOS CON ALTURA OPTIMIZADA ===== */
 
 /* Videos en grids de ejemplos - altura fija, ancho flexible */
@@ -1255,14 +1311,14 @@ body.modal-open {
     height: 140px !important;
     object-fit: cover !important;
     border-radius: 8px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
 /* Hover effect para los videos */
 .concept-box video:hover {
     transform: scale(1.03);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive para videos en móviles */
@@ -1278,41 +1334,66 @@ body.modal-open {
         width: 100% !important;
         height: 100px !important;
     }
-}/* ===
+}
+
+/* ===
 == MATRIZ DE CLASIFICACIÓN INTERACTIVA ===== */
 
 /* Animaciones para las tarjetas de la matriz */
 .matrix-card {
     transform: scale(1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .matrix-card:hover {
     transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     z-index: 10;
 }
 
 /* Animaciones de los íconos */
 @keyframes matrix-icon-bounce {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    25% { transform: scale(1.2) rotate(-5deg); }
-    50% { transform: scale(1.3) rotate(5deg); }
-    75% { transform: scale(1.1) rotate(-2deg); }
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.2) rotate(-5deg);
+    }
+
+    50% {
+        transform: scale(1.3) rotate(5deg);
+    }
+
+    75% {
+        transform: scale(1.1) rotate(-2deg);
+    }
 }
 
 @keyframes matrix-icon-pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.15); opacity: 0.8; }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.8;
+    }
 }
 
 /* Animación de aparición secuencial */
 @keyframes matrix-card-appear {
-    0% { 
+    0% {
         opacity: 0;
         transform: scale(0.8) translateY(20px);
     }
-    100% { 
+
+    100% {
         opacity: 1;
         transform: scale(1) translateY(0);
     }
@@ -1343,7 +1424,7 @@ body.modal-open {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left 0.5s ease;
     z-index: 1;
 }
@@ -1359,7 +1440,7 @@ body.modal-open {
 
 .matrix-card:hover .matrix-example {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive para la matriz */
@@ -1368,11 +1449,11 @@ body.modal-open {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
-    
+
     .matrix-card {
         padding: 1rem !important;
     }
-    
+
     .matrix-icons {
         font-size: 1.5em !important;
     }
@@ -1380,13 +1461,18 @@ body.modal-open {
 
 /* Animación de pulsación para elementos activos */
 @keyframes matrix-pulse {
-    0%, 100% { 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-    50% { 
+
+    50% {
         box-shadow: 0 8px 25px rgba(35, 53, 110, 0.3);
     }
-}/*
+}
+
+/*
  ===== TABLA DE DECISIONES INTERACTIVA ===== */
 
 /* Animación para nuevas filas */
@@ -1395,6 +1481,7 @@ body.modal-open {
         opacity: 0;
         transform: translateX(-20px) scale(0.95);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0) scale(1);
@@ -1407,6 +1494,7 @@ body.modal-open {
         opacity: 1;
         transform: translateX(0) scale(1);
     }
+
     100% {
         opacity: 0;
         transform: translateX(20px) scale(0.95);
@@ -1419,14 +1507,17 @@ body.modal-open {
         opacity: 0;
         transform: translateY(10px) scale(0.8);
     }
+
     20% {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
     80% {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
     100% {
         opacity: 0;
         transform: translateY(-10px) scale(0.8);
@@ -1435,7 +1526,7 @@ body.modal-open {
 
 /* Estilos para la tabla de decisiones */
 #decision-table {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -1458,7 +1549,7 @@ body.modal-open {
 /* Botón de simular */
 #decision-table-container button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive para la tabla */
@@ -1466,17 +1557,19 @@ body.modal-open {
     #decision-table {
         font-size: 0.6em !important;
     }
-    
+
     #decision-table th,
     #decision-table td {
         padding: 0.3rem !important;
     }
-    
+
     #decision-table-container button {
         font-size: 0.65em !important;
         padding: 0.25rem 0.5rem !important;
     }
-}/* 
+}
+
+/* 
 ===== BOTONES DE LA TABLA DE DECISIONES ===== */
 
 /* Contenedor de botones */
@@ -1488,18 +1581,18 @@ body.modal-open {
 /* Estilos para botones de la tabla */
 #decision-table-container button {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-weight: 500;
 }
 
 #decision-table-container button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #decision-table-container button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Botón simular (primario) */
@@ -1518,7 +1611,7 @@ body.modal-open {
         flex-direction: column;
         gap: 0.2rem;
     }
-    
+
     #decision-table-container button {
         font-size: 0.65em !important;
         padding: 0.25rem 0.5rem !important;
@@ -1528,9 +1621,17 @@ body.modal-open {
 
 /* Animación especial para el botón de reiniciar */
 @keyframes resetPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 #decision-table-container button[onclick*="resetDecisionTable"]:active {
@@ -1587,7 +1688,7 @@ body.modal-open {
         transform: scale(0.8) !important;
         transform-origin: center center !important;
     }
-    
+
     /* Stack columns on tablets for better diagram visibility */
     .r-hstack {
         flex-direction: column !important;
@@ -1599,7 +1700,7 @@ body.modal-open {
         transform: scale(0.7) !important;
         transform-origin: center center !important;
     }
-    
+
     /* Ensure diagram container adapts */
     .mermaid {
         min-height: 200px !important;
@@ -1618,7 +1719,7 @@ body.modal-open {
         transform: scale(0.5) !important;
         transform-origin: center center !important;
     }
-    
+
     .mermaid {
         min-height: 150px !important;
     }
@@ -1649,4 +1750,293 @@ body.modal-open {
     .mermaid text {
         font-size: 10px !important;
     }
+}
+
+/* ==
+=== ESTILOS ESPECÍFICOS PARA DIAGRAMAS MERMAID ===== */
+
+/* Contenedor principal del diagrama */
+.mermaid {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* SVG del diagrama Mermaid */
+.mermaid svg {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    transform: scale(0.7) !important;
+    transform-origin: center center !important;
+}
+
+/* Nodos del diagrama */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+    stroke-width: 2px !important;
+}
+
+/* Texto de los nodos */
+.mermaid .nodeLabel {
+    font-size: clamp(10px, 2vw, 16px) !important;
+    font-weight: bold !important;
+    line-height: 1.2 !important;
+}
+
+/* Etiquetas de las aristas */
+.mermaid .edgeLabel {
+    font-size: clamp(8px, 1.5vw, 14px) !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    font-weight: bold !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Pantallas grandes (Desktop) */
+@media (min-width: 1200px) {
+    .mermaid svg {
+        transform: scale(0.85) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 16px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 14px !important;
+    }
+}
+
+/* Laptops y tablets grandes */
+@media (max-width: 1199px) and (min-width: 1025px) {
+    .mermaid svg {
+        transform: scale(0.75) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 15px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 13px !important;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .mermaid svg {
+        transform: scale(0.65) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 14px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 12px !important;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) and (min-width: 481px) {
+    .mermaid svg {
+        transform: scale(0.55) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 13px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 11px !important;
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) and (min-width: 361px) {
+    .mermaid svg {
+        transform: scale(0.45) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 12px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 10px !important;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+    .mermaid svg {
+        transform: scale(0.4) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 11px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 9px !important;
+    }
+}
+
+/* Asegurar que no haya scroll horizontal */
+.reveal .slides section {
+    overflow-x: hidden !important;
+}
+
+.reveal .slides .concept-box {
+    overflow-x: hidden !important;
+}
+
+/* ===
+== MEJORAS ADICIONALES DE RESPONSIVIDAD PARA MERMAID ===== */
+
+/* Asegurar que el texto sea siempre legible */
+.mermaid text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Mejorar contraste de las etiquetas */
+.mermaid .edgeLabel rect {
+    fill: rgba(255, 255, 255, 0.95) !important;
+    stroke: rgba(0, 0, 0, 0.2) !important;
+    stroke-width: 1px !important;
+}
+
+/* Ajustes específicos para contenedores pequeños */
+@media (max-width: 600px) {
+    .mermaid {
+        padding: 5px !important;
+    }
+
+    .mermaid svg {
+        margin: 0 auto !important;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mermaid svg {
+        transform: scale(0.6) !important;
+    }
+
+    .mermaid .nodeLabel {
+        font-size: 12px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 10px !important;
+    }
+}
+
+/* Ajustes para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .mermaid text {
+        font-weight: 700 !important;
+    }
+
+    .mermaid .edgeLabel {
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+/* Contenedor responsivo mejorado */
+.mermaid {
+    min-height: 120px !important;
+    max-height: 300px !important;
+    overflow: visible !important;
+}
+
+/* Asegurar que los nodos no se corten */
+.mermaid svg {
+    overflow: visible !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
+
+/* ====
+= ESTILOS MERMAID SEGÚN DOCUMENTACIÓN OFICIAL ===== */
+
+/* Contenedor principal - siguiendo mejores prácticas */
+.mermaid {
+    font-family: 'trebuchet ms', verdana, arial, sans-serif !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+/* SVG responsivo nativo */
+.mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
+    width: 100% !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+/* Texto legible en todos los tamaños */
+.mermaid text {
+    font-family: 'trebuchet ms', verdana, arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+/* Etiquetas de aristas con mejor contraste */
+.mermaid .edgeLabel {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Responsive breakpoints mínimos */
+@media (max-width: 768px) {
+    .mermaid text {
+        font-size: 12px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mermaid text {
+        font-size: 11px !important;
+    }
+
+    .mermaid .edgeLabel {
+        font-size: 9px !important;
+    }
+}
+
+/* Contenedor del diagrama con altura controlada */
+div[style*="height: 200px"] .mermaid {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+div[style*="height: 200px"] .mermaid svg {
+    max-height: 180px !important;
 }

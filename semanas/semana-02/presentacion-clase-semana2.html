@@ -52,8 +52,8 @@
     <!-- Mermaid.js -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <script>
-        // Configure Mermaid
-        mermaid.initialize({
+        // Configure Mermaid según documentación oficial
+        const config = {
             startOnLoad: true,
             theme: 'base',
             themeVariables: {
@@ -62,8 +62,25 @@
                 primaryBorderColor: '#1a5490',
                 lineColor: '#666',
                 fontSize: '14px'
-            }
-        });
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'cardinal',
+                padding: 10,
+                nodeSpacing: 40,
+                rankSpacing: 50,
+                diagramPadding: 8
+            },
+            securityLevel: 'loose'
+        };
+        
+        // Configuración adicional para ancho responsivo
+        mermaid.flowchartConfig = {
+            width: '100%'
+        };
+        
+        mermaid.initialize(config);
     </script>
 
     <!-- D3.js for advanced visualizations -->
@@ -274,13 +291,15 @@
                                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <div style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-primary);">
+                                        <div
+                                            style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-primary);">
                                             <h6 style="margin: 0; color: var(--uide-primary); font-size: 0.85em;">
                                                 <i class="fas fa-desktop"></i> Capa de Presentación - HTML/CSS
                                             </h6>
                                         </div>
-                                        <div style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
-<pre style="margin: 0; white-space: pre-wrap;">&lt;div class="product-card"&gt;
+                                        <div
+                                            style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
+                                            <pre style="margin: 0; white-space: pre-wrap;">&lt;div class="product-card"&gt;
   &lt;img src="laptop.jpg" alt="Laptop"&gt;
   &lt;h3&gt;Laptop Gaming&lt;/h3&gt;
   &lt;p class="price"&gt;$1,299.99&lt;/p&gt;
@@ -295,13 +314,15 @@
                                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <div style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-secondary);">
+                                        <div
+                                            style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-secondary);">
                                             <h6 style="margin: 0; color: var(--uide-secondary); font-size: 0.85em;">
                                                 <i class="fas fa-cogs"></i> Capa de Procesamiento - JavaScript
                                             </h6>
                                         </div>
-                                        <div style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
-<pre style="margin: 0; white-space: pre-wrap;">function addToCart(productId) {
+                                        <div
+                                            style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
+                                            <pre style="margin: 0; white-space: pre-wrap;">function addToCart(productId) {
   const product = getProduct(productId);
   const price = calculatePrice(product);
   const tax = price * 0.15;
@@ -318,13 +339,15 @@
                                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <div style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-accent);">
+                                        <div
+                                            style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-accent);">
                                             <h6 style="margin: 0; color: var(--uide-accent); font-size: 0.85em;">
                                                 <i class="fas fa-database"></i> Capa de Datos - SQL
                                             </h6>
                                         </div>
-                                        <div style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
-<pre style="margin: 0; white-space: pre-wrap;">INSERT INTO cart_items 
+                                        <div
+                                            style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
+                                            <pre style="margin: 0; white-space: pre-wrap;">INSERT INTO cart_items 
 (user_id, product_id, quantity, price, tax)
 VALUES (101, 123, 1, 1299.99, 194.99);
 
@@ -386,30 +409,27 @@ WHERE c.user_id = 101;</pre>
                                 </h5>
 
                                 <!-- Diagrama Mermaid Responsivo -->
-                                <div style="background: rgba(255, 255, 255, 0.95); padding: 1rem; border-radius: 8px; width: 100%; max-width: 100%; overflow: hidden;">
-                                    <div class="mermaid">
-flowchart TD
-    U["👤 Usuario<br/>Cliente Web/Móvil"]
-    W["🌐 Servidor Web<br/>Capa de Presentación"]
-    A["⚙️ Servidor App<br/>Lógica de Negocio"]
-    D["🗄️ Servidor BD<br/>Capa de Datos"]
-    
-    U -->|"1. HTTP Request"| W
-    W -->|"2. Procesamiento"| A
-    A -->|"3. SQL Queries"| D
-    D -->|"4. Data Response"| A
-    A -->|"5. Business Logic"| W
-    W -->|"6. HTTP Response"| U
-    
-    classDef userClass fill:#f8f9fa,stroke:#1a5490,stroke-width:2px,color:#1a5490
-    classDef webClass fill:#e8f5e8,stroke:#28a745,stroke-width:2px,color:#28a745
-    classDef appClass fill:#e8ebf3,stroke:#23356E,stroke-width:2px,color:#23356E
-    classDef dbClass fill:#f5e8f0,stroke:#910048,stroke-width:2px,color:#910048
-    
-    class U userClass
-    class W webClass
-    class A appClass
-    class D dbClass
+                                <div
+                                    style="background: rgba(255, 255, 255, 0.95); padding: 0.5rem; border-radius: 8px; width: 100%; max-width: 100%; overflow: hidden; height: 200px; display: flex; align-items: center; justify-content: center;">
+                                    <div class="mermaid"
+                                        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        flowchart LR
+                                        U["👤 Usuario"] -->|"HTTP"| W["🌐 Web"]
+                                        W -->|"Process"| A["⚙️ App"]
+                                        A -->|"SQL"| D["🗄️ BD"]
+                                        D -->|"Data"| A
+                                        A -->|"Logic"| W
+                                        W -->|"Response"| U
+
+                                        classDef userClass fill:#f8f9fa,stroke:#1a5490,stroke-width:2px,color:#1a5490
+                                        classDef webClass fill:#e8f5e8,stroke:#28a745,stroke-width:2px,color:#28a745
+                                        classDef appClass fill:#e8ebf3,stroke:#23356E,stroke-width:2px,color:#23356E
+                                        classDef dbClass fill:#f5e8f0,stroke:#910048,stroke-width:2px,color:#910048
+
+                                        class U userClass
+                                        class W webClass
+                                        class A appClass
+                                        class D dbClass
                                     </div>
                                 </div>
                             </div>
