@@ -439,27 +439,25 @@ blockquote footer {
 
 /* Mermaid diagrams responsive styling */
 .mermaid-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     overflow: hidden !important;
     position: relative;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
+    padding: 0.8rem;
+    margin: 1rem 0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 1px solid #e0e0e0;
+    height: 280px;
+    width: 100%;
 }
 
 .mermaid-container .mermaid {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     max-width: 100% !important;
-    max-height: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
+    max-height: 300px !important;
+    display: block !important;
     overflow: hidden !important;
 }
 
@@ -565,19 +563,19 @@ blockquote footer {
 
 /* Forzar que Mermaid no genere scroll - configuración estricta */
 .mermaid-container * {
-    overflow: hidden !important;
+    overflow: visible !important;
     box-sizing: border-box !important;
 }
 
 .mermaid-container svg {
     transform: scale(0.9) !important;
     transform-origin: center center !important;
-    overflow: hidden !important;
+    overflow: visible !important;
 }
 
 /* Asegurar que el contenedor padre no tenga scroll */
 .reveal .slides section {
-    overflow: hidden !important;
+    overflow: visible !important;
 }
 
 .reveal .slides .concept-box {
@@ -586,7 +584,7 @@ blockquote footer {
 
 /* Configuración específica para evitar scroll en presentaciones */
 .reveal .slides {
-    overflow: hidden !important;
+    overflow: visible !important;
 }
 
 .reveal .slide-background {
@@ -1269,6 +1267,65 @@ body.modal-open {
     }
 }
 
+/* ===== MODAL DIAGRAMA RESPONSIVO ===== */
+
+/* Modal del diagrama */
+#diagram-modal {
+    backdrop-filter: blur(5px);
+}
+
+#diagram-modal .mermaid {
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+#diagram-modal .mermaid svg {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+/* Responsive para el modal del diagrama */
+@media (max-width: 1024px) {
+    #diagram-modal .mermaid svg {
+        transform: scale(0.9) !important;
+        transform-origin: center center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #diagram-modal .mermaid svg {
+        transform: scale(0.8) !important;
+        transform-origin: center center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #diagram-modal .mermaid svg {
+        transform: scale(0.7) !important;
+        transform-origin: center center !important;
+    }
+}
+
+/* Texto del diagrama en modal */
+#diagram-modal .mermaid .nodeLabel {
+    font-size: clamp(14px, 3vw, 20px) !important;
+    font-weight: bold !important;
+    line-height: 1.3 !important;
+}
+
+#diagram-modal .mermaid .edgeLabel {
+    font-size: clamp(12px, 2.5vw, 16px) !important;
+    font-weight: 600 !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
 /* ===== IMÁGENES CON ALTO FIJO ===== */
 
 /* Imágenes en grids de ejemplos - alto fijo, ancho flexible */
@@ -1759,7 +1816,7 @@ body.modal-open {
 .mermaid {
     max-width: 100% !important;
     max-height: 100% !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1769,9 +1826,9 @@ body.modal-open {
 .mermaid svg {
     max-width: 100% !important;
     max-height: 100% !important;
-    width: auto !important;
+    width: 100% !important;
     height: auto !important;
-    transform: scale(0.7) !important;
+    transform: none !important;
     transform-origin: center center !important;
 }
 
@@ -1785,7 +1842,7 @@ body.modal-open {
 
 /* Texto de los nodos */
 .mermaid .nodeLabel {
-    font-size: clamp(10px, 2vw, 16px) !important;
+    font-size: clamp(12px, 2.5vw, 18px) !important;
     font-weight: bold !important;
     line-height: 1.2 !important;
 }
@@ -1892,11 +1949,11 @@ body.modal-open {
 
 /* Asegurar que no haya scroll horizontal */
 .reveal .slides section {
-    overflow-x: hidden !important;
+    overflow-x: visible !important;
 }
 
 .reveal .slides .concept-box {
-    overflow-x: hidden !important;
+    overflow-x: visible !important;
 }
 
 /* ===

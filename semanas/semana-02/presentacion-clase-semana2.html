@@ -49,10 +49,50 @@
     <!-- <link rel="stylesheet" href="css/aipti-diagrams.css"> -->
     <link rel="stylesheet" href="presentacion-clase-semana2.css">
 
+    <!-- Estilos responsivos para Mermaid -->
+    <style>
+        /* Hacer diagramas Mermaid completamente responsivos */
+        .mermaid {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+        }
+
+        .mermaid svg {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            display: block;
+        }
+
+        /* Responsividad específica para diferentes tamaños de pantalla */
+        @media (max-width: 768px) {
+            .mermaid {
+                font-size: 12px !important;
+            }
+
+            .mermaid svg {
+                min-height: 300px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .mermaid {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mermaid {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+
     <!-- Mermaid.js -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <script>
-        // Configure Mermaid según documentación oficial
+        // Configure Mermaid v10.6.1 según documentación oficial
         const config = {
             startOnLoad: true,
             theme: 'base',
@@ -61,26 +101,24 @@
                 primaryTextColor: '#333',
                 primaryBorderColor: '#1a5490',
                 lineColor: '#666',
-                fontSize: '10px'
+                fontSize: '14px'
             },
             flowchart: {
                 useMaxWidth: true,
                 htmlLabels: true,
                 curve: 'cardinal',
-                padding: 10,
-                nodeSpacing: 40,
-                rankSpacing: 50,
-                diagramPadding: 8
+                padding: 15,
+                nodeSpacing: 50,
+                rankSpacing: 60,
+                diagramPadding: 20
             },
-            securityLevel: 'loose'
+            securityLevel: 'loose',
+            logLevel: 'error'
         };
-        
-        // Configuración adicional para ancho responsivo
-        mermaid.flowchartConfig = {
-            width: '100%'
-        };
-        
+
         mermaid.initialize(config);
+
+
     </script>
 
     <!-- D3.js for advanced visualizations -->
@@ -251,116 +289,186 @@
                 </section>
 
                 <section>
-                    <h3><i class="fas fa-layer-group"></i> Las Tres Capas Fundamentales</h3>
+                    <h3><i class="fas fa-mobile-alt"></i> Capa de Presentación</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">Three-Layered Services Application
-                        </h4>
-
                         <div class="r-hstack" style="align-items: flex-start;">
-                            <!-- Columna Izquierda: Capas -->
+                            <!-- Columna Izquierda: Texto -->
                             <div class="column" style="flex: 1;">
-                                <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-stack"></i> Capas Lógicas
-                                </h5>
-
                                 <div
-                                    style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h6><i class="fas fa-desktop"></i> Capa de Presentación</h6>
-                                    <p style="font-size: 0.9em;">Interfaz de usuario - todo lo que ve y toca el usuario
-                                    </p>
-                                </div>
-
-                                <div
-                                    style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h6><i class="fas fa-cogs"></i> Capa de Procesamiento</h6>
-                                    <p style="font-size: 0.9em;">Lógica de negocio - reglas y procesamiento de datos</p>
-                                </div>
-
-                                <div
-                                    style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h6><i class="fas fa-database"></i> Capa de Datos</h6>
-                                    <p style="font-size: 0.9em;">Almacenamiento y persistencia de información</p>
+                                    style="background: rgba(248, 68, 100, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f84464;">
+                                    <h6><i class="fas fa-mobile-alt"></i> Todo lo que el usuario ve y toca</h6>
+                                    <p style="font-size: 0.9em; margin-bottom: 1rem;">La capa de presentación en
+                                        Instagram incluye todas las interfaces con las que interactúa el usuario
+                                        final.</p>
+                                    <ul style="font-size: 0.85em; margin: 0;">
+                                        <li><i class="fas fa-mobile-alt"></i> App móvil (iOS/Android)</li>
+                                        <li><i class="fas fa-desktop"></i> Sitio web instagram.com</li>
+                                        <li><i class="fas fa-camera"></i> Cámara y filtros</li>
+                                        <li><i class="fas fa-eye"></i> Stories viewer</li>
+                                        <li><i class="fas fa-comments"></i> Chat interface</li>
+                                    </ul>
                                 </div>
                             </div>
-
-                            <!-- Columna Derecha: Ejemplos Técnicos Reales -->
+                            <!-- Columna Derecha: Código -->
                             <div class="column" style="flex: 1;">
-                                <!-- Ejemplos Técnicos -->
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 0.8rem;">
-                                    <!-- Capa de Presentación - Mockup -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                                        onmouseover="this.style.transform='scale(1.02)'"
-                                        onmouseout="this.style.transform='scale(1)'">
-                                        <div
-                                            style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-primary);">
-                                            <h6 style="margin: 0; color: var(--uide-primary); font-size: 0.85em;">
-                                                <i class="fas fa-desktop"></i> Capa de Presentación - HTML/CSS
-                                            </h6>
-                                        </div>
-                                        <div
-                                            style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
-                                            <pre style="margin: 0; white-space: pre-wrap;">&lt;div class="product-card"&gt;
-  &lt;img src="laptop.jpg" alt="Laptop"&gt;
-  &lt;h3&gt;Laptop Gaming&lt;/h3&gt;
-  &lt;p class="price"&gt;$1,299.99&lt;/p&gt;
-  &lt;button onclick="addToCart(123)"&gt;
-    Agregar al Carrito
-  &lt;/button&gt;
+                                <div
+                                    style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <div
+                                        style="background: #f84464; padding: 0.8rem; border-bottom: 2px solid #f84464;">
+                                        <h6 style="margin: 0; color: white; font-size: 0.85em;">
+                                            <i class="fas fa-code"></i> Instagram Post Component (React)
+                                        </h6>
+                                    </div>
+                                    <div
+                                        style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
+                                        <pre style="margin: 0; white-space: pre-wrap;">&lt;div className="instagram-post"&gt;
+  &lt;div className="post-header"&gt;
+    &lt;img src={user.avatar} className="avatar" /&gt;
+    &lt;span className="username"&gt;{user.username}&lt;/span&gt;
+    &lt;button className="follow-btn"&gt;Follow&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;img src={post.image_url} className="post-img" /&gt;
+  &lt;div className="post-actions"&gt;
+    &lt;button onClick={() =&gt; likePost(post.id)}&gt;
+      &lt;i className="fas fa-heart"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;button onClick={() =&gt; sharePost(post.id)}&gt;
+      &lt;i className="fas fa-share"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p className="caption"&gt;{post.caption}&lt;/p&gt;
 &lt;/div&gt;</pre>
-                                        </div>
-                                    </div>
-
-                                    <!-- Capa de Procesamiento - Código -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                                        onmouseover="this.style.transform='scale(1.02)'"
-                                        onmouseout="this.style.transform='scale(1)'">
-                                        <div
-                                            style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-secondary);">
-                                            <h6 style="margin: 0; color: var(--uide-secondary); font-size: 0.85em;">
-                                                <i class="fas fa-cogs"></i> Capa de Procesamiento - JavaScript
-                                            </h6>
-                                        </div>
-                                        <div
-                                            style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
-                                            <pre style="margin: 0; white-space: pre-wrap;">function addToCart(productId) {
-  const product = getProduct(productId);
-  const price = calculatePrice(product);
-  const tax = price * 0.15;
-  const total = price + tax;
-  
-  return saveToCart({
-    productId, price, tax, total
-  });
-}</pre>
-                                        </div>
-                                    </div>
-
-                                    <!-- Capa de Datos - SQL -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                                        onmouseover="this.style.transform='scale(1.02)'"
-                                        onmouseout="this.style.transform='scale(1)'">
-                                        <div
-                                            style="background: #f8f9fa; padding: 0.8rem; border-bottom: 2px solid var(--uide-accent);">
-                                            <h6 style="margin: 0; color: var(--uide-accent); font-size: 0.85em;">
-                                                <i class="fas fa-database"></i> Capa de Datos - SQL
-                                            </h6>
-                                        </div>
-                                        <div
-                                            style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
-                                            <pre style="margin: 0; white-space: pre-wrap;">INSERT INTO cart_items 
-(user_id, product_id, quantity, price, tax)
-VALUES (101, 123, 1, 1299.99, 194.99);
-
-SELECT p.name, p.price, c.quantity
-FROM products p
-JOIN cart_items c ON p.id = c.product_id
-WHERE c.user_id = 101;</pre>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section>
 
+                <section>
+                    <h3><i class="fas fa-cogs"></i> Capa de Procesamiento</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack" style="align-items: flex-start;">
+                            <!-- Columna Izquierda: Texto -->
+                            <div class="column" style="flex: 1;">
+                                <div
+                                    style="background: rgba(131, 58, 180, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #833ab4;">
+                                    <h6><i class="fas fa-cogs"></i> Lógica de negocio e inteligencia</h6>
+                                    <p style="font-size: 0.9em; margin-bottom: 1rem;">Aquí reside toda la lógica que
+                                        hace funcionar Instagram: algoritmos, autenticación, y procesamiento de
+                                        datos.</p>
+                                    <ul style="font-size: 0.85em; margin: 0;">
+                                        <li><i class="fas fa-robot"></i> Algoritmo del feed personalizado</li>
+                                        <li><i class="fas fa-shield-alt"></i> Autenticación de usuarios</li>
+                                        <li><i class="fas fa-image"></i> Procesamiento de imágenes</li>
+                                        <li><i class="fas fa-ban"></i> Moderación de contenido</li>
+                                        <li><i class="fas fa-chart-line"></i> Analytics y recomendaciones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Columna Derecha: Código -->
+                            <div class="column" style="flex: 1;">
+                                <div
+                                    style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <div
+                                        style="background: #833ab4; padding: 0.8rem; border-bottom: 2px solid #833ab4;">
+                                        <h6 style="margin: 0; color: white; font-size: 0.85em;">
+                                            <i class="fas fa-brain"></i> Feed Algorithm (Python/Django)
+                                        </h6>
+                                    </div>
+                                    <div
+                                        style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
+                                        <pre style="margin: 0; white-space: pre-wrap;">def generate_personalized_feed(user_id):
+    # Obtener usuarios seguidos
+    following = Follow.objects.filter(
+        follower_id=user_id
+    ).values_list('following_id', flat=True)
+    
+    # Posts recientes de usuarios seguidos
+    posts = Post.objects.filter(
+        user_id__in=following
+    ).select_related('user')
+    
+    # Aplicar algoritmo de ranking
+    for post in posts:
+        post.relevance_score = calculate_score(
+            likes_count=post.likes.count(),
+            comments_count=post.comments.count(),
+            user_interaction=get_user_interaction(user_id, post.user_id),
+            time_decay=calculate_time_decay(post.created_at)
+        )
+    
+    # Retornar posts ordenados por relevancia
+    return posts.order_by('-relevance_score')[:20]</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-database"></i> Capa de Datos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack" style="align-items: flex-start;">
+                            <!-- Columna Izquierda: Texto -->
+                            <div class="column" style="flex: 1;">
+                                <div
+                                    style="background: rgba(252, 176, 69, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #fcb045;">
+                                    <h6><i class="fas fa-database"></i> Almacenamiento y persistencia</h6>
+                                    <p style="font-size: 0.9em; margin-bottom: 1rem;">Toda la información de
+                                        Instagram se almacena y gestiona en esta capa, desde perfiles hasta
+                                        contenido multimedia.</p>
+                                    <ul style="font-size: 0.85em; margin: 0;">
+                                        <li><i class="fas fa-users"></i> Perfiles y datos de usuarios</li>
+                                        <li><i class="fas fa-images"></i> Fotos y videos multimedia</li>
+                                        <li><i class="fas fa-comments"></i> Comentarios y reacciones</li>
+                                        <li><i class="fas fa-user-friends"></i> Relaciones de seguimiento</li>
+                                        <li><i class="fas fa-chart-bar"></i> Métricas y analytics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Columna Derecha: Código -->
+                            <div class="column" style="flex: 1;">
+                                <div
+                                    style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <div
+                                        style="background: #fcb045; padding: 0.8rem; border-bottom: 2px solid #fcb045;">
+                                        <h6 style="margin: 0; color: white; font-size: 0.85em;">
+                                            <i class="fas fa-table"></i> Instagram Database Schema (SQL)
+                                        </h6>
+                                    </div>
+                                    <div
+                                        style="padding: 0.6rem; background: #2d3748; color: #e2e8f0; font-family: 'Courier New', monospace; font-size: 0.65em; line-height: 1.3;">
+                                        <pre style="margin: 0; white-space: pre-wrap;">-- Query para obtener feed personalizado
+SELECT 
+    p.id,
+    p.image_url,
+    p.caption,
+    p.created_at,
+    u.username,
+    u.avatar_url,
+    COUNT(l.id) as likes_count,
+    COUNT(c.id) as comments_count
+FROM posts p
+JOIN users u ON p.user_id = u.id
+LEFT JOIN likes l ON p.id = l.post_id
+LEFT JOIN comments c ON p.id = c.post_id
+WHERE p.user_id IN (
+    SELECT following_id 
+    FROM follows 
+    WHERE follower_id = @current_user_id
+)
+AND p.created_at >= NOW() - INTERVAL 7 DAY
+GROUP BY p.id, u.username, u.avatar_url
+ORDER BY 
+    (COUNT(l.id) * 0.4 + COUNT(c.id) * 0.6) DESC,
+    p.created_at DESC
+LIMIT 20;</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div
                             style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
                             <p style="font-size: 0.8em; margin: 0; text-align: center;">
@@ -405,32 +513,41 @@ WHERE c.user_id = 101;</pre>
                             <!-- Columna Derecha: Diagrama Visual -->
                             <div class="column" style="flex: 1;">
                                 <h5 style="color: var(--uide-primary); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-sitemap"></i> Flujo de Datos
+                                    <i class="fas fa-sitemap"></i> Flujo de Datos Three-Tiered
                                 </h5>
 
-                                <!-- Diagrama Mermaid Responsivo -->
+                                <!-- Diagrama Mermaid incrustado responsivo -->
                                 <div
-                                    style="background: rgba(255, 255, 255, 0.95); padding: 0.5rem; border-radius: 8px; width: 100%; max-width: 100%; min-height: 200px; overflow: visible; display: flex; align-items: center; justify-content: center;">
+                                    style="background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; overflow: hidden;">
                                     <div class="mermaid"
-                                        style="width: 100%; max-width: 100%; display: flex; align-items: center; justify-content: center;">
-                                        flowchart LR
-                                        U["👤 Usuario"] -->|"HTTP"| W["🌐 Web"]
-                                        W -->|"Process"| A["⚙️ App"]
-                                        A -->|"SQL"| D["🗄️ BD"]
-                                        D -->|"Data"| A
-                                        A -->|"Logic"| W
-                                        W -->|"Response"| U
+                                        style="width: 100%; height: auto; max-width: 100%; display: block; margin: 0 auto;">
+                                        graph TD
+                                        U["👤 Usuario/Cliente<br />Navegador Web, App Móvil"]
+                                        W["🌐 Servidor Web<br />Nginx, Apache, IIS"]
+                                        A["⚙️ Servidor de Aplicaciones<br />Django, Node.js, .NET"]
+                                        D["🗄️ Servidor de Base de Datos<br />PostgreSQL, MySQL, SQL Server"]
 
-                                        classDef userClass fill:#f8f9fa,stroke:#1a5490,stroke-width:2px,color:#1a5490
-                                        classDef webClass fill:#e8f5e8,stroke:#28a745,stroke-width:2px,color:#28a745
-                                        classDef appClass fill:#e8ebf3,stroke:#23356E,stroke-width:2px,color:#23356E
-                                        classDef dbClass fill:#f5e8f0,stroke:#910048,stroke-width:2px,color:#910048
+                                        U -->|"1. HTTP Request<br />GET /api/posts"| W
+                                        W -->|"2. Forward Request<br />Proxy Pass"| A
+                                        A -->|"3. SQL Query<br />SELECT * FROM posts"| D
+                                        D -->|"4. Data Response<br />JSON Result Set"| A
+                                        A -->|"5. Process Logic<br />Format & Transform"| W
+                                        W -->|"6. HTTP Response<br />200 OK + JSON"| U
+
+                                        classDef userClass fill:#f8f9fa,stroke:#1a5490,stroke-width:3px,color:#1a5490
+                                        classDef webClass fill:#e8f5e8,stroke:#28a745,stroke-width:3px,color:#28a745
+                                        classDef appClass fill:#e8ebf3,stroke:#23356E,stroke-width:3px,color:#23356E
+                                        classDef dbClass fill:#f5e8f0,stroke:#910048,stroke-width:3px,color:#910048
 
                                         class U userClass
                                         class W webClass
                                         class A appClass
                                         class D dbClass
                                     </div>
+                                    <p style="font-size: 0.8em; color: #666; margin-top: 0.5rem; text-align: center;">
+                                        <i class="fas fa-info-circle"></i> Flujo bidireccional de datos en arquitectura
+                                        de tres capas
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -444,6 +561,7 @@ WHERE c.user_id = 101;</pre>
                         </div>
                     </div>
                 </section>
+
             </section>
 
             <!-- Patrón MVC -->
@@ -464,63 +582,84 @@ WHERE c.user_id = 101;</pre>
                     </div>
                 </section>
 
+
                 <section>
                     <h3><i class="fas fa-puzzle-piece"></i> Los Tres Componentes</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">Modelo-Vista-Controlador</h4>
+                        <div
+                            style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; border: 2px solid #1a5490; text-align: center; margin-bottom: 2rem;">
+                            <h4 style="color: #1a5490; font-size: 1.3em; margin: 0;"><i class="fab fa-instagram"></i>
+                                Patrón MVC en Instagram</h4>
+                            <p style="color: #666; margin: 0.5rem 0 0 0;">Separación clara de responsabilidades</p>
+                        </div>
 
                         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0;">
-                            <!-- Modelo -->
+                            <!-- Modelo - Instagram -->
                             <div style="background: rgba(40, 167, 69, 0.1); border: 3px solid #28a745; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease;"
                                 onmouseover="this.style.transform='scale(1.05)'"
                                 onmouseout="this.style.transform='scale(1)'">
                                 <i class="fas fa-database"
                                     style="font-size: 3em; color: #28a745; margin-bottom: 1rem;"></i>
                                 <h5 style="color: #28a745; margin-bottom: 1rem;">MODELO</h5>
-                                <ul style="font-size: 0.8em; text-align: left; margin: 0; padding-left: 1rem;">
-                                    <li>Datos centrales</li>
-                                    <li>Lógica de negocio</li>
-                                    <li>Reglas de validación</li>
-                                    <li>Estado de la aplicación</li>
-                                </ul>
+                                <div
+                                    style="background: white; padding: 0.8rem; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                                    <h6 style="color: #333; margin: 0 0 0.5rem 0; font-size: 0.8em;">En Instagram:</h6>
+                                    <ul style="font-size: 0.75em; text-align: left; margin: 0; padding-left: 1rem;">
+                                        <li><i class="fas fa-user"></i> User (username, email, bio)</li>
+                                        <li><i class="fas fa-image"></i> Post (image, caption, timestamp)</li>
+                                        <li><i class="fas fa-comment"></i> Comment (text, user_id, post_id)</li>
+                                        <li><i class="fas fa-heart"></i> Like (user_id, post_id)</li>
+                                        <li><i class="fas fa-user-friends"></i> Follow (follower, following)</li>
+                                    </ul>
+                                </div>
                             </div>
 
-                            <!-- Vista -->
+                            <!-- Vista - Instagram -->
                             <div style="background: rgba(35, 53, 110, 0.1); border: 3px solid #23356E; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease;"
                                 onmouseover="this.style.transform='scale(1.05)'"
                                 onmouseout="this.style.transform='scale(1)'">
-                                <i class="fas fa-desktop"
+                                <i class="fas fa-mobile-alt"
                                     style="font-size: 3em; color: #23356E; margin-bottom: 1rem;"></i>
                                 <h5 style="color: #23356E; margin-bottom: 1rem;">VISTA</h5>
-                                <ul style="font-size: 0.8em; text-align: left; margin: 0; padding-left: 1rem;">
-                                    <li>Interfaz de usuario</li>
-                                    <li>Presentación de datos</li>
-                                    <li>Elementos visuales</li>
-                                    <li>Experiencia del usuario</li>
-                                </ul>
+                                <div
+                                    style="background: white; padding: 0.8rem; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                                    <h6 style="color: #333; margin: 0 0 0.5rem 0; font-size: 0.8em;">En Instagram:</h6>
+                                    <ul style="font-size: 0.75em; text-align: left; margin: 0; padding-left: 1rem;">
+                                        <li><i class="fas fa-stream"></i> Feed timeline (scroll infinito)</li>
+                                        <li><i class="fas fa-camera"></i> Camera screen (filtros)</li>
+                                        <li><i class="fas fa-user"></i> Profile page (grid de fotos)</li>
+                                        <li><i class="fas fa-search"></i> Explore page (descubrir)</li>
+                                        <li><i class="fas fa-comments"></i> Direct messages UI</li>
+                                    </ul>
+                                </div>
                             </div>
 
-                            <!-- Controlador -->
+                            <!-- Controlador - Instagram -->
                             <div style="background: rgba(145, 0, 72, 0.1); border: 3px solid #910048; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease;"
                                 onmouseover="this.style.transform='scale(1.05)'"
                                 onmouseout="this.style.transform='scale(1)'">
-                                <i class="fas fa-gamepad"
-                                    style="font-size: 3em; color: #910048; margin-bottom: 1rem;"></i>
+                                <i class="fas fa-cogs" style="font-size: 3em; color: #910048; margin-bottom: 1rem;"></i>
                                 <h5 style="color: #910048; margin-bottom: 1rem;">CONTROLADOR</h5>
-                                <ul style="font-size: 0.8em; text-align: left; margin: 0; padding-left: 1rem;">
-                                    <li>Gestión de entrada</li>
-                                    <li>Coordinación</li>
-                                    <li>Flujo de control</li>
-                                    <li>Eventos del usuario</li>
-                                </ul>
+                                <div
+                                    style="background: white; padding: 0.8rem; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                                    <h6 style="color: #333; margin: 0 0 0.5rem 0; font-size: 0.8em;">En Instagram:</h6>
+                                    <ul style="font-size: 0.75em; text-align: left; margin: 0; padding-left: 1rem;">
+                                        <li><i class="fas fa-upload"></i> uploadPost(image, caption)</li>
+                                        <li><i class="fas fa-heart"></i> likePost(postId, userId)</li>
+                                        <li><i class="fas fa-user-plus"></i> followUser(userId)</li>
+                                        <li><i class="fas fa-search"></i> searchUsers(query)</li>
+                                        <li><i class="fas fa-list"></i> generateFeed(userId)</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
                         <div
                             style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
                             <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                                <i class="fas fa-lightbulb"></i> <strong>Principio Clave:</strong> La Vista y el
-                                Controlador forman la <strong>interfaz de usuario</strong>, separada del Modelo
+                                <i class="fab fa-instagram"></i> <strong>Instagram MVC:</strong> Los modelos almacenan
+                                datos de usuarios y posts, las vistas muestran el feed y perfil, los controladores
+                                manejan likes, uploads y navegación
                             </p>
                         </div>
                     </div>
@@ -545,76 +684,108 @@ WHERE c.user_id = 101;</pre>
                     </div>
                 </section>
 
+
                 <section>
                     <h3><i class="fas fa-bridge"></i> ¿Qué es Middleware?</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;">Software de Conectividad</h4>
-
                         <div class="r-hstack" style="align-items: flex-start;">
-                            <!-- Columna Izquierda: Definición -->
+                            <!-- Columna Izquierda: Funciones en Instagram -->
                             <div class="column" style="flex: 1;">
                                 <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-cogs"></i> Función Principal
+                                    <i class="fas fa-cogs"></i> Funciones en Instagram
                                 </h5>
 
                                 <div
-                                    style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h6><i class="fas fa-puzzle-piece"></i> Gestión de Complejidad</h6>
-                                    <p style="font-size: 0.9em;">Maneja la complejidad inherente a los sistemas
-                                        distribuidos</p>
+                                    style="background: rgba(248, 68, 100, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #f84464;">
+                                    <h6><i class="fas fa-shield-alt"></i> API Gateway</h6>
+                                    <p style="font-size: 0.9em;">Autentica usuarios, controla rate limiting y rutea
+                                        requests entre apps móviles y backend</p>
+                                    <div style="font-size: 0.75em; color: #666; margin-top: 0.5rem;">
+                                        <strong>Ejemplo:</strong> Validar token OAuth antes de permitir subir foto
+                                    </div>
                                 </div>
 
                                 <div
-                                    style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h6><i class="fas fa-bridge"></i> Puente de Conexión</h6>
-                                    <p style="font-size: 0.9em;">Construye puentes entre sistemas diferentes</p>
+                                    style="background: rgba(131, 58, 180, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #833ab4;">
+                                    <h6><i class="fas fa-stream"></i> Message Queues</h6>
+                                    <p style="font-size: 0.9em;">Kafka procesa millones de eventos: likes, comments,
+                                        follows para actualizar feeds en tiempo real</p>
+                                    <div style="font-size: 0.75em; color: #666; margin-top: 0.5rem;">
+                                        <strong>Ejemplo:</strong> Notificar a followers cuando subes una foto
+                                    </div>
                                 </div>
 
                                 <div
-                                    style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h6><i class="fas fa-exchange-alt"></i> Comunicación</h6>
-                                    <p style="font-size: 0.9em;">Permite comunicación y transferencia de datos</p>
+                                    style="background: rgba(252, 176, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #fcb045;">
+                                    <h6><i class="fas fa-tachometer-alt"></i> Cache Layer</h6>
+                                    <p style="font-size: 0.9em;">Redis almacena feeds precalculados y sesiones de
+                                        usuario para respuestas en milisegundos</p>
+                                    <div style="font-size: 0.75em; color: #666; margin-top: 0.5rem;">
+                                        <strong>Ejemplo:</strong> Tu feed se carga instantáneamente desde cache
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Columna Derecha: Ejemplo Visual -->
+                            <!-- Columna Derecha: Esquema Instagram -->
                             <div class="column" style="flex: 1;">
                                 <h5 style="color: var(--uide-primary); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-sitemap"></i> Esquema de Integración
+                                    <i class="fas fa-sitemap"></i> Esquema Instagram: Apps + Servicios
                                 </h5>
 
-                                <!-- Diagrama Simple -->
+                                <!-- Diagrama Instagram -->
                                 <div
                                     style="background: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 8px; text-align: center;">
                                     <div
                                         style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                                        <!-- Sistema A -->
+                                        <!-- App Móvil -->
                                         <div
-                                            style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; border: 2px solid #28a745;">
-                                            <i class="fas fa-shopping-cart" style="font-size: 2em; color: #28a745;"></i>
+                                            style="background: rgba(248, 68, 100, 0.1); padding: 1rem; border-radius: 8px; border: 2px solid #f84464;">
+                                            <i class="fas fa-mobile-alt" style="font-size: 2em; color: #f84464;"></i>
                                             <p style="margin: 0.5rem 0 0 0; font-size: 0.8em; font-weight: bold;">
-                                                Sistema A</p>
-                                            <p style="margin: 0; font-size: 0.7em;">E-commerce</p>
+                                                Instagram App</p>
+                                            <p style="margin: 0; font-size: 0.7em;">iOS/Android</p>
                                         </div>
 
-                                        <!-- Sistema B -->
+                                        <!-- Web App -->
                                         <div
-                                            style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; border: 2px solid #23356E;">
-                                            <i class="fas fa-boxes" style="font-size: 2em; color: #23356E;"></i>
+                                            style="background: rgba(131, 58, 180, 0.1); padding: 1rem; border-radius: 8px; border: 2px solid #833ab4;">
+                                            <i class="fas fa-desktop" style="font-size: 2em; color: #833ab4;"></i>
                                             <p style="margin: 0.5rem 0 0 0; font-size: 0.8em; font-weight: bold;">
-                                                Sistema B</p>
-                                            <p style="margin: 0; font-size: 0.7em;">Inventario</p>
+                                                Instagram Web</p>
+                                            <p style="margin: 0; font-size: 0.7em;">Browser</p>
                                         </div>
                                     </div>
 
-                                    <!-- Middleware en el centro -->
+                                    <!-- API Gateway (Middleware) -->
                                     <div
                                         style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; border: 3px solid #910048; margin: 1rem 0;">
                                         <i class="fas fa-exchange-alt" style="font-size: 2em; color: #910048;"></i>
                                         <p
                                             style="margin: 0.5rem 0 0 0; font-size: 0.9em; font-weight: bold; color: #910048;">
-                                            MIDDLEWARE</p>
-                                        <p style="margin: 0; font-size: 0.7em;">Integración y Comunicación</p>
+                                            API GATEWAY</p>
+                                        <p style="margin: 0; font-size: 0.7em;">Middleware de Instagram</p>
+                                    </div>
+
+                                    <!-- Backend Services -->
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                                        <!-- Feed Service -->
+                                        <div
+                                            style="background: rgba(252, 176, 69, 0.1); padding: 1rem; border-radius: 8px; border: 2px solid #fcb045;">
+                                            <i class="fas fa-list" style="font-size: 2em; color: #fcb045;"></i>
+                                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8em; font-weight: bold;">Feed
+                                                Service</p>
+                                            <p style="margin: 0; font-size: 0.7em;">Algorithm + DB</p>
+                                        </div>
+
+                                        <!-- User Service -->
+                                        <div
+                                            style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; border: 2px solid #28a745;">
+                                            <i class="fas fa-users" style="font-size: 2em; color: #28a745;"></i>
+                                            <p style="margin: 0.5rem 0 0 0; font-size: 0.8em; font-weight: bold;">User
+                                                Service</p>
+                                            <p style="margin: 0; font-size: 0.7em;">Auth + Profiles</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -623,10 +794,246 @@ WHERE c.user_id = 101;</pre>
                         <div
                             style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
                             <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                                <i class="fas fa-lightbulb"></i> <strong>Concepto Clave:</strong> El middleware es la
-                                <strong>infraestructura subyacente</strong> que permite la existencia de sistemas
-                                distribuidos
+                                <i class="fab fa-instagram"></i> <strong>Instagram Middleware:</strong> El API Gateway
+                                coordina la comunicación entre apps móviles/web y los servicios backend (feed, usuarios,
+                                mensajes), permitiendo que millones de usuarios interactúen simultáneamente
                             </p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Aplicando lo Aprendido -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-clipboard-check"></i> Aplicando lo Aprendido</h2>
+
+                <section>
+                    <h3><i class="fas fa-table"></i> Matriz de Capas - Template</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; border: 2px solid #1a5490; text-align: center; margin-bottom: 2rem;">
+                            <h4 style="color: #1a5490; font-size: 1.3em; margin: 0;"><i
+                                    class="fas fa-graduation-cap"></i> Herramienta para tu Práctica</h4>
+                            <p style="color: #666; margin: 0.5rem 0 0 0;">Template que debes completar para cualquier
+                                aplicación</p>
+                        </div>
+
+                        <!-- Template de Matriz -->
+                        <div
+                            style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                                <thead>
+                                    <tr style="background: #f8f9fa;">
+                                        <th
+                                            style="border: 2px solid #1a5490; padding: 1rem; width: 20%; color: #1a5490;">
+                                            Capa</th>
+                                        <th
+                                            style="border: 2px solid #1a5490; padding: 1rem; width: 40%; color: #1a5490;">
+                                            Responsabilidades Clave</th>
+                                        <th
+                                            style="border: 2px solid #1a5490; padding: 1rem; width: 40%; color: #1a5490;">
+                                            Componentes Mínimos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td
+                                            style="border: 1px solid #ddd; padding: 1rem; background: rgba(248, 68, 100, 0.1); font-weight: bold;">
+                                            <i class="fas fa-mobile-alt"></i> Presentación
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <div style="color: #666; font-style: italic; margin-bottom: 0.5rem;">
+                                                Completa con 2-3 responsabilidades:</div>
+                                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                            </ul>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <div style="color: #666; font-style: italic; margin-bottom: 0.5rem;">Anota
+                                                2-3 componentes:</div>
+                                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border: 1px solid #ddd; padding: 1rem; background: rgba(131, 58, 180, 0.1); font-weight: bold;">
+                                            <i class="fas fa-cogs"></i> Procesamiento / Lógica
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <div style="color: #666; font-style: italic; margin-bottom: 0.5rem;">
+                                                Completa con 2-3 responsabilidades:</div>
+                                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                            </ul>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <div style="color: #666; font-style: italic; margin-bottom: 0.5rem;">Anota
+                                                2-3 componentes:</div>
+                                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border: 1px solid #ddd; padding: 1rem; background: rgba(252, 176, 69, 0.1); font-weight: bold;">
+                                            <i class="fas fa-database"></i> Datos
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <div style="color: #666; font-style: italic; margin-bottom: 0.5rem;">
+                                                Completa con 2-3 responsabilidades:</div>
+                                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                            </ul>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <div style="color: #666; font-style: italic; margin-bottom: 0.5rem;">Anota
+                                                2-3 componentes:</div>
+                                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                                <li>• ___________________________</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Instrucciones -->
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #e9ab21;">
+                            <h6><i class="fas fa-instructions"></i> Instrucciones para tu práctica:</h6>
+                            <ol style="font-size: 0.9em; margin: 0.5rem 0; padding-left: 1.5rem;">
+                                <li><strong>Elige una app:</strong> Tienda online, agenda de contactos, app de notas,
+                                    etc.</li>
+                                <li><strong>Completa la matriz:</strong> Usa los conceptos de Instagram como referencia
+                                </li>
+                                <li><strong>Describe un flujo:</strong> Por ejemplo, "Agregar producto al carrito"</li>
+                                <li><strong>Mantén respuestas concretas:</strong> 2-3 puntos por sección</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-lightbulb"></i> Ejemplo: App de Notas Sencilla</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; border: 2px solid #28a745; text-align: center; margin-bottom: 2rem;">
+                            <h4 style="color: #28a745; font-size: 1.2em; margin: 0;"><i class="fas fa-sticky-note"></i>
+                                NotesApp - Ejemplo Completado</h4>
+                            <p style="color: #666; margin: 0.5rem 0 0 0;">Para que veas el patrón con una app diferente
+                                a Instagram</p>
+                        </div>
+
+                        <!-- Ejemplo Completado -->
+                        <div
+                            style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                                <thead>
+                                    <tr style="background: #f8f9fa;">
+                                        <th
+                                            style="border: 2px solid #28a745; padding: 1rem; width: 20%; color: #28a745;">
+                                            Capa</th>
+                                        <th
+                                            style="border: 2px solid #28a745; padding: 1rem; width: 40%; color: #28a745;">
+                                            Responsabilidades Clave</th>
+                                        <th
+                                            style="border: 2px solid #28a745; padding: 1rem; width: 40%; color: #28a745;">
+                                            Componentes Mínimos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td
+                                            style="border: 1px solid #ddd; padding: 1rem; background: rgba(248, 68, 100, 0.1); font-weight: bold;">
+                                            <i class="fas fa-mobile-alt"></i> Presentación
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9em;">
+                                                <li>• Mostrar lista de notas y editor</li>
+                                                <li>• Capturar input del usuario</li>
+                                                <li>• Validar formularios básicos</li>
+                                            </ul>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9em;">
+                                                <li>• Pantalla lista (HTML/React)</li>
+                                                <li>• Editor de texto (textarea/rich editor)</li>
+                                                <li>• Botones y navegación</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border: 1px solid #ddd; padding: 1rem; background: rgba(131, 58, 180, 0.1); font-weight: bold;">
+                                            <i class="fas fa-cogs"></i> Procesamiento / Lógica
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9em;">
+                                                <li>• Validar contenido de notas</li>
+                                                <li>• Manejar operaciones CRUD</li>
+                                                <li>• Buscar y filtrar notas</li>
+                                            </ul>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9em;">
+                                                <li>• NotesService (crear, editar, eliminar)</li>
+                                                <li>• SearchController (filtros)</li>
+                                                <li>• Validators (contenido, longitud)</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="border: 1px solid #ddd; padding: 1rem; background: rgba(252, 176, 69, 0.1); font-weight: bold;">
+                                            <i class="fas fa-database"></i> Datos
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9em;">
+                                                <li>• Persistir notas y metadatos</li>
+                                                <li>• Consultas de búsqueda</li>
+                                                <li>• Backup y sincronización</li>
+                                            </ul>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 1rem;">
+                                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9em;">
+                                                <li>• Tabla 'notes' (id, title, content, date)</li>
+                                                <li>• SQLite/PostgreSQL queries</li>
+                                                <li>• Repository pattern / DAO</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Flujo de Ejemplo -->
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745;">
+                            <h6><i class="fas fa-flow-chart"></i> Flujo ejemplo: "Crear nueva nota"</h6>
+                            <ol style="font-size: 0.9em; margin: 0.5rem 0; padding-left: 1.5rem;">
+                                <li><strong>Presentación:</strong> Usuario toca "Nueva nota" y escribe contenido en el
+                                    editor</li>
+                                <li><strong>Procesamiento:</strong> NotesService valida que el contenido no esté vacío y
+                                    genera timestamp</li>
+                                <li><strong>Datos:</strong> Se ejecuta INSERT en tabla 'notes' y retorna el ID de la
+                                    nueva nota</li>
+                                <li><strong>Respuesta:</strong> La vista se actualiza mostrando la nota en la lista</li>
+                            </ol>
                         </div>
                     </div>
                 </section>
@@ -720,2227 +1127,7 @@ WHERE c.user_id = 101;</pre>
         });
     </script>
 
-</body>
 
-</html>""
-<div class="concept-box">
-    <h4 style="color: var(--uide-primary); text-align: center;">Simulación de Eventos Discretos
-        (SED)</h4>
-
-    <div class="r-hstack" style="align-items: flex-start;">
-        <!-- Columna Izquierda: Características -->
-        <div class="column" style="flex: 1;">
-            <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                <i class="fas fa-cogs"></i> Características
-            </h5>
-
-            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                <h6><i class="fas fa-bolt"></i> Comportamiento</h6>
-                <p style="font-size: 0.9em;">Los cambios ocurren de forma
-                    <strong>instantánea</strong> en puntos específicos del tiempo
-                </p>
-            </div>
-
-            <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                <h6><i class="fas fa-clock"></i> Tiempo</h6>
-                <p style="font-size: 0.9em;">El tiempo <strong>"salta"</strong> de un evento al
-                    siguiente</p>
-            </div>
-
-            <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                <h6><i class="fas fa-users"></i> Unidad de Modelado</h6>
-                <p style="font-size: 0.9em;">Modela <strong>elementos individuales</strong>
-                    (entidades): clientes, piezas, vehículos</p>
-            </div>
-
-            <div style="background: rgba(145, 0, 72, 0.1); padding: 0.8rem; border-radius: 6px; text-align: center;">
-                <p style="font-size: 0.7em; font-style: italic; color: #666; margin: 0;">
-                    <i class="fas fa-quote-left"></i> Banks et al. (2014), Law (2014)
-                </p>
-            </div>
-        </div>
-
-        <!-- Columna Derecha: Ejemplos -->
-        <div class="column" style="flex: 1;">
-            <h5 style="color: var(--uide-primary); margin-bottom: 1rem; text-align: center;">
-                <i class="fas fa-images"></i> Ejemplos Visuales
-            </h5>
-
-            <!-- Galería de Ejemplos Discretos en dos columnas -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
-
-                <!-- Sistema de Colas -->
-                <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                    onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/A_long_line_for_exchange_money_-_San_Jose_Costa_Rica_August_2008.jpg"
-                        alt="Fila de personas en San José, Costa Rica">
-                    <div style="padding: 0.4rem;">
-                        <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                            <i class="fas fa-users"></i> Sistema de Colas
-                        </h6>
-                        <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                            Cambios <strong>instantáneos</strong> cuando llega/sale cliente
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Cajero Automático -->
-                <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                    onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Woman_at_NFCU_ATM_in_Germantown%2C_Maryland%2C_c._June_2022.jpg/960px-Woman_at_NFCU_ATM_in_Germantown%2C_Maryland%2C_c._June_2022.jpg"
-                        alt="Persona usando un cajero automático (ATM)">
-                    <div style="padding: 0.4rem;">
-                        <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
-                            <i class="fas fa-credit-card"></i> Cajero Automático
-                        </h6>
-                        <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                            Saldo cambia <strong>instantáneamente</strong> en transacciones
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Producción -->
-                <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                    onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Garment_factory_in_Bangladesh_Women_working.jpg/1024px-Garment_factory_in_Bangladesh_Women_working.jpg"
-                        alt="Línea de producción textil en Bangladesh">
-                    <div style="padding: 0.4rem;">
-                        <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-accent); font-size: 0.75em;">
-                            <i class="fas fa-industry"></i> Línea de Producción
-                        </h6>
-                        <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                            Productos completados en <strong>eventos específicos</strong>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Control de Inventario -->
-                <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                    onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Boxes_of_archival_documents.jpg/960px-Boxes_of_archival_documents.jpg"
-                        alt="Estanterías con cajas de archivo">
-                    <div style="padding: 0.4rem;">
-                        <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                            <i class="fas fa-boxes"></i> Control de Inventario
-                        </h6>
-                        <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                            Stock actualizado en <strong>eventos discretos</strong>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-    </div>
-
-    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-        <p style="font-size: 0.8em; margin: 0; text-align: center;">
-            <i class="fas fa-bolt"></i> <strong>Característica Clave:</strong> Los cambios ocurren
-            solo en <strong>momentos específicos</strong>
-        </p>
-    </div>
-</div>
-</section>
-
-<section>
-    <h3><i class="fas fa-wave-square"></i> Modelos Continuos</h3>
-    <div class="concept-box">
-        <h4 style="color: var(--uide-secondary); text-align: center;">Simulación Continua</h4>
-
-        <div class="r-hstack" style="align-items: flex-start;">
-            <!-- Columna Izquierda: Características -->
-            <div class="column" style="flex: 1;">
-                <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                    <i class="fas fa-cogs"></i> Características
-                </h5>
-
-                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h6><i class="fas fa-chart-line"></i> Comportamiento</h6>
-                    <p style="font-size: 0.9em;">Las variables cambian <strong>continuamente</strong>
-                        con el tiempo</p>
-                </div>
-
-                <div
-                    style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h6><i class="fas fa-calculator"></i> Matemática</h6>
-                    <p style="font-size: 0.9em;">Representados por <strong>ecuaciones
-                            diferenciales</strong></p>
-                </div>
-
-                <div
-                    style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h6><i class="fas fa-tint"></i> Unidad de Modelado</h6>
-                    <p style="font-size: 0.9em;">Modela <strong>flujos</strong> - monitoreo posible en
-                        cualquier punto del tiempo</p>
-                </div>
-
-                <div
-                    style="background: rgba(145, 0, 72, 0.1); padding: 0.8rem; border-radius: 6px; text-align: center;">
-                    <p style="font-size: 0.7em; font-style: italic; color: #666; margin: 0;">
-                        <i class="fas fa-quote-left"></i> Shannon (1988), García Dunna et al. (2006)
-                    </p>
-                </div>
-            </div>
-
-            <!-- Columna Derecha: Ejemplos -->
-            <div class="column" style="flex: 1;">
-                <!-- Galería de Ejemplos Continuos en dos columnas (con VIDEO) -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
-
-                    <!-- Flujo de Líquido -->
-                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video
-                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Water%20flowing%20down%20a%20drain.webm"
-                            style="width:100%; height: 140px; object-fit: cover;" autoplay muted loop
-                            playsinline></video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                                <i class="fas fa-tint"></i> Flujo de Líquido
-                            </h6>
-                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                El caudal cambia <strong>continuamente</strong> según la presión
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Transferencia de Calor (plumas de aire caliente con Schlieren) -->
-                    <!-- Transferencia de Calor -->
-                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video style="width:100%; height: 140px; object-fit: cover;" autoplay muted loop playsinline>
-                            <source
-                                src="https://commons.wikimedia.org/wiki/Special:FilePath/Heating_pad_thermal_video.webm"
-                                type="video/webm">
-                        </video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
-                                <i class="fas fa-thermometer-half"></i> Transferencia de Calor
-                            </h6>
-                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                La temperatura cambia <strong>gradualmente</strong> en el tiempo
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <!-- Crecimiento Poblacional (urbanización continua vista desde satélite) -->
-                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video
-                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Time-lapse%20of%20the%20urban%20growth%20of%20Dhaka%2C%20Bangladesh%20as%20seen%20from%20space%20%281972%20to%202001%29.webm"
-                            style="width:100%; height: 140px; object-fit: cover;" autoplay muted loop
-                            playsinline></video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-accent); font-size: 0.75em;">
-                                <i class="fas fa-seedling"></i> Crecimiento Poblacional
-                            </h6>
-                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                La población aumenta de forma <strong>continua</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Flujo de Tráfico -->
-                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video
-                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Traffic%20at%20dusk%20%28time%20lapse%29.webm"
-                            style="width:100%; height: 140px; object-fit: cover;" autoplay muted loop
-                            playsinline></video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                                <i class="fas fa-road"></i> Flujo de Tráfico
-                            </h6>
-                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                Densidad vehicular varía <strong>continuamente</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-            <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                <i class="fas fa-key"></i> <strong>Característica Clave:</strong> Las variables pueden
-                monitorearse en <strong>cualquier momento</strong>
-            </p>
-        </div>
-    </div>
-</section>
-</section>
-<section>
-    <h3><i class="fas fa-puzzle-piece"></i> Modelos Híbridos</h3>
-    <div class="concept-box">
-        <h4 style="color: var(--uide-accent); text-align: center;">Combinación de Ambos Enfoques</h4>
-
-        <div class="r-hstack" style="align-items: flex-start;">
-            <!-- Columna Izquierda: Características -->
-            <div class="column" style="flex: 1;">
-                <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                    <i class="fas fa-cogs"></i> Características
-                </h5>
-
-                <div
-                    style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h6><i class="fas fa-exclamation-triangle"></i> Realidad</h6>
-                    <p style="font-size: 0.9em;">Los sistemas "puros" son <strong>raros en la
-                            naturaleza</strong></p>
-                </div>
-
-                <div
-                    style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h6><i class="fas fa-puzzle-piece"></i> Combinación</h6>
-                    <p style="font-size: 0.9em;">Integran <strong>eventos discretos</strong> con
-                        <strong>cambios continuos</strong>
-                    </p>
-                </div>
-
-                <div
-                    style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <h6><i class="fas fa-sync-alt"></i> Flexibilidad</h6>
-                    <p style="font-size: 0.9em;">Permiten modelar <strong>sistemas complejos</strong> del
-                        mundo real</p>
-                </div>
-
-                <div
-                    style="background: rgba(145, 0, 72, 0.1); padding: 0.8rem; border-radius: 6px; text-align: center;">
-                    <p style="font-size: 0.7em; font-style: italic; color: #666; margin: 0;">
-                        <i class="fas fa-quote-left"></i> Banks et al. (2014), Law (2014)
-                    </p>
-                </div>
-            </div>
-
-            <!-- Columna Derecha: Ejemplos -->
-            <div class="column" style="flex: 1;">
-                <!-- Galería de Ejemplos Híbridos en dos columnas -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
-
-                    <!-- Sistema Aeroportuario (VIDEO: operaciones continuas y eventos discretos) -->
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video style="width:100%; height: 100px; object-fit: cover;" autoplay muted loop playsinline>
-                            <source
-                                src="https://commons.wikimedia.org/wiki/Special:FilePath/Timelapse_Frankfurt_Airport.webm"
-                                type="video/webm">
-                        </video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.3rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                                <i class="fas fa-plane"></i> Sistema Aeroportuario
-                            </h6>
-                            <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
-                                <div
-                                    style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
-                                    <p style="font-size:.5em; margin:0;">Llegada aviones</p>
-                                </div>
-                                <div
-                                    style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
-                                    <p style="font-size:.5em; margin:0;">Flujo combustible</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sistema Hospitalario (IMAGEN: entorno estático, carga ligera) -->
-                    <!-- Sistema Hospitalario (IMAGEN alternativa) -->
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/CHUM%20Emergency%20Level%20Radiography.jpg"
-                            alt="Área de radiografía en emergencias (CHUM)"
-                            style="width:100%; height:50px; object-fit:cover;" loading="lazy"
-                            referrerpolicy="no-referrer">
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.3rem 0; color: var(--uide-secondary); font-size: 0.75em;">
-                                <i class="fas fa-hospital"></i> Sistema Hospitalario
-                            </h6>
-                            <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
-                                <div
-                                    style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
-                                    <p style="font-size:.5em; margin:0;">Llegada pacientes</p>
-                                </div>
-                                <div
-                                    style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
-                                    <p style="font-size:.5em; margin:0;">Uso recursos</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Planta Manufacturera (VIDEO: bandas/flujo de materiales) -->
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video style="width:100%; height: 100px; object-fit: cover;" autoplay muted loop playsinline>
-                            <source
-                                src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Velenje%20Coal%20Mine%2C%20Running%20of%20drive%20motors%20for%20conveyor%20belt.webm"
-                                type="video/webm">
-                        </video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.3rem 0; color: var(--uide-accent); font-size: 0.75em;">
-                                <i class="fas fa-industry"></i> Planta Manufacturera
-                            </h6>
-                            <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
-                                <div
-                                    style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
-                                    <p style="font-size:.5em; margin:0;">Órdenes producción</p>
-                                </div>
-                                <div
-                                    style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
-                                    <p style="font-size:.5em; margin:0;">Flujo materiales</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sistema de Riego (VIDEO: caudal continuo) -->
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <video style="width:100%; height: 100px; object-fit: cover;" autoplay muted loop playsinline>
-                            <source
-                                src="https://commons.wikimedia.org/wiki/Special:FilePath/Irrigation_sprinkler_in_action.webm"
-                                type="video/webm">
-                        </video>
-                        <div style="padding: 0.4rem;">
-                            <h6 style="margin: 0 0 0.3rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                                <i class="fas fa-seedling"></i> Sistema de Riego
-                            </h6>
-                            <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
-                                <div
-                                    style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
-                                    <p style="font-size:.5em; margin:0;">Activación válvulas</p>
-                                </div>
-                                <div
-                                    style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
-                                    <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
-                                    <p style="font-size:.5em; margin:0;">Flujo agua</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-            <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                <i class="fas fa-puzzle-piece"></i> <strong>Característica Clave:</strong> Combinan
-                <strong>eventos discretos</strong> con <strong>procesos continuos</strong>
-            </p>
-        </div>
-    </div>
-</section>
-
-<section>
-    <h3><i class="fas fa-search"></i> Actividad: Identificación</h3>
-    <div class="activity-card">
-        <h4 style="text-align: center;"><i class="fas fa-clipboard-check"></i> Clasifica estos sistemas</h4>
-
-        <div class="r-hstack">
-            <div class="column">
-                <div class="discussion-point">
-                    <h5>Sistemas para Clasificar:</h5>
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem; margin-top: 1rem;">
-                        <div style="background: rgba(255, 255, 255, 0.9); border: 2px solid #ddd; border-radius: 6px; padding: 0.8rem; cursor: pointer; transition: all 0.3s ease;"
-                            onclick="this.style.borderColor='#28a745'; this.style.background='rgba(40, 167, 69, 0.1)';">
-                            <strong>1. Cajero automático</strong>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0; color: #666;">¿Cuándo cambia el
-                                saldo de la cuenta?</p>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.9); border: 2px solid #ddd; border-radius: 6px; padding: 0.8rem; cursor: pointer; transition: all 0.3s ease;"
-                            onclick="this.style.borderColor='#28a745'; this.style.background='rgba(40, 167, 69, 0.1)';">
-                            <strong>2. Llenado de piscina</strong>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0; color: #666;">¿Cómo cambia el
-                                nivel del agua?</p>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.9); border: 2px solid #ddd; border-radius: 6px; padding: 0.8rem; cursor: pointer; transition: all 0.3s ease;"
-                            onclick="this.style.borderColor='#28a745'; this.style.background='rgba(40, 167, 69, 0.1)';">
-                            <strong>3. Producción de autos</strong>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0; color: #666;">¿Cuándo se completa
-                                un vehículo?</p>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.9); border: 2px solid #ddd; border-radius: 6px; padding: 0.8rem; cursor: pointer; transition: all 0.3s ease;"
-                            onclick="this.style.borderColor='#28a745'; this.style.background='rgba(40, 167, 69, 0.1)';">
-                            <strong>4. Crecimiento de bacteria</strong>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0; color: #666;">¿Cómo aumenta la
-                                población?</p>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.9); border: 2px solid #ddd; border-radius: 6px; padding: 0.8rem; cursor: pointer; transition: all 0.3s ease;"
-                            onclick="this.style.borderColor='#28a745'; this.style.background='rgba(40, 167, 69, 0.1)';">
-                            <strong>5. Sistema de semáforos</strong>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0; color: #666;">¿Cuándo cambian las
-                                luces?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="timer-box">
-                    <div id="timer1" style="text-align: center;">
-                        <div
-                            style="font-size: 2em; font-weight: bold; color: var(--uide-primary); margin-bottom: 0.5rem;">
-                            <span id="timer1-display">05:00</span>
-                        </div>
-                        <div style="display: flex; justify-content: center; gap: 0.5rem;">
-                            <button onclick="startTimer('timer1', 300)"
-                                style="background: #28a745; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;">
-                                <i class="fas fa-play"></i> Iniciar
-                            </button>
-                            <button onclick="pauseTimer('timer1')"
-                                style="background: #ffc107; color: black; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;">
-                                <i class="fas fa-pause"></i> Parar
-                            </button>
-                            <button onclick="resetTimer('timer1', 300)"
-                                style="background: #dc3545; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;">
-                                <i class="fas fa-redo"></i> Reiniciar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                    <h6><i class="fas fa-lightbulb"></i> Pista para Clasificar:</h6>
-                    <p style="font-size: 0.8em; margin: 0.5rem 0;">
-                        <strong>Temporal:</strong> ¿El cambio es instantáneo o gradual?<br>
-                        <strong>Aleatoriedad:</strong> ¿Interviene el azar?
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Modelos Determinísticos vs Estocásticos -->
-<section data-transition="convex">
-    <h2><i class="fas fa-dice"></i> Clasificación por Aleatoriedad</h2>
-
-    <section>
-        <h3>Pregunta Inicial</h3>
-        <div class="interactive-box">
-            <h3>¿Interviene el azar en el sistema?</h3>
-            <p style="font-size: 0.9em; margin-top: 1rem;">¿Los resultados son siempre los mismos con las
-                mismas condiciones?</p>
-        </div>
-
-        <div class="discussion-point">
-            <p><i class="fas fa-comments"></i> <strong>Reflexión:</strong> Fórmula matemática vs <span
-                    class="dice-text">lanzamiento de dados <i class="fas fa-dice dice-inline"></i></span>
-            </p>
-        </div>
-    </section>
-
-    <section>
-        <h3><i class="fas fa-equals"></i> Modelos Determinísticos</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-primary); text-align: center;">Sin Intervención del Azar</h4>
-
-            <div class="r-hstack" style="align-items: flex-start;">
-                <!-- Columna Izquierda: Características -->
-                <div class="column" style="flex: 1;">
-                    <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                        <i class="fas fa-cogs"></i> Características
-                    </h5>
-
-                    <div
-                        style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                        <h6><i class="fas fa-arrow-right"></i> Comportamiento</h6>
-                        <p style="font-size: 0.9em;"><strong>Mismas entradas</strong> → <strong>Mismas
-                                salidas</strong></p>
-                    </div>
-
-                    <div
-                        style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                        <h6><i class="fas fa-chart-bar"></i> Variables</h6>
-                        <p style="font-size: 0.9em;">Valores <strong>exactos y conocidos</strong></p>
-                    </div>
-
-                    <div
-                        style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                        <h6><i class="fas fa-calculator"></i> Características</h6>
-                        <p style="font-size: 0.9em;">Utilizan fórmulas algebraicas y asumen certidumbre en
-                            los datos</p>
-                    </div>
-
-                    <div
-                        style="background: rgba(145, 0, 72, 0.1); padding: 0.8rem; border-radius: 6px; text-align: center;">
-                        <p style="font-size: 0.7em; font-style: italic; color: #666; margin: 0;">
-                            <i class="fas fa-quote-left"></i> Hillier & Lieberman (2021), Prawda (2004)
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Columna Derecha: Ejemplos -->
-                <div class="column" style="flex: 1;">
-                    <!-- Galería de Ejemplos Determinísticos en dos columnas -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
-
-                        <!-- Posición de Partícula (VIDEO) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <video style="width:100%; height:50px; object-fit:cover;" autoplay muted loop playsinline
-                                preload="metadata">
-                                <source
-                                    src="https://commons.wikimedia.org/wiki/Special:FilePath/BouncingBallAnimation.webm"
-                                    type="video/webm">
-                            </video>
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin:0 0 0.2rem 0; color: var(--uide-primary); font-size: .75em;">
-                                    <i class="fas fa-atom"></i> Posición de Partícula
-                                </h6>
-                                <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">
-                                    Trayectoria <strong>predecible</strong> según ecuaciones físicas</p>
-                            </div>
-                        </div>
-
-                        <!-- Cálculo de Interés (IMAGEN) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sharp%20Scientific%20Calculator.jpg"
-                                alt="Calculadora científica" style="width:100%; height:50px; object-fit:cover;"
-                                loading="lazy" referrerpolicy="no-referrer">
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin:0 0 0.2rem 0; color: var(--uide-secondary); font-size: .75em;">
-                                    <i class="fas fa-calculator"></i> Cálculo de Interés
-                                </h6>
-                                <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">Resultado
-                                    <strong>exacto</strong> con fórmulas matemáticas
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Cantidad Económica (CEP/EOQ) (VIDEO) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <video style="width:100%; height:50px; object-fit:cover;" autoplay muted loop playsinline
-                                preload="metadata">
-                                <source
-                                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Gigaset%20Cordless%20Telephone%20Production%20VII%20-%20Pneumatic%20Conveyor%20Belt.webm"
-                                    type="video/webm">
-                            </video>
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin:0 0 0.2rem 0; color: var(--uide-accent); font-size: .75em;">
-                                    <i class="fas fa-boxes"></i> Cantidad Económica (CEP)
-                                </h6>
-                                <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">
-                                    Optimización <strong>determinística</strong> de inventario</p>
-                            </div>
-                        </div>
-
-                        <!-- Ecuaciones Físicas (IMAGEN) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pure-mathematics-formul%C3%A6-blackboard.jpg"
-                                alt="Fórmulas en pizarra" style="width:100%; height:50px; object-fit:cover;"
-                                loading="lazy" referrerpolicy="no-referrer">
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin:0 0 0.2rem 0; color: var(--uide-primary); font-size: .75em;">
-                                    <i class="fas fa-square-root-alt"></i> Ecuaciones Físicas
-                                </h6>
-                                <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">Leyes
-                                    físicas con resultados <strong>predecibles</strong></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                    <i class="fas fa-equals"></i> <strong>Característica Clave:</strong> Mismas entradas →
-                    <strong>Mismas salidas</strong> siempre
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3><i class="fas fa-random"></i> Modelos Estocásticos</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-secondary); text-align: center;">Con Intervención del Azar</h4>
-
-            <div class="r-hstack" style="align-items: flex-start;">
-                <!-- Columna Izquierda: Características -->
-                <div class="column" style="flex: 1;">
-                    <h5 style="color: var(--uide-secondary); margin-bottom: 1rem; text-align: center;">
-                        <i class="fas fa-cogs"></i> Características
-                    </h5>
-
-                    <div
-                        style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                        <h6><i class="fas fa-dice-six"></i> Variables</h6>
-                        <p style="font-size: 0.9em;"><strong>Variables aleatorias</strong> con
-                            modificaciones respecto al promedio</p>
-                    </div>
-
-                    <div
-                        style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                        <h6><i class="fas fa-chart-area"></i> Incertidumbre</h6>
-                        <p style="font-size: 0.9em;">Representada como <strong>distribuciones de
-                                probabilidad</strong></p>
-                    </div>
-
-                    <div
-                        style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                        <h6><i class="fas fa-sync-alt"></i> Resultados</h6>
-                        <p style="font-size: 0.9em;">Cada corrida produce <strong>resultados
-                                diferentes</strong> - requiere análisis estadístico</p>
-                    </div>
-
-                    <div
-                        style="background: rgba(145, 0, 72, 0.1); padding: 0.8rem; border-radius: 6px; text-align: center;">
-                        <p style="font-size: 0.7em; font-style: italic; color: #666; margin: 0;">
-                            <i class="fas fa-quote-left"></i> Azarang & García Dunna (1996), Law & Kelton
-                            (2000)
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Columna Derecha: Ejemplos -->
-                <div class="column" style="flex: 1;">
-                    <h5 style="color: var(--uide-primary); margin-bottom: 1rem; text-align: center;">
-                        <i class="fas fa-images"></i> Ejemplos Visuales
-                    </h5>
-
-                    <!-- Grid 2x2 de Ejemplos -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem;">
-
-                        <!-- Llegada de Clientes (VIDEO) -->
-                        <!-- Llegada de Clientes (VIDEO ligero y estable) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <video autoplay muted loop playsinline preload="metadata"
-                                style="width:100%; height:100px; object-fit:cover;"
-                                poster="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Pasejo_en_Hong_Kong_Island_%282014%29.webm/640px--Pasejo_en_Hong_Kong_Island_%282014%29.webm.jpg">
-                                <!-- Versión 480p (liviana) -->
-                                <source
-                                    src="https://upload.wikimedia.org/wikipedia/commons/transcoded/3/3b/Pasejo_en_Hong_Kong_Island_%282014%29.webm/Pasejo_en_Hong_Kong_Island_%282014%29.webm.480p.vp9.webm"
-                                    type="video/webm">
-                                <!-- Fallback: imagen estática si el video no carga -->
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Pasejo_en_Hong_Kong_Island_%282014%29.webm/640px--Pasejo_en_Hong_Kong_Island_%282014%29.webm.jpg"
-                                    alt="Llegadas de clientes (flujo peatonal)">
-                            </video>
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
-                                    <i class="fas fa-user-clock"></i> Llegada de Clientes
-                                </h6>
-                                <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                    Tiempos <strong>aleatorios</strong> e impredecibles
-                                </p>
-                            </div>
-                        </div>
-
-
-                        <!-- Fallas de Equipos (IMAGEN) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Mechanic_repairing_a_punctured_tyre_in_Goa%2C_India.jpg"
-                                alt="Falla y reparación de equipo" style="width:100%; height:100px; object-fit:cover;">
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
-                                    <i class="fas fa-exclamation-triangle"></i> Fallas de Equipos
-                                </h6>
-                                <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                    Ocurrencia <strong>probabilística</strong> e incierta</p>
-                            </div>
-                        </div>
-
-                        <!-- Fluctuaciones del Mercado (IMAGEN) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/E-ticker.jpg"
-                                alt="Ticker del mercado financiero" style="width:100%; height:100px; object-fit:cover;">
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-accent); font-size: 0.75em;">
-                                    <i class="fas fa-chart-line"></i> Fluctuaciones del Mercado
-                                </h6>
-                                <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                    Variaciones <strong>estocásticas</strong> impredecibles</p>
-                            </div>
-                        </div>
-
-                        <!-- Método Monte Carlo (VIDEO) -->
-                        <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
-                            onmouseover="this.style.transform='scale(1.02)'"
-                            onmouseout="this.style.transform='scale(1)'">
-                            <video autoplay muted loop playsinline style="width:100%; height:100px; object-fit:cover;">
-                                <source
-                                    src="https://upload.wikimedia.org/wikipedia/commons/transcoded/9/96/Dice-rolling-slowmotion-2018-9.webm/Dice-rolling-slowmotion-2018-9.webm.480p.webm"
-                                    type="video/webm">
-                            </video>
-                            <div style="padding: 0.4rem;">
-                                <h6 style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
-                                    <i class="fas fa-dice"></i> Método Monte Carlo
-                                </h6>
-                                <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                    Múltiples corridas para <strong>análisis estadístico</strong></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                    <i class="fas fa-not-equal"></i> <strong>Característica Clave:</strong> Mismas entradas
-                    →
-                    <strong>Salidas diferentes</strong> cada vez
-                </p>
-            </div>
-        </div>
-    </section>
-</section>
-<section>
-    <h3><i class="fas fa-table"></i> Comparación Directa</h3>
-    <div class="concept-box">
-        <table style="width: 100%; font-size: 0.8em; border-collapse: collapse;">
-            <thead>
-                <tr style="background: var(--uide-primary); color: white;">
-                    <th style="padding: 0.5rem; border: 1px solid #ddd;">Aspecto</th>
-                    <th style="padding: 0.5rem; border: 1px solid #ddd;">Determinístico</th>
-                    <th style="padding: 0.5rem; border: 1px solid #ddd;">Estocástico</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Azar</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">No interviene</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Sí interviene</td>
-                </tr>
-                <tr style="background: #f8f9fa;">
-                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Resultados</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Siempre iguales</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Siempre diferentes</td>
-                </tr>
-                <tr>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Variables</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Valores exactos</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Distribuciones</td>
-                </tr>
-                <tr style="background: #f8f9fa;">
-                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Análisis</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Fórmulas directas</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Métodos estadísticos</td>
-                </tr>
-                <tr>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Ejemplo</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Cálculo de interés</td>
-                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Llegada de clientes</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<section>
-    <h3><i class="fas fa-chart-bar"></i> Matriz de Clasificación</h3>
-    <div class="concept-box">
-        <h4 style="color: var(--uide-primary); text-align: center;">Combinando Ambas Dimensiones</h4>
-
-        <!-- Matriz Interactiva 2x2 -->
-        <div class="classification-matrix"
-            style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; position: relative;">
-
-            <!-- Discreto + Determinístico -->
-            <div class="matrix-card" data-category="discrete-deterministic"
-                style="background: rgba(40, 167, 69, 0.1); border: 3px solid #28a745; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
-                onmouseover="animateMatrixCard(this, 'discrete-deterministic')" onmouseout="resetMatrixCard(this)"
-                onclick="showMatrixDetails('discrete-deterministic')">
-
-                <!-- Imagen de fondo -->
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
-                </div>
-
-                <!-- Contenido -->
-                <div style="position: relative; z-index: 2;">
-                    <div class="matrix-icons" style="font-size: 2em; margin-bottom: 0.5rem; color: #28a745;">
-                        <i class="fas fa-step-forward matrix-icon-1"></i>
-                        <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
-                        <i class="fas fa-equals matrix-icon-2"></i>
-                    </div>
-                    <h5 style="font-weight: bold; color: #28a745; margin: 0.5rem 0; font-size: 1.1em;">
-                        Discreto + Determinístico</h5>
-                    <div class="matrix-example"
-                        style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
-                        <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i class="fas fa-chart-bar"></i>
-                            Cálculo de Inventario
-                        </p>
-                        <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Eventos específicos,
-                            resultados predecibles</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Discreto + Estocástico -->
-            <div class="matrix-card" data-category="discrete-stochastic"
-                style="background: rgba(35, 53, 110, 0.1); border: 3px solid #23356E; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
-                onmouseover="animateMatrixCard(this, 'discrete-stochastic')" onmouseout="resetMatrixCard(this)"
-                onclick="showMatrixDetails('discrete-stochastic')">
-
-                <!-- Imagen de fondo -->
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
-                </div>
-
-                <!-- Contenido -->
-                <div style="position: relative; z-index: 2;">
-                    <div class="matrix-icons" style="font-size: 2em; margin-bottom: 0.5rem; color: #23356E;">
-                        <i class="fas fa-step-forward matrix-icon-1"></i>
-                        <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
-                        <i class="fas fa-dice matrix-icon-2"></i>
-                    </div>
-                    <h5 style="font-weight: bold; color: #23356E; margin: 0.5rem 0; font-size: 1.1em;">
-                        Discreto + Estocástico</h5>
-                    <div class="matrix-example"
-                        style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
-                        <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i class="fas fa-users"></i>
-                            Sistema de Colas</p>
-                        <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Eventos específicos,
-                            resultados aleatorios</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Continuo + Determinístico -->
-            <div class="matrix-card" data-category="continuous-deterministic"
-                style="background: rgba(233, 171, 33, 0.1); border: 3px solid #E9AB21; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
-                onmouseover="animateMatrixCard(this, 'continuous-deterministic')" onmouseout="resetMatrixCard(this)"
-                onclick="showMatrixDetails('continuous-deterministic')">
-
-                <!-- Imagen de fondo -->
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
-                </div>
-
-                <!-- Contenido -->
-                <div style="position: relative; z-index: 2;">
-                    <div class="matrix-icons" style="font-size: 2em; margin-bottom: 0.5rem; color: #E9AB21;">
-                        <i class="fas fa-wave-square matrix-icon-1"></i>
-                        <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
-                        <i class="fas fa-equals matrix-icon-2"></i>
-                    </div>
-                    <h5 style="font-weight: bold; color: #E9AB21; margin: 0.5rem 0; font-size: 1.1em;">
-                        Continuo + Determinístico</h5>
-                    <div class="matrix-example"
-                        style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
-                        <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i class="fas fa-tint"></i> Flujo
-                            de Líquido</p>
-                        <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Cambio continuo,
-                            resultados predecibles</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Continuo + Estocástico -->
-            <div class="matrix-card" data-category="continuous-stochastic"
-                style="background: rgba(145, 0, 72, 0.1); border: 3px solid #910048; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
-                onmouseover="animateMatrixCard(this, 'continuous-stochastic')" onmouseout="resetMatrixCard(this)"
-                onclick="showMatrixDetails('continuous-stochastic')">
-
-                <!-- Imagen de fondo -->
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
-                </div>
-
-                <!-- Contenido -->
-                <div style="position: relative; z-index: 2;">
-                    <div class="matrix-icons" style="font-size: 2em; margin-bottom: 0.5rem; color: #910048;">
-                        <i class="fas fa-wave-square matrix-icon-1"></i>
-                        <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
-                        <i class="fas fa-dice matrix-icon-2"></i>
-                    </div>
-                    <h5 style="font-weight: bold; color: #910048; margin: 0.5rem 0; font-size: 1.1em;">
-                        Continuo + Estocástico</h5>
-                    <div class="matrix-example"
-                        style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
-                        <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i class="fas fa-seedling"></i>
-                            Crecimiento
-                            Poblacional</p>
-                        <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Cambio continuo,
-                            resultados aleatorios</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
-    <h3><i class="fas fa-search"></i> Actividad: Clasificación por Aleatoriedad</h3>
-    <div class="activity-card">
-        <h4 style="text-align: center;"><i class="fas fa-clipboard-check"></i> ¿Determinístico o
-            Estocástico?</h4>
-
-        <div class="r-hstack">
-            <div class="column">
-                <div class="discussion-point">
-                    <h5>Sistemas para Analizar:</h5>
-                    <ul style="font-size: 0.8em; text-align: left;">
-                        <li>Cálculo de interés compuesto</li>
-                        <li>Tiempo de llegada de clientes</li>
-                        <li>Trayectoria de proyectil (sin viento)</li>
-                        <li>Duración de llamadas telefónicas</li>
-                        <li>Cálculo de área de círculo</li>
-                        <li>Fallas de equipos</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="column">
-                <div class="timer-box">
-                    <div id="timer2" style="text-align: center;">
-                        <div
-                            style="font-size: 2em; font-weight: bold; color: var(--uide-primary); margin-bottom: 0.5rem;">
-                            <span id="timer2-display">05:00</span>
-                        </div>
-                        <div style="display: flex; justify-content: center; gap: 0.5rem;">
-                            <button onclick="startTimer('timer2', 300)"
-                                style="background: #28a745; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;">
-                                <i class="fas fa-play"></i> Iniciar
-                            </button>
-                            <button onclick="pauseTimer('timer2')"
-                                style="background: #ffc107; color: black; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;">
-                                <i class="fas fa-pause"></i> Parar
-                            </button>
-                            <button onclick="resetTimer('timer2', 300)"
-                                style="background: #dc3545; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer;">
-                                <i class="fas fa-redo"></i> Reiniciar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Introducción a Agentes -->
-<section data-transition="convex">
-    <h2><i class="fas fa-robot"></i> Introducción a Agentes</h2>
-
-    <section>
-        <h3>¿Qué es un Agente?</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-primary); text-align: center;">Definición Básica</h4>
-
-            <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px;">
-                <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
-                    <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
-                        <strong>Un agente es una entidad que:</strong>
-                    </p>
-                    <div class="r-hstack">
-                        <div class="column">
-                            <div style="text-align: center;">
-                                <i class="fas fa-eye" style="font-size: 2em; color: var(--uide-primary);"></i>
-                                <p style="font-size: 0.9em; margin-top: 0.5rem;"><strong>Percibe</strong> su
-                                    contexto a través de sensores</p>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div style="text-align: center;">
-                                <i class="fas fa-cogs" style="font-size: 2em; color: var(--uide-secondary);"></i>
-                                <p style="font-size: 0.9em; margin-top: 0.5rem;"><strong>Genera</strong>
-                                    respuestas usando actuadores</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3><i class="fas fa-brain"></i> Función del Agente</h3>
-        <div class="concept-box">
-            <div class="r-hstack">
-                <div class="column">
-                    <div
-                        style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; position: relative;">
-                        <h5><i class="fas fa-table"></i> Tabla de Decisiones</h5>
-                        <p style="font-size: 0.9em; margin-bottom: 1rem;">Registra secuencia de percepciones
-                            y acciones desarrolladas</p>
-
-                        <!-- Tabla Interactiva de Decisiones -->
-                        <div id="decision-table-container"
-                            style="background: white; border-radius: 6px; padding: 0.8rem; margin-top: 0.5rem;">
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
-                                <h6 style="margin: 0; color: var(--uide-primary); font-size: 0.8em;">
-                                    <i class="fas fa-robot"></i> Historial del Agente
-                                </h6>
-                                <div style="display: flex; gap: 0.4rem;">
-                                    <button onclick="addDecisionEntry()" style="background: var(--uide-primary); color: white; border: none; 
-                                                               padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.7em; 
-                                                               cursor: pointer; transition: all 0.2s ease;"
-                                        title="Simular nueva entrada">
-                                        <i class="fas fa-plus"></i> Simular
-                                    </button>
-                                    <button onclick="resetDecisionTable()" style="background: var(--uide-secondary); color: white; border: none; 
-                                                               padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.7em; 
-                                                               cursor: pointer; transition: all 0.2s ease;"
-                                        title="Reiniciar tabla de decisiones">
-                                        <i class="fas fa-redo"></i> Reiniciar
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div style="overflow-x: auto;">
-                                <table id="decision-table"
-                                    style="width: 100%; font-size: 0.7em; border-collapse: collapse;">
-                                    <thead>
-                                        <tr style="background: var(--uide-primary); color: white;">
-                                            <th style="padding: 0.4rem; border: 1px solid #ddd; text-align: center;">
-                                                #</th>
-                                            <th style="padding: 0.4rem; border: 1px solid #ddd;">Percepción
-                                            </th>
-                                            <th style="padding: 0.4rem; border: 1px solid #ddd;">Acción</th>
-                                            <th style="padding: 0.4rem; border: 1px solid #ddd;">Resultado
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="decision-table-body">
-                                        <tr style="background: #f8f9fa;">
-                                            <td
-                                                style="padding: 0.4rem; border: 1px solid #ddd; text-align: center; font-weight: bold;">
-                                                1</td>
-                                            <td style="padding: 0.4rem; border: 1px solid #ddd;">
-                                                <i class="fas fa-circle" style="color: #dc3545;"></i> Celda
-                                                sucia
-                                            </td>
-                                            <td style="padding: 0.4rem; border: 1px solid #ddd;">
-                                                <i class="fas fa-broom" style="color: #28a745;"></i> Aspirar
-                                            </td>
-                                            <td style="padding: 0.4rem; border: 1px solid #ddd;">
-                                                <i class="fas fa-check" style="color: #28a745;"></i> Limpia
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td
-                                                style="padding: 0.4rem; border: 1px solid #ddd; text-align: center; font-weight: bold;">
-                                                2</td>
-                                            <td style="padding: 0.4rem; border: 1px solid #ddd;">
-                                                <i class="fas fa-check-circle" style="color: #28a745;"></i>
-                                                Celda limpia
-                                            </td>
-                                            <td style="padding: 0.4rem; border: 1px solid #ddd;">
-                                                <i class="fas fa-arrow-right" style="color: #007bff;"></i>
-                                                Mover derecha
-                                            </td>
-                                            <td style="padding: 0.4rem; border: 1px solid #ddd;">
-                                                <i class="fas fa-map-marker-alt" style="color: #007bff;"></i> Pos
-                                                (1,0)
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div style="margin-top: 0.5rem; text-align: center;">
-                                <span style="font-size: 0.65em; color: #666;">
-                                    <i class="fas fa-info-circle"></i> El agente aprende de cada interacción
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-graduation-cap"></i> Aprendizaje</h5>
-                        <p style="font-size: 0.9em;">El contexto permite que el agente aprenda
-                            comportamientos</p>
-                        <div
-                            style="margin-top: 0.8rem; padding: 0.6rem; background: rgba(255,255,255,0.7); border-radius: 4px; border-left: 3px solid var(--uide-accent);">
-                            <p style="font-size: 0.8em; margin: 0;"><i class="fas fa-lightbulb"></i>
-                                <strong>Clave:</strong> Los agentes toman decisiones basadas en percepciones
-                                previas
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3><i class="fas fa-broom"></i> Ejemplo: Agente Aspiradora</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-accent); text-align: center;">Modelo Simple de Agente</h4>
-
-            <div class="r-hstack" style="align-items: flex-start;">
-                <!-- Columna Izquierda: Simulación Interactiva -->
-                <div class="column" style="flex: 1;">
-                    <h5 style="color: var(--uide-accent); margin-bottom: 1rem; text-align: center;">
-                        <i class="fas fa-robot"></i> Simulación Interactiva
-                    </h5>
-
-                    <!-- Simulación Animada del Agente -->
-                    <div id="vacuum-simulation"
-                        style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 12px; border: 2px solid var(--uide-primary);">
-
-                        <!-- Cuadrícula del Entorno -->
-                        <div
-                            style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-width: 320px; margin: 0 auto 1rem auto; background: #f8f9fa; padding: 0.8rem; border-radius: 8px;">
-                            <div id="cell-0" class="vacuum-cell" data-x="0" data-y="0"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-1" class="vacuum-cell" data-x="1" data-y="0"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-2" class="vacuum-cell" data-x="2" data-y="0"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-3" class="vacuum-cell" data-x="3" data-y="0"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-4" class="vacuum-cell" data-x="0" data-y="1"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-5" class="vacuum-cell" data-x="1" data-y="1"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-6" class="vacuum-cell" data-x="2" data-y="1"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-                            <div id="cell-7" class="vacuum-cell" data-x="3" data-y="1"
-                                style="width: 65px; height: 65px; border: 3px solid #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; position: relative; transition: all 0.3s ease;">
-                                <span class="dirt-marker" style="display: none;"><i class="fas fa-circle"
-                                        style="color: #8B4513; font-size: 0.7em;"></i></span>
-                            </div>
-
-                            <!-- Agente Aspiradora -->
-                            <div id="vacuum-agent"
-                                style="position: absolute; width: 40px; height: 40px; background: linear-gradient(135deg, var(--uide-primary), var(--uide-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10; transform: translate(0px, 0px);">
-                                <i class="fas fa-broom"
-                                    style="color: white; font-size: 1.1em; animation: vacuum-rotate 2s linear infinite;"></i>
-                            </div>
-                        </div>
-
-                        <!-- Controles de Simulación -->
-                        <div style="text-align: center; margin-bottom: 1rem;">
-                            <button id="start-simulation" onclick="startVacuumSimulation()"
-                                style="background: var(--uide-primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 20px; font-size: 0.8em; cursor: pointer; margin: 0 0.3rem; transition: all 0.3s ease; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
-                                <i class="fas fa-play"></i> Iniciar
-                            </button>
-                            <button id="reset-simulation" onclick="resetVacuumSimulation()"
-                                style="background: var(--uide-secondary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 20px; font-size: 0.8em; cursor: pointer; margin: 0 0.3rem; transition: all 0.3s ease; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
-                                <i class="fas fa-redo"></i> Reiniciar
-                            </button>
-                        </div>
-
-                        <!-- Estado del Agente -->
-                        <div id="agent-status"
-                            style="background: rgba(40, 167, 69, 0.1); padding: 0.8rem; border-radius: 6px; text-align: center; border-left: 3px solid var(--uide-primary);">
-                            <p style="margin: 0; font-size: 0.8em;">
-                                <i class="fas fa-info-circle"></i> <strong>Estado:</strong>
-                                <span id="status-text">Listo para comenzar</span>
-                            </p>
-                            <p style="margin: 0.3rem 0 0 0; font-size: 0.7em; color: #666;">
-                                <strong>Pos:</strong> <span id="position-text">(0, 0)</span> |
-                                <strong>Limpias:</strong> <span id="clean-count">0</span>/8
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Columna Derecha: Comportamiento del Agente -->
-                <div class="column" style="flex: 1;">
-                    <h5 style="color: var(--uide-primary); margin-bottom: 1rem; text-align: center;">
-                        <i class="fas fa-cogs"></i> Comportamiento del Agente
-                    </h5>
-
-                    <!-- Grid 2x2 de Comportamientos -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem;">
-                        <!-- Percepciones -->
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: 0.8rem; border-radius: 8px;">
-                            <h6 style="margin: 0 0 0.5rem 0; color: var(--uide-primary); font-size: 0.85em;">
-                                <i class="fas fa-eye"></i> Percepciones
-                            </h6>
-                            <ul
-                                style="font-size: 0.7em; text-align: left; margin: 0; padding-left: 1rem; line-height: 1.3;">
-                                <li>Detectar suciedad</li>
-                                <li>Ubicación (x, y)</li>
-                                <li>Estado entorno</li>
-                                <li>Celdas visitadas</li>
-                            </ul>
-                        </div>
-
-                        <!-- Acciones -->
-                        <div style="background: rgba(145, 0, 72, 0.1); padding: 0.8rem; border-radius: 8px;">
-                            <h6 style="margin: 0 0 0.5rem 0; color: var(--uide-secondary); font-size: 0.85em;">
-                                <i class="fas fa-play"></i> Acciones
-                            </h6>
-                            <ul
-                                style="font-size: 0.7em; text-align: left; margin: 0; padding-left: 1rem; line-height: 1.3;">
-                                <li>Moverse (↑ ↓ ← →)</li>
-                                <li>Aspirar suciedad</li>
-                                <li>Explorar sistemática</li>
-                                <li>Optimizar ruta</li>
-                            </ul>
-                        </div>
-
-                        <!-- Algoritmo -->
-                        <div style="background: rgba(35, 53, 110, 0.1); padding: 0.8rem; border-radius: 8px;">
-                            <h6 style="margin: 0 0 0.5rem 0; color: var(--uide-primary); font-size: 0.85em;">
-                                <i class="fas fa-brain"></i> Algoritmo
-                            </h6>
-                            <p style="font-size: 0.7em; margin: 0; line-height: 1.3;">
-                                <strong>Si sucio</strong> → aspirar<br>
-                                <strong>Si limpio</strong> → mover a siguiente celda
-                            </p>
-                        </div>
-
-                        <!-- Estrategia -->
-                        <div style="background: rgba(233, 171, 33, 0.1); padding: 0.8rem; border-radius: 8px;">
-                            <h6 style="margin: 0 0 0.5rem 0; color: var(--uide-accent); font-size: 0.85em;">
-                                <i class="fas fa-route"></i> Estrategia
-                            </h6>
-                            <p style="font-size: 0.7em; margin: 0; line-height: 1.3;">
-                                <strong>Exploración</strong> sistemática<br>
-                                <strong>Prioridad</strong> a celdas sucias
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Referencias -->
-                    <div
-                        style="background: rgba(233, 171, 33, 0.1); padding: 0.6rem; border-radius: 6px; text-align: center;">
-                        <p style="font-size: 0.65em; font-style: italic; color: #666; margin: 0;">
-                            <i class="fas fa-quote-left"></i> Russell & Norvig (2010), Wooldridge (2009)
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                <p style="font-size: 0.8em; margin: 0; text-align: center;">
-                    <i class="fas fa-lightbulb"></i> <strong>Concepto Clave:</strong>
-                    El agente usa <strong>percepción → decisión → acción</strong> para resolver problemas
-                </p>
-            </div>
-        </div>
-    </section>
-</section>
-<section>
-    <h3><i class="fas fa-users"></i> Modelos Basados en Agentes (ABMS)</h3>
-    <div class="concept-box">
-        <h4 style="color: var(--uide-secondary); text-align: center;">Simulaciones con Múltiples Agentes
-        </h4>
-
-        <div class="r-hstack">
-            <div class="column">
-                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                    <h5><i class="fas fa-user-friends"></i> Características</h5>
-                    <ul style="font-size: 0.8em; text-align: left;">
-                        <li>Cada individuo = agente independiente</li>
-                        <li>Características propias</li>
-                        <li>Comportamientos únicos</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="column">
-                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                    <h5><i class="fas fa-brain"></i> Capacidades</h5>
-                    <ul style="font-size: 0.8em; text-align: left;">
-                        <li>Inteligencia</li>
-                        <li>Memoria</li>
-                        <li>Capacidad de aprendizaje</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-            <h5><i class="fas fa-sync-alt"></i> Dinámica del Modelo</h5>
-            <p style="font-size: 0.9em;">La información surge de la <strong>interacción</strong> entre
-                agentes - no se puede predefinir</p>
-            <p style="font-size: 0.7em; font-style: italic; color: #666; margin-top: 0.5rem;">
-                <i class="fas fa-quote-left"></i> Russell (2004), Banks et al. (2014)
-            </p>
-        </div>
-    </div>
-</section>
-
-<section>
-    <h3><i class="fas fa-plane"></i> Aplicaciones Reales</h3>
-    <div class="concept-box">
-        <div class="r-hstack">
-            <div class="column">
-                <div class="discussion-point">
-                    <h5><i class="fas fa-building"></i> Sistemas Aeroportuarios</h5>
-                    <p style="font-size: 0.8em;">Pasajeros como agentes inteligentes para determinar
-                        espacios, flujos y operaciones</p>
-                </div>
-            </div>
-            <div class="column">
-                <div class="discussion-point">
-                    <h5><i class="fas fa-virus"></i> Enfermedades Infecciosas</h5>
-                    <p style="font-size: 0.8em;">Modelos dinámicos de propagación en poblaciones</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="interactive-box" style="margin-top: 1rem;">
-            <p><i class="fas fa-lightbulb"></i> <strong>Ventaja:</strong> Captura comportamientos emergentes
-                que surgen de interacciones simples</p>
-        </div>
-    </div>
-</section>
-</section>
-<!-- Paradigmas de Simulación Discreta -->
-<section data-transition="convex">
-    <h2><i class="fas fa-cogs"></i> Paradigmas de Simulación Discreta</h2>
-
-    <section>
-        <h3>Tres Enfoques Principales</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-primary); text-align: center;">Estrategias para Modelar Sistemas
-                Discretos</h4>
-
-            <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                <table style="width: 100%; font-size: 0.7em; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background: var(--uide-primary); color: white;">
-                            <th style="padding: 0.5rem; border: 1px solid #ddd;">Paradigma</th>
-                            <th style="padding: 0.5rem; border: 1px solid #ddd;">Enfoque Principal</th>
-                            <th style="padding: 0.5rem; border: 1px solid #ddd;">Mecánica del Tiempo</th>
-                            <th style="padding: 0.5rem; border: 1px solid #ddd;">Software Común</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">
-                                Programación de Eventos</td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">Se centra en el
-                                <strong>Evento</strong>
-                            </td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">Lista de eventos ordenados
-                                por tiempo</td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">SIMSCRIPT II.5, SLAM II
-                            </td>
-                        </tr>
-                        <tr style="background: #f8f9fa;">
-                            <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">
-                                Interacción de Procesos</td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">Se centra en la
-                                <strong>Entidad</strong>
-                            </td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">Avanza cada entidad al
-                                máximo posible</td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">GPSS, SIMAN, Arena</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">
-                                Examinación de Actividades</td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">Se centra en la
-                                <strong>Actividad</strong>
-                            </td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">Incrementos iguales de
-                                tiempo</td>
-                            <td style="padding: 0.5rem; border: 1px solid #ddd;">ESCL (FORTRAN)</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                    <p style="font-size: 0.7em; font-style: italic; color: #666; margin: 0; text-align: center;">
-                        <i class="fas fa-quote-left"></i> <strong>Fuente:</strong> Banks et al. (2014),
-                        Shannon (1988), Kelton et al. (2008)
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3><i class="fas fa-calendar-alt"></i> Programación de Eventos</h3>
-        <div class="concept-box">
-            <div class="r-hstack">
-                <div class="column">
-                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-bullseye"></i> Enfoque</h5>
-                        <p style="font-size: 0.9em;">Identifica características del <strong>evento</strong>
-                            y usa rutinas para describir cambios</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-list-ol"></i> Mecánica</h5>
-                        <p style="font-size: 0.9em;">Tratamiento secuencial de acontecimientos en
-                            <strong>lista ordenada</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="interactive-box" style="margin-top: 1rem;">
-                <p><i class="fas fa-star"></i> <strong>Ventaja:</strong> Es el más extendido
-                    computacionalmente</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3><i class="fas fa-user"></i> Interacción de Procesos</h3>
-        <div class="concept-box">
-            <div class="r-hstack">
-                <div class="column">
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-bullseye"></i> Enfoque</h5>
-                        <p style="font-size: 0.9em;">Describe secuencia de procesos que sufre una
-                            <strong>entidad</strong>
-                        </p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-forward"></i> Mecánica</h5>
-                        <p style="font-size: 0.9em;">Avanza al máximo posible cada entidad que llega</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="interactive-box" style="margin-top: 1rem;">
-                <p><i class="fas fa-brain"></i> <strong>Ventaja:</strong> Más intuitivo para el modelador
-                </p>
-            </div>
-        </div>
-    </section>
-</section>
-<!-- Actividades de la Semana -->
-<section data-transition="convex">
-    <h2><i class="fas fa-tasks"></i> Actividades Semana 2</h2>
-
-    <section>
-        <h3>PE-1.2: Laboratorio Etiquetar Procesos</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-flask"></i>
-                Práctica Experimental (2.25 puntos)</h4>
-
-            <div class="r-hstack">
-                <div class="column">
-                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-clipboard-check"></i> Objetivo</h5>
-                        <p style="font-size: 0.9em;">Clasificar procesos reales según paradigmas:</p>
-                        <ul style="font-size: 0.8em; text-align: left;">
-                            <li>Discreto/Continuo (D/C)</li>
-                            <li>Determinístico/Estocástico (Det/Est)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="column">
-                    <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-tools"></i> Metodología</h5>
-                        <p style="font-size: 0.9em;">Análisis de casos con justificación técnica</p>
-                        <ul style="font-size: 0.8em; text-align: left;">
-                            <li>Identificar variables clave</li>
-                            <li>Argumentar clasificación</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timer-box" style="margin-top: 1rem;">
-                <p><i class="fas fa-clock"></i> <strong>Tiempo en clase:</strong> 45 minutos</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3>TA-1.2: Resumen Crítico Caso Agentes</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-home"></i>
-                Trabajo Autónomo (2.25 puntos)</h4>
-
-            <div class="r-hstack">
-                <div class="column">
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-book-open"></i> Contenido</h5>
-                        <p style="font-size: 0.9em;">Análisis crítico de caso de modelado basado en agentes
-                        </p>
-                        <ul style="font-size: 0.8em; text-align: left;">
-                            <li>Ventajas del enfoque</li>
-                            <li>Limitaciones identificadas</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="column">
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-pen"></i> Formato</h5>
-                        <p style="font-size: 0.9em;">Resumen crítico estructurado</p>
-                        <ul style="font-size: 0.8em; text-align: left;">
-                            <li>Máximo 2 páginas</li>
-                            <li>Conclusiones propias</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="interactive-box" style="margin-top: 1rem;">
-                <p><i class="fas fa-calendar"></i> <strong>Entrega:</strong> Antes de la próxima clase</p>
-            </div>
-        </div>
-    </section>
-</section>
-<!-- Síntesis y Cierre -->
-<section data-transition="convex">
-    <h2><i class="fas fa-lightbulb"></i> Síntesis de la Semana</h2>
-
-    <section>
-        <h3>Mapa Conceptual de Paradigmas</h3>
-        <div class="concept-box">
-            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 2rem; margin: 1rem 0;">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <div
-                        style="background: var(--uide-primary); color: white; padding: 1rem; border-radius: 8px; display: inline-block; font-weight: bold; font-size: 1.1em;">
-                        <i class="fas fa-cogs"></i> PARADIGMAS DE SIMULACIÓN
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
-                    <!-- Clasificación Temporal -->
-                    <div style="text-align: center;">
-                        <div
-                            style="background: var(--uide-secondary); color: white; padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; font-weight: bold;">
-                            <i class="fas fa-clock"></i> TEMPORAL
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div
-                                style="background: rgba(40, 167, 69, 0.1); border: 2px solid #28a745; border-radius: 6px; padding: 0.8rem;">
-                                <strong>Discreto</strong><br>
-                                <span style="font-size: 0.8em;">Cambios instantáneos</span>
-                            </div>
-                            <div
-                                style="background: rgba(35, 53, 110, 0.1); border: 2px solid #23356E; border-radius: 6px; padding: 0.8rem;">
-                                <strong>Continuo</strong><br>
-                                <span style="font-size: 0.8em;">Cambios graduales</span>
-                            </div>
-                            <div
-                                style="background: rgba(233, 171, 33, 0.1); border: 2px solid #E9AB21; border-radius: 6px; padding: 0.8rem;">
-                                <strong>Híbrido</strong><br>
-                                <span style="font-size: 0.8em;">Combinación</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Clasificación por Aleatoriedad -->
-                    <div style="text-align: center;">
-                        <div
-                            style="background: var(--uide-accent); color: black; padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; font-weight: bold;">
-                            <i class="fas fa-dice"></i> ALEATORIEDAD
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div
-                                style="background: rgba(40, 167, 69, 0.1); border: 2px solid #28a745; border-radius: 6px; padding: 0.8rem;">
-                                <strong>Determinístico</strong><br>
-                                <span style="font-size: 0.8em;">Sin azar</span>
-                            </div>
-                            <div
-                                style="background: rgba(145, 0, 72, 0.1); border: 2px solid #910048; border-radius: 6px; padding: 0.8rem;">
-                                <strong>Estocástico</strong><br>
-                                <span style="font-size: 0.8em;">Con azar</span>
-                            </div>
-                            <div
-                                style="background: rgba(35, 53, 110, 0.1); border: 2px solid #23356E; border-radius: 6px; padding: 0.8rem;">
-                                <strong>Monte Carlo</strong><br>
-                                <span style="font-size: 0.8em;">Método estadístico</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Agentes -->
-                <div style="text-align: center; margin-top: 2rem;">
-                    <div
-                        style="background: rgba(233, 171, 33, 0.1); border: 2px solid var(--uide-accent); border-radius: 8px; padding: 1.5rem;">
-                        <h5 style="color: var(--uide-accent); margin-bottom: 1rem;"><i class="fas fa-robot"></i>
-                            MODELADO BASADO EN AGENTES</h5>
-                        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                            <div style="text-align: center;">
-                                <i class="fas fa-eye" style="font-size: 2em; color: var(--uide-primary);"></i>
-                                <p style="font-size: 0.8em; margin: 0.5rem 0;"><strong>Percibe</strong></p>
-                            </div>
-                            <div style="font-size: 1.5em; color: var(--uide-secondary);">→</div>
-                            <div style="text-align: center;">
-                                <i class="fas fa-brain" style="font-size: 2em; color: var(--uide-secondary);"></i>
-                                <p style="font-size: 0.8em; margin: 0.5rem 0;"><strong>Decide</strong></p>
-                            </div>
-                            <div style="font-size: 1.5em; color: var(--uide-secondary);">→</div>
-                            <div style="text-align: center;">
-                                <i class="fas fa-cogs" style="font-size: 2em; color: var(--uide-accent);"></i>
-                                <p style="font-size: 0.8em; margin: 0.5rem 0;"><strong>Actúa</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Subslide: Modelado Basado en Agentes -->
-    <section>
-        <h3><i class="fas fa-robot"></i> MODELADO BASADO EN AGENTES</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-accent); text-align: center;">Paradigma de Simulación Individual
-            </h4>
-
-            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 2rem; margin: 1rem 0;">
-
-                <!-- Definición Central -->
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <div
-                        style="background: linear-gradient(135deg, var(--uide-accent), #f39c12); color: white; padding: 1.5rem; border-radius: 12px; display: inline-block; font-weight: bold; font-size: 1.2em; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
-                        <i class="fas fa-users-cog"></i> MODELADO BASADO EN AGENTES (ABMS)
-                    </div>
-                </div>
-
-                <!-- Proceso del Agente -->
-                <div
-                    style="background: rgba(233, 171, 33, 0.1); border: 3px solid var(--uide-accent); border-radius: 12px; padding: 2rem; margin: 2rem 0;">
-                    <h5 style="text-align: center; color: var(--uide-accent); margin-bottom: 1.5rem;">
-                        <i class="fas fa-sync-alt"></i> Ciclo de Vida del Agente
-                    </h5>
-                    <div
-                        style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-                        <div
-                            style="text-align: center; background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; min-width: 120px;">
-                            <i class="fas fa-eye"
-                                style="font-size: 2.5em; color: var(--uide-primary); margin-bottom: 0.5rem;"></i>
-                            <p style="font-size: 0.9em; margin: 0; font-weight: bold;">PERCIBE</p>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Sensores del
-                                entorno</p>
-                        </div>
-                        <div style="font-size: 2em; color: var(--uide-secondary);">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <div
-                            style="text-align: center; background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; min-width: 120px;">
-                            <i class="fas fa-brain"
-                                style="font-size: 2.5em; color: var(--uide-secondary); margin-bottom: 0.5rem;"></i>
-                            <p style="font-size: 0.9em; margin: 0; font-weight: bold;">DECIDE</p>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Procesa
-                                información</p>
-                        </div>
-                        <div style="font-size: 2em; color: var(--uide-secondary);">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <div
-                            style="text-align: center; background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; min-width: 120px;">
-                            <i class="fas fa-cogs"
-                                style="font-size: 2.5em; color: var(--uide-accent); margin-bottom: 0.5rem;"></i>
-                            <p style="font-size: 0.9em; margin: 0; font-weight: bold;">ACTÚA</p>
-                            <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Ejecuta acciones
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Características y Aplicaciones -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
-
-                    <!-- Características -->
-                    <div>
-                        <h5 style="color: var(--uide-primary); text-align: center; margin-bottom: 1rem;">
-                            <i class="fas fa-list-check"></i> Características Clave
-                        </h5>
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div
-                                style="background: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 0.8rem; border-radius: 4px;">
-                                <strong><i class="fas fa-user"></i> Autonomía:</strong> Cada agente opera
-                                independientemente
-                            </div>
-                            <div
-                                style="background: rgba(35, 53, 110, 0.1); border-left: 4px solid #23356E; padding: 0.8rem; border-radius: 4px;">
-                                <strong><i class="fas fa-comments"></i> Interacción:</strong> Los agentes se
-                                comunican entre sí
-                            </div>
-                            <div
-                                style="background: rgba(233, 171, 33, 0.1); border-left: 4px solid #E9AB21; padding: 0.8rem; border-radius: 4px;">
-                                <strong><i class="fas fa-graduation-cap"></i> Aprendizaje:</strong> Adaptan
-                                comportamiento con experiencia
-                            </div>
-                            <div
-                                style="background: rgba(145, 0, 72, 0.1); border-left: 4px solid #910048; padding: 0.8rem; border-radius: 4px;">
-                                <strong><i class="fas fa-layer-group"></i> Emergencia:</strong>
-                                Comportamientos complejos surgen del sistema
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Aplicaciones -->
-                    <div>
-                        <h5 style="color: var(--uide-secondary); text-align: center; margin-bottom: 1rem;">
-                            <i class="fas fa-rocket"></i> Aplicaciones Principales
-                        </h5>
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div
-                                style="background: rgba(255,255,255,0.8); border: 2px solid var(--uide-primary); padding: 0.8rem; border-radius: 8px; text-align: center;">
-                                <i class="fas fa-plane" style="color: var(--uide-primary); font-size: 1.5em;"></i>
-                                <p style="margin: 0.3rem 0 0 0; font-size: 0.8em; font-weight: bold;">
-                                    Sistemas Aeroportuarios</p>
-                            </div>
-                            <div
-                                style="background: rgba(255,255,255,0.8); border: 2px solid var(--uide-secondary); padding: 0.8rem; border-radius: 8px; text-align: center;">
-                                <i class="fas fa-virus" style="color: var(--uide-secondary); font-size: 1.5em;"></i>
-                                <p style="margin: 0.3rem 0 0 0; font-size: 0.8em; font-weight: bold;">
-                                    Propagación de Epidemias</p>
-                            </div>
-                            <div
-                                style="background: rgba(255,255,255,0.8); border: 2px solid var(--uide-accent); padding: 0.8rem; border-radius: 8px; text-align: center;">
-                                <i class="fas fa-chart-line" style="color: var(--uide-accent); font-size: 1.5em;"></i>
-                                <p style="margin: 0.3rem 0 0 0; font-size: 0.8em; font-weight: bold;">
-                                    Mercados Financieros</p>
-                            </div>
-                            <div
-                                style="background: rgba(255,255,255,0.8); border: 2px solid #28a745; padding: 0.8rem; border-radius: 8px; text-align: center;">
-                                <i class="fas fa-city" style="color: #28a745; font-size: 1.5em;"></i>
-                                <p style="margin: 0.3rem 0 0 0; font-size: 0.8em; font-weight: bold;">
-                                    Planificación Urbana</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ventajas del ABMS -->
-                <div
-                    style="background: linear-gradient(135deg, rgba(233, 171, 33, 0.1), rgba(233, 171, 33, 0.05)); border: 2px solid var(--uide-accent); border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
-                    <h5 style="text-align: center; color: var(--uide-accent); margin-bottom: 1rem;">
-                        <i class="fas fa-star"></i> ¿Por qué usar Modelado Basado en Agentes?
-                    </h5>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                        <div style="text-align: center;">
-                            <i class="fas fa-microscope"
-                                style="font-size: 1.8em; color: var(--uide-primary); margin-bottom: 0.5rem;"></i>
-                            <p style="font-size: 0.8em; margin: 0; font-weight: bold;">Modelado Natural</p>
-                            <p style="font-size: 0.7em; margin: 0.2rem 0 0 0; color: #666;">Representa
-                                sistemas reales de manera intuitiva</p>
-                        </div>
-                        <div style="text-align: center;">
-                            <i class="fas fa-puzzle-piece"
-                                style="font-size: 1.8em; color: var(--uide-secondary); margin-bottom: 0.5rem;"></i>
-                            <p style="font-size: 0.8em; margin: 0; font-weight: bold;">Comportamiento
-                                Emergente</p>
-                            <p style="font-size: 0.7em; margin: 0.2rem 0 0 0; color: #666;">Patrones
-                                complejos desde reglas simples</p>
-                        </div>
-                        <div style="text-align: center;">
-                            <i class="fas fa-expand-arrows-alt"
-                                style="font-size: 1.8em; color: var(--uide-accent); margin-bottom: 0.5rem;"></i>
-                            <p style="font-size: 0.8em; margin: 0; font-weight: bold;">Escalabilidad</p>
-                            <p style="font-size: 0.7em; margin: 0.2rem 0 0 0; color: #666;">Desde pocos
-                                hasta millones de agentes</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3>Próxima Semana: Generación de Variables Aleatorias</h3>
-        <div class="concept-box">
-            <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-forward"></i>
-                Semana 3 - Unidad 2</h4>
-
-            <div class="r-hstack">
-                <div class="column">
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-book-open"></i> Temas</h5>
-                        <ul style="font-size: 0.8em; text-align: left;">
-                            <li>Generadores congruenciales</li>
-                            <li>Números uniformes</li>
-                            <li>Pruebas de uniformidad</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="column">
-                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                        <h5><i class="fas fa-tools"></i> Herramientas</h5>
-                        <ul style="font-size: 0.8em; text-align: left;">
-                            <li>Implementación en Excel</li>
-                            <li>Programación en R</li>
-                            <li>Análisis estadístico</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3>¡Gracias por su Participación!</h3>
-        <div class="concept-box">
-            <div style="text-align: center; padding: 2rem;">
-                <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> FT-06-SIM
-                    Simulación</h4>
-                <p style="font-size: 1.1em; margin: 1rem 0;">
-                    <strong>Semana 2 completada</strong>
-                </p>
-                <p style="font-size: 0.9em; color: var(--uide-secondary);">
-                    Prof. Charlie Cárdenas Toledo, M.Sc.<br>
-                    Universidad Internacional del Ecuador
-                </p>
-            </div>
-
-            <div class="interactive-box" style="margin-top: 1rem;">
-                <p><i class="fas fa-question-circle"></i> <strong>¿Preguntas?</strong> Este es el momento
-                    para aclarar dudas</p>
-            </div>
-        </div>
-    </section>
-</section>
-
-<!-- Referencias Bibliográficas -->
-<section data-transition="convex">
-    <h2><i class="fas fa-book"></i> Referencias Bibliográficas</h2>
-
-    <section>
-        <h3>Fuentes Principales</h3>
-        <div class="concept-box">
-            <div
-                style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; text-align: left; font-size: 0.7em; line-height: 1.4;">
-
-                <h5 style="color: var(--uide-primary); margin-bottom: 1rem;"><i class="fas fa-star"></i>
-                    Referencias Fundamentales</h5>
-
-                <p><strong>Banks, J., Carson, J. S., Nelson, B. L., & Nicol, D. M. (2014).</strong>
-                    <em>Discrete Event System Simulation</em> (5ta ed.). Pearson Education.
-                </p>
-
-                <p><strong>Law, A. M. (2014).</strong> <em>Simulation Modelling and Analysis</em> (5th ed.).
-                    McGraw Hill Education.</p>
-
-                <p><strong>Shannon, R. E. (1988).</strong> <em>Simulación de Sistemas: Diseño, Desarrollo e
-                        Implantación</em> (1ra. edición). Trillas.</p>
-
-                <p><strong>García Dunna, E., García Reyes, H., & Cárdenas Barrón, L. E. (2006).</strong>
-                    <em>Simulación y análisis de sistemas con Promodel</em> (1ra ed.). Pearson Educación de
-                    México.
-                </p>
-
-                <p><strong>Kelton, W. D., Sadowski, R. P., & Sturrock, D. T. (2008).</strong> <em>Simulation
-                        with Arena</em>. McGraw-Hill.</p>
-
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3>Referencias Complementarias</h3>
-        <div class="concept-box">
-            <div
-                style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 8px; text-align: left; font-size: 0.65em; line-height: 1.3; max-height: 400px; overflow-y: auto;">
-
-                <h6 style="color: var(--uide-secondary); margin-bottom: 0.8rem;"><i class="fas fa-books"></i>
-                    Modelado y Análisis</h6>
-
-                <p><strong>Azarang, M. R. y García Dunna, E. (1996).</strong> <em>Simulación y análisis de
-                        modelos estocásticos</em> (1a ed.). McGraw-Hill.</p>
-
-                <p><strong>Hillier, F. S., & Lieberman, G. J. (2021).</strong> <em>Introduction to
-                        Operations Research</em> (11th Edition). McGraw-Hill.</p>
-
-                <p><strong>Prawda, J. W. (2004).</strong> <em>Métodos y Modelos de Investigación de
-                        Operaciones, Vol. 2. Modelos Estocásticos</em>. LIMUSA.</p>
-
-                <h6 style="color: var(--uide-accent); margin: 1rem 0 0.8rem 0;"><i class="fas fa-robot"></i>
-                    Agentes y Sistemas</h6>
-
-                <p><strong>Russell, S. J. (2004).</strong> <em>Artificial Intelligence: A Modern
-                        Approach</em>. Prentice Hall.</p>
-
-                <p><strong>Buzacott, J. A., & Shanthikumar, J. G. (1994).</strong> <em>Stochastic Modeling
-                        and Analysis of Manufacturing Systems</em>. Springer-Verlag.</p>
-
-                <h6 style="color: var(--uide-primary); margin: 1rem 0 0.8rem 0;"><i class="fas fa-cogs"></i>
-                    Fundamentos Teóricos</h6>
-
-                <p><strong>Ackoff, R. L. (1962).</strong> <em>Scientific Method: Integrating Theory and
-                        Practice</em>. Wiley.</p>
-
-                <p><strong>Churchman, C. W., Ackoff, R. L., & Arnoff, E. L. (1957).</strong>
-                    <em>Introduction to Operations Research</em>. Wiley.
-                </p>
-
-                <p><strong>Naylor, T. H. (1982).</strong> <em>Técnicas de simulación en computadoras</em>.
-                    Limusa.</p>
-
-            </div>
-        </div>
-    </section>
-
-
-</section>
-
-</div>
-</div>
-
-<!-- Reveal.js JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
-
-<!-- Custom JavaScript -->
-<script src="presentacion-clase-semana2.js"></script>
-
-<!-- Responsive handling script -->
-<script>
-    // Responsive handling for presentation
-    function handleResize() {
-        // Trigger Reveal.js layout recalculation
-        if (typeof Reveal !== 'undefined') {
-            Reveal.layout();
-        }
-
-        // Re-render Mermaid diagrams if needed
-        if (typeof mermaid !== 'undefined') {
-            try {
-                mermaid.init();
-            } catch (e) {
-                console.log('Mermaid re-initialization skipped');
-            }
-        }
-    }
-
-    // Debounced resize handler
-    let resizeTimeout;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(handleResize, 250);
-    });
-
-    // Orientation change handler for mobile
-    window.addEventListener('orientationchange', function () {
-        setTimeout(handleResize, 500);
-    });
-
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('DOM loaded, initializing presentation...');
-        handleResize();
-    });
-
-    // Performance optimization for mobile
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        // Reduce animations on mobile for better performance
-        document.documentElement.style.setProperty('--reveal-transition-speed', '0.3s');
-    }
-</script>
-
-<script>
-    // Initialize Reveal.js with responsive settings
-    console.log('Initializing Reveal.js...');
-
-    Reveal.initialize({
-        hash: true,
-        transition: 'convex',
-        transitionSpeed: 'default',
-        backgroundTransition: 'fade',
-
-        // Responsive settings
-        width: '100%',
-        height: '100%',
-        margin: 0.04,
-        minScale: 0.2,
-        maxScale: 2.0,
-
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-
-        // Display controls
-        controls: true,
-        progress: true,
-        center: true,
-        touch: true,
-        loop: false,
-
-        // Keyboard navigation
-        keyboard: true,
-
-        // Overview mode
-        overview: true,
-
-        // Vertical centering of slides
-        center: true,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: true,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you'll spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Exposes the reveal.js API through window.postMessage
-        postMessage: true,
-
-        // Dispatches all reveal.js events to the parent window through postMessage
-        postMessageEvents: false,
-
-        // Focuses body when page changes visibility to ensure keyboard shortcuts work
-        focusBodyOnPageVisibilityChange: true,
-
-        // Transition style
-        transition: 'convex', // none/fade/slide/convex/concave/zoom
-
-        // Transition speed
-        transitionSpeed: 'default', // default/fast/slow
-
-        // Transition style for full page slide backgrounds
-        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // Parallax background image
-        parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
-
-        // Parallax background size
-        parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
-
-        // Number of pixels to move the parallax background per slide
-        // - Calculated automatically unless specified
-        // - Set to 0 to disable movement along an axis
-        parallaxBackgroundHorizontal: null,
-        parallaxBackgroundVertical: null,
-
-        // The maximum number of pages a single slide can expand onto when printing
-        // to PDF, unlimited by default
-        pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
-
-        // Prints each fragment on a separate slide
-        pdfSeparateFragments: true,
-
-        // Offset used to reduce the height of content within exported PDF pages.
-        // This exists to account for environment differences based on how you
-        // print to PDF. CLI printing options, like phantomjs and wkpdf, can end
-        // on precisely the total height of the document whereas in-browser
-        // printing has to end one pixel before.
-        pdfPageHeightOffset: -1,
-
-        // Number of slides away from the current that will be preloaded
-        preloadIframes: null,
-
-        // Can be used to globally disable auto-animation
-        autoAnimate: true,
-
-        // Optionally provide a custom element matcher that will be
-        // used to dictate which elements we can animate between.
-        autoAnimateEasing: 'ease',
-
-        // Default settings for our auto-animate transitions, can be
-        // overridden per-slide or per-element via data arguments
-        autoAnimateDuration: 1.0,
-        autoAnimateUnmatched: true
-    });
-
-    // Log when Reveal is ready
-    Reveal.on('ready', function () {
-        console.log('Reveal.js is ready!');
-    });
-</script>
 
 </body>
 
