@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>SEMANA 3: HTTP/2, WebSockets, gRPC; formatos: JSON, Protobuf, MessagePack; XML básico y rol enterprise
+    </title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="presentacion-clase-semana3.css">
+
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
+    <!-- D3.js for advanced visualizations -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Floating Help Icon -->
+    <div class="floating-help-emoji" onclick="showProtocolsInfo()" title="Guía de Protocolos">
+        <i class="fas fa-network-wired"></i>
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>LTI_05A_458 PMSBD-MC</h1>
+                    <h2>SEMANA 3: HTTP/2, WebSockets, gRPC; formatos: JSON, Protobuf, MessagePack; XML básico y rol
+                        enterprise</h2>
+
+                    <div class="course-info">
+                        <strong>LTI_05A_458</strong> • Quinto Nivel<br>
+                        <strong>Programación de Microservicios y Bases de Datos</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Noviembre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Protocolos, Formatos y XML en Sistemas Distribuidos</strong><br>
+                        <em>Semana 3 • Comunicación de Alto Rendimiento • Serialización de Datos</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Protocolos modernos y formatos de serialización para sistemas distribuidos
+                    </div>
+                </div>
+            </section>
+
+            <!-- Objetivos -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-target"></i> Objetivos de la Presentación</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-rocket"></i> Dominar</h5>
+                                <p style="font-size: 0.9em;">Protocolos de comunicación de alto rendimiento (gRPC,
+                                    HTTP/2, WebSockets)</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-chart-line"></i> Analizar</h5>
+                                <p style="font-size: 0.9em;">Formatos de serialización modernos (JSON, Protobuf,
+                                    MessagePack)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="r-hstack" style="margin-top: 1rem;">
+                        <div class="column">
+                            <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-code"></i> Comprender</h5>
+                                <p style="font-size: 0.9em;">El rol empresarial de XML en servicios web y SOA</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-check-circle"></i> Aplicar</h5>
+                                <p style="font-size: 0.9em;">Criterios de selección tecnológica según contexto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agenda -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-list"></i> Agenda</h2>
+
+                <div class="agenda-container">
+                    <div class="agenda-item" data-number="1">
+                        <h4>Protocolos de Comunicación de Alto Rendimiento</h4>
+                        <p>gRPC, HTTP/2, WebSockets</p>
+                    </div>
+
+                    <div class="agenda-item" data-number="2">
+                        <h4>Formatos de Serialización y Transferencia de Datos</h4>
+                        <p>JSON, Protobuf, MessagePack</p>
+                    </div>
+
+                    <div class="agenda-item" data-number="3">
+                        <h4>XML: Rol Básico y Empresarial</h4>
+                        <p>SOAP, servicios web, SOA</p>
+                    </div>
+
+                    <div class="agenda-item" data-number="4">
+                        <h4>Comparación y Criterios de Selección</h4>
+                        <p>Evaluación de tecnologías</p>
+                    </div>
+
+                    <div class="agenda-item" data-number="5">
+                        <h4>Implementación y Casos de Uso</h4>
+                        <p>Aplicaciones prácticas</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- gRPC Section -->
+            <section>
+                <section data-transition="convex">
+                    <h2><i class="fas fa-rocket"></i> gRPC: Remote Procedure Call Moderno</h2>
+
+                    <div class="concept-box">
+                        <blockquote
+                            style="font-style: italic; color: var(--uide-primary); font-size: 1.1em; text-align: center;">
+                            "gRPC es un ejemplo de un enfoque moderno de Llamada a Procedimiento Remoto (RPC), diseñado
+                            para la comunicación síncrona y en tiempo real"
+                        </blockquote>
+
+                        <div class="r-hstack" style="margin-top: 2rem;">
+                            <div class="column">
+                                <h4>Ventajas Clave</h4>
+                                <ul style="font-size: 0.9em; text-align: left;">
+                                    <li><strong>Serialización binaria</strong>: Rendimiento superior vs JSON</li>
+                                    <li><strong>HTTP/2</strong>: Protocolo de transporte eficiente</li>
+                                    <li><strong>Baja latencia</strong>: Ideal para microsservicios</li>
+                                    <li><strong>Multiplataforma</strong>: Soporte para múltiples lenguajes</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Caso de Uso Principal</h4>
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <p style="font-size: 0.9em; font-style: italic;">
+                                        "gRPC es preferido para la comunicación de alto rendimiento debido a su
+                                        serialización binaria"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-cogs"></i> gRPC: Aplicaciones Prácticas</h3>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>OpenTelemetry Protocol (OTLP)</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Transporte</strong>: gRPC y HTTP 1.1</li>
+                                    <li><strong>Serialización</strong>: Protocol Buffers (Protobuf)</li>
+                                    <li><strong>Puerto por defecto</strong>: 4317</li>
+                                    <li><strong>Uso</strong>: Codificación, transporte y entrega de datos de telemetría
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Arquitectura de Microsservicios</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Objetivo</strong>: Reducir significativamente la latencia</li>
+                                    <li><strong>Costo</strong>: Servicios fuertemente acoplados</li>
+                                    <li><strong>Requisito</strong>: Instalación de librerías específicas (stubs)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-exclamation-triangle"></i> gRPC: Limitaciones y Desafíos</h3>
+
+                    <div class="concept-box">
+                        <blockquote
+                            style="font-style: italic; color: var(--uide-secondary); font-size: 1em; text-align: center;">
+                            "gRPC generalmente tiene muchas más dependencias que HTTP. El resultado neto es que gRPC y
+                            sus dependencias pueden necesitar ser actualizadas más a menudo"
+                        </blockquote>
+
+                        <div class="r-hstack" style="margin-top: 1.5rem;">
+                            <div class="column">
+                                <h4>Problemas Específicos</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Dependencias</strong>: Más numerosas que HTTP tradicional</li>
+                                    <li><strong>Actualizaciones</strong>: Frecuentes para abordar vulnerabilidades</li>
+                                    <li><strong>Tamaño</strong>: Paquetes más grandes</li>
+                                    <li><strong>Compatibilidad</strong>: Requiere HTTP 2.0 (puede recurrir a 1.1)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- HTTP/2 Section -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-globe"></i> HTTP/2: Protocolo de Transporte Moderno</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Características Fundamentales</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Base de gRPC</strong>: Protocolo de transporte subyacente</li>
+                                <li><strong>Uso en OTLP</strong>: Implementación sobre gRPC</li>
+                                <li><strong>Soporte nativo</strong>: Frameworks modernos como Node.js</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>Ventajas sobre HTTP/1.1</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Multiplexación</strong>: Múltiples streams paralelos</li>
+                                <li><strong>Compresión de cabeceras</strong>: Reducción de overhead</li>
+                                <li><strong>Server push</strong>: Envío proactivo de recursos</li>
+                                <li><strong>Binarización</strong>: Protocolo binario más eficiente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WebSockets Section -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-plug"></i> WebSockets: Conexión Persistente</h2>
+
+                <div class="concept-box">
+                    <blockquote
+                        style="font-style: italic; color: var(--uide-primary); font-size: 1em; text-align: center;">
+                        "WebSockets, por ejemplo, tiene muy poco que ver con la Web. Después del handshake HTTP inicial,
+                        es solo una conexión TCP entre cliente y servidor"
+                    </blockquote>
+
+                    <div class="r-hstack" style="margin-top: 2rem;">
+                        <div class="column">
+                            <h4>Características Principales</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Conexión persistente</strong>: Comunicación bidireccional continua</li>
+                                <li><strong>Streaming eficiente</strong>: Transmisión de datos en tiempo real</li>
+                                <li><strong>No HTTP</strong>: Después del handshake inicial</li>
+                                <li><strong>APIs de integración</strong>: Tecnología de remoting para frontend</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>Limitaciones</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>No REST</strong>: No utiliza principios REST</li>
+                                <li><strong>No HTTP</strong>: Abandona gran parte del protocolo HTTP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JSON Section -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-file-code"></i> JSON: Formato de Serialización Popular</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Ventajas Principales</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Popularidad</strong>: Formato de elección para la mayoría</li>
+                                <li><strong>Simplicidad</strong>: Fácil de leer y escribir</li>
+                                <li><strong>Compacidad</strong>: Más compacto que XML</li>
+                                <li><strong>Amplio soporte</strong>: Ecosistema maduro</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>Aplicaciones Empresariales</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>JSON Web Tokens (JWT)</strong>: Autenticación y autorización</li>
+                                <li><strong>Logs estructurados</strong>: Sistemas cloud native</li>
+                                <li><strong>APIs REST</strong>: Formato estándar de intercambio</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Limitaciones</h4>
+                        <blockquote style="font-style: italic; color: var(--uide-secondary); font-size: 0.9em;">
+                            "Una desventaja notable de JSON es que el estándar no define controles de enlace similares a
+                            los que existen en XML para implementar la hipermedia"
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Protobuf Section -->
+            <section>
+                <section data-transition="convex">
+                    <h2><i class="fas fa-cog"></i> Protocol Buffers (Protobuf): Serialización Eficiente</h2>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>Características Técnicas</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Desarrollado por Google</strong>: Para datos estructurados</li>
+                                    <li><strong>Alternativa a XML/JSON</strong>: Más eficiente en formato y velocidad
+                                    </li>
+                                    <li><strong>Representación binaria</strong>: Muy compacta</li>
+                                    <li><strong>Serialización rápida</strong>: Rendimiento superior</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Ventaja Clave: Evolución de Contratos</h4>
+                                <blockquote style="font-style: italic; color: var(--uide-primary); font-size: 0.9em;">
+                                    "Permite renombrar las propiedades de los Eventos sin preocuparse por la
+                                    compatibilidad retroactiva"
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem;">
+                            <h4>Mecanismo de Compatibilidad</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Etiquetas integrales</strong>: Identificación por números, no nombres</li>
+                                <li><strong>Evolución sin ruptura</strong>: Cambios seguros en esquemas</li>
+                                <li><strong>Sistemas distribuidos</strong>: Ideal para evolución rápida</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-tools"></i> Protobuf: Implementación y Uso</h3>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>Proceso de Desarrollo</h4>
+                                <ol style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Definición</strong>: Estructuras de datos en archivo <code>.proto</code>
+                                    </li>
+                                    <li><strong>Compilación</strong>: Generación de código fuente (stubs)</li>
+                                    <li><strong>Integración</strong>: Uso en múltiples lenguajes</li>
+                                </ol>
+                            </div>
+                            <div class="column">
+                                <h4>Ejemplo Avanzado: Netflix</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Protocol Buffer FieldMask</strong>: en gRPC APIs</li>
+                                    <li><strong>Funcionalidad</strong>: Clientes especifican campos deseados</li>
+                                    <li><strong>Beneficio</strong>: Evita sobrecarga de datos innecesarios</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem;">
+                            <h4>Uso en OTLP</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Serialización binaria</strong>: Datos de telemetría</li>
+                                <li><strong>Eficiencia</strong>: Transferencia optimizada</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- MessagePack Section -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-box"></i> MessagePack: Alternativa de Serialización</h2>
+
+                <div class="concept-box">
+                    <h4>Características</h4>
+                    <ul style="font-size: 0.9em; text-align: left;">
+                        <li><strong>Serialización multiplataforma</strong>: Opción digna junto con Apache Thrift y Avro
+                        </li>
+                        <li><strong>Formato binario</strong>: Más eficiente que JSON</li>
+                        <li><strong>Compatibilidad</strong>: Soporte amplio de lenguajes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- XML Section -->
+            <section>
+                <section data-transition="convex">
+                    <h2><i class="fas fa-code"></i> XML: Fundamentos y Costos</h2>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>Rol Básico</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Formato estándar</strong>: Intercambio de datos en stack .NET</li>
+                                    <li><strong>Acompañante de JSON</strong>: Formato intermedio común</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Costos Operacionales</h4>
+                                <blockquote style="font-style: italic; color: var(--uide-secondary); font-size: 0.8em;">
+                                    "Los documentos XML son a menudo mucho más grandes que sus equivalentes binarios
+                                    porque contienen metadatos"
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem;">
+                            <h4>Factores de Costo</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Serialización/Deserialización</strong>: Procesamiento adicional</li>
+                                <li><strong>Parsing</strong>: Análisis sintáctico costoso</li>
+                                <li><strong>Verbosidad</strong>: Mayor tamaño vs protocolos binarios</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-tools"></i> XML: Ecosistema de Herramientas</h3>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>Herramientas Establecidas</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>XPath</strong>: Estándar bien entendido con amplio soporte</li>
+                                    <li><strong>Funcionalidad</strong>: Extracción de partes específicas de carga útil
+                                    </li>
+                                    <li><strong>Ecosistema maduro</strong>: Décadas de desarrollo y refinamiento</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Ventajas del Ecosistema</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Herramientas especializadas</strong>: XSLT, XQuery, XML Schema</li>
+                                    <li><strong>Integración</strong>: Amplio soporte en plataformas empresariales</li>
+                                    <li><strong>Estándares</strong>: W3C y otros organismos de normalización</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-building"></i> XML Empresarial: SOAP y Servicios Web</h3>
+
+                    <div class="concept-box">
+                        <blockquote
+                            style="font-style: italic; color: var(--uide-primary); font-size: 1em; text-align: center;">
+                            "XML es el lenguaje en el que se basa el protocolo SOAP (Simple Object Access Protocol), un
+                            framework RPC más antiguo"
+                        </blockquote>
+
+                        <div class="r-hstack" style="margin-top: 2rem;">
+                            <div class="column">
+                                <h4>Definición W3C</h4>
+                                <p style="font-size: 0.8em; font-style: italic;">
+                                    "Un sistema de software diseñado para soportar la interacción interoperable de
+                                    máquina a máquina a través de una red"
+                                </p>
+                            </div>
+                            <div class="column">
+                                <h4>Componentes Clave</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>SOAP</strong>: Protocolo de comunicación basado en XML</li>
+                                    <li><strong>WSDL</strong>: Web Services Description Language</li>
+                                    <li><strong>HTTP + XML</strong>: Transporte y serialización estándar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-link"></i> XML: Integración y Semántica</h3>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>Capacidades Semánticas</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Etiquetas contextuales</strong>: Significado incorporado en los datos
+                                    </li>
+                                    <li><strong>Interpretación precisa</strong>: Procesamiento automático por máquinas
+                                    </li>
+                                    <li><strong>Reutilización</strong>: Esquemas XML (XSD) para modelos de datos</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Arquitecturas Distribuidas</h4>
+                                <blockquote style="font-style: italic; color: var(--uide-secondary); font-size: 0.8em;">
+                                    "XML es ideal para soportar estándares abiertos y es bien adecuado para el
+                                    procesamiento transaccional en una arquitectura heterogénea, asíncrona, abierta y
+                                    distribuida"
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem;">
+                            <h4>Impacto en SOA</h4>
+                            <p style="font-size: 0.8em; font-style: italic;">
+                                "Una profunda influencia en el desarrollo de las tecnologías de servicios web y
+                                proporcionan los bloques de construcción fundamentales para los servicios web y las
+                                arquitecturas orientadas a servicios"
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-transition="convex">
+                    <h3><i class="fas fa-sitemap"></i> Integración Orientada a Servicios (SOI)</h3>
+
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <h4>Mensajería XML en SOI</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Sistema de tipos portable</strong>: Reducción del acoplamiento</li>
+                                    <li><strong>Esquemas XSD</strong>: Definición de contratos</li>
+                                    <li><strong>Interoperabilidad</strong>: Alta compatibilidad entre sistemas</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h4>Estilo Recomendado</h4>
+                                <ul style="font-size: 0.8em; text-align: left;">
+                                    <li><strong>Doc/literal</strong>: Documento con codificación literal</li>
+                                    <li><strong>Beneficio</strong>: Sistema altamente interoperable</li>
+                                    <li><strong>Estándar</strong>: Mejores prácticas en servicios web</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Comparison Section -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-balance-scale"></i> Comparación de Tecnologías</h2>
+
+                <div class="concept-box">
+                    <h4>Criterios de Rendimiento</h4>
+
+                    <table style="width: 100%; font-size: 0.7em; margin-top: 1rem;">
+                        <thead>
+                            <tr>
+                                <th>Tecnología</th>
+                                <th>Velocidad</th>
+                                <th>Tamaño</th>
+                                <th>Complejidad</th>
+                                <th>Interoperabilidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>gRPC/Protobuf</strong></td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HTTP/2</strong></td>
+                                <td>⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>WebSockets</strong></td>
+                                <td>⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JSON</strong></td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XML/SOAP</strong></td>
+                                <td>⭐⭐</td>
+                                <td>⭐⭐</td>
+                                <td>⭐⭐</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Selection Criteria -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-crosshairs"></i> Criterios de Selección Tecnológica</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Para Alto Rendimiento</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>gRPC + Protobuf</strong>: Microsservicios, latencia crítica</li>
+                                <li><strong>HTTP/2</strong>: Aplicaciones web modernas</li>
+                                <li><strong>WebSockets</strong>: Streaming en tiempo real</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>Para Simplicidad e Interoperabilidad</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>JSON + REST</strong>: APIs públicas, desarrollo ágil</li>
+                                <li><strong>XML + SOAP</strong>: Integración empresarial legacy</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Para Evolución de Sistemas</h4>
+                        <ul style="font-size: 0.8em; text-align: left;">
+                            <li><strong>Protobuf</strong>: Sistemas distribuidos que evolucionan rápidamente</li>
+                            <li><strong>JSON</strong>: Desarrollo iterativo con simplicidad</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Use Cases -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-tasks"></i> Casos de Uso Específicos</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Microsservicios Internos</h4>
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <p style="font-size: 0.8em; margin: 0;"><strong>Recomendación</strong>: gRPC + Protobuf
+                                </p>
+                                <p style="font-size: 0.7em; margin: 0.5rem 0 0 0;"><strong>Razón</strong>: Máximo
+                                    rendimiento, control de dependencias</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h4>APIs Públicas</h4>
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <p style="font-size: 0.8em; margin: 0;"><strong>Recomendación</strong>: JSON + HTTP/REST
+                                </p>
+                                <p style="font-size: 0.7em; margin: 0.5rem 0 0 0;"><strong>Razón</strong>: Simplicidad,
+                                    adopción masiva</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="r-hstack" style="margin-top: 1rem;">
+                        <div class="column">
+                            <h4>Sistemas Empresariales Legacy</h4>
+                            <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                <p style="font-size: 0.8em; margin: 0;"><strong>Recomendación</strong>: XML + SOAP</p>
+                                <p style="font-size: 0.7em; margin: 0.5rem 0 0 0;"><strong>Razón</strong>: Estándares
+                                    establecidos, herramientas maduras</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h4>Aplicaciones en Tiempo Real</h4>
+                            <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <p style="font-size: 0.8em; margin: 0;"><strong>Recomendación</strong>: WebSockets</p>
+                                <p style="font-size: 0.7em; margin: 0.5rem 0 0 0;"><strong>Razón</strong>: Conexión
+                                    persistente, bidireccional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Implementation Considerations -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-traffic-light"></i> Consideraciones de Implementación</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Factores Técnicos</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Latencia requerida</strong>: gRPC para ultra-baja latencia</li>
+                                <li><strong>Volumen de datos</strong>: Protobuf para grandes volúmenes</li>
+                                <li><strong>Complejidad del equipo</strong>: JSON para equipos menos especializados</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>Factores Organizacionales</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Experiencia del equipo</strong>: Tecnologías conocidas vs aprendizaje</li>
+                                <li><strong>Infraestructura existente</strong>: Compatibilidad con sistemas actuales
+                                </li>
+                                <li><strong>Tiempo de desarrollo</strong>: Rapidez vs optimización</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Factores de Ecosistema</h4>
+                        <ul style="font-size: 0.8em; text-align: left;">
+                            <li><strong>Soporte de herramientas</strong>: Debugging, monitoreo</li>
+                            <li><strong>Comunidad</strong>: Documentación, recursos de aprendizaje</li>
+                            <li><strong>Futuro</strong>: Tendencias y evolución tecnológica</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emerging Trends -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-chart-line"></i> Tendencias Emergentes</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Observabilidad y Telemetría</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>OTLP</strong>: Estándar para datos de observabilidad</li>
+                                <li><strong>gRPC + Protobuf</strong>: Protocolo preferido</li>
+                                <li><strong>Adopción</strong>: Creciente en sistemas distribuidos</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4>Edge Computing</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Protocolos ligeros</strong>: MessagePack, Protobuf</li>
+                                <li><strong>Latencia crítica</strong>: gRPC para comunicación edge-cloud</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Serverless y Cloud Native</h4>
+                        <ul style="font-size: 0.8em; text-align: left;">
+                            <li><strong>JSON</strong>: Dominante en funciones serverless</li>
+                            <li><strong>HTTP/2</strong>: Protocolo estándar para servicios cloud</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Synthesis -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-search"></i> Síntesis: Principios de Selección</h2>
+
+                <div class="concept-box">
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Reglas Generales</h4>
+                            <ol style="font-size: 0.8em; text-align: left;">
+                                <li><strong>Rendimiento crítico</strong> → gRPC + Protobuf</li>
+                                <li><strong>Simplicidad y rapidez</strong> → JSON + HTTP/REST</li>
+                                <li><strong>Interoperabilidad empresarial</strong> → XML + SOAP</li>
+                                <li><strong>Tiempo real</strong> → WebSockets</li>
+                                <li><strong>Evolución rápida</strong> → Protobuf con versionado</li>
+                            </ol>
+                        </div>
+                        <div class="column">
+                            <h4>Híbridos Comunes</h4>
+                            <ul style="font-size: 0.8em; text-align: left;">
+                                <li><strong>APIs Gateway</strong>: JSON externo, gRPC interno</li>
+                                <li><strong>Sistemas de observabilidad</strong>: OTLP + múltiples formatos</li>
+                                <li><strong>Plataformas Enterprise</strong>: SOAP legacy + REST moderno</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Reflections -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-lightbulb"></i> Reflexiones Finales</h2>
+
+                <div class="concept-box">
+                    <h4>Preguntas para Considerar</h4>
+                    <ul style="font-size: 0.9em; text-align: left;">
+                        <li>¿Cuándo <strong>justifica</strong> la complejidad de gRPC su rendimiento superior?</li>
+                        <li>¿Cómo <strong>balancear</strong> simplicidad de JSON vs eficiencia de Protobuf?</li>
+                        <li>¿Qué <strong>papel</strong> seguirá jugando XML en arquitecturas futuras?</li>
+                    </ul>
+
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <blockquote style="font-style: italic; color: var(--uide-primary); font-size: 1.1em;">
+                            "La elección del protocolo y formato de serialización puede determinar el éxito o fracaso de
+                            una arquitectura distribuida"
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Thank You -->
+            <section data-transition="convex">
+                <h2>¡Gracias por su Participación!</h2>
+                <div class="concept-box">
+                    <div style="text-align: center; padding: 2rem;">
+                        <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> LTI_05A_458
+                            PMSBD-MC</h4>
+                        <p style="font-size: 1.1em; margin: 1rem 0;">
+                            <strong>Semana 3 completada</strong>
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--uide-secondary);">
+                            Prof. Charlie Cárdenas Toledo, M.Sc.<br>
+                            Universidad Internacional del Ecuador
+                        </p>
+                    </div>
+
+                    <div class="interactive-box" style="margin-top: 1rem;">
+                        <p><i class="fas fa-question-circle"></i> <strong>¿Preguntas?</strong> Este es el momento para
+                            aclarar dudas</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="presentacion-clase-semana3.js"></script>
+
+    <!-- Responsive handling script -->
+    <script>
+        // Responsive handling for presentation
+        function handleResize() {
+            // Trigger Reveal.js layout recalculation
+            if (typeof Reveal !== 'undefined') {
+                Reveal.layout();
+            }
+
+            // Re-render Mermaid diagrams if needed
+            if (typeof mermaid !== 'undefined') {
+                try {
+                    mermaid.init();
+                } catch (e) {
+                    console.log('Mermaid re-initialization skipped');
+                }
+            }
+        }
+
+        // Debounced resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(handleResize, 250);
+        });
+
+        // Orientation change handler for mobile
+        window.addEventListener('orientationchange', function () {
+            setTimeout(handleResize, 500);
+        });
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM loaded, initializing presentation...');
+            handleResize();
+        });
+
+        // Performance optimization for mobile
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            // Reduce animations on mobile for better performance
+            document.documentElement.style.setProperty('--reveal-transition-speed', '0.3s');
+        }
+    </script>
+
+    <script>
+        // Initialize Reveal.js with responsive settings
+        console.log('Initializing Reveal.js...');
+
+        Reveal.initialize({
+            hash: true,
+            transition: 'convex',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            // Responsive settings
+            width: '100%',
+            height: '100%',
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+            // Display controls
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+
+            // Keyboard navigation
+            keyboard: true,
+
+            // Overview mode
+            overview: true,
+
+            // Vertical centering of slides
+            center: true,
+
+            // Enables touch navigation on devices with touch input
+            touch: true,
+
+            // Loop the presentation
+            loop: false,
+
+            // Change the presentation direction to be RTL
+            rtl: false,
+
+            // Randomizes the order of slides each time the presentation loads
+            shuffle: false,
+
+            // Turns fragments on and off globally
+            fragments: true,
+
+            // Flags whether to include the current fragment in the URL,
+            // so that reloading brings you to the same fragment position
+            fragmentInURL: true,
+
+            // Flags if the presentation is running in an embedded mode,
+            // i.e. contained within a limited portion of the screen
+            embedded: false,
+
+            // Flags if we should show a help overlay when the questionmark
+            // key is pressed
+            help: true,
+
+            // Flags if it should be possible to pause the presentation (blackout)
+            pause: true,
+
+            // Flags if speaker notes should be visible to all viewers
+            showNotes: false,
+
+            // Global override for autoplaying embedded media (null/true/false)
+            autoPlayMedia: null,
+
+            // Global override for preloading lazy-loaded iframes (null/true/false)
+            preloadIframes: null,
+
+            // Number of milliseconds between automatically proceeding to the
+            // next slide, disabled when set to 0, this value can be overwritten
+            // by using a data-autoslide attribute on your slides
+            autoSlide: 0,
+
+            // Stop auto-sliding after user input
+            autoSlideStoppable: true,
+
+            // Use this method for navigation when auto-sliding
+            autoSlideMethod: null,
+
+            // Specify the average time in seconds that you think you'll spend
+            // presenting each slide. This is used to show a pacing timer in the
+            // speaker view
+            defaultTiming: null,
+
+            // Enable slide navigation via mouse wheel
+            mouseWheel: false,
+
+            // The display mode that will be used to show slides
+            display: 'block',
+
+            // Hide cursor if inactive
+            hideInactiveCursor: true,
+
+            // Time before the cursor is hidden (in ms)
+            hideCursorTime: 5000,
+
+            // Opens links in an iframe preview overlay
+            previewLinks: false,
+
+            // Exposes the reveal.js API through window.postMessage
+            postMessage: true,
+
+            // Dispatches all reveal.js events to the parent window through postMessage
+            postMessageEvents: false,
+
+            // Focuses body when page changes visibility to ensure keyboard shortcuts work
+            focusBodyOnPageVisibilityChange: true,
+
+            // Transition style
+            transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+            // Transition speed
+            transitionSpeed: 'default', // default/fast/slow
+
+            // Transition style for full page slide backgrounds
+            backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+            // Number of slides away from the current that are visible
+            viewDistance: 3,
+
+            // Number of slides away from the current that are visible on mobile
+            // devices. It is advisable to set this to a lower number than
+            // viewDistance in order to save resources.
+            mobileViewDistance: 2,
+
+            // Parallax background image
+            parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+            // Parallax background size
+            parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+            // Number of pixels to move the parallax background per slide
+            // - Calculated automatically unless specified
+            // - Set to 0 to disable movement along an axis
+            parallaxBackgroundHorizontal: null,
+            parallaxBackgroundVertical: null,
+
+            // The maximum number of pages a single slide can expand onto when printing
+            // to PDF, unlimited by default
+            pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+
+            // Prints each fragment on a separate slide
+            pdfSeparateFragments: true,
+
+            // Offset used to reduce the height of content within exported PDF pages.
+            // This exists to account for environment differences based on how you
+            // print to PDF. CLI printing options, like phantomjs and wkpdf, can end
+            // on precisely the total height of the document whereas in-browser
+            // printing has to end one pixel before.
+            pdfPageHeightOffset: -1,
+
+            // Number of slides away from the current that will be preloaded
+            preloadIframes: null,
+
+            // Can be used to globally disable auto-animation
+            autoAnimate: true,
+
+            // Optionally provide a custom element matcher that will be
+            // used to dictate which elements we can animate between.
+            autoAnimateEasing: 'ease',
+
+            // Default settings for our auto-animate transitions, can be
+            // overridden per-slide or per-element via data arguments
+            autoAnimateDuration: 1.0,
+            autoAnimateUnmatched: true
+        });
+
+        // Log when Reveal is ready
+        Reveal.on('ready', function () {
+            console.log('Reveal.js is ready!');
+        });
+    </script>
+
+</body>
+
+</html>
