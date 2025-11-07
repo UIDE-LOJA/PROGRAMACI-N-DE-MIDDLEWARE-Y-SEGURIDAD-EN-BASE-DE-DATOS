@@ -1,0 +1,111 @@
+<p data-start="0" data-end="349">Esta semana exploramos <strong>protocolos de comunicación modernos</strong> y <strong>tecnologías de serialización</strong>, analizando cuándo usar HTTP/2, WebSockets o gRPC según el contexto. Profundizaremos en <strong>servicios de comunicación eficientes</strong> y implementaremos soluciones prácticas con JSON y Protocol Buffers.</p>
+<p data-start="351" data-end="368"><strong>¿Qué veremos?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse;" border="1"
+            data-start="370" data-end="1868">
+            <thead data-start="370" data-end="407">
+                <tr data-start="370" data-end="407">
+                    <th data-start="370" data-end="377" data-col-size="sm">Tema</th>
+                    <th data-start="377" data-end="395" data-col-size="xl">Contenido clave</th>
+                    <th data-start="395" data-end="407" data-col-size="md">Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody data-start="422" data-end="1868">
+                <tr data-start="422" data-end="654">
+                    <td data-start="422" data-end="449" data-col-size="sm">HTTP/2 y Multiplexing</td>
+                    <td data-col-size="xl" data-start="449" data-end="574">Protocolo binario con multiplexing de streams, server push, compresión de headers (HPACK); mejoras de rendimiento sobre HTTP/1.1; cuándo migrar y consideraciones de implementación.</td>
+                    <td data-col-size="md" data-start="574" data-end="654">APIs REST de alta concurrencia, aplicaciones web modernas, CDNs, servicios de streaming.</td>
+                </tr>
+                <tr data-start="655" data-end="870">
+                    <td data-start="655" data-end="682" data-col-size="sm">WebSockets</td>
+                    <td data-col-size="xl" data-start="682" data-end="812">Comunicación bidireccional full-duplex sobre TCP; conexión persistente para tiempo real; manejo de eventos, heartbeat y reconexión; escalabilidad con load balancers.</td>
+                    <td data-col-size="md" data-start="812" data-end="870">Chat en tiempo real, notificaciones push, gaming online, colaboración en vivo, trading financiero.</td>
+                </tr>
+                <tr data-start="871" data-end="1046">
+                    <td data-start="871" data-end="911" data-col-size="sm">gRPC y Protocol Buffers</td>
+                    <td data-col-size="xl" data-start="911" data-end="972">RPC moderno sobre HTTP/2 con serialización binaria; definición de servicios con .proto; streaming bidireccional; generación automática de clientes; interoperabilidad entre lenguajes.</td>
+                    <td data-col-size="md" data-start="972" data-end="1046">Microservicios internos, APIs de alta performance, comunicación entre servicios, sistemas distribuidos.</td>
+                </tr>
+                <tr data-start="1047" data-end="1222">
+                    <td data-start="1047" data-end="1072" data-col-size="sm">Serialización de Datos</td>
+                    <td data-col-size="xl" data-start="1072" data-end="1136">Comparación JSON vs Protocol Buffers vs MessagePack; eficiencia en tamaño y velocidad; esquemas evolutivos; compatibilidad hacia atrás; casos de uso específicos.</td>
+                    <td data-col-size="md" data-start="1136" data-end="1222">APIs públicas (JSON), comunicación interna (Protobuf), IoT (MessagePack), logs estructurados.</td>
+                </tr>
+                <tr data-start="1223" data-end="1400">
+                    <td data-start="1223" data-end="1238" data-col-size="sm">Servicios de Eco y Testing</td>
+                    <td data-col-size="xl" data-start="1238" data-end="1324">Implementación de servicios de prueba que respondan en múltiples formatos; testing automatizado con Postman; scripts de cliente para validación; monitoreo de performance.</td>
+                    <td data-col-size="md" data-start="1324" data-end="1400">Servicios de desarrollo, testing de APIs, validación de protocolos, benchmarking de rendimiento.</td>
+                </tr>
+                <tr data-start="1401" data-end="1576">
+                    <td data-start="1401" data-end="1438" data-col-size="sm">Selección de Protocolo</td>
+                    <td data-col-size="xl" data-start="1438" data-end="1518">Criterios de decisión: latencia, throughput, compatibilidad, complejidad; matriz de decisión para HTTP/2 vs WebSockets vs gRPC; consideraciones de infraestructura y equipo.</td>
+                    <td data-col-size="md" data-start="1518" data-end="1576">APIs públicas vs internas, aplicaciones tiempo real vs batch, equipos polyglot vs mono-stack.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p data-start="1870" data-end="1898"><strong>Objetivos de aprendizaje</strong></p>
+<p data-start="1900" data-end="1930">Al finalizar la semana podrás:</p>
+<ul data-start="1932" data-end="2426">
+    <li data-start="1932" data-end="2044">
+        <p data-start="1934" data-end="2044">Comparar HTTP/2, WebSockets y gRPC, identificando cuándo usar cada protocolo según requisitos específicos.</p>
+    </li>
+    <li data-start="2045" data-end="2133">
+        <p data-start="2047" data-end="2133">Implementar servicios que respondan en <strong data-start="2058" data-end="2069">JSON</strong> y <strong data-start="2071" data-end="2081">Protocol Buffers</strong>, manejando <strong data-start="2084" data-end="2094">serialización</strong> eficiente.</p>
+    </li>
+    <li data-start="2134" data-end="2249">Crear colecciones de Postman y scripts de cliente para testing automatizado de APIs con diferentes protocolos.</li>
+    <li data-start="2250" data-end="2300">Evaluar criterios de selección de protocolos considerando performance, complejidad y casos de uso específicos.</li>
+</ul>
+<p data-start="2428" data-end="2442"><strong>Materiales</strong></p>
+<ul data-start="2444" data-end="2647">
+    <li data-start="2444" data-end="2515">
+        <p data-start="2446" data-end="2515"><strong data-start="2446" data-end="2463">Compendio:</strong> <a
+                title="Compendio - Semana 3" href="https://uide.instructure.com/courses/30176/pages/compendio-semana-3"
+                data-course-type="wikiPages" data-published="true"
+                data-api-endpoint="https://uide.instructure.com/api/v1/courses/30176/pages/compendio-semana-3"
+                data-api-returntype="Page">Semana 3 — Protocolos de Comunicación y Serialización</a>.</p>
+    </li>
+    <li data-start="2444" data-end="2515"><strong>Podcast: </strong><a
+            href="https://open.spotify.com/show/32VcMZv4pFzpde5eyJkZ9y" target="_blank"
+            rel="noopener">https://open.spotify.com/show/32VcMZv4pFzpde5eyJkZ9y</a><strong>&nbsp;</strong></li>
+    <li><strong>Video complementario: </strong>HTTP/2 vs WebSockets vs gRPC - Guía de Selección<br>
+        <strong>URL:</strong> https://www.youtube.com/watch?v=protocols-comparison
+    </li>
+    <li><strong>Documentación técnica: </strong>
+        <ul>
+            <li>gRPC Official Documentation: https://grpc.io/docs/</li>
+            <li>Protocol Buffers Guide: https://developers.google.com/protocol-buffers</li>
+            <li>HTTP/2 RFC 7540: https://tools.ietf.org/html/rfc7540</li>
+        </ul>
+    </li>
+    <li data-start="2516" data-end="2647">
+        <p data-start="2518" data-end="2647"><strong data-start="2518" data-end="2546">Bibliografía base:</strong>
+            Tanenbaum & Van Steen (2017); Kleppmann (2017); Newman (2021); Richardson & Ruby (2007); Fowler (2010).</p>
+    </li>
+</ul>
+<p data-start="2649" data-end="2664"><strong>Actividades</strong></p>
+<ul data-start="2666" data-end="3004">
+    <li data-start="2666" data-end="2723">
+        <p data-start="2668" data-end="2723"><strong data-start="2668" data-end="2686">Lectura guiada</strong> del
+            compendio y análisis comparativo de protocolos de comunicación.</p>
+    </li>
+    <li data-start="2724" data-end="2841">
+        <p data-start="2726" data-end="2841"><strong data-start="2726" data-end="2761">GA-1.1: Sondeo: ¿cuándo usar HTTP/2, WS, gRPC?</strong> evaluación diagnóstica sobre criterios de selección de protocolos — <strong data-start="2826" data-end="2838">1 pt</strong>.</p>
+    </li>
+    <li data-start="2842" data-end="2941">
+        <p data-start="2844" data-end="2941"><strong data-start="2844" data-end="2890">PE-1.3: Lab: eco-service en Node que responde en JSON y Protobuf</strong> implementando servicio multi-formato con testing de performance — <strong data-start="2926" data-end="2938">2.25 pts</strong>.</p>
+    </li>
+    <li data-start="2942" data-end="3004">
+        <p data-start="2944" data-end="3004"><strong data-start="2944" data-end="2967">TA-1.3: Postman collection + script de cliente</strong> automatización de testing y validación de APIs con diferentes protocolos — <strong data-start="2968" data-end="2978">2.25 pts</strong>.</p>
+    </li>
+    <li data-start="3005" data-end="3067">
+        <p data-start="3007" data-end="3067"><strong data-start="3007" data-end="3030">Total de la semana:</strong>
+            <strong data-start="3031" data-end="3041">5.5/30</strong> (Evaluación formativa).
+        </p>
+    </li>
+</ul>
+<p data-start="3261" data-end="3358" data-is-last-node="" data-is-only-node="">Si tienes dudas, deja tu pregunta en el
+    canal de <strong data-start="3310" data-end="3321">DISCORD</strong> o envíame un mensaje por <strong
+        data-start="3347" data-end="3357">Canvas</strong>.</p>

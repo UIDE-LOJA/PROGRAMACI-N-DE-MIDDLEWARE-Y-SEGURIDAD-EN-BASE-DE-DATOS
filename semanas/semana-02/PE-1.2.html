@@ -1,0 +1,86 @@
+<p>Actividad breve para <strong>descomponer una aplicaci&oacute;n</strong> en <strong>capas l&oacute;gicas</strong> (Presentaci&oacute;n, Procesamiento/L&oacute;gica de Negocio y Datos) e identificar <strong>responsabilidades</strong> y <strong>componentes</strong> t&iacute;picos. Usa lo visto en <strong>Semana 2</strong> y mant&eacute;n las respuestas concretas.</p>
+<p><strong>&iquest;Qu&eacute; realizar&aacute;s?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 26%;">Actividad</th>
+                    <th style="width: 49%;">Instrucciones</th>
+                    <th style="width: 25%;">Entregable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1) Selecci&oacute;n de app</td>
+                    <td>Elige una app sencilla y conocida (p. ej., tienda en l&iacute;nea b&aacute;sica, agenda de contactos, notas).</td>
+                    <td>Nombre de la app y una l&iacute;nea de contexto.</td>
+                </tr>
+                <tr>
+                    <td>2) Descomposici&oacute;n en capas</td>
+                    <td>Identifica las 3 capas l&oacute;gicas y define su responsabilidad principal. Mant&eacute;n definiciones cortas.</td>
+                    <td>Matriz con responsabilidades por capa.</td>
+                </tr>
+                <tr>
+                    <td>3) Componentes m&iacute;nimos</td>
+                    <td>Para cada capa, anota 2&ndash;3 componentes t&iacute;picos (ej.: vistas, controladores/servicios, tablas/consultas).</td>
+                    <td>Lista de componentes por capa.</td>
+                </tr>
+                <tr>
+                    <td>4) Interacciones</td>
+                    <td>Describe brevemente c&oacute;mo fluye una operaci&oacute;n de ejemplo &ldquo;Agregar al carrito&rdquo; a trav&eacute;s de las capas.</td>
+                    <td>Flujo en 3&ndash;4 l&iacute;neas.</td>
+                </tr>
+                <tr>
+                    <td>5) Entrega</td>
+                    <td>Sube el documento con tu matriz y flujo (PDF o plantilla Canvas) al finalizar la clase.</td>
+                    <td>Archivo PDF / plantilla Canvas.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p><strong>Matriz de capas (completa de forma concisa):</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Capa</th>
+                    <th style="width: 38%;">Responsabilidades clave (2&ndash;3 vi&ntilde;etas)</th>
+                    <th style="width: 40%;">Componentes m&iacute;nimos (2&ndash;3)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Presentaci&oacute;n</strong></td>
+                    <td>&bull; Renderizar vistas y manejar entradas del usuario<br />&bull; Validaciones b&aacute;sicas en UI</td>
+                    <td>&bull; P&aacute;ginas/Vistas (HTML/CSS/JS o frameworks UI)<br />&bull; Controladores de interfaz/handlers</td>
+                </tr>
+                <tr>
+                    <td><strong>Procesamiento / L&oacute;gica de Negocio</strong></td>
+                    <td>&bull; Reglas de negocio y orquestaci&oacute;n de casos de uso<br />&bull; Coordinaci&oacute;n entre presentaci&oacute;n y datos</td>
+                    <td>&bull; Servicios/Use cases<br />&bull; Controladores de dominio / validadores</td>
+                </tr>
+                <tr>
+                    <td><strong>Datos</strong></td>
+                    <td>&bull; Persistencia y consultas<br />&bull; Integridad y acceso a datos</td>
+                    <td>&bull; Tablas/colecciones<br />&bull; Repositorios/DAOs, consultas SQL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p><strong>Ejemplo de flujo (rellena con tu app):</strong></p>
+<ul>
+    <li>
+        <p><strong>Presentaci&oacute;n</strong>: el usuario pulsa &ldquo;Agregar al carrito&rdquo;.</p>
+    </li>
+    <li>
+        <p><strong>Procesamiento</strong>: el servicio valida stock, calcula precio y genera l&iacute;nea de carrito.</p>
+    </li>
+    <li>
+        <p><strong>Datos</strong>: se inserta/actualiza la tabla <em>cart_items</em> y se retorna el estado del carrito.</p>
+    </li>
+</ul>
+<p>Si tienes dudas durante la actividad, escribe por Canvas.</p>
