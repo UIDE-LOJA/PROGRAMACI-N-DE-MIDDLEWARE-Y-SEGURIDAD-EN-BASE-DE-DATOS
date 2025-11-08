@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PE-1.2 Descomposición en Capas Lógicas</title>
+</head>
+<body>
+<p>Actividad breve para <strong>descomponer una aplicación</strong> en <strong>capas lógicas</strong> (Presentación, Procesamiento/Lógica de Negocio y Datos) e identificar <strong>responsabilidades</strong> y <strong>componentes</strong> típicos. Usa lo visto en <strong>Semana 2</strong> y mantén las respuestas concretas.</p>
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 26%;">Actividad</th>
+                    <th style="width: 49%;">Instrucciones</th>
+                    <th style="width: 25%;">Entregable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1) Selección de app</td>
+                    <td>Elige una app sencilla y conocida (p. ej., tienda en línea básica, agenda de contactos, notas).</td>
+                    <td>Nombre de la app y una línea de contexto.</td>
+                </tr>
+                <tr>
+                    <td>2) Descomposición en capas</td>
+                    <td>Identifica las 3 capas lógicas y define su responsabilidad principal. Mantén definiciones cortas.</td>
+                    <td>Matriz con responsabilidades por capa.</td>
+                </tr>
+                <tr>
+                    <td>3) Componentes mínimos</td>
+                    <td>Para cada capa, anota 2–3 componentes típicos (ej.: vistas, controladores/servicios, tablas/consultas).</td>
+                    <td>Lista de componentes por capa.</td>
+                </tr>
+                <tr>
+                    <td>4) Interacciones</td>
+                    <td>Describe brevemente cómo fluye una operación de ejemplo "Agregar al carrito" a través de las capas.</td>
+                    <td>Flujo en 3–4 líneas.</td>
+                </tr>
+                <tr>
+                    <td>5) Entrega</td>
+                    <td>Sube el documento con tu matriz y flujo (PDF o plantilla Canvas) al finalizar la clase.</td>
+                    <td>Archivo PDF / plantilla Canvas.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p><strong>Matriz de capas (completa de forma concisa):</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Capa</th>
+                    <th style="width: 38%;">Responsabilidades clave (2–3 viñetas)</th>
+                    <th style="width: 40%;">Componentes mínimos (2–3)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Presentación</strong></td>
+                    <td>• Renderizar vistas y manejar entradas del usuario<br />• Validaciones básicas en UI</td>
+                    <td>• Páginas/Vistas (HTML/CSS/JS o frameworks UI)<br />• Controladores de interfaz/handlers</td>
+                </tr>
+                <tr>
+                    <td><strong>Procesamiento / Lógica de Negocio</strong></td>
+                    <td>• Reglas de negocio y orquestación de casos de uso<br />• Coordinación entre presentación y datos</td>
+                    <td>• Servicios/Use cases<br />• Controladores de dominio / validadores</td>
+                </tr>
+                <tr>
+                    <td><strong>Datos</strong></td>
+                    <td>• Persistencia y consultas<br />• Integridad y acceso a datos</td>
+                    <td>• Tablas/colecciones<br />• Repositorios/DAOs, consultas SQL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p><strong>Ejemplo de flujo (rellena con tu app):</strong></p>
+<ul>
+    <li>
+        <p><strong>Presentación</strong>: el usuario pulsa "Agregar al carrito".</p>
+    </li>
+    <li>
+        <p><strong>Procesamiento</strong>: el servicio valida stock, calcula precio y genera línea de carrito.</p>
+    </li>
+    <li>
+        <p><strong>Datos</strong>: se inserta/actualiza la tabla <em>cart_items</em> y se retorna el estado del carrito.</p>
+    </li>
+</ul>
+<p><strong>Información importante</strong></p>
+<ul>
+    <li><strong>Modalidad:</strong> Práctica presencial — <strong>2.25 pts</strong>.</li>
+    <li><strong>Duración:</strong> 90 minutos.</li>
+    <li><strong>Entrega:</strong> Matriz completada al final de la clase.</li>
+</ul>
+<p>Si tienes dudas durante la actividad, levanta la mano para recibir asistencia del docente.</p>
+</body>
+</html>

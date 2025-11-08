@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TA-1.3 Colección Postman y Script de Cliente</title>
+</head>
+<body>
+<p>Esta actividad de trabajo autónomo te permitirá <strong>crear una colección de Postman</strong> y un <strong>script de cliente automatizado</strong> para testing de APIs con diferentes protocolos. Te enfocarás en <em>automatizar pruebas</em>, <em>validar respuestas</em>, y <em>documentar casos de uso</em> de los protocolos estudiados en la Semana 3.</p>
+
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Componente</th>
+                    <th style="width: 50%;" data-col-size="xl">Instrucciones específicas</th>
+                    <th style="width: 25%;" data-col-size="md">Criterios de calidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md">Información personal</td>
+                    <td data-col-size="xl">Incluye tus datos personales (nombre completo, curso, fecha) en el README del proyecto.</td>
+                    <td data-col-size="md">Información completa y presentación profesional.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Colección Postman</td>
+                    <td data-col-size="xl">Crea una colección con mínimo 5 requests: GET, POST (JSON), POST (form-data), PUT, DELETE. Incluye tests automáticos que validen status code y estructura de respuesta.</td>
+                    <td data-col-size="md">Colección funcional con tests automatizados y bien organizada.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Script de cliente</td>
+                    <td data-col-size="xl">Desarrolla un script (Node.js, Python o similar) que consuma una API pública (ej.: JSONPlaceholder, REST Countries) realizando al menos 3 operaciones diferentes. Maneja errores y muestra resultados en consola.</td>
+                    <td data-col-size="md">Script funcional con manejo de errores y salida clara.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Comparación de protocolos</td>
+                    <td data-col-size="xl">Tabla comparativa entre HTTP/2, WebSockets y gRPC: casos de uso, ventajas, desventajas, cuándo usar cada uno.</td>
+                    <td data-col-size="md">Comparación técnica precisa basada en material de clase.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Documentación</td>
+                    <td data-col-size="xl">README.md con: instrucciones de uso de la colección Postman, cómo ejecutar el script, explicación de las pruebas realizadas, y tabla comparativa de protocolos.</td>
+                    <td data-col-size="md">Documentación clara, completa y bien estructurada.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Estructura del proyecto:</strong></p>
+<pre>
+TA-1.3-Testing/
+├── postman/
+│   └── coleccion-api-tests.json (exportada desde Postman)
+├── scripts/
+│   └── cliente.js (o cliente.py)
+├── README.md
+└── comparacion-protocolos.md (o incluido en README)
+</pre>
+
+<p><strong>Ejemplo de test en Postman:</strong></p>
+<pre>
+pm.test("Status code es 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Respuesta contiene campo 'data'", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property('data');
+});
+</pre>
+
+<p><strong>APIs públicas sugeridas para el script:</strong></p>
+<ul>
+    <li>JSONPlaceholder: https://jsonplaceholder.typicode.com/</li>
+    <li>REST Countries: https://restcountries.com/</li>
+    <li>OpenWeather API: https://openweathermap.org/api</li>
+    <li>GitHub API: https://api.github.com/</li>
+</ul>
+
+<p><strong>Elementos a incluir en la tabla comparativa:</strong></p>
+<ul>
+    <li><strong>Protocolo:</strong> HTTP/2, WebSockets, gRPC</li>
+    <li><strong>Tipo de comunicación:</strong> Request-response, bidireccional, streaming</li>
+    <li><strong>Casos de uso:</strong> Cuándo es más apropiado cada uno</li>
+    <li><strong>Ventajas:</strong> Principales beneficios</li>
+    <li><strong>Desventajas:</strong> Limitaciones o complejidades</li>
+</ul>
+
+<p><strong>Especificaciones técnicas de entrega</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Aspecto</th>
+                    <th style="width: 75%;" data-col-size="xl">Especificación requerida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md"><strong>Formato de archivo</strong></td>
+                    <td data-col-size="xl">Repositorio Git (GitHub/GitLab) o archivo ZIP. Nomenclatura: TA-1.3_ApellidoNombre_PostmanScript.zip</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Colección Postman</strong></td>
+                    <td data-col-size="xl">Archivo JSON exportado desde Postman (Collection v2.1 o superior).</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Script</strong></td>
+                    <td data-col-size="xl">Código ejecutable con instrucciones claras de instalación de dependencias.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Originalidad</strong></td>
+                    <td data-col-size="xl">Trabajo original. Máximo 40% contenido IA. Código y análisis propios.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Información importante</strong></p>
+<ul>
+    <li><strong>Modalidad:</strong> Trabajo autónomo individual — <strong>2.25 pts</strong>.</li>
+    <li><strong>Tiempo estimado:</strong> 3 horas de trabajo independiente.</li>
+    <li><strong>Entrega:</strong> Plataforma institucional antes de la fecha límite especificada.</li>
+    <li><strong>Penalización por retraso:</strong> -0.25 puntos por cada día de retraso.</li>
+</ul>
+
+<p><strong>Recursos de apoyo:</strong></p>
+<ul>
+    <li>Documentación de Postman: https://learning.postman.com/</li>
+    <li>Axios (Node.js): https://axios-http.com/</li>
+    <li>Requests (Python): https://requests.readthedocs.io/</li>
+    <li>Compendio Semana 3</li>
+</ul>
+
+<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00, viernes 08:00-09:00)</strong> o envía consulta por <strong>correo institucional</strong> con tiempo de respuesta máximo 48 horas laborables.</p>
+</body>
+</html>
