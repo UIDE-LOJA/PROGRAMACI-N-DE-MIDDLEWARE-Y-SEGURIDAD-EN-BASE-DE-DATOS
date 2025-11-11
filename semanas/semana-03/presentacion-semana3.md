@@ -384,4 +384,4 @@
 
 ---
 
-*Presentación basada en el Compendio Exhaustivo: Protocolos, Formatos y XML en Sistemas Distribuidos - Semana 3, LTI_05A_458 PMSBD-MC*
+*Presentación basada en el Compendio Exhaustivo: Protocolos, Formatos y XML en Sistemas Distribuidos - Semana 3, LTI_05A_458 PMSBD*
