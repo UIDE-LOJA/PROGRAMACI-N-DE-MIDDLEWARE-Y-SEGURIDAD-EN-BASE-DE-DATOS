@@ -21,6 +21,18 @@
             flowchart: { useMaxWidth: true, htmlLabels: false, curve: 'basis' }
         });
     </script>
+
+    <!-- Prism.js para Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-protobuf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml-doc.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
 </head>
 
 <body>
@@ -107,6 +119,179 @@
             </div>
         </div>
 
+        <!-- Slide DEMO: Ejemplo de Bloques de Código -->
+        <div class="slide">
+            <h2><i class="fas fa-code"></i> Ejemplo: Sistema de Código Integrado</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; height: calc(100vh - 200px);">
+                <!-- Bloque de código simple -->
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--uide-accent);">
+                        <i class="fas fa-terminal"></i> Bloque de Código Simple
+                    </h3>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <div class="code-title">
+                                <i class="fas fa-file-code"></i>
+                                Cliente WebSocket
+                            </div>
+                            <span class="code-language">JavaScript</span>
+                        </div>
+                        <div class="code-content">
+                            <pre class="line-numbers"><code class="language-javascript">// Cliente WebSocket básico
+const ws = new WebSocket('ws://localhost:8080');
+
+ws.onopen = () => {
+  console.log('Conectado al servidor');
+  ws.send('Hola desde el Banco de Loja');
+};
+
+ws.onmessage = (event) => {
+  console.log('Mensaje recibido:', event.data);
+};
+
+ws.onerror = (error) => {
+  console.error('Error WebSocket:', error);
+};
+
+ws.onclose = () => {
+  console.log('Conexión cerrada');
+};</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sistema de tabs -->
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--uide-accent);">
+                        <i class="fas fa-layer-group"></i> Tabs Multi-Código
+                    </h3>
+
+                    <div class="code-tabs-container">
+                        <div class="code-tabs-header">
+                            <button class="code-tab-btn active" data-tab="cliente">
+                                <i class="fas fa-desktop"></i> Cliente
+                            </button>
+                            <button class="code-tab-btn" data-tab="servidor">
+                                <i class="fas fa-server"></i> Servidor
+                            </button>
+                            <button class="code-tab-btn" data-tab="proto">
+                                <i class="fas fa-file-contract"></i> .proto
+                            </button>
+                        </div>
+
+                        <!-- Tab Cliente -->
+                        <div class="code-tab-content active" data-tab="cliente">
+                            <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                <div class="code-header">
+                                    <div class="code-title">
+                                        <i class="fas fa-desktop"></i> cliente.js
+                                    </div>
+                                    <span class="code-language">Node.js</span>
+                                </div>
+                                <div class="code-content">
+                                    <pre class="line-numbers"><code class="language-javascript">const WebSocket = require('ws');
+
+const cliente = new WebSocket('ws://localhost:8080');
+
+cliente.on('open', () => {
+  console.log('✓ Conectado');
+  cliente.send(JSON.stringify({
+    tipo: 'transferencia',
+    monto: 1500.00,
+    destino: 'CTA-001'
+  }));
+});
+
+cliente.on('message', (data) => {
+  const respuesta = JSON.parse(data);
+  console.log('Respuesta:', respuesta);
+});</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Servidor -->
+                        <div class="code-tab-content" data-tab="servidor">
+                            <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                <div class="code-header">
+                                    <div class="code-title">
+                                        <i class="fas fa-server"></i> servidor.js
+                                    </div>
+                                    <span class="code-language">Node.js</span>
+                                </div>
+                                <div class="code-content">
+                                    <pre class="line-numbers"><code class="language-javascript">const WebSocket = require('ws');
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', (ws) => {
+  console.log('Cliente conectado');
+
+  ws.on('message', (mensaje) => {
+    const datos = JSON.parse(mensaje);
+    console.log('Recibido:', datos);
+
+    // Procesar transferencia
+    ws.send(JSON.stringify({
+      estado: 'exitoso',
+      id: 'TRX-' + Date.now(),
+      monto: datos.monto
+    }));
+  });
+});</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Proto -->
+                        <div class="code-tab-content" data-tab="proto">
+                            <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                <div class="code-header">
+                                    <div class="code-title">
+                                        <i class="fas fa-file-contract"></i> banco.proto
+                                    </div>
+                                    <span class="code-language">Protocol Buffers</span>
+                                </div>
+                                <div class="code-content">
+                                    <pre class="line-numbers"><code class="language-protobuf">syntax = "proto3";
+
+package banco;
+
+service BancoService {
+  rpc Transferir(TransferenciaRequest)
+    returns (TransferenciaResponse);
+}
+
+message TransferenciaRequest {
+  string cuenta_origen = 1;
+  string cuenta_destino = 2;
+  double monto = 3;
+  string concepto = 4;
+}
+
+message TransferenciaResponse {
+  bool exitoso = 1;
+  string transaccion_id = 2;
+  double saldo_disponible = 3;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: rgba(233, 171, 33, 0.1); border-radius: 8px;">
+                <p style="color: var(--uide-accent); font-size: 0.9rem;">
+                    <i class="fas fa-lightbulb"></i>
+                    <strong>Sistema modular</strong>: Cada slide puede incluir código real con syntax highlighting,
+                    tabs interactivos y botones para copiar
+                </p>
+            </div>
+        </div>
+
         <!-- Slide 4: HTTP/2 -->
         <div class="slide">
             <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-globe"></i> HTTP/2: Protocolo de Transporte Moderno</h2>
@@ -149,6 +334,14 @@
                         <button class="http2-tab" data-demo="push"
                             style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
                             Server Push
+                        </button>
+                        <button class="http2-tab" data-demo="diagrama"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Diagrama
+                        </button>
+                        <button class="http2-tab" data-demo="http2-codigo"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Código
                         </button>
                     </div>
 
@@ -289,6 +482,462 @@
                                 style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
                                 Envío proactivo de recursos sin solicitud previa
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo Diagrama HTTP/2 -->
+                    <div id="demoDiagrama" class="http2-demo-content"
+                        style="display: none; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto;">
+                        <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; padding: 16px; flex: 1; display: flex; flex-direction: column;">
+                            <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 12px 0; font-size: 0.9rem;">
+                                <i class="fas fa-sitemap"></i> Arquitectura HTTP/2 - Multiplexing
+                            </h3>
+                            <div class="mermaid" style="background: white; border-radius: 8px; padding: 16px; flex: 1; display: flex; align-items: center; justify-content: center;">
+sequenceDiagram
+    participant Cliente as Cliente<br/>(App Banco de Loja)
+    participant Conn as Conexión TCP<br/>Única
+    participant Server as Servidor HTTP/2
+
+    Note over Cliente,Server: Conexión TLS establecida
+
+    rect rgb(233, 171, 33, 0.1)
+        Note over Cliente,Server: Multiplexing - Streams Paralelos
+
+        par Stream 1: Saldo
+            Cliente->>+Server: GET /api/saldo<br/>Stream ID: 1
+            Server-->>-Cliente: 200 OK {balance: 5000}<br/>Stream ID: 1
+        and Stream 3: Transacciones
+            Cliente->>+Server: GET /api/transactions<br/>Stream ID: 3
+            Server-->>-Cliente: 200 OK [...]<br/>Stream ID: 3
+        and Stream 5: Perfil
+            Cliente->>+Server: GET /api/profile<br/>Stream ID: 5
+            Server-->>-Cliente: 200 OK {name: "..."}<br/>Stream ID: 5
+        end
+    end
+
+    rect rgb(100, 200, 100, 0.1)
+        Note over Server,Cliente: Server Push - Proactivo
+        Server->>Cliente: PUSH /static/logo.png<br/>Stream ID: 2
+        Server->>Cliente: PUSH /static/styles.css<br/>Stream ID: 4
+    end
+
+    rect rgb(100, 150, 255, 0.1)
+        Note over Cliente,Server: HPACK - Compresión de Headers
+        Note left of Cliente: Header Table<br/>:method: GET<br/>:scheme: https<br/>authorization: ...
+        Note right of Server: Header Table<br/>(mismo contenido)
+        Cliente->>Server: Solo índices de tabla<br/>(ahorro 70-80%)
+    end
+            </div>
+        </div>
+                    </div>
+
+                    <!-- Demo Código HTTP/2 -->
+                    <div id="demoHttp2-codigo" class="http2-demo-content"
+                        style="display: none; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto;">
+
+                        <!-- Tabs de código -->
+                        <div class="code-tabs-container" style="margin: 0;">
+                            <div class="code-tabs-header">
+                                <button class="code-tab-btn active" data-tab="http2-server">
+                                    <i class="fas fa-server"></i> Servidor
+                                </button>
+                                <button class="code-tab-btn" data-tab="http2-client">
+                                    <i class="fas fa-desktop"></i> Cliente
+                                </button>
+                                <button class="code-tab-btn" data-tab="http2-push">
+                                    <i class="fas fa-rocket"></i> Server Push
+                                </button>
+                            </div>
+
+                            <!-- Tab Servidor HTTP/2 -->
+                            <div class="code-tab-content active" data-tab="http2-server">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-server"></i> servidor-http2.js
+                                        </div>
+                                        <span class="code-language">Node.js ES2025</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Servidor HTTP/2 del Banco de Loja - ES2025
+import http2 from 'http2';
+import fs from 'fs/promises';
+import { createReadStream } from 'fs';
+import path from 'path';
+
+class ServidorHTTP2 {
+  #server = null;
+  #config = {
+    port: 8443,
+    keyPath: './certs/server.key',
+    certPath: './certs/server.crt'
+  };
+
+  constructor(config = {}) {
+    this.#config = { ...this.#config, ...config };
+  }
+
+  async iniciar() {
+    // Leer certificados SSL para HTTP/2
+    const [key, cert] = await Promise.all([
+      fs.readFile(this.#config.keyPath),
+      fs.readFile(this.#config.certPath)
+    ]);
+
+    // Crear servidor HTTP/2 seguro
+    this.#server = http2.createSecureServer({
+      key,
+      cert,
+      allowHTTP1: false // Solo HTTP/2
+    });
+
+    this.#server.on('stream', this.#handleStream.bind(this));
+    this.#server.on('error', this.#handleError.bind(this));
+
+    return new Promise((resolve) => {
+      this.#server.listen(this.#config.port, () => {
+        console.log(`Servidor HTTP/2 en puerto ${this.#config.port}`);
+        resolve();
+      });
+    });
+  }
+
+  #handleStream(stream, headers) {
+    const path = headers[':path'];
+    const method = headers[':method'];
+
+    console.log(`${method} ${path}`);
+
+    // Enrutamiento simple
+    const routes = {
+      '/': () => this.#servirHTML(stream),
+      '/api/cuenta': () => this.#servirJSON(stream),
+      '/api/transferencias': () => this.#servirTransferencias(stream)
+    };
+
+    const handler = routes[path] ?? (() => this.#error404(stream));
+    handler();
+  }
+
+  async #servirHTML(stream) {
+    stream.respond({
+      ':status': 200,
+      'content-type': 'text/html; charset=utf-8'
+    });
+
+    stream.end(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Banco de Loja - HTTP/2</title>
+          <link rel="stylesheet" href="/css/styles.css">
+          <script src="/js/app.js"></script>
+        </head>
+        <body>
+          <h1>Bienvenido al Banco de Loja</h1>
+          <p>Conexión segura HTTP/2</p>
+        </body>
+      </html>
+    `);
+  }
+
+  #servirJSON(stream) {
+    stream.respond({
+      ':status': 200,
+      'content-type': 'application/json'
+    });
+
+    stream.end(JSON.stringify({
+      cuenta: 'CTA-00123456',
+      titular: 'Juan Pérez',
+      saldo: 5000.00,
+      tipo: 'Ahorros'
+    }));
+  }
+
+  async #servirTransferencias(stream) {
+    // Simulación de consulta a base de datos
+    const transferencias = [
+      { id: 1, monto: 500, fecha: '2025-01-10', tipo: 'DEBITO' },
+      { id: 2, monto: 1500, fecha: '2025-01-09', tipo: 'CREDITO' }
+    ];
+
+    stream.respond({
+      ':status': 200,
+      'content-type': 'application/json'
+    });
+
+    stream.end(JSON.stringify(transferencias));
+  }
+
+  #error404(stream) {
+    stream.respond({ ':status': 404 });
+    stream.end('No encontrado');
+  }
+
+  #handleError(error) {
+    console.error('Error en servidor:', error);
+  }
+
+  async detener() {
+    return new Promise((resolve) => {
+      this.#server?.close(() => {
+        console.log('Servidor HTTP/2 detenido');
+        resolve();
+      });
+    });
+  }
+}
+
+// Uso
+const servidor = new ServidorHTTP2();
+await servidor.iniciar();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Cliente HTTP/2 -->
+                            <div class="code-tab-content" data-tab="http2-client">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-desktop"></i> cliente-http2.js
+                                        </div>
+                                        <span class="code-language">Node.js ES2025</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Cliente HTTP/2 del Banco de Loja - ES2025
+import http2 from 'http2';
+
+class ClienteHTTP2 {
+  #client = null;
+  #config = {
+    serverUrl: 'https://localhost:8443'
+  };
+
+  constructor(config = {}) {
+    this.#config = { ...this.#config, ...config };
+  }
+
+  conectar() {
+    this.#client = http2.connect(this.#config.serverUrl, {
+      rejectUnauthorized: false // Solo para desarrollo
+    });
+
+    this.#client.on('error', (error) => {
+      console.error('Error de conexión:', error);
+    });
+  }
+
+  // Realizar múltiples requests simultáneos (Multiplexación)
+  async requestsMultiples(rutas) {
+    console.log('Iniciando requests múltiples en paralelo...');
+
+    const promises = rutas.map((ruta) => this.#request(ruta));
+
+    const inicio = Date.now();
+    const resultados = await Promise.all(promises);
+    const duracion = Date.now() - inicio;
+
+    console.log(`Completados ${rutas.length} requests en ${duracion}ms`);
+
+    return resultados;
+  }
+
+  #request(path) {
+    return new Promise((resolve, reject) => {
+      const req = this.#client.request({
+        ':path': path,
+        ':method': 'GET'
+      });
+
+      let data = '';
+
+      req.on('response', (headers) => {
+        console.log(`Respuesta de ${path}: ${headers[':status']}`);
+      });
+
+      req.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      req.on('end', () => {
+        resolve({
+          path,
+          data: data.toString()
+        });
+      });
+
+      req.on('error', reject);
+      req.end();
+    });
+  }
+
+  desconectar() {
+    this.#client?.close();
+  }
+}
+
+// Uso: Multiplexación HTTP/2
+const cliente = new ClienteHTTP2();
+cliente.conectar();
+
+// Realizar 6 requests simultáneos (Multiplexación)
+const rutas = [
+  '/api/cuenta',
+  '/api/transferencias',
+  '/api/movimientos',
+  '/api/saldo',
+  '/api/beneficiarios',
+  '/api/notificaciones'
+];
+
+const resultados = await cliente.requestsMultiples(rutas);
+console.log('Resultados:', resultados);
+
+cliente.desconectar();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Server Push -->
+                            <div class="code-tab-content" data-tab="http2-push">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-rocket"></i> server-push.js
+                                        </div>
+                                        <span class="code-language">Node.js ES2025</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Server Push HTTP/2 - ES2025
+import http2 from 'http2';
+import fs from 'fs/promises';
+
+class ServidorConPush {
+  #server = null;
+
+  async iniciar() {
+    const [key, cert] = await Promise.all([
+      fs.readFile('./certs/server.key'),
+      fs.readFile('./certs/server.crt')
+    ]);
+
+    this.#server = http2.createSecureServer({ key, cert });
+
+    this.#server.on('stream', (stream, headers) => {
+      const path = headers[':path'];
+
+      if (path === '/') {
+        this.#servirConPush(stream);
+      }
+    });
+
+    this.#server.listen(8443);
+  }
+
+  #servirConPush(stream) {
+    // Server Push: Enviar recursos antes de que el cliente los pida
+
+    // 1. Push de CSS
+    stream.pushStream({
+      ':path': '/css/styles.css'
+    }, (err, pushStream) => {
+      if (err) return;
+
+      pushStream.respond({
+        ':status': 200,
+        'content-type': 'text/css'
+      });
+
+      pushStream.end(`
+        body {
+          font-family: Arial, sans-serif;
+          background: #0f1419;
+          color: white;
+        }
+      `);
+    });
+
+    // 2. Push de JavaScript
+    stream.pushStream({
+      ':path': '/js/app.js'
+    }, (err, pushStream) => {
+      if (err) return;
+
+      pushStream.respond({
+        ':status': 200,
+        'content-type': 'application/javascript'
+      });
+
+      pushStream.end(`
+        console.log('App cargada desde Server Push');
+
+        // Inicializar app del Banco de Loja
+        document.addEventListener('DOMContentLoaded', () => {
+          console.log('DOM Ready - HTTP/2 Server Push activo');
+        });
+      `);
+    });
+
+    // 3. Push de datos JSON
+    stream.pushStream({
+      ':path': '/api/cuenta'
+    }, (err, pushStream) => {
+      if (err) return;
+
+      pushStream.respond({
+        ':status': 200,
+        'content-type': 'application/json'
+      });
+
+      pushStream.end(JSON.stringify({
+        cuenta: 'CTA-00123456',
+        saldo: 5000.00,
+        nombre: 'Juan Pérez'
+      }));
+    });
+
+    // Enviar HTML principal
+    stream.respond({
+      ':status': 200,
+      'content-type': 'text/html'
+    });
+
+    stream.end(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Banco de Loja</title>
+          <link rel="stylesheet" href="/css/styles.css">
+          <script src="/js/app.js"></script>
+        </head>
+        <body>
+          <h1>Server Push Activo</h1>
+          <p>Los recursos fueron enviados proactivamente</p>
+        </body>
+      </html>
+    `);
+
+    console.log('HTML enviado con 3 recursos en Server Push');
+  }
+}
+
+// Uso
+const servidor = new ServidorConPush();
+await servidor.iniciar();
+console.log('Servidor con Server Push en puerto 8443');</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; margin-top: 8px;">
+                            <p style="color: var(--uide-accent); font-size: 0.8rem; margin: 0;">
+                                <i class="fas fa-bolt"></i>
+                                <strong>HTTP/2</strong> permite multiplexación (múltiples streams en una conexión),
+                                compresión HPACK de headers y Server Push proactivo de recursos.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1684,6 +2333,14 @@
                             style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
                             Latencia
                         </button>
+                        <button class="ws-tab" data-demo="ws-diagrama"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Diagrama
+                        </button>
+                        <button class="ws-tab" data-demo="codigo"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Código
+                        </button>
                     </div>
 
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
@@ -1792,6 +2449,488 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Demo Diagrama WebSocket -->
+                    <div id="demoWs-diagrama" class="ws-demo-content"
+                        style="display: none; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto;">
+                        <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; padding: 16px; flex: 1; display: flex; flex-direction: column;">
+                            <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 12px 0; font-size: 0.9rem;">
+                                <i class="fas fa-exchange-alt"></i> WebSocket - Comunicación Full-Duplex
+                            </h3>
+                            <div class="mermaid" style="background: white; border-radius: 8px; padding: 16px; flex: 1; display: flex; align-items: center; justify-content: center;">
+sequenceDiagram
+    participant Cliente as Cliente Web<br/>(Banco de Loja)
+    participant Server as Servidor WebSocket
+
+    Note over Cliente,Server: 1. Handshake HTTP Upgrade
+
+    Cliente->>Server: GET /ws HTTP/1.1<br/>Upgrade: websocket<br/>Connection: Upgrade<br/>Sec-WebSocket-Key: xxx
+    Server-->>Cliente: HTTP/1.1 101 Switching Protocols<br/>Upgrade: websocket<br/>Connection: Upgrade
+
+    rect rgb(100, 200, 100, 0.1)
+        Note over Cliente,Server: 2. Conexión WebSocket Establecida (Full-Duplex)
+
+        Cliente->>Server: {type: "auth", token: "JWT..."}
+        Server-->>Cliente: {type: "auth_ok", userId: "12345"}
+
+        par Cliente envía mensaje
+            Cliente->>Server: {type: "subscribe", cuenta: "2100456789"}
+        and Servidor envía notificación
+            Server->>Cliente: {type: "balance", monto: 5000}
+        end
+
+        Note over Server: Nueva transferencia detectada
+
+        Server->>Cliente: {type: "notification",<br/>msg: "Depósito $150"}
+
+        Cliente->>Server: {type: "ack", id: "notif-1"}
+
+        Server->>Cliente: {type: "notification",<br/>msg: "Retiro $50"}
+
+        Cliente->>Server: {type: "get_transactions"}
+        Server-->>Cliente: {type: "transactions",<br/>data: [...]}
+    end
+
+    rect rgb(255, 200, 100, 0.1)
+        Note over Cliente,Server: 3. Cierre de Conexión
+
+        Cliente->>Server: Close Frame (Code: 1000)
+        Server-->>Cliente: Close Frame (Code: 1000)
+    end
+
+    Note over Cliente,Server: Ventajas vs HTTP Polling:<br/>- Latencia: 5-20ms vs 150-250ms<br/>- Sin overhead de headers repetidos<br/>- Eventos instantáneos del servidor
+            </div>
+        </div>
+                    </div>
+
+                    <!-- Demo Código -->
+                    <div id="demoCodigo" class="ws-demo-content"
+                        style="display: none; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto;">
+
+                        <!-- Tabs de código -->
+                        <div class="code-tabs-container" style="margin: 0;">
+                            <div class="code-tabs-header">
+                                <button class="code-tab-btn active" data-tab="ws-cliente">
+                                    <i class="fas fa-desktop"></i> Cliente
+                                </button>
+                                <button class="code-tab-btn" data-tab="ws-servidor">
+                                    <i class="fas fa-server"></i> Servidor
+                                </button>
+                                <button class="code-tab-btn" data-tab="ws-notificaciones">
+                                    <i class="fas fa-bell"></i> Notificaciones
+                                </button>
+                            </div>
+
+                            <!-- Tab Cliente WebSocket -->
+                            <div class="code-tab-content active" data-tab="ws-cliente">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-desktop"></i> cliente-websocket.js
+                                        </div>
+                                        <span class="code-language">JavaScript</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Cliente WebSocket para el Banco de Loja
+// Notificaciones de transferencias en tiempo real 
+
+class WebSocketCliente {
+  #ws = null;
+  #config = {
+    url: 'ws://localhost:8080',
+    token: 'JWT_TOKEN_USUARIO',
+    cuenta: 'CTA-00123456',
+    reconnectDelay: 5000
+  };
+
+  constructor(config = {}) {
+    this.#config = { ...this.#config, ...config };
+    this.conectar();
+  }
+
+  conectar() {
+    this.#ws = new WebSocket(this.#config.url);
+
+    this.#ws.addEventListener('open', this.#onOpen.bind(this));
+    this.#ws.addEventListener('message', this.#onMessage.bind(this));
+    this.#ws.addEventListener('error', this.#onError.bind(this));
+    this.#ws.addEventListener('close', this.#onClose.bind(this));
+  }
+
+  #onOpen() {
+    console.log('Conectado al servidor del Banco de Loja');
+
+    // Autenticar usuario
+    this.enviar({
+      tipo: 'autenticacion',
+      token: this.#config.token,
+      cuenta: this.#config.cuenta
+    });
+  }
+
+  #onMessage(event) {
+    const mensaje = JSON.parse(event.data);
+
+    // Usar pattern matching con object destructuring
+    const handlers = {
+      transferencia_recibida: () => this.#handleTransferenciaRecibida(mensaje),
+      transferencia_enviada: () => this.#handleTransferenciaEnviada(mensaje),
+      alerta_seguridad: () => this.#handleAlertaSeguridad(mensaje)
+    };
+
+    handlers[mensaje.tipo]?.();
+  }
+
+  #handleTransferenciaRecibida(mensaje) {
+    this.mostrarNotificacion({
+      titulo: 'Transferencia Recibida',
+      monto: mensaje.monto,
+      origen: mensaje.cuenta_origen,
+      fecha: new Date(mensaje.timestamp)
+    });
+    this.actualizarSaldo(mensaje.saldo_nuevo);
+  }
+
+  #handleTransferenciaEnviada(mensaje) {
+    console.log(`Transferencia enviada: $${mensaje.monto}`);
+  }
+
+  #handleAlertaSeguridad(mensaje) {
+    this.mostrarAlerta(mensaje.descripcion);
+  }
+
+  #onError(error) {
+    console.error('Error WebSocket:', error);
+    this.mostrarError('Error de conexión con el servidor');
+  }
+
+  #onClose() {
+    console.log('Conexión cerrada');
+    setTimeout(() => {
+      console.log('Reintentando conexión...');
+      this.conectar();
+    }, this.#config.reconnectDelay);
+  }
+
+  enviar(datos) {
+    if (this.#ws?.readyState === WebSocket.OPEN) {
+      this.#ws.send(JSON.stringify(datos));
+    }
+  }
+
+  async mostrarNotificacion(datos) {
+    // Verificar permisos de notificación
+    const permission = await Notification.requestPermission();
+
+    if (permission === 'granted') {
+      const notif = new Notification(datos.titulo, {
+        body: `Monto: $${datos.monto}\nDesde: ${datos.origen}`,
+        icon: '/banco-logo.png'
+      });
+
+      // Reproducir sonido
+      const audio = new Audio('/notificacion.mp3');
+      await audio.play().catch(err => console.log('Audio blocked:', err));
+    }
+  }
+
+  actualizarSaldo(nuevoSaldo) {
+    // Implementación de actualización de saldo
+    console.log(`Nuevo saldo: $${nuevoSaldo}`);
+  }
+
+  mostrarAlerta(descripcion) {
+    // Implementación de alerta
+    console.warn('Alerta de seguridad:', descripcion);
+  }
+
+  mostrarError(mensaje) {
+    // Implementación de error
+    console.error(mensaje);
+  }
+
+  desconectar() {
+    this.#ws?.close();
+  }
+}
+
+// Uso
+const cliente = new WebSocketCliente();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Servidor WebSocket -->
+                            <div class="code-tab-content" data-tab="ws-servidor">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-server"></i> servidor-websocket.js
+                                        </div>
+                                        <span class="code-language">Node.js</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Servidor WebSocket para notificaciones del Banco de Loja 
+import { WebSocketServer, WebSocket } from 'ws';
+import jwt from 'jsonwebtoken';
+
+class ServidorWebSocket {
+  #wss = null;
+  #clientesPorCuenta = new Map();
+  #config = {
+    port: 8080,
+    jwtSecret: process.env.JWT_SECRET
+  };
+
+  constructor(config = {}) {
+    this.#config = { ...this.#config, ...config };
+    this.iniciar();
+  }
+
+  iniciar() {
+    this.#wss = new WebSocketServer({ port: this.#config.port });
+
+    this.#wss.on('connection', this.#handleConnection.bind(this));
+
+    console.log(`Servidor WebSocket iniciado en puerto ${this.#config.port}`);
+  }
+
+  #handleConnection(ws) {
+    console.log('Nueva conexión establecida');
+
+    let cuentaAutenticada = null;
+
+    ws.on('message', async (mensaje) => {
+      try {
+        const datos = JSON.parse(mensaje.toString());
+        await this.#procesarMensaje(ws, datos, (cuenta) => {
+          cuentaAutenticada = cuenta;
+        });
+      } catch (error) {
+        this.#enviarError(ws, 'Error al procesar mensaje');
+      }
+    });
+
+    ws.on('close', () => {
+      if (cuentaAutenticada) {
+        this.#clientesPorCuenta.delete(cuentaAutenticada);
+        console.log(`Cliente desconectado: ${cuentaAutenticada}`);
+      }
+    });
+
+    ws.on('error', (error) => {
+      console.error('Error en WebSocket:', error);
+    });
+  }
+
+  async #procesarMensaje(ws, datos, setCuenta) {
+    const handlers = {
+      autenticacion: async () => await this.#handleAutenticacion(ws, datos, setCuenta)
+    };
+
+    await handlers[datos.tipo]?.();
+  }
+
+  async #handleAutenticacion(ws, datos, setCuenta) {
+    try {
+      // Verificar token JWT
+      const payload = jwt.verify(datos.token, this.#config.jwtSecret);
+
+      // Registrar cliente
+      this.#clientesPorCuenta.set(datos.cuenta, ws);
+      setCuenta(datos.cuenta);
+
+      // Confirmar autenticación
+      this.#enviar(ws, {
+        tipo: 'autenticacion_exitosa',
+        mensaje: 'Conectado al sistema de notificaciones'
+      });
+
+      console.log(`Cliente autenticado: ${datos.cuenta}`);
+    } catch (error) {
+      this.#enviarError(ws, 'Token inválido');
+      ws.close();
+    }
+  }
+
+  #enviar(ws, datos) {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify(datos));
+    }
+  }
+
+  #enviarError(ws, mensaje) {
+    this.#enviar(ws, {
+      tipo: 'error',
+      mensaje
+    });
+  }
+
+  // Método público para notificar transferencias
+  notificarTransferencia(cuentaDestino, datosTransferencia) {
+    const cliente = this.#clientesPorCuenta.get(cuentaDestino);
+
+    if (cliente?.readyState === WebSocket.OPEN) {
+      this.#enviar(cliente, {
+        tipo: 'transferencia_recibida',
+        monto: datosTransferencia.monto,
+        cuenta_origen: datosTransferencia.origen,
+        concepto: datosTransferencia.concepto,
+        timestamp: new Date().toISOString(),
+        saldo_nuevo: datosTransferencia.saldoNuevo
+      });
+    }
+  }
+
+  cerrar() {
+    this.#wss?.close();
+  }
+}
+
+// Exportar clase
+export default ServidorWebSocket;
+
+// Uso
+const servidor = new ServidorWebSocket();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Notificaciones en Tiempo Real -->
+                            <div class="code-tab-content" data-tab="ws-notificaciones">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-bell"></i> sistema-notificaciones.js
+                                        </div>
+                                        <span class="code-language">Node.js</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Sistema de notificaciones del Banco de Loja 
+// Integración con API de transferencias
+import ServidorWebSocket from './servidor-websocket.js';
+import express from 'express';
+
+class APITransferencias {
+  #app = express();
+  #servidorWS = null;
+  #config = {
+    port: 3000
+  };
+
+  constructor(servidorWS, config = {}) {
+    this.#servidorWS = servidorWS;
+    this.#config = { ...this.#config, ...config };
+    this.#configurarMiddleware();
+    this.#configurarRutas();
+  }
+
+  #configurarMiddleware() {
+    this.#app.use(express.json());
+  }
+
+  #configurarRutas() {
+    this.#app.post('/api/transferencias', this.#procesarTransferencia.bind(this));
+  }
+
+  async #procesarTransferencia(req, res) {
+    const { cuenta_origen, cuenta_destino, monto, concepto } = req.body;
+
+    try {
+      // 1. Validar saldo disponible
+      const saldoOrigen = await this.#obtenerSaldo(cuenta_origen);
+
+      if (saldoOrigen < monto) {
+        return res.status(400).json({
+          error: 'Saldo insuficiente',
+          saldo_disponible: saldoOrigen
+        });
+      }
+
+      // 2. Ejecutar transferencia en base de datos
+      const transaccion = await this.#ejecutarTransferencia({
+        origen: cuenta_origen,
+        destino: cuenta_destino,
+        monto,
+        concepto
+      });
+
+      // 3. Actualizar saldos de manera atómica
+      await Promise.all([
+        this.#actualizarSaldo(cuenta_origen, -monto),
+        this.#actualizarSaldo(cuenta_destino, monto)
+      ]);
+
+      // 4. Obtener nuevo saldo y notificar vía WebSocket al destinatario
+      const saldoNuevo = await this.#obtenerSaldo(cuenta_destino);
+
+      this.#servidorWS.notificarTransferencia(cuenta_destino, {
+        monto,
+        origen: cuenta_origen,
+        concepto,
+        saldoNuevo
+      });
+
+      res.json({
+        success: true,
+        transaccion_id: transaccion.id,
+        mensaje: 'Transferencia exitosa',
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (error) {
+      console.error('Error en transferencia:', error);
+
+      res.status(500).json({
+        error: 'Error al procesar transferencia',
+        detalle: error.message
+      });
+    }
+  }
+
+  async #obtenerSaldo(cuenta) {
+    // Simulación - en producción: consulta a base de datos
+    return 5000.00;
+  }
+
+  async #ejecutarTransferencia(datos) {
+    // Simulación - en producción: transacción SQL
+    return {
+      id: `TRX-${Date.now()}`,
+      ...datos,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  async #actualizarSaldo(cuenta, diferencia) {
+    // Simulación - en producción: UPDATE a base de datos
+    console.log(`Actualizando saldo de ${cuenta}: ${diferencia}`);
+  }
+
+  iniciar() {
+    this.#app.listen(this.#config.port, () => {
+      console.log(`API REST en puerto ${this.#config.port}`);
+    });
+  }
+}
+
+// Uso
+const servidorWS = new ServidorWebSocket();
+const api = new APITransferencias(servidorWS);
+api.iniciar();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; margin-top: 8px;">
+                            <p style="color: var(--uide-accent); font-size: 0.8rem; margin: 0;">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>WebSocket</strong> permite notificaciones instantáneas sin polling.
+                                El cliente recibe eventos en tiempo real cuando hay transferencias.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1834,6 +2973,14 @@
                         <button class="grpc-tab" data-demo="payload"
                             style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
                             JSON vs Protobuf
+                        </button>
+                        <button class="grpc-tab" data-demo="grpc-diagrama"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Diagrama
+                        </button>
+                        <button class="grpc-tab" data-demo="grpc-codigo"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Código
                         </button>
                     </div>
 
@@ -1910,6 +3057,494 @@
                                 style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
                                 Presiona "Iniciar Demo" para comparar tamaños
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo Diagrama gRPC -->
+                    <div id="demoGrpc-diagrama" class="grpc-demo-content"
+                        style="display: none; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto;">
+                        <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; padding: 16px; flex: 1; display: flex; flex-direction: column;">
+                            <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 12px 0; font-size: 0.9rem;">
+                                <i class="fas fa-project-diagram"></i> Arquitectura gRPC - Tipos de Streaming
+                            </h3>
+                            <div class="mermaid" style="background: white; border-radius: 8px; padding: 16px; flex: 1; display: flex; align-items: center; justify-content: center;">
+graph TB
+    subgraph "Cliente Banco de Loja"
+        C1[Cliente gRPC]
+    end
+
+    subgraph "Servidor gRPC sobre HTTP/2"
+        S1[Servicio Transferencias]
+        S2[Servicio Consultas]
+        S3[Servicio Notificaciones]
+    end
+
+    subgraph "1. Unary RPC - Request/Response Simple"
+        C1 -->|"TransferirFondos(req)"| S1
+        S1 -->|"TransferResponse"| C1
+        style S1 fill:#4ade80
+    end
+
+    subgraph "2. Server Streaming - Múltiples Respuestas"
+        C1 -->|"ObtenerHistorial(req)"| S2
+        S2 -->|"Stream: Transacción 1"| C1
+        S2 -->|"Stream: Transacción 2"| C1
+        S2 -->|"Stream: Transacción N"| C1
+        style S2 fill:#60a5fa
+    end
+
+    subgraph "3. Bidirectional Streaming - Comunicación Continua"
+        C1 <-->|"MonitorearCuenta()"| S3
+        S3 -->|"Evento: Depósito"| C1
+        S3 -->|"Evento: Retiro"| C1
+        C1 -->|"ACK confirmación"| S3
+        style S3 fill:#f59e0b
+    end
+
+    subgraph "Protocol Buffers - Serialización"
+        PB[.proto Schema]
+        PB -->|Genera| GEN1[Código Cliente]
+        PB -->|Genera| GEN2[Código Servidor]
+    end
+
+    S1 -.->|Usa| PB
+    S2 -.->|Usa| PB
+    S3 -.->|Usa| PB
+
+    style C1 fill:#e9ab21,stroke:#333,stroke-width:3px
+    style PB fill:#94a3b8,stroke:#333,stroke-width:2px
+            </div>
+        </div>
+                    </div>
+
+                    <!-- Demo Código gRPC -->
+                    <div id="demoGrpc-codigo" class="grpc-demo-content"
+                        style="display: none; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto;">
+
+                        <!-- Tabs de código -->
+                        <div class="code-tabs-container" style="margin: 0;">
+                            <div class="code-tabs-header">
+                                <button class="code-tab-btn active" data-tab="grpc-proto">
+                                    <i class="fas fa-file-contract"></i> .proto
+                                </button>
+                                <button class="code-tab-btn" data-tab="grpc-server">
+                                    <i class="fas fa-server"></i> Servidor
+                                </button>
+                                <button class="code-tab-btn" data-tab="grpc-client">
+                                    <i class="fas fa-desktop"></i> Cliente
+                                </button>
+                            </div>
+
+                            <!-- Tab .proto Definition -->
+                            <div class="code-tab-content active" data-tab="grpc-proto">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-file-contract"></i> banco.proto
+                                        </div>
+                                        <span class="code-language">Protocol Buffers</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-protobuf">syntax = "proto3";
+
+package banco.loja;
+
+// Servicio de Transferencias del Banco de Loja
+service TransferenciaService {
+  // RPC unario: Una solicitud, una respuesta
+  rpc TransferirFondos(TransferenciaRequest) returns (TransferenciaResponse);
+
+  // RPC streaming del servidor: Una solicitud, múltiples respuestas
+  rpc ConsultarMovimientos(ConsultaRequest) returns (stream Movimiento);
+
+  // RPC streaming bidireccional: Cliente y servidor envían streams
+  rpc MonitorearTransacciones(stream MonitorRequest) returns (stream MonitorResponse);
+}
+
+// Mensaje de solicitud de transferencia
+message TransferenciaRequest {
+  string cuenta_origen = 1;
+  string cuenta_destino = 2;
+  double monto = 3;
+  string concepto = 4;
+  string referencia = 5;
+}
+
+// Mensaje de respuesta de transferencia
+message TransferenciaResponse {
+  bool exitoso = 1;
+  string transaccion_id = 2;
+  double saldo_disponible = 3;
+  string mensaje = 4;
+  int64 timestamp = 5;
+}
+
+// Mensaje de consulta de movimientos
+message ConsultaRequest {
+  string cuenta = 1;
+  int64 fecha_inicio = 2;
+  int64 fecha_fin = 3;
+}
+
+// Mensaje de movimiento individual
+message Movimiento {
+  string id = 1;
+  string tipo = 2;  // "CREDITO" o "DEBITO"
+  double monto = 3;
+  string concepto = 4;
+  int64 fecha = 5;
+}
+
+// Mensajes para monitoring en tiempo real
+message MonitorRequest {
+  string cuenta = 1;
+}
+
+message MonitorResponse {
+  string evento = 1;
+  string detalle = 2;
+  int64 timestamp = 3;
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Servidor gRPC -->
+                            <div class="code-tab-content" data-tab="grpc-server">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-server"></i> servidor-grpc.js
+                                        </div>
+                                        <span class="code-language">Node.js</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Servidor gRPC del Banco de Loja 
+import grpc from '@grpc/grpc-js';
+import protoLoader from '@grpc/proto-loader';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+class ServidorGRPC {
+  #server = null;
+  #proto = null;
+  #config = {
+    port: '0.0.0.0:50051',
+    protoPath: join(__dirname, 'banco.proto')
+  };
+
+  constructor(config = {}) {
+    this.#config = { ...this.#config, ...config };
+    this.#cargarProto();
+  }
+
+  #cargarProto() {
+    const packageDefinition = protoLoader.loadSync(this.#config.protoPath, {
+      keepCase: true,
+      longs: String,
+      enums: String,
+      defaults: true,
+      oneofs: true
+    });
+
+    this.#proto = grpc.loadPackageDefinition(packageDefinition).banco.loja;
+  }
+
+  // 1. RPC Unario: TransferirFondos
+  async #transferirFondos(call, callback) {
+    const { cuenta_origen, cuenta_destino, monto, concepto } = call.request;
+
+    console.log(`Transferencia: $${monto} de ${cuenta_origen} a ${cuenta_destino}`);
+
+    try {
+      // Simular validación y procesamiento asíncrono
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const saldoDisponible = 5000.00;
+
+      if (monto > saldoDisponible) {
+        callback({
+          code: grpc.status.FAILED_PRECONDITION,
+          message: 'Saldo insuficiente'
+        });
+        return;
+      }
+
+      // Transferencia exitosa
+      const response = {
+        exitoso: true,
+        transaccion_id: `TRX-${Date.now()}`,
+        saldo_disponible: saldoDisponible - monto,
+        mensaje: 'Transferencia procesada exitosamente',
+        timestamp: Date.now()
+      };
+
+      callback(null, response);
+    } catch (error) {
+      callback({
+        code: grpc.status.INTERNAL,
+        message: error.message
+      });
+    }
+  }
+
+  // 2. RPC Streaming del Servidor: ConsultarMovimientos
+  #consultarMovimientos(call) {
+    const { cuenta, fecha_inicio, fecha_fin } = call.request;
+
+    console.log(`Consultando movimientos de ${cuenta}`);
+
+    const movimientos = [
+      { id: 'MOV-001', tipo: 'CREDITO', monto: 1500.00, concepto: 'Depósito', fecha: Date.now() - 86400000 },
+      { id: 'MOV-002', tipo: 'DEBITO', monto: 500.00, concepto: 'Retiro ATM', fecha: Date.now() - 43200000 },
+      { id: 'MOV-003', tipo: 'CREDITO', monto: 2000.00, concepto: 'Transferencia recibida', fecha: Date.now() - 7200000 },
+      { id: 'MOV-004', tipo: 'DEBITO', monto: 300.00, concepto: 'Pago servicios', fecha: Date.now() - 3600000 }
+    ];
+
+    // Enviar cada movimiento como stream
+    movimientos.forEach((mov, index) => {
+      setTimeout(() => {
+        call.write(mov);
+        if (index === movimientos.length - 1) {
+          call.end();
+        }
+      }, index * 200);
+    });
+  }
+
+  // 3. RPC Streaming Bidireccional: MonitorearTransacciones
+  #monitorearTransacciones(call) {
+    call.on('data', (request) => {
+      console.log(`Monitoreando cuenta: ${request.cuenta}`);
+
+      const eventos = ['INICIO_SESION', 'TRANSFERENCIA_ENVIADA', 'TRANSFERENCIA_RECIBIDA'];
+
+      eventos.forEach((evento, index) => {
+        setTimeout(() => {
+          call.write({
+            evento,
+            detalle: `Evento de cuenta ${request.cuenta}`,
+            timestamp: Date.now()
+          });
+        }, index * 1000);
+      });
+    });
+
+    call.on('end', () => {
+      call.end();
+    });
+
+    call.on('error', (error) => {
+      console.error('Error en stream:', error);
+    });
+  }
+
+  async iniciar() {
+    this.#server = new grpc.Server();
+
+    this.#server.addService(this.#proto.TransferenciaService.service, {
+      TransferirFondos: this.#transferirFondos.bind(this),
+      ConsultarMovimientos: this.#consultarMovimientos.bind(this),
+      MonitorearTransacciones: this.#monitorearTransacciones.bind(this)
+    });
+
+    return new Promise((resolve, reject) => {
+      this.#server.bindAsync(
+        this.#config.port,
+        grpc.ServerCredentials.createInsecure(),
+        (err, port) => {
+          if (err) {
+            console.error('Error al iniciar servidor:', err);
+            reject(err);
+            return;
+          }
+          console.log(`Servidor gRPC escuchando en puerto ${port}`);
+          this.#server.start();
+          resolve(port);
+        }
+      );
+    });
+  }
+
+  detener() {
+    return new Promise((resolve) => {
+      this.#server?.tryShutdown(() => {
+        console.log('Servidor gRPC detenido');
+        resolve();
+      });
+    });
+  }
+}
+
+// Uso
+const servidor = new ServidorGRPC();
+await servidor.iniciar();</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab Cliente gRPC -->
+                            <div class="code-tab-content" data-tab="grpc-client">
+                                <div class="code-container" style="margin: 0; border: none; border-radius: 0;">
+                                    <div class="code-header">
+                                        <div class="code-title">
+                                            <i class="fas fa-desktop"></i> cliente-grpc.js
+                                        </div>
+                                        <span class="code-language">Node.js</span>
+                                    </div>
+                                    <div class="code-content" style="max-height: 450px;">
+                                        <pre class="line-numbers"><code class="language-javascript">// Cliente gRPC del Banco de Loja 
+import grpc from '@grpc/grpc-js';
+import protoLoader from '@grpc/proto-loader';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+class ClienteGRPC {
+  #client = null;
+  #config = {
+    serverUrl: 'localhost:50051',
+    protoPath: join(__dirname, 'banco.proto')
+  };
+
+  constructor(config = {}) {
+    this.#config = { ...this.#config, ...config };
+    this.#conectar();
+  }
+
+  #conectar() {
+    const packageDefinition = protoLoader.loadSync(this.#config.protoPath, {
+      keepCase: true,
+      longs: String,
+      enums: String,
+      defaults: true,
+      oneofs: true
+    });
+
+    const bancoProto = grpc.loadPackageDefinition(packageDefinition).banco.loja;
+
+    this.#client = new bancoProto.TransferenciaService(
+      this.#config.serverUrl,
+      grpc.credentials.createInsecure()
+    );
+  }
+
+  // ===== EJEMPLO 1: RPC Unario =====
+  async transferirFondos(datosTransferencia) {
+    console.log('\n=== Realizando transferencia (RPC Unario) ===');
+
+    return new Promise((resolve, reject) => {
+      this.#client.TransferirFondos(datosTransferencia, (error, response) => {
+        if (error) {
+          console.error('Error en transferencia:', error.message);
+          reject(error);
+          return;
+        }
+
+        console.log('Transferencia exitosa:');
+        console.log(`  ID: ${response.transaccion_id}`);
+        console.log(`  Saldo disponible: $${response.saldo_disponible}`);
+        console.log(`  Mensaje: ${response.mensaje}`);
+
+        resolve(response);
+      });
+    });
+  }
+
+  // ===== EJEMPLO 2: RPC Streaming del Servidor =====
+  async consultarMovimientos(consultaParams) {
+    console.log('\n=== Consultando movimientos (Streaming del Servidor) ===');
+
+    return new Promise((resolve, reject) => {
+      const movimientos = [];
+      const call = this.#client.ConsultarMovimientos(consultaParams);
+
+      call.on('data', (movimiento) => {
+        const signo = movimiento.tipo === 'CREDITO' ? '+' : '-';
+        console.log(`${signo} $${movimiento.monto} - ${movimiento.concepto} [${movimiento.id}]`);
+        movimientos.push(movimiento);
+      });
+
+      call.on('end', () => {
+        console.log('Consulta de movimientos completada');
+        resolve(movimientos);
+      });
+
+      call.on('error', (error) => {
+        console.error('Error:', error.message);
+        reject(error);
+      });
+    });
+  }
+
+  // ===== EJEMPLO 3: RPC Streaming Bidireccional =====
+  monitorearTransacciones(cuenta, duracionMs = 5000) {
+    console.log('\n=== Monitoreando transacciones (Streaming Bidireccional) ===');
+
+    const call = this.#client.MonitorearTransacciones();
+
+    call.on('data', (response) => {
+      const fecha = new Date(parseInt(response.timestamp));
+      console.log(`[${fecha.toISOString()}] ${response.evento}: ${response.detalle}`);
+    });
+
+    call.on('end', () => {
+      console.log('Monitoreo finalizado');
+    });
+
+    call.on('error', (error) => {
+      console.error('Error en monitoreo:', error.message);
+    });
+
+    // Enviar solicitud de monitoreo
+    call.write({ cuenta });
+
+    // Cerrar stream después del tiempo especificado
+    setTimeout(() => {
+      call.end();
+    }, duracionMs);
+
+    return call;
+  }
+}
+
+// ===== USO DEL CLIENTE =====
+const cliente = new ClienteGRPC();
+
+// Ejemplo 1: Transferencia
+await cliente.transferirFondos({
+  cuenta_origen: 'CTA-00123456',
+  cuenta_destino: 'CTA-00789012',
+  monto: 1500.00,
+  concepto: 'Pago de servicios',
+  referencia: 'REF-001'
+});
+
+// Ejemplo 2: Consultar movimientos
+const movimientos = await cliente.consultarMovimientos({
+  cuenta: 'CTA-00123456',
+  fecha_inicio: Date.now() - 30 * 86400000,
+  fecha_fin: Date.now()
+});
+
+// Ejemplo 3: Monitorear transacciones
+cliente.monitorearTransacciones('CTA-00123456', 5000);</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; margin-top: 8px;">
+                            <p style="color: var(--uide-accent); font-size: 0.8rem; margin: 0;">
+                                <i class="fas fa-rocket"></i>
+                                <strong>gRPC</strong> usa HTTP/2 y Protobuf para comunicación ultra-rápida entre microservicios.
+                                Soporta RPC unario, streaming del servidor, cliente y bidireccional.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -2709,6 +4344,10 @@
                             style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
                             Validación
                         </button>
+                        <button class="json-tab" data-demo="json-codigo"
+                            style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
+                            Código
+                        </button>
                     </div>
 
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
@@ -2786,6 +4425,396 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Demo Código -->
+                    <div id="demoCodigo" class="json-demo-content"
+                        style="display: none; flex-direction: column; gap: 10px; height: 100%;">
+                        <div class="code-subtabs-container"
+                            style="display: flex; gap: 8px; padding: 8px; background: rgba(15, 20, 25, 0.4); border-radius: 8px;">
+                            <button class="json-code-subtab active" data-subtab="schema"
+                                style="flex: 1; padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+                                Schema
+                            </button>
+                            <button class="json-code-subtab" data-subtab="validador"
+                                style="flex: 1; padding: 8px 12px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+                                Validador
+                            </button>
+                            <button class="json-code-subtab" data-subtab="api"
+                                style="flex: 1; padding: 8px 12px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+                                API
+                            </button>
+                        </div>
+
+                        <!-- Schema Definition -->
+                        <div id="jsonCodeSchema" class="json-code-content"
+                            style="display: flex; flex: 1; min-height: 0;">
+                            <div class="code-container" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                                <div class="code-header">
+                                    <span class="code-filename">transaccion.schema.json</span>
+                                    <button class="code-copy-btn" onclick="copyCode(this)">
+                                        <i class="fas fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                                <div style="flex: 1; overflow-y: auto;">
+                                    <pre style="margin: 0;"><code class="language-json">{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bancodeloja.fin.ec/schemas/transaccion.json",
+  "title": "Transacción Bancaria",
+  "description": "Esquema de validación para transacciones del Banco de Loja",
+  "type": "object",
+  "required": ["id", "tipo", "origen", "destino", "monto", "fecha"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^TXN-[0-9]{10}$",
+      "description": "Identificador único de transacción"
+    },
+    "tipo": {
+      "type": "string",
+      "enum": ["transferencia", "pago", "retiro", "deposito"],
+      "description": "Tipo de operación bancaria"
+    },
+    "origen": {
+      "type": "object",
+      "required": ["cuenta", "titular"],
+      "properties": {
+        "cuenta": {
+          "type": "string",
+          "pattern": "^[0-9]{10}$",
+          "description": "Número de cuenta de 10 dígitos"
+        },
+        "titular": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 100
+        },
+        "banco": {
+          "type": "string",
+          "default": "Banco de Loja"
+        }
+      }
+    },
+    "destino": {
+      "type": "object",
+      "required": ["cuenta", "titular"],
+      "properties": {
+        "cuenta": {
+          "type": "string",
+          "pattern": "^[0-9]{10}$"
+        },
+        "titular": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 100
+        },
+        "banco": {
+          "type": "string"
+        }
+      }
+    },
+    "monto": {
+      "type": "number",
+      "minimum": 0.01,
+      "maximum": 50000,
+      "multipleOf": 0.01,
+      "description": "Monto en USD, máximo $50,000"
+    },
+    "fecha": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Fecha y hora en formato ISO 8601"
+    },
+    "descripcion": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string",
+          "format": "ipv4"
+        },
+        "dispositivo": {
+          "type": "string"
+        },
+        "geolocalizacion": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+            "lon": { "type": "number", "minimum": -180, "maximum": 180 }
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Validador -->
+                        <div id="jsonCodeValidador" class="json-code-content"
+                            style="display: none; flex: 1; min-height: 0;">
+                            <div class="code-container" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                                <div class="code-header">
+                                    <span class="code-filename">validador.js</span>
+                                    <button class="code-copy-btn" onclick="copyCode(this)">
+                                        <i class="fas fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                                <div style="flex: 1; overflow-y: auto;">
+                                    <pre style="margin: 0;"><code class="language-javascript">import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
+import { readFile } from 'fs/promises';
+
+class ValidadorTransacciones {
+  #ajv;
+  #schema;
+  #validador;
+
+  constructor() {
+    this.#ajv = new Ajv({
+      allErrors: true,
+      verbose: true,
+      strict: false,
+      coerceTypes: false
+    });
+    addFormats(this.#ajv);
+  }
+
+  async cargarSchema(rutaSchema) {
+    const contenido = await readFile(rutaSchema, 'utf-8');
+    this.#schema = JSON.parse(contenido);
+    this.#validador = this.#ajv.compile(this.#schema);
+    console.log('Schema cargado correctamente');
+  }
+
+  validar(transaccion) {
+    const valido = this.#validador(transaccion);
+
+    if (valido) {
+      return {
+        valido: true,
+        mensaje: 'Transacción válida'
+      };
+    }
+
+    const errores = this.#validador.errors?.map(error => ({
+      campo: error.instancePath || error.params?.missingProperty,
+      tipo: error.keyword,
+      mensaje: error.message,
+      valorActual: error.data
+    })) ?? [];
+
+    return {
+      valido: false,
+      errores,
+      mensaje: `Validación fallida: ${errores.length} error(es) encontrado(s)`
+    };
+  }
+
+  async validarLote(transacciones) {
+    const resultados = {
+      total: transacciones.length,
+      validas: 0,
+      invalidas: 0,
+      detalles: []
+    };
+
+    for (const [index, transaccion] of transacciones.entries()) {
+      const resultado = this.validar(transaccion);
+
+      if (resultado.valido) {
+        resultados.validas++;
+      } else {
+        resultados.invalidas++;
+        resultados.detalles.push({
+          indice: index,
+          id: transaccion?.id ?? 'sin-id',
+          errores: resultado.errores
+        });
+      }
+    }
+
+    return resultados;
+  }
+}
+
+// Ejemplo de uso
+const validador = new ValidadorTransacciones();
+await validador.cargarSchema('./transaccion.schema.json');
+
+// Transacción válida
+const transaccionValida = {
+  id: 'TXN-1234567890',
+  tipo: 'transferencia',
+  origen: {
+    cuenta: '1234567890',
+    titular: 'Juan Pérez'
+  },
+  destino: {
+    cuenta: '0987654321',
+    titular: 'María García',
+    banco: 'Banco Pichincha'
+  },
+  monto: 150.50,
+  fecha: new Date().toISOString(),
+  descripcion: 'Pago de servicios'
+};
+
+const resultado1 = validador.validar(transaccionValida);
+console.log('Resultado:', resultado1);
+
+// Transacción inválida
+const transaccionInvalida = {
+  id: 'TXN-123',
+  tipo: 'hackeo',
+  origen: { cuenta: '123', titular: 'X' },
+  monto: -500
+};
+
+const resultado2 = validador.validar(transaccionInvalida);
+console.log('Errores encontrados:', resultado2.errores?.length ?? 0);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- API Integration -->
+                        <div id="jsonCodeApi" class="json-code-content"
+                            style="display: none; flex: 1; min-height: 0;">
+                            <div class="code-container" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                                <div class="code-header">
+                                    <span class="code-filename">api-transacciones.js</span>
+                                    <button class="code-copy-btn" onclick="copyCode(this)">
+                                        <i class="fas fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                                <div style="flex: 1; overflow-y: auto;">
+                                    <pre style="margin: 0;"><code class="language-javascript">import express from 'express';
+import { ValidadorTransacciones } from './validador.js';
+
+class APITransacciones {
+  #app;
+  #validador;
+  #puerto;
+
+  constructor(puerto = 3000) {
+    this.#app = express();
+    this.#validador = new ValidadorTransacciones();
+    this.#puerto = puerto;
+
+    this.#configurarMiddleware();
+    this.#configurarRutas();
+  }
+
+  #configurarMiddleware() {
+    this.#app.use(express.json());
+
+    this.#app.use((err, req, res, next) => {
+      if (err instanceof SyntaxError && err.status === 400) {
+        return res.status(400).json({
+          error: 'JSON inválido',
+          mensaje: err.message
+        });
+      }
+      next();
+    });
+  }
+
+  #configurarRutas() {
+    this.#app.post('/api/transacciones', async (req, res) => {
+      try {
+        const resultado = this.#validador.validar(req.body);
+
+        if (!resultado.valido) {
+          return res.status(400).json({
+            error: 'Validación fallida',
+            detalles: resultado.errores
+          });
+        }
+
+        const transaccionProcesada = await this.#procesarTransaccion(req.body);
+
+        res.status(201).json({
+          mensaje: 'Transacción procesada exitosamente',
+          id: transaccionProcesada.id,
+          estado: 'completada',
+          timestamp: new Date().toISOString()
+        });
+      } catch (error) {
+        console.error('Error procesando transacción:', error);
+        res.status(500).json({
+          error: 'Error interno del servidor',
+          mensaje: error?.message ?? 'Error desconocido'
+        });
+      }
+    });
+
+    this.#app.post('/api/transacciones/lote', async (req, res) => {
+      try {
+        const { transacciones } = req.body;
+
+        if (!Array.isArray(transacciones)) {
+          return res.status(400).json({
+            error: 'El campo "transacciones" debe ser un array'
+          });
+        }
+
+        const resultados = await this.#validador.validarLote(transacciones);
+
+        res.json({
+          mensaje: 'Validación de lote completada',
+          resumen: {
+            total: resultados.total,
+            validas: resultados.validas,
+            invalidas: resultados.invalidas,
+            tasa_exito: ((resultados.validas / resultados.total) * 100).toFixed(2) + '%'
+          },
+          errores: resultados.detalles
+        });
+      } catch (error) {
+        res.status(500).json({
+          error: 'Error procesando lote',
+          mensaje: error?.message ?? 'Error desconocido'
+        });
+      }
+    });
+
+    this.#app.get('/api/schema', (req, res) => {
+      res.json(this.#validador.obtenerSchema());
+    });
+  }
+
+  async #procesarTransaccion(transaccion) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    return {
+      ...transaccion,
+      estado: 'completada',
+      timestamp_procesamiento: new Date().toISOString()
+    };
+  }
+
+  async iniciar() {
+    await this.#validador.cargarSchema('./transaccion.schema.json');
+
+    this.#app.listen(this.#puerto, () => {
+      console.log(`API escuchando en puerto ${this.#puerto}`);
+      console.log(`POST /api/transacciones - Procesar transacción`);
+      console.log(`POST /api/transacciones/lote - Validar lote`);
+      console.log(`GET  /api/schema - Obtener schema`);
+    });
+  }
+}
+
+// Iniciar servidor
+const api = new APITransacciones(3000);
+await api.iniciar();</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2815,7 +4844,46 @@
                         }
                     });
                 }
+
+                // Sub-tabs de código JSON
+                const jsonCodeSubtabs = document.querySelectorAll('.json-code-subtab');
+                jsonCodeSubtabs.forEach(subtab => {
+                    subtab.addEventListener('click', function () {
+                        const subtabType = this.getAttribute('data-subtab');
+                        switchJsonCodeSubtab(subtabType);
+                    });
+                });
             });
+
+            function switchJsonCodeSubtab(subtabType) {
+                // Actualizar botones de sub-tabs
+                document.querySelectorAll('.json-code-subtab').forEach(btn => {
+                    if (btn.getAttribute('data-subtab') === subtabType) {
+                        btn.style.background = 'var(--uide-accent)';
+                        btn.style.color = '#0f1419';
+                    } else {
+                        btn.style.background = 'rgba(255,255,255,0.1)';
+                        btn.style.color = '#e2e8f0';
+                    }
+                });
+
+                // Mostrar/ocultar contenido
+                document.querySelectorAll('.json-code-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                const activeContent = document.getElementById(`jsonCode${subtabType.charAt(0).toUpperCase() + subtabType.slice(1)}`);
+                if (activeContent) {
+                    activeContent.style.display = 'flex';
+                }
+
+                // Resaltar código con Prism
+                if (window.Prism) {
+                    setTimeout(() => {
+                        Prism.highlightAll();
+                    }, 10);
+                }
+            }
 
             function switchJsonDemo(demoType) {
                 currentJsonDemo = demoType;
@@ -5569,7 +7637,7 @@
 
     <!-- Slide Counter -->
     <div class="slide-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">19</span>
+        <span id="currentSlide">1</span> / <span id="totalSlides">20</span>
     </div>
 
     <!-- Progress Bar -->
@@ -5577,6 +7645,124 @@
 
     <!-- External JavaScript -->
     <script src="presentacion.js"></script>
+
+    <!-- JavaScript para Sistema de Código -->
+    <script>
+        // ===== INICIALIZACIÓN DE PRISM.JS =====
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar Prism en todos los bloques de código
+            Prism.highlightAll();
+
+            // ===== TABS DE CÓDIGO =====
+            const setupCodeTabs = () => {
+                const tabContainers = document.querySelectorAll('.code-tabs-container');
+
+                tabContainers.forEach(container => {
+                    const tabButtons = container.querySelectorAll('.code-tab-btn');
+                    const tabContents = container.querySelectorAll('.code-tab-content');
+
+                    tabButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const targetTab = button.getAttribute('data-tab');
+
+                            // Remover clase active de todos los botones y contenidos
+                            tabButtons.forEach(btn => btn.classList.remove('active'));
+                            tabContents.forEach(content => content.classList.remove('active'));
+
+                            // Agregar clase active al botón clickeado
+                            button.classList.add('active');
+
+                            // Mostrar el contenido correspondiente
+                            const targetContent = container.querySelector(`.code-tab-content[data-tab="${targetTab}"]`);
+                            if (targetContent) {
+                                targetContent.classList.add('active');
+
+                                // Re-highlight del código cuando se muestra la tab
+                                setTimeout(() => {
+                                    const codeBlocks = targetContent.querySelectorAll('code[class*="language-"]');
+                                    codeBlocks.forEach(block => {
+                                        Prism.highlightElement(block);
+                                    });
+                                }, 10);
+                            }
+                        });
+                    });
+                });
+            };
+
+            // Inicializar tabs
+            setupCodeTabs();
+
+            // ===== BOTONES DE COPIAR CÓDIGO =====
+            const setupCopyButtons = () => {
+                const copyButtons = document.querySelectorAll('.copy-code-btn');
+
+                copyButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const codeContainer = button.closest('.code-container');
+                        const codeBlock = codeContainer.querySelector('code');
+                        const codeText = codeBlock.textContent;
+
+                        // Copiar al portapapeles
+                        navigator.clipboard.writeText(codeText).then(() => {
+                            // Cambiar apariencia del botón
+                            const originalHTML = button.innerHTML;
+                            button.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                            button.classList.add('copied');
+
+                            // Restaurar después de 2 segundos
+                            setTimeout(() => {
+                                button.innerHTML = originalHTML;
+                                button.classList.remove('copied');
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Error al copiar:', err);
+                            button.innerHTML = '<i class="fas fa-times"></i> Error';
+                            setTimeout(() => {
+                                button.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+                            }, 2000);
+                        });
+                    });
+                });
+            };
+
+            // Inicializar botones de copiar
+            setupCopyButtons();
+
+            // ===== RE-HIGHLIGHT AL CAMBIAR DE SLIDE =====
+            // Escuchar cambios de slide para re-highlight
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const slide = mutation.target;
+                        if (slide.classList.contains('active')) {
+                            // Re-highlight código en el slide activo
+                            setTimeout(() => {
+                                const codeBlocks = slide.querySelectorAll('code[class*="language-"]');
+                                codeBlocks.forEach(block => {
+                                    Prism.highlightElement(block);
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            });
+
+            // Observar todos los slides
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                observer.observe(slide, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            });
+
+            // Highlight inicial del primer slide
+            setTimeout(() => {
+                Prism.highlightAll();
+            }, 500);
+        });
+    </script>
 </body>
 
 </html>
