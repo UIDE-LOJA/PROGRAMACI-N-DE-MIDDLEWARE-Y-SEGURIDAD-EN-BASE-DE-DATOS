@@ -70,45 +70,72 @@ class PresentationController {
     renderMermaidInCurrentSlide() {
         const currentSlideElement = this.slides[this.currentSlide];
         const mermaidElements = currentSlideElement.querySelectorAll('.mermaid');
-        
+
         if (mermaidElements.length > 0) {
             console.log(`🔄 Processing ${mermaidElements.length} Mermaid diagrams in slide ${this.currentSlide + 1}`);
-            
+
             mermaidElements.forEach((element, index) => {
                 // Check if this element has already been processed
-                if (!element.hasAttribute('data-processed')) {
+                if (!element.hasAttribute('data-processed') && !element.hasAttribute('data-processing')) {
                     console.log(`📊 Rendering diagram ${index + 1} in slide ${this.currentSlide + 1}`);
-                    
-                    // Use setTimeout to ensure the slide is fully visible
+
+                    // Mark as processing immediately to prevent duplicate renders
+                    element.setAttribute('data-processing', 'true');
+
+                    // Use setTimeout to ensure the slide is fully visible in DOM
                     setTimeout(() => {
                         if (typeof mermaid !== 'undefined') {
                             try {
-                                // Mark as processing
-                                element.setAttribute('data-processing', 'true');
-                                
+                                // CRITICAL: Verify element is in DOM and visible
+                                const isVisible = element.offsetParent !== null;
+                                const isInDOM = document.body.contains(element);
+
+                                if (!isVisible || !isInDOM) {
+                                    console.warn(`⚠️ Element ${index + 1} not visible or not in DOM yet, skipping`);
+                                    element.removeAttribute('data-processing');
+                                    return;
+                                }
+
+                                // Store original content for potential re-render
+                                const originalContent = element.textContent;
+
                                 // Use mermaid.run for better control
                                 if (mermaid.run) {
-                                    mermaid.run(undefined, element).then(() => {
+                                    mermaid.run({ nodes: [element] }).then(() => {
                                         element.setAttribute('data-processed', 'true');
                                         element.removeAttribute('data-processing');
                                         console.log(`✅ Diagram ${index + 1} rendered successfully`);
                                     }).catch(error => {
                                         console.error(`❌ Error rendering diagram ${index + 1}:`, error);
                                         element.removeAttribute('data-processing');
+                                        // Restore original content on error
+                                        element.textContent = originalContent;
                                     });
                                 } else {
-                                    // Fallback to mermaid.init
-                                    mermaid.init(undefined, element);
-                                    element.setAttribute('data-processed', 'true');
+                                    // Fallback to mermaid.init (deprecated but safer)
+                                    try {
+                                        mermaid.init(undefined, element);
+                                        element.setAttribute('data-processed', 'true');
+                                        element.removeAttribute('data-processing');
+                                        console.log(`✅ Diagram ${index + 1} rendered with init`);
+                                    } catch (initError) {
+                                        console.error(`❌ Error with mermaid.init:`, initError);
+                                        element.removeAttribute('data-processing');
+                                    }
                                 }
                             } catch (error) {
                                 console.error(`❌ Critical error rendering diagram ${index + 1}:`, error);
                                 element.removeAttribute('data-processing');
                             }
+                        } else {
+                            console.warn('⚠️ Mermaid library not loaded');
+                            element.removeAttribute('data-processing');
                         }
-                    }, 100 * (index + 1)); // Stagger rendering slightly
-                } else {
+                    }, 200 + (index * 150)); // Stagger rendering to avoid race conditions
+                } else if (element.hasAttribute('data-processed')) {
                     console.log(`✅ Diagram ${index + 1} already processed`);
+                } else {
+                    console.log(`⏳ Diagram ${index + 1} is currently processing`);
                 }
             });
         }
