@@ -1,0 +1,17 @@
+{
+  "name": "pe-1.3-servicio-eco",
+  "version": "1.0.0",
+  "description": "Servicio de eco - Comparacion JSON vs Protobuf",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "author": "Estudiante UIDE",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "protobufjs": "^7.2.5"
+  }
+}

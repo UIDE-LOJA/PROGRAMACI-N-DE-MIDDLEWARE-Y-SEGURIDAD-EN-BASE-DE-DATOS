@@ -277,6 +277,25 @@ th {
     max-width: 1200px;
 }
 
+/* Scrollbar personalizado para content-grid */
+.content-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-grid::-webkit-scrollbar-track {
+    background: rgba(15, 20, 25, 0.5);
+    border-radius: 4px;
+}
+
+.content-grid::-webkit-scrollbar-thumb {
+    background: rgba(233, 171, 33, 0.5);
+    border-radius: 4px;
+}
+
+.content-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(233, 171, 33, 0.7);
+}
+
 .feature-card {
     background: rgba(15, 20, 25, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.2);

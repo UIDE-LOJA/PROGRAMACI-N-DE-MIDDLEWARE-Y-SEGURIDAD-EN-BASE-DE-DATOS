@@ -21,33 +21,28 @@
             <tbody>
                 <tr>
                     <td>1) Configuración inicial</td>
-                    <td>Crea un proyecto Node.js con Express. Instala dependencias necesarias: express, protobufjs (o similar).</td>
-                    <td>Proyecto inicializado con package.json.</td>
+                    <td>Descarga el proyecto base PE-1.3. Instala dependencias con <code>npm install</code></td>
+                    <td>Proyecto funcionando</td>
                 </tr>
                 <tr>
-                    <td>2) Definición de esquema</td>
-                    <td>Define un archivo .proto simple para el mensaje de eco (ej.: EchoRequest con campo "message" y EchoResponse con "message" y "timestamp").</td>
-                    <td>Archivo .proto con esquema básico.</td>
+                    <td>2) Ejecutar servidor</td>
+                    <td>Inicia el servidor con <code>npm start</code> y verifica que corre en puerto 3000</td>
+                    <td>Captura del servidor iniciado</td>
                 </tr>
                 <tr>
-                    <td>3) Implementación del servicio</td>
-                    <td>Crea endpoints POST /echo/json y POST /echo/protobuf que reciban datos y respondan en el formato correspondiente. El servicio debe devolver el mensaje recibido más un timestamp.</td>
-                    <td>Código del servicio con ambos endpoints funcionales.</td>
+                    <td>3) Probar endpoints</td>
+                    <td>Prueba el endpoint JSON con Postman o curl. Observa el tamaño de la respuesta en los headers</td>
+                    <td>Captura de petición y respuesta JSON</td>
                 </tr>
                 <tr>
-                    <td>4) Testing básico</td>
-                    <td>Prueba ambos endpoints con herramientas como Postman o curl. Verifica que JSON responda correctamente y que Protobuf serialice/deserialice apropiadamente.</td>
-                    <td>Capturas de pantalla o logs de pruebas exitosas.</td>
+                    <td>4) Comparación automática</td>
+                    <td>Ejecuta <code>npm test</code> para comparar automáticamente JSON vs Protobuf (5 peticiones a cada endpoint)</td>
+                    <td>Captura de resultados de comparación</td>
                 </tr>
                 <tr>
-                    <td>5) Comparación de performance</td>
-                    <td>Realiza 10 peticiones a cada endpoint y compara: tamaño de respuesta (bytes) y tiempo de respuesta promedio. Documenta los resultados.</td>
-                    <td>Tabla comparativa con métricas de performance.</td>
-                </tr>
-                <tr>
-                    <td>6) Documentación</td>
-                    <td>Incluye README con instrucciones de instalación, ejecución y uso de los endpoints. Explica brevemente las diferencias observadas entre JSON y Protobuf.</td>
-                    <td>README.md completo.</td>
+                    <td>5) Análisis de resultados</td>
+                    <td>Completa la tabla de análisis en el README con tus observaciones sobre tamaños y diferencias</td>
+                    <td>README.md con análisis completado</td>
                 </tr>
             </tbody>
         </table>
@@ -56,15 +51,16 @@
 
 <p><strong>Estructura mínima del proyecto:</strong></p>
 <pre>
-proyecto-eco/
+PE-1.3/
 ├── package.json
-├── server.js (o index.js)
+├── server.js
 ├── echo.proto
-├── README.md
-└── tests/ (opcional: capturas o scripts de prueba)
+├── test.js
+├── capturas/
+└── README.md
 </pre>
 
-<p><strong>Ejemplo de esquema .proto:</strong></p>
+<h2>Ejemplo de esquema .proto</h2>
 <pre>
 syntax = "proto3";
 
@@ -78,13 +74,25 @@ message EchoResponse {
 }
 </pre>
 
+<p><strong>Comandos principales:</strong></p>
+<pre>
+npm install    # Instalar dependencias
+npm start      # Iniciar servidor
+npm test       # Ejecutar comparación
+</pre>
+
+<p><strong>Ejemplo de prueba con curl:</strong></p>
+<pre>
+curl -X POST http://localhost:3000/echo/json \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Hola mundo"}'
+</pre>
+
 <p><strong>Criterios de evaluación:</strong></p>
 <ul>
-    <li>Servicio funcional con ambos endpoints (JSON y Protobuf)</li>
-    <li>Serialización/deserialización correcta en ambos formatos</li>
-    <li>Testing documentado con resultados</li>
-    <li>Comparación de performance con métricas concretas</li>
-    <li>Documentación clara y completa</li>
+    <li>Servidor funciona correctamente (40%)</li>
+    <li>Pruebas realizadas y documentadas con capturas (30%)</li>
+    <li>Análisis de resultados completado en README (30%)</li>
 </ul>
 
 <p><strong>Especificaciones técnicas de entrega</strong></p>
@@ -100,15 +108,19 @@ message EchoResponse {
             <tbody>
                 <tr>
                     <td><strong>Formato de entrega</strong></td>
-                    <td>Repositorio Git (GitHub/GitLab) o archivo ZIP con código fuente completo. Nomenclatura: PE-1.3_ApellidoNombre_EcoService.zip</td>
+                    <td>Repositorio Git en GitHub o GitLab. Nombre del repositorio: PE-1.3-ApellidoNombre-EcoService</td>
                 </tr>
                 <tr>
                     <td><strong>Código</strong></td>
-                    <td>Código limpio y comentado. Debe ejecutarse sin errores con "npm install" y "npm start".</td>
+                    <td>Código limpio. Debe ejecutarse sin errores con "npm install" y "npm start". Incluir archivo .gitignore</td>
                 </tr>
                 <tr>
                     <td><strong>Documentación</strong></td>
-                    <td>README.md con instrucciones claras, ejemplos de uso y análisis de resultados.</td>
+                    <td>README.md con análisis de resultados completado. Incluir capturas en carpeta capturas/</td>
+                </tr>
+                <tr>
+                    <td><strong>Entrega</strong></td>
+                    <td>Compartir URL del repositorio (debe ser público o dar acceso al docente)</td>
                 </tr>
             </tbody>
         </table>

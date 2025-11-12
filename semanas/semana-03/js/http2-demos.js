@@ -50,6 +50,18 @@ function switchHttp2Demo(demoType) {
     const activeDemo = document.getElementById(`demo${demoType.charAt(0).toUpperCase() + demoType.slice(1)}`);
     if (activeDemo) {
         activeDemo.style.display = 'flex';
+        
+        // Renderizar Mermaid si es el diagrama
+        if (demoType === 'diagrama') {
+            setTimeout(() => {
+                const mermaidElements = activeDemo.querySelectorAll('.mermaid');
+                mermaidElements.forEach(element => {
+                    if (!element.getAttribute('data-processed')) {
+                        mermaid.run({ nodes: [element] });
+                    }
+                });
+            }, 100);
+        }
     }
 
     // Mostrar/ocultar controles según demo

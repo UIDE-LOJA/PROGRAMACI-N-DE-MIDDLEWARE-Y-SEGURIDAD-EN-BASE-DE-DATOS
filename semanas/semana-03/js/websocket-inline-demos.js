@@ -1,4 +1,5 @@
-// ===== WEBSOCKETS SIMULACIONES =====
+// ===== WEBSOCKET DEMOS INLINE =====
+// Variable global para el demo actual
 let currentWsDemo = 'handshake';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -323,8 +324,8 @@ function runChatDemo(numMessages) {
         { user: 'Cliente', text: 'Perfecto! Ya funcionó. Gracias!', color: '#60a5fa' },
         { user: 'Soporte BdL', text: '¿Necesita algo más?', color: '#a78bfa' },
         { user: 'Cliente', text: 'No, eso es todo. Excelente servicio!', color: '#60a5fa' },
-        { user: 'Soporte BdL', text: '✓ Gracias por confiar en Banco de Loja', color: '#a78bfa' },
-        { user: 'Cliente', text: '¡Hasta luego!', color: '#60a5fa' }
+        { user: 'Soporte BdL', text: 'Gracias por confiar en Banco de Loja ■', color: '#a78bfa' },
+        { user: 'Cliente', text: 'Hasta luego!', color: '#60a5fa' }
     ];
 
     const selectedMessages = messages.slice(0, numMessages);

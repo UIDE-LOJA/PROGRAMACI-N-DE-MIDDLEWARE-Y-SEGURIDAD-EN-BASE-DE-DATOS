@@ -1,0 +1,58 @@
+ESTRUCTURA SIMPLIFICADA DEL PROYECTO PE-1.3
+============================================
+
+PE-1.3/
+│
+├── package.json                    (Dependencias: express, protobufjs)
+├── server.js                       (Servidor con 2 endpoints)
+├── echo.proto                      (Esquema Protobuf)
+├── test.js                         (Script de comparacion)
+│
+├── README.md                       (Documentacion principal + analisis)
+├── INSTRUCCIONES-RAPIDAS.md        (Guia paso a paso)
+├── .gitignore                      (Archivos a ignorar)
+│
+└── capturas/                       (Guardar capturas aqui)
+    └── .gitkeep
+
+
+ARCHIVOS PRINCIPALES
+====================
+
+1. server.js
+   - Endpoint POST /echo/json
+   - Endpoint POST /echo/protobuf
+   - Puerto 3000
+
+2. echo.proto
+   - EchoRequest (message)
+   - EchoResponse (message, timestamp)
+
+3. test.js
+   - Hace 5 peticiones a cada endpoint
+   - Compara tamanos
+   - Muestra porcentaje de reduccion
+
+
+COMANDOS
+========
+
+npm install    -> Instalar dependencias
+npm start      -> Iniciar servidor
+npm test       -> Ejecutar comparacion
+
+
+ENTREGA
+=======
+
+Repositorio Git: GitHub o GitLab
+
+Nombre: PE-1.3-ApellidoNombre-EcoService
+
+Debe incluir:
+- Todos los archivos del proyecto
+- Capturas en carpeta capturas/
+- README.md con analisis completado
+- .gitignore (sin node_modules)
+
+Compartir URL del repositorio con el docente
