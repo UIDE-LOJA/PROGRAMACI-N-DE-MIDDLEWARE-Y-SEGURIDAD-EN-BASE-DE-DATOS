@@ -68,7 +68,8 @@
                     <i class="fas fa-network-wired"></i> Unidad 2: Protocolos y Seguridad en Middleware
                 </h3>
                 <p style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.4; margin: 0.5rem 0;">
-                    <strong>Semana 3</strong> • HTTP/2, WebSockets, gRPC • Formatos: JSON, Protobuf, MessagePack • XML básico y rol enterprise
+                    <strong>Semana 3</strong> • HTTP/2, WebSockets, gRPC • Formatos: JSON, Protobuf, MessagePack • XML
+                    básico y rol enterprise
                 </p>
                 <p style="color: #cbd5e1; font-size: 1rem; margin-top: 1rem; font-style: italic;">
                     Protocolos de comunicación y formatos de intercambio de datos en sistemas distribuidos
@@ -76,7 +77,170 @@
             </div>
         </div>
 
-        <!-- Slide 2: Objetivos -->
+        <!-- Slide 2: Actividades y Herramientas -->
+        <div class="slide">
+            <h2><i class="fas fa-clipboard-list"></i> Actividades Calificadas y Herramientas</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 40px;">
+                <!-- Columna Izquierda: Actividades Calificadas -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div
+                        style="padding: 20px; background: rgba(15, 20, 25, 0.6); border-radius: 12px; border: 2px solid var(--uide-primary);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="color: var(--uide-primary); font-size: 1.3rem; margin: 0;">
+                                <i class="fas fa-clipboard-check"></i> Actividades Calificadas
+                            </h3>
+                            <button onclick="copyActivitiesPMSBD()" class="teacher-copy-btn-pmsbd"
+                                style="display: none; background: rgba(96, 165, 250, 0.2); border: 1px solid #60a5fa; color: #60a5fa; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;"
+                                onmouseover="this.style.background='rgba(96, 165, 250, 0.3)'"
+                                onmouseout="this.style.background='rgba(96, 165, 250, 0.2)'">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <!-- GA-1.1 -->
+                            <div
+                                style="background: rgba(96, 165, 250, 0.15); padding: 15px; border-radius: 10px; border-left: 4px solid #60a5fa;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <span style="color: #e2e8f0; font-size: 1rem; font-weight: 600;">
+                                        <i class="fas fa-poll"></i> GA-1.1: Sondeo de protocolos
+                                    </span>
+                                    <span style="color: var(--uide-accent); font-size: 1rem; font-weight: 700;">1
+                                        pt</span>
+                                </div>
+                                <p style="color: #cbd5e1; font-size: 0.85rem; margin: 0; line-height: 1.4;">
+                                    ¿Cuándo usar HTTP/2, WebSockets, gRPC?
+                                </p>
+                            </div>
+
+                            <!-- PE-1.3 -->
+                            <div
+                                style="background: rgba(74, 222, 128, 0.15); padding: 15px; border-radius: 10px; border-left: 4px solid #4ade80;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <span style="color: #e2e8f0; font-size: 1rem; font-weight: 600;">
+                                        <i class="fas fa-flask"></i> PE-1.3: Lab eco-service
+                                    </span>
+                                    <span style="color: var(--uide-accent); font-size: 1rem; font-weight: 700;">2.25
+                                        pts</span>
+                                </div>
+                                <p style="color: #cbd5e1; font-size: 0.85rem; margin: 0; line-height: 1.4;">
+                                    Servicio Node.js con JSON y Protobuf
+                                </p>
+                            </div>
+
+                            <!-- TA-1.3 -->
+                            <div
+                                style="background: rgba(233, 171, 33, 0.15); padding: 15px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <span style="color: #e2e8f0; font-size: 1rem; font-weight: 600;">
+                                        <i class="fas fa-file-code"></i> TA-1.3: Postman collection
+                                    </span>
+                                    <span style="color: var(--uide-accent); font-size: 1rem; font-weight: 700;">2.25
+                                        pts</span>
+                                </div>
+                                <p style="color: #cbd5e1; font-size: 0.85rem; margin: 0; line-height: 1.4;">
+                                    Collection + script de cliente
+                                </p>
+                            </div>
+
+                            <!-- Total -->
+                            <div
+                                style="background: rgba(233, 171, 33, 0.2); padding: 15px; border-radius: 10px; border: 2px solid var(--uide-accent); margin-top: 5px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: var(--uide-accent); font-size: 1.1rem; font-weight: 700;">
+                                        <i class="fas fa-star"></i> Total Semana 3
+                                    </span>
+                                    <span style="color: var(--uide-accent); font-size: 1.3rem; font-weight: 700;">5.5
+                                        pts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Herramientas -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div
+                        style="padding: 20px; background: rgba(35, 53, 110, 0.3); border-radius: 12px; border: 2px solid #60a5fa;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="color: #60a5fa; font-size: 1.3rem; margin: 0;">
+                                <i class="fas fa-tools"></i> Herramientas
+                            </h3>
+                            <button onclick="copyToolsPMSBD()" class="teacher-copy-btn-pmsbd"
+                                style="display: none; background: rgba(74, 222, 128, 0.2); border: 1px solid #4ade80; color: #4ade80; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;"
+                                onmouseover="this.style.background='rgba(74, 222, 128, 0.3)'"
+                                onmouseout="this.style.background='rgba(74, 222, 128, 0.2)'">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div
+                                style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #4ade80;">
+                                <i class="fas fa-code" style="color: #4ade80; margin-right: 8px;"></i>
+                                <span style="color: #e2e8f0; font-size: 0.95rem; font-weight: 500;">Node.js +
+                                    Express</span>
+                            </div>
+                            <div
+                                style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #4ade80;">
+                                <i class="fas fa-cube" style="color: #4ade80; margin-right: 8px;"></i>
+                                <span style="color: #e2e8f0; font-size: 0.95rem; font-weight: 500;">Protocol Buffers
+                                    (Protobuf)</span>
+                            </div>
+                            <div
+                                style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #4ade80;">
+                                <i class="fas fa-rocket" style="color: #4ade80; margin-right: 8px;"></i>
+                                <span style="color: #e2e8f0; font-size: 0.95rem; font-weight: 500;">Postman (testing de
+                                    APIs)</span>
+                            </div>
+                            <div
+                                style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #4ade80;">
+                                <i class="fas fa-network-wired" style="color: #4ade80; margin-right: 8px;"></i>
+                                <span style="color: #e2e8f0; font-size: 0.95rem; font-weight: 500;">gRPC
+                                    framework</span>
+                            </div>
+                            <div
+                                style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #4ade80;">
+                                <i class="fas fa-bolt" style="color: #4ade80; margin-right: 8px;"></i>
+                                <span style="color: #e2e8f0; font-size: 0.95rem; font-weight: 500;">WebSockets</span>
+                            </div>
+                            <div
+                                style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #4ade80;">
+                                <i class="fas fa-book" style="color: #4ade80; margin-right: 8px;"></i>
+                                <span style="color: #e2e8f0; font-size: 0.95rem; font-weight: 500;">Documentación
+                                    técnica</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <p style="margin: 0; font-size: 0.9rem; color: #e2e8f0; font-weight: 600;">
+                                <i class="fas fa-graduation-cap"></i> Unidad 2: Protocolos y Seguridad
+                            </p>
+                            <button onclick="copyUnitTitlePMSBD()" class="teacher-copy-btn-pmsbd"
+                                style="display: none; background: rgba(233, 171, 33, 0.2); border: 1px solid var(--uide-accent); color: var(--uide-accent); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; transition: all 0.3s;"
+                                onmouseover="this.style.background='rgba(233, 171, 33, 0.3)'"
+                                onmouseout="this.style.background='rgba(233, 171, 33, 0.2)'">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <p style="margin: 0; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+                            HTTP/2, WebSockets, gRPC • JSON, Protobuf, MessagePack • XML básico y rol enterprise
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Objetivos -->
         <div class="slide">
             <h2><i class="fas fa-bullseye"></i> Objetivos de la Presentación</h2>
             <ul>
@@ -838,23 +1002,29 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
     <div class="slide">
         <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-plug"></i> WebSockets: Comparación de Comunicación</h2>
 
-        <div style="height: calc(100vh - 200px); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 0 2rem;">
+        <div
+            style="height: calc(100vh - 200px); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 0 2rem;">
             <!-- Columna Izquierda: HTTP Polling -->
             <div style="display: flex; flex-direction: column; height: 100%; justify-content: center;">
-                <div style="text-align: center; padding: 1rem; background: rgba(248, 113, 113, 0.1); border-radius: 10px; border: 2px solid #f87171; margin-bottom: 2rem;">
+                <div
+                    style="text-align: center; padding: 1rem; background: rgba(248, 113, 113, 0.1); border-radius: 10px; border: 2px solid #f87171; margin-bottom: 2rem;">
                     <i class="fas fa-sync-alt" style="font-size: 2.5rem; color: #f87171;"></i>
                     <h3 style="color: #f87171; margin: 0.8rem 0 0.3rem 0; font-size: 1.6rem;">HTTP Polling</h3>
                     <p style="color: #94a3b8; font-size: 1rem; margin: 0;">Conexiones Repetidas</p>
                 </div>
 
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 12px; padding: 3rem; display: flex; align-items: center; justify-content: center;">
+                <div
+                    style="background: rgba(15, 20, 25, 0.6); border-radius: 12px; padding: 3rem; display: flex; align-items: center; justify-content: center;">
                     <div style="font-size: 1.6rem; text-align: center; line-height: 3.5; color: #e2e8f0;">
-                        <i class="fas fa-mobile-alt"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-server"></i><br>
+                        <i class="fas fa-mobile-alt"></i> <i class="fas fa-arrow-right"></i> <i
+                            class="fas fa-server"></i><br>
                         <span style="font-size: 1.1rem; color: #94a3b8;">¿Hay notificaciones?</span><br>
-                        <i class="fas fa-server"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-mobile-alt"></i><br>
+                        <i class="fas fa-server"></i> <i class="fas fa-arrow-right"></i> <i
+                            class="fas fa-mobile-alt"></i><br>
                         <span style="font-size: 1.1rem; color: #94a3b8;">No</span><br>
                         <span style="font-size: 1.1rem; color: #94a3b8;">...</span><br>
-                        <i class="fas fa-server"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-mobile-alt"></i><br>
+                        <i class="fas fa-server"></i> <i class="fas fa-arrow-right"></i> <i
+                            class="fas fa-mobile-alt"></i><br>
                         <span style="font-size: 1.1rem; color: #4ade80;">Sí: Depósito $150</span>
                     </div>
                 </div>
@@ -862,18 +1032,22 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
 
             <!-- Columna Derecha: WebSocket -->
             <div style="display: flex; flex-direction: column; height: 100%; justify-content: center;">
-                <div style="text-align: center; padding: 1rem; background: rgba(74, 222, 128, 0.1); border-radius: 10px; border: 2px solid #4ade80; margin-bottom: 2rem;">
+                <div
+                    style="text-align: center; padding: 1rem; background: rgba(74, 222, 128, 0.1); border-radius: 10px; border: 2px solid #4ade80; margin-bottom: 2rem;">
                     <i class="fas fa-plug" style="font-size: 2.5rem; color: #4ade80;"></i>
                     <h3 style="color: #4ade80; margin: 0.8rem 0 0.3rem 0; font-size: 1.6rem;">WebSocket</h3>
                     <p style="color: #94a3b8; font-size: 1rem; margin: 0;">Conexión Persistente</p>
                 </div>
 
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 12px; padding: 3rem; display: flex; align-items: center; justify-content: center;">
+                <div
+                    style="background: rgba(15, 20, 25, 0.6); border-radius: 12px; padding: 3rem; display: flex; align-items: center; justify-content: center;">
                     <div style="font-size: 1.6rem; text-align: center; line-height: 3.5; color: #e2e8f0;">
-                        <i class="fas fa-mobile-alt"></i> <i class="fas fa-arrows-alt-h" style="color: #4ade80;"></i> <i class="fas fa-server"></i><br>
+                        <i class="fas fa-mobile-alt"></i> <i class="fas fa-arrows-alt-h" style="color: #4ade80;"></i> <i
+                            class="fas fa-server"></i><br>
                         <span style="font-size: 1.1rem; color: #4ade80;">Conexión abierta</span><br>
                         <span style="font-size: 1.1rem; color: #94a3b8;">... esperando ...</span><br>
-                        <i class="fas fa-server"></i> <i class="fas fa-arrow-right" style="color: #4ade80;"></i> <i class="fas fa-mobile-alt"></i><br>
+                        <i class="fas fa-server"></i> <i class="fas fa-arrow-right" style="color: #4ade80;"></i> <i
+                            class="fas fa-mobile-alt"></i><br>
                         <span style="font-size: 1.1rem; color: #4ade80;">¡Depósito $150!</span><br>
                         <span style="font-size: 1.1rem; color: #94a3b8;">... esperando ...</span>
                     </div>
@@ -886,16 +1060,19 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
     <div class="slide">
         <h2 style="margin-bottom: 2rem;"><i class="fas fa-balance-scale"></i> WebSockets vs HTTP Polling</h2>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 2rem; height: calc(100vh - 220px);">
+        <div
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 2rem; height: calc(100vh - 220px);">
             <!-- HTTP Polling - Desventajas -->
             <div style="display: flex; flex-direction: column; justify-content: center;">
                 <div style="text-align: center; margin-bottom: 2rem;">
                     <i class="fas fa-sync-alt" style="font-size: 3rem; color: #f87171;"></i>
                     <h3 style="color: #f87171; margin: 1rem 0; font-size: 1.8rem;">HTTP Polling</h3>
                 </div>
-                
-                <div style="background: rgba(248, 113, 113, 0.1); padding: 2rem; border-radius: 12px; border: 2px solid #f87171;">
-                    <div style="color: #f87171; font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
+
+                <div
+                    style="background: rgba(248, 113, 113, 0.1); padding: 2rem; border-radius: 12px; border: 2px solid #f87171;">
+                    <div
+                        style="color: #f87171; font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
                         <i class="fas fa-times-circle"></i> Desventajas
                     </div>
                     <ul style="font-size: 1.2rem; color: #e2e8f0; margin: 0; padding-left: 2rem; line-height: 2.5;">
@@ -912,9 +1089,11 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
                     <i class="fas fa-plug" style="font-size: 3rem; color: #4ade80;"></i>
                     <h3 style="color: #4ade80; margin: 1rem 0; font-size: 1.8rem;">WebSocket</h3>
                 </div>
-                
-                <div style="background: rgba(74, 222, 128, 0.1); padding: 2rem; border-radius: 12px; border: 2px solid #4ade80;">
-                    <div style="color: #4ade80; font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
+
+                <div
+                    style="background: rgba(74, 222, 128, 0.1); padding: 2rem; border-radius: 12px; border: 2px solid #4ade80;">
+                    <div
+                        style="color: #4ade80; font-weight: 700; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
                         <i class="fas fa-check-circle"></i> Ventajas
                     </div>
                     <ul style="font-size: 1.2rem; color: #e2e8f0; margin: 0; padding-left: 2rem; line-height: 2.5;">
@@ -940,7 +1119,8 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
 
                 Note over Cliente,Server: 1. Handshake HTTP Upgrade
 
-                Cliente->>Server: GET /ws HTTP/1.1<br />Upgrade: websocket<br />Connection: Upgrade<br />Sec-WebSocket-Key: xxx
+                Cliente->>Server: GET /ws HTTP/1.1<br />Upgrade: websocket<br />Connection:
+                Upgrade<br />Sec-WebSocket-Key: xxx
                 Server-->>Cliente: HTTP/1.1 101 Switching Protocols<br />Upgrade: websocket<br />Connection: Upgrade
 
                 rect rgb(100, 200, 100, 0.1)
@@ -974,10 +1154,12 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
                 Server-->>Cliente: Close Frame (Code: 1000)
                 end
 
-                Note over Cliente,Server: Ventajas vs HTTP Polling:<br />- Latencia: 5-20ms vs 150-250ms<br />- Sin overhead de headers repetidos<br />- Eventos instantáneos del servidor
+                Note over Cliente,Server: Ventajas vs HTTP Polling:<br />- Latencia: 5-20ms vs 150-250ms<br />- Sin
+                overhead de headers repetidos<br />- Eventos instantáneos del servidor
             </div>
 
-            <div style="margin-top: 0.8rem; padding: 0.8rem; background: rgba(233, 171, 33, 0.1); border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+            <div
+                style="margin-top: 0.8rem; padding: 0.8rem; background: rgba(233, 171, 33, 0.1); border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
                 <p style="font-size: 0.9rem; margin: 0; text-align: center;">
                     <i class="fas fa-lightbulb"></i>
                     <strong>Handshake HTTP → Upgrade a WebSocket → Comunicación bidireccional persistente</strong>
@@ -989,76 +1171,80 @@ console.log('Servidor con Server Push en puerto 8443');</code></pre>
     <!-- Slide 5c: WebSockets - Arquitectura de Casos de Uso -->
     <div class="slide">
         <h2><i class="fas fa-project-diagram"></i> WebSockets: Arquitectura en Banco de Loja</h2>
-        
+
         <div style="display: flex; flex-direction: column; height: calc(100vh - 180px); padding: 1rem;">
-            <div class="mermaid" style="flex: 1; background: white; border-radius: 12px; padding: 2rem; display: flex; align-items: center; justify-content: center;">
+            <div class="mermaid"
+                style="flex: 1; background: white; border-radius: 12px; padding: 2rem; display: flex; align-items: center; justify-content: center;">
                 graph TB
-                    subgraph Clientes["👥 Clientes"]
-                        AppMovil["📱 App Móvil<br/>iOS/Android"]
-                        WebApp["💻 Web App<br/>React/Vue"]
-                        Tablet["📲 Tablet<br/>Ejecutivos"]
-                    end
+                subgraph Clientes["👥 Clientes"]
+                AppMovil["📱 App Móvil<br />iOS/Android"]
+                WebApp["💻 Web App<br />React/Vue"]
+                Tablet["📲 Tablet<br />Ejecutivos"]
+                end
 
-                    subgraph WSServer["🔌 Servidor WebSocket"]
-                        WSGateway["WebSocket Gateway<br/>Node.js + ws"]
-                        Auth["🔐 Autenticación<br/>JWT"]
-                        Router["📡 Message Router"]
-                    end
+                subgraph WSServer["🔌 Servidor WebSocket"]
+                WSGateway["WebSocket Gateway<br />Node.js + ws"]
+                Auth["🔐 Autenticación<br />JWT"]
+                Router["📡 Message Router"]
+                end
 
-                    subgraph Servicios["⚙️ Servicios Backend"]
-                        NotifService["🔔 Servicio Notificaciones"]
-                        TransService["💸 Servicio Transacciones"]
-                        ChatService["💬 Servicio Chat"]
-                        AlertService["⚠️ Servicio Alertas"]
-                    end
+                subgraph Servicios["⚙️ Servicios Backend"]
+                NotifService["🔔 Servicio Notificaciones"]
+                TransService["💸 Servicio Transacciones"]
+                ChatService["💬 Servicio Chat"]
+                AlertService["⚠️ Servicio Alertas"]
+                end
 
-                    subgraph Database["💾 Base de Datos"]
-                        Redis["Redis<br/>Sesiones activas"]
-                        MongoDB["MongoDB<br/>Historial mensajes"]
-                        PostgreSQL["PostgreSQL<br/>Transacciones"]
-                    end
+                subgraph Database["💾 Base de Datos"]
+                Redis["Redis<br />Sesiones activas"]
+                MongoDB["MongoDB<br />Historial mensajes"]
+                PostgreSQL["PostgreSQL<br />Transacciones"]
+                end
 
-                    AppMovil -.->|"WS: wss://banco.com/ws"| WSGateway
-                    WebApp -.->|"WS: wss://banco.com/ws"| WSGateway
-                    Tablet -.->|"WS: wss://banco.com/ws"| WSGateway
+                AppMovil -.->|"WS: wss://banco.com/ws"| WSGateway
+                WebApp -.->|"WS: wss://banco.com/ws"| WSGateway
+                Tablet -.->|"WS: wss://banco.com/ws"| WSGateway
 
-                    WSGateway --> Auth
-                    Auth --> Router
+                WSGateway --> Auth
+                Auth --> Router
 
-                    Router <-->|"Pub/Sub"| NotifService
+                Router <-->|"Pub/Sub"| NotifService
                     Router <-->|"Pub/Sub"| TransService
-                    Router <-->|"Pub/Sub"| ChatService
-                    Router <-->|"Pub/Sub"| AlertService
+                        Router <-->|"Pub/Sub"| ChatService
+                            Router <-->|"Pub/Sub"| AlertService
 
-                    NotifService --> Redis
-                    TransService --> PostgreSQL
-                    ChatService --> MongoDB
-                    AlertService --> Redis
+                                NotifService --> Redis
+                                TransService --> PostgreSQL
+                                ChatService --> MongoDB
+                                AlertService --> Redis
 
-                    style Clientes fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
-                    style WSServer fill:#dcfce7,stroke:#16a34a,stroke-width:2px
-                    style Servicios fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
-                    style Database fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+                                style Clientes fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
+                                style WSServer fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+                                style Servicios fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+                                style Database fill:#fce7f3,stroke:#ec4899,stroke-width:2px
 
-                    style WSGateway fill:#4ade80,stroke:#16a34a,stroke-width:3px
-                    style Auth fill:#fbbf24,stroke:#f59e0b,stroke-width:2px
-                    style Router fill:#60a5fa,stroke:#0284c7,stroke-width:2px
+                                style WSGateway fill:#4ade80,stroke:#16a34a,stroke-width:3px
+                                style Auth fill:#fbbf24,stroke:#f59e0b,stroke-width:2px
+                                style Router fill:#60a5fa,stroke:#0284c7,stroke-width:2px
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-                <div style="padding: 0.8rem; background: rgba(74, 222, 128, 0.1); border-radius: 8px; border-left: 4px solid #4ade80; text-align: center;">
+                <div
+                    style="padding: 0.8rem; background: rgba(74, 222, 128, 0.1); border-radius: 8px; border-left: 4px solid #4ade80; text-align: center;">
                     <p style="font-size: 0.9rem; margin: 0; color: #e2e8f0;">
                         <i class="fas fa-bell" style="color: #4ade80;"></i>
                         <strong>Notificaciones:</strong> Transferencias, pagos, alertas
                     </p>
                 </div>
-                <div style="padding: 0.8rem; background: rgba(96, 165, 250, 0.1); border-radius: 8px; border-left: 4px solid #60a5fa; text-align: center;">
+                <div
+                    style="padding: 0.8rem; background: rgba(96, 165, 250, 0.1); border-radius: 8px; border-left: 4px solid #60a5fa; text-align: center;">
                     <p style="font-size: 0.9rem; margin: 0; color: #e2e8f0;">
                         <i class="fas fa-comments" style="color: #60a5fa;"></i>
                         <strong>Chat:</strong> Soporte en vivo, asesoría
                     </p>
                 </div>
-                <div style="padding: 0.8rem; background: rgba(251, 191, 36, 0.1); border-radius: 8px; border-left: 4px solid #fbbf24; text-align: center;">
+                <div
+                    style="padding: 0.8rem; background: rgba(251, 191, 36, 0.1); border-radius: 8px; border-left: 4px solid #fbbf24; text-align: center;">
                     <p style="font-size: 0.9rem; margin: 0; color: #e2e8f0;">
                         <i class="fas fa-chart-line" style="color: #fbbf24;"></i>
                         <strong>Datos Live:</strong> Saldos, tasas, cotizaciones
@@ -1797,649 +1983,471 @@ cliente.monitorearTransacciones('CTA-00123456', 5000);</code></pre>
     </div>
 
     <!-- Slide 8: JSON -->
+    <!-- Slide 8: JSON - Introducción -->
     <div class="slide">
-        <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-file-code"></i> JSON: Formato de Serialización
-            Popular
-        </h2>
+        <h2><i class="fas fa-file-code"></i> JSON: Formato de Serialización Popular</h2>
 
-        <div
-            style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 200px); max-height: 640px;">
-            <!-- Columna Izquierda: Características -->
-            <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                <div class="quote" style="font-size: 0.8rem; padding: 10px; margin: 0;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 40px;">
+            <!-- Columna Izquierda -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="quote" style="font-size: 1rem; padding: 15px; margin: 0;">
                     "API REST pública para partners del Banco de Loja"
                 </div>
 
-                <div style="flex-shrink: 0;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Ventajas</h3>
-                    <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
-                        <li><strong>Legible</strong>: Human-readable</li>
-                        <li><strong>Simple</strong>: Fácil de usar</li>
-                        <li><strong>Universal</strong>: Amplio soporte</li>
-                        <li><strong>Compacto</strong>: Más que XML</li>
+                <div
+                    style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid #60a5fa;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #60a5fa;">
+                        <i class="fas fa-check-circle"></i> Ventajas
+                    </h3>
+                    <ul style="font-size: 1rem; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li><strong>Legible:</strong> Human-readable, fácil de depurar</li>
+                        <li><strong>Simple:</strong> Sintaxis intuitiva y directa</li>
+                        <li><strong>Universal:</strong> Soporte en todos los lenguajes</li>
+                        <li><strong>Compacto:</strong> Más ligero que XML</li>
+                        <li><strong>Nativo en Web:</strong> JavaScript nativo</li>
                     </ul>
                 </div>
 
                 <div
-                    style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                    <p style="font-size: 0.75rem; margin: 0;">
-                        <i class="fas fa-info-circle"></i> API pública y app móvil
+                    style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                    <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">
+                        <i class="fas fa-info-circle"></i> <strong>Caso de Uso:</strong> API pública del Banco de Loja
+                        para partners y aplicación móvil
                     </p>
-                </div>
-
-                <!-- Pestañas de Demos -->
-                <div style="display: flex; gap: 4px; flex-shrink: 0;">
-                    <button class="json-tab active" data-demo="editor"
-                        style="flex: 1; padding: 6px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Editor
-                    </button>
-                    <button class="json-tab" data-demo="validation"
-                        style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Validación
-                    </button>
-                    <button class="json-tab" data-demo="json-codigo"
-                        style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Código
-                    </button>
-                </div>
-
-                <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                    <button id="startJsonDemo"
-                        style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                        <i class="fas fa-play"></i> Iniciar Demo
-                    </button>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Visualización -->
-            <div id="jsonDemoContainer" style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                <!-- Demo Editor -->
-                <div id="demoEditor" class="json-demo-content"
-                    style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #60a5fa; padding: 10px; flex: 1; display: flex; flex-direction: column;">
-                        <h3 style="text-align: center; color: #60a5fa; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-code"></i> Editor JSON Interactivo
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 450px;">
-                            <canvas id="jsonEditorCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="jsonEditorInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #60a5fa;">
-                            Tamaño: -</div>
-                    </div>
-
-                    <div
-                        style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                        <div id="jsonEditorResult"
-                            style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                            Presiona "Iniciar Demo" para ver el editor
-                        </div>
-                    </div>
+            <!-- Columna Derecha -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div
+                    style="background: rgba(15, 20, 25, 0.6); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--uide-accent);">
+                        <i class="fas fa-exclamation-triangle"></i> Desventajas
+                    </h3>
+                    <ul style="font-size: 1rem; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li><strong>Tamaño:</strong> Mayor que formatos binarios</li>
+                        <li><strong>Parsing:</strong> Más lento que Protobuf</li>
+                        <li><strong>Sin esquema:</strong> Requiere validación externa</li>
+                        <li><strong>Tipos limitados:</strong> No soporta fechas nativas</li>
+                    </ul>
                 </div>
 
-                <!-- Demo Validación -->
-                <div id="demoValidation" class="json-demo-content"
-                    style="display: none; flex-direction: column; gap: 12px; height: 100%;">
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #f87171; padding: 10px; flex: 1; display: flex; flex-direction: column; max-height: 48%;">
-                        <h3 style="text-align: center; color: #f87171; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-times-circle"></i> JSON Inválido
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 200px;">
-                            <canvas id="jsonInvalidCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="jsonInvalidInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #f87171;">
-                            Error: -</div>
-                    </div>
-
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #4ade80; padding: 10px; flex: 1; display: flex; flex-direction: column; max-height: 48%;">
-                        <h3 style="text-align: center; color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-check-circle"></i> JSON Válido
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 200px;">
-                            <canvas id="jsonValidCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="jsonValidInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #4ade80;">
-                            Estado: -</div>
-                    </div>
-
-                    <div
-                        style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                        <div id="jsonValidationResult"
-                            style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                            Presiona "Iniciar Demo" para ver la validación
-                        </div>
-                    </div>
+                <div
+                    style="background: rgba(74, 222, 128, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #4ade80;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: #4ade80;">
+                        <i class="fas fa-lightbulb"></i> Cuándo Usar JSON
+                    </h3>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+                        <li>APIs públicas REST</li>
+                        <li>Configuración de aplicaciones</li>
+                        <li>Intercambio con navegadores</li>
+                        <li>Prototipado rápido</li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Demo Código -->
-                <div id="demoCodigo" class="json-demo-content"
-                    style="display: none; flex-direction: column; gap: 10px; height: 100%;">
-                    <div class="code-subtabs-container"
-                        style="display: flex; gap: 8px; padding: 8px; background: rgba(15, 20, 25, 0.4); border-radius: 8px;">
-                        <button class="json-code-subtab active" data-subtab="schema"
-                            style="flex: 1; padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s;">
-                            Schema
-                        </button>
-                        <button class="json-code-subtab" data-subtab="validador"
-                            style="flex: 1; padding: 8px 12px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s;">
-                            Validador
-                        </button>
-                        <button class="json-code-subtab" data-subtab="api"
-                            style="flex: 1; padding: 8px 12px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: all 0.2s;">
-                            API
-                        </button>
-                    </div>
+    <!-- Slide 9: JSON - Schema -->
+    <div class="slide">
+        <h2><i class="fas fa-file-contract"></i> JSON: Schema de Validación</h2>
 
-                    <!-- Schema Definition -->
-                    <div id="jsonCodeSchema" class="json-code-content" style="display: flex; flex: 1; min-height: 0;">
-                        <div class="code-container"
-                            style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
-                            <div class="code-header">
-                                <span class="code-filename">transaccion.schema.json</span>
-                                <button class="code-copy-btn" onclick="copyCode(this)">
-                                    <i class="fas fa-copy"></i> Copiar
-                                </button>
-                            </div>
-                            <div style="flex: 1; overflow-y: auto;">
-                                <pre style="margin: 0;"><code class="language-json">{
+        <div style="padding: 0 20px;">
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">transaccion.schema.json</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div style="max-height: 520px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-json">{
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://bancodeloja.fin.ec/schemas/transaccion.json",
   "title": "Transacción Bancaria",
-  "description": "Esquema de validación para transacciones del Banco de Loja",
   "type": "object",
-  "required": ["id", "tipo", "origen", "destino", "monto", "fecha"],
+  "required": ["id", "tipo", "monto", "fecha"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^TXN-[0-9]{10}$",
-      "description": "Identificador único de transacción"
+      "pattern": "^TXN-[0-9]{10}$"
     },
     "tipo": {
       "type": "string",
-      "enum": ["transferencia", "pago", "retiro", "deposito"],
-      "description": "Tipo de operación bancaria"
+      "enum": ["transferencia", "pago", "retiro"]
     },
     "origen": {
       "type": "object",
-      "required": ["cuenta", "titular"],
       "properties": {
-        "cuenta": {
-          "type": "string",
-          "pattern": "^[0-9]{10}$",
-          "description": "Número de cuenta de 10 dígitos"
-        },
-        "titular": {
-          "type": "string",
-          "minLength": 3,
-          "maxLength": 100
-        },
-        "banco": {
-          "type": "string",
-          "default": "Banco de Loja"
-        }
+        "cuenta": { "type": "string", "pattern": "^[0-9]{10}$" },
+        "titular": { "type": "string", "minLength": 3 }
       }
     },
     "destino": {
       "type": "object",
-      "required": ["cuenta", "titular"],
       "properties": {
-        "cuenta": {
-          "type": "string",
-          "pattern": "^[0-9]{10}$"
-        },
-        "titular": {
-          "type": "string",
-          "minLength": 3,
-          "maxLength": 100
-        },
-        "banco": {
-          "type": "string"
-        }
+        "cuenta": { "type": "string", "pattern": "^[0-9]{10}$" },
+        "titular": { "type": "string" }
       }
     },
     "monto": {
       "type": "number",
       "minimum": 0.01,
-      "maximum": 50000,
-      "multipleOf": 0.01,
-      "description": "Monto en USD, máximo $50,000"
+      "maximum": 50000
     },
     "fecha": {
       "type": "string",
-      "format": "date-time",
-      "description": "Fecha y hora en formato ISO 8601"
-    },
-    "descripcion": {
-      "type": "string",
-      "maxLength": 500
-    },
-    "metadata": {
-      "type": "object",
-      "properties": {
-        "ip": {
-          "type": "string",
-          "format": "ipv4"
-        },
-        "dispositivo": {
-          "type": "string"
-        },
-        "geolocalizacion": {
-          "type": "object",
-          "properties": {
-            "lat": { "type": "number", "minimum": -90, "maximum": 90 },
-            "lon": { "type": "number", "minimum": -180, "maximum": 180 }
-          }
-        }
-      }
+      "format": "date-time"
     }
   }
 }</code></pre>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- Validador -->
-                    <div id="jsonCodeValidador" class="json-code-content"
-                        style="display: none; flex: 1; min-height: 0;">
-                        <div class="code-container"
-                            style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
-                            <div class="code-header">
-                                <span class="code-filename">validador.js</span>
-                                <button class="code-copy-btn" onclick="copyCode(this)">
-                                    <i class="fas fa-copy"></i> Copiar
-                                </button>
-                            </div>
-                            <div style="flex: 1; overflow-y: auto;">
-                                <pre style="margin: 0;"><code class="language-javascript">import Ajv from 'ajv';
+    <!-- Slide 10: JSON - Validador -->
+    <div class="slide">
+        <h2><i class="fas fa-check-double"></i> JSON: Validador con AJV</h2>
+
+        <div style="padding: 0 20px;">
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">validador.js</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div style="max-height: 520px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-javascript">import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import { readFile } from 'fs/promises';
 
 class ValidadorTransacciones {
-  #ajv;
-  #schema;
-  #validador;
-
   constructor() {
-    this.#ajv = new Ajv({
-      allErrors: true,
-      verbose: true,
-      strict: false,
-      coerceTypes: false
-    });
-    addFormats(this.#ajv);
+    this.ajv = new Ajv({ allErrors: true });
+    addFormats(this.ajv);
+    this.validador = null;
   }
 
-  async cargarSchema(rutaSchema) {
-    const contenido = await readFile(rutaSchema, 'utf-8');
-    this.#schema = JSON.parse(contenido);
-    this.#validador = this.#ajv.compile(this.#schema);
-    console.log('Schema cargado correctamente');
+  cargarSchema(schema) {
+    this.validador = this.ajv.compile(schema);
   }
 
   validar(transaccion) {
-    const valido = this.#validador(transaccion);
-
+    const valido = this.validador(transaccion);
+    
     if (valido) {
-      return {
-        valido: true,
-        mensaje: 'Transacción válida'
-      };
+      return { valido: true, mensaje: 'Transacción válida' };
     }
 
-    const errores = this.#validador.errors?.map(error => ({
-      campo: error.instancePath || error.params?.missingProperty,
-      tipo: error.keyword,
-      mensaje: error.message,
-      valorActual: error.data
-    })) ?? [];
+    const errores = this.validador.errors.map(e => ({
+      campo: e.instancePath,
+      mensaje: e.message
+    }));
 
-    return {
-      valido: false,
-      errores,
-      mensaje: `Validación fallida: ${errores.length} error(es) encontrado(s)`
-    };
-  }
-
-  async validarLote(transacciones) {
-    const resultados = {
-      total: transacciones.length,
-      validas: 0,
-      invalidas: 0,
-      detalles: []
-    };
-
-    for (const [index, transaccion] of transacciones.entries()) {
-      const resultado = this.validar(transaccion);
-
-      if (resultado.valido) {
-        resultados.validas++;
-      } else {
-        resultados.invalidas++;
-        resultados.detalles.push({
-          indice: index,
-          id: transaccion?.id ?? 'sin-id',
-          errores: resultado.errores
-        });
-      }
-    }
-
-    return resultados;
+    return { valido: false, errores };
   }
 }
 
 // Ejemplo de uso
 const validador = new ValidadorTransacciones();
-await validador.cargarSchema('./transaccion.schema.json');
+validador.cargarSchema(schema);
 
 // Transacción válida
-const transaccionValida = {
+const txValida = {
   id: 'TXN-1234567890',
   tipo: 'transferencia',
-  origen: {
-    cuenta: '1234567890',
-    titular: 'Juan Pérez'
-  },
-  destino: {
-    cuenta: '0987654321',
-    titular: 'María García',
-    banco: 'Banco Pichincha'
-  },
+  origen: { cuenta: '1234567890', titular: 'Juan Pérez' },
+  destino: { cuenta: '0987654321', titular: 'María García' },
   monto: 150.50,
-  fecha: new Date().toISOString(),
-  descripcion: 'Pago de servicios'
+  fecha: new Date().toISOString()
 };
 
-const resultado1 = validador.validar(transaccionValida);
-console.log('Resultado:', resultado1);
+console.log(validador.validar(txValida));
+// { valido: true, mensaje: 'Transacción válida' }
 
 // Transacción inválida
-const transaccionInvalida = {
-  id: 'TXN-123',
-  tipo: 'hackeo',
-  origen: { cuenta: '123', titular: 'X' },
-  monto: -500
+const txInvalida = {
+  id: 'TXN-123',  // ❌ Patrón incorrecto
+  tipo: 'hackeo', // ❌ No está en enum
+  monto: -500     // ❌ Monto negativo
 };
 
-const resultado2 = validador.validar(transaccionInvalida);
-console.log('Errores encontrados:', resultado2.errores?.length ?? 0);</code></pre>
-                            </div>
-                        </div>
-                    </div>
+console.log(validador.validar(txInvalida));
+// { valido: false, errores: [...] }</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- API Integration -->
-                    <div id="jsonCodeApi" class="json-code-content" style="display: none; flex: 1; min-height: 0;">
-                        <div class="code-container"
-                            style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
-                            <div class="code-header">
-                                <span class="code-filename">api-transacciones.js</span>
-                                <button class="code-copy-btn" onclick="copyCode(this)">
-                                    <i class="fas fa-copy"></i> Copiar
-                                </button>
-                            </div>
-                            <div style="flex: 1; overflow-y: auto;">
-                                <pre style="margin: 0;"><code class="language-javascript">import express from 'express';
+    <!-- Slide 11: JSON - API REST -->
+    <div class="slide">
+        <h2><i class="fas fa-server"></i> JSON: API REST con Express</h2>
+
+        <div style="padding: 0 20px;">
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">api-transacciones.js</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div style="max-height: 520px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-javascript">import express from 'express';
 import { ValidadorTransacciones } from './validador.js';
 
-class APITransacciones {
-  #app;
-  #validador;
-  #puerto;
+const app = express();
+const validador = new ValidadorTransacciones();
 
-  constructor(puerto = 3000) {
-    this.#app = express();
-    this.#validador = new ValidadorTransacciones();
-    this.#puerto = puerto;
+app.use(express.json());
 
-    this.#configurarMiddleware();
-    this.#configurarRutas();
-  }
+// Endpoint para crear transacción
+app.post('/api/transacciones', async (req, res) => {
+  try {
+    const resultado = validador.validar(req.body);
 
-  #configurarMiddleware() {
-    this.#app.use(express.json());
+    if (!resultado.valido) {
+      return res.status(400).json({
+        error: 'Validación fallida',
+        detalles: resultado.errores
+      });
+    }
 
-    this.#app.use((err, req, res, next) => {
-      if (err instanceof SyntaxError && err.status === 400) {
-        return res.status(400).json({
-          error: 'JSON inválido',
-          mensaje: err.message
-        });
-      }
-      next();
+    // Procesar transacción
+    const transaccion = await procesarTransaccion(req.body);
+
+    res.status(201).json({
+      mensaje: 'Transacción procesada',
+      id: transaccion.id,
+      estado: 'completada'
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: 'Error interno',
+      mensaje: error.message
     });
   }
+});
 
-  #configurarRutas() {
-    this.#app.post('/api/transacciones', async (req, res) => {
-      try {
-        const resultado = this.#validador.validar(req.body);
+// Endpoint para validar lote
+app.post('/api/transacciones/lote', async (req, res) => {
+  const { transacciones } = req.body;
 
-        if (!resultado.valido) {
-          return res.status(400).json({
-            error: 'Validación fallida',
-            detalles: resultado.errores
-          });
-        }
+  const resultados = transacciones.map(tx => ({
+    id: tx.id,
+    valido: validador.validar(tx).valido
+  }));
 
-        const transaccionProcesada = await this.#procesarTransaccion(req.body);
+  res.json({
+    total: resultados.length,
+    validas: resultados.filter(r => r.valido).length,
+    resultados
+  });
+});
 
-        res.status(201).json({
-          mensaje: 'Transacción procesada exitosamente',
-          id: transaccionProcesada.id,
-          estado: 'completada',
-          timestamp: new Date().toISOString()
-        });
-      } catch (error) {
-        console.error('Error procesando transacción:', error);
-        res.status(500).json({
-          error: 'Error interno del servidor',
-          mensaje: error?.message ?? 'Error desconocido'
-        });
-      }
-    });
-
-    this.#app.post('/api/transacciones/lote', async (req, res) => {
-      try {
-        const { transacciones } = req.body;
-
-        if (!Array.isArray(transacciones)) {
-          return res.status(400).json({
-            error: 'El campo "transacciones" debe ser un array'
-          });
-        }
-
-        const resultados = await this.#validador.validarLote(transacciones);
-
-        res.json({
-          mensaje: 'Validación de lote completada',
-          resumen: {
-            total: resultados.total,
-            validas: resultados.validas,
-            invalidas: resultados.invalidas,
-            tasa_exito: ((resultados.validas / resultados.total) * 100).toFixed(2) + '%'
-          },
-          errores: resultados.detalles
-        });
-      } catch (error) {
-        res.status(500).json({
-          error: 'Error procesando lote',
-          mensaje: error?.message ?? 'Error desconocido'
-        });
-      }
-    });
-
-    this.#app.get('/api/schema', (req, res) => {
-      res.json(this.#validador.obtenerSchema());
-    });
-  }
-
-  async #procesarTransaccion(transaccion) {
-    await new Promise(resolve => setTimeout(resolve, 100));
-
-    return {
-      ...transaccion,
-      estado: 'completada',
-      timestamp_procesamiento: new Date().toISOString()
-    };
-  }
-
-  async iniciar() {
-    await this.#validador.cargarSchema('./transaccion.schema.json');
-
-    this.#app.listen(this.#puerto, () => {
-      console.log(`API escuchando en puerto ${this.#puerto}`);
-      console.log(`POST /api/transacciones - Procesar transacción`);
-      console.log(`POST /api/transacciones/lote - Validar lote`);
-      console.log(`GET  /api/schema - Obtener schema`);
-    });
-  }
-}
-
-// Iniciar servidor
-const api = new APITransacciones(3000);
-await api.iniciar();</code></pre>
-                            </div>
-                        </div>
-                    </div>
+app.listen(3000, () => {
+  console.log('API escuchando en puerto 3000');
+});</code></pre>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!-- Slide 9: Protobuf -->
+    <!-- Slide 9a: Protobuf - Definición del Schema -->
     <div class="slide">
-        <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-cogs"></i> Protocol Buffers: Serialización Eficiente
-        </h2>
+        <h2><i class="fas fa-cogs"></i> Protocol Buffers: Definición del Schema</h2>
 
-        <div
-            style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 200px); max-height: 640px;">
-            <!-- Columna Izquierda: Características -->
-            <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                <div class="quote" style="font-size: 0.8rem; padding: 10px; margin: 0;">
-                    "Esquemas de datos para transacciones bancarias"
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "Esquema de datos para transacciones bancarias"
+            </div>
+
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">transaccion.proto</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
                 </div>
+                <div style="max-height: 450px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-protobuf">syntax = "proto3";
 
-                <div style="flex-shrink: 0;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Características</h3>
-                    <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
-                        <li><strong>Binario</strong>: Muy compacto</li>
-                        <li><strong>Rápido</strong>: Alta velocidad</li>
-                        <li><strong>Multiplataforma</strong>: Varios lenguajes</li>
-                        <li><strong>Evolución</strong>: Sin ruptura</li>
+package banco.loja;
+
+message Transaccion {
+  string id = 1;
+  TipoTransaccion tipo = 2;
+  Cuenta origen = 3;
+  Cuenta destino = 4;
+  double monto = 5;
+  string concepto = 6;
+  int64 timestamp = 7;
+}
+
+message Cuenta {
+  string numero = 1;
+  string titular = 2;
+  string banco = 3;
+}
+
+enum TipoTransaccion {
+  TRANSFERENCIA = 0;
+  RETIRO = 1;
+  DEPOSITO = 2;
+  PAGO = 3;
+}</code></pre>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 10px; border-left: 4px solid #60a5fa;">
+                    <h3 style="font-size: 1rem; margin-bottom: 10px; color: #60a5fa;">
+                        <i class="fas fa-check-circle"></i> Ventajas
+                    </h3>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+                        <li>Binario y compacto</li>
+                        <li>Alta velocidad</li>
+                        <li>Multiplataforma</li>
                     </ul>
                 </div>
-
-                <div
-                    style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                    <p style="font-size: 0.75rem; margin: 0;">
-                        <i class="fas fa-info-circle"></i> Field numbers = compatibilidad
+                <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                    <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">
+                        <i class="fas fa-info-circle"></i> <strong>Field numbers</strong> (1, 2, 3...) garantizan compatibilidad hacia atrás
                     </p>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Pestañas de Demos -->
-                <div style="display: flex; gap: 4px; flex-shrink: 0;">
-                    <button class="protobuf-tab active" data-demo="code"
-                        style="flex: 1; padding: 6px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Código
-                    </button>
-                    <button class="protobuf-tab" data-demo="evolution"
-                        style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Evolución
+    <!-- Slide 9b: Protobuf - Uso en Node.js -->
+    <div class="slide">
+        <h2><i class="fas fa-code"></i> Protocol Buffers: Uso en Node.js</h2>
+
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "Serialización y deserialización de transacciones"
+            </div>
+
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">transaccion-service.js</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
                     </button>
                 </div>
+                <div style="max-height: 480px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-javascript">import protobuf from 'protobufjs';
 
-                <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                    <button id="startProtobufDemo"
-                        style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                        <i class="fas fa-play"></i> Iniciar Demo
-                    </button>
-                    <div id="protobufControls" style="margin-top: 6px; font-size: 0.75rem;">
-                        <label style="color: #e2e8f0;">Lenguaje: </label>
-                        <select id="protobufLang"
-                            style="padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
-                            <option value="python">Python</option>
-                            <option value="java">Java</option>
-                            <option value="go">Go</option>
-                        </select>
+// Cargar el schema
+const root = await protobuf.load('transaccion.proto');
+const Transaccion = root.lookupType('banco.loja.Transaccion');
+
+// Crear una transacción
+const transaccion = {
+  id: 'TXN-001',
+  tipo: 0, // TRANSFERENCIA
+  origen: {
+    numero: '1234567890',
+    titular: 'Juan Pérez',
+    banco: 'Banco de Loja'
+  },
+  destino: {
+    numero: '0987654321',
+    titular: 'María García',
+    banco: 'Banco Pichincha'
+  },
+  monto: 1500.50,
+  concepto: 'Pago de servicios',
+  timestamp: Date.now()
+};
+
+// Serializar a binario
+const mensaje = Transaccion.create(transaccion);
+const buffer = Transaccion.encode(mensaje).finish();
+
+console.log(`Tamaño JSON: ${JSON.stringify(transaccion).length} bytes`);
+console.log(`Tamaño Protobuf: ${buffer.length} bytes`);
+console.log(`Reducción: ${((1 - buffer.length / JSON.stringify(transaccion).length) * 100).toFixed(1)}%`);
+
+// Deserializar desde binario
+const decoded = Transaccion.decode(buffer);
+console.log('Transacción deserializada:', decoded);</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9c: Protobuf - Evolución del Schema -->
+    <div class="slide">
+        <h2><i class="fas fa-code-branch"></i> Protocol Buffers: Evolución sin Ruptura</h2>
+
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "Agregar campos sin romper compatibilidad"
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <!-- Versión 1 -->
+                <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #60a5fa;">
+                        <i class="fas fa-file-code"></i> Versión 1 (Original)
+                    </h3>
+                    <div class="code-container" style="overflow: hidden;">
+                        <div class="code-header">
+                            <span class="code-filename">transaccion-v1.proto</span>
+                        </div>
+                        <div style="max-height: 350px; overflow-y: auto;">
+                            <pre class="line-numbers"><code class="language-protobuf">syntax = "proto3";
+
+message Transaccion {
+  string id = 1;
+  double monto = 2;
+  string concepto = 3;
+  int64 timestamp = 4;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Versión 2 -->
+                <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #4ade80;">
+                        <i class="fas fa-file-code"></i> Versión 2 (Extendida)
+                    </h3>
+                    <div class="code-container" style="overflow: hidden;">
+                        <div class="code-header">
+                            <span class="code-filename">transaccion-v2.proto</span>
+                        </div>
+                        <div style="max-height: 350px; overflow-y: auto;">
+                            <pre class="line-numbers"><code class="language-protobuf">syntax = "proto3";
+
+message Transaccion {
+  string id = 1;
+  double monto = 2;
+  string concepto = 3;
+  int64 timestamp = 4;
+  
+  // Nuevos campos
+  string origen = 5;
+  string destino = 6;
+  string moneda = 7;
+  Estado estado = 8;
+}
+
+enum Estado {
+  PENDIENTE = 0;
+  COMPLETADA = 1;
+  RECHAZADA = 2;
+}</code></pre>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Visualización -->
-            <div id="protobufDemoContainer" style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                <!-- Demo Código -->
-                <div id="demoCode" class="protobuf-demo-content"
-                    style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #a78bfa; padding: 10px; flex: 1; display: flex; flex-direction: column; max-height: 48%;">
-                        <h3 style="text-align: center; color: #a78bfa; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-file-code"></i> Definición .proto
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 200px;">
-                            <canvas id="protoDefCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="protoDefInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #a78bfa;">
-                            Archivo: user.proto</div>
-                    </div>
-
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #4ade80; padding: 10px; flex: 1; display: flex; flex-direction: column; max-height: 48%;">
-                        <h3 style="text-align: center; color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-code"></i> Código Generado
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 200px;">
-                            <canvas id="generatedCodeCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="generatedCodeInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #4ade80;">
-                            Lenguaje: -</div>
-                    </div>
-
-                    <div
-                        style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                        <div id="protoCodeResult"
-                            style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                            Presiona "Iniciar Demo" para ver la generación de código
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Demo Evolución -->
-                <div id="demoEvolution" class="protobuf-demo-content"
-                    style="display: none; flex-direction: column; gap: 12px; height: 100%;">
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #4ade80; padding: 10px; flex: 1; display: flex; flex-direction: column;">
-                        <h3 style="text-align: center; color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-code-branch"></i> Evolución de Esquema
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 450px;">
-                            <canvas id="evolutionCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="evolutionInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #4ade80;">
-                            Versión: -</div>
-                    </div>
-
-                    <div
-                        style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                        <div id="evolutionResult"
-                            style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                            Presiona "Iniciar Demo" para ver la evolución
-                        </div>
-                    </div>
-                </div>
+            <div style="background: rgba(74, 222, 128, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #4ade80; margin-top: 20px;">
+                <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
+                    <i class="fas fa-check-circle"></i> <strong>Compatibilidad garantizada:</strong> Clientes antiguos ignoran campos nuevos, clientes nuevos usan valores por defecto para campos faltantes
+                </p>
             </div>
         </div>
     </div>
@@ -2619,7 +2627,8 @@ await api.iniciar();</code></pre>
                 <div style="flex-shrink: 0;">
                     <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Objetivo</h3>
                     <p style="font-size: 0.8rem; line-height: 1.4; margin: 0;">
-                        Crear un servidor Express con dos endpoints que reciban un mensaje y lo devuelvan junto con un timestamp, comparando el tamaño de las respuestas.
+                        Crear un servidor Express con dos endpoints que reciban un mensaje y lo devuelvan junto con un
+                        timestamp, comparando el tamaño de las respuestas.
                     </p>
                 </div>
 
@@ -2729,7 +2738,8 @@ message EchoResponse {
                             <span><strong>Protobuf:</strong></span>
                             <span style="color: #4ade80;">~35 bytes</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.2);">
+                        <div
+                            style="display: flex; justify-content: space-between; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.2);">
                             <span><strong>Reducción:</strong></span>
                             <span style="color: var(--uide-accent); font-weight: 600;">46.97%</span>
                         </div>
@@ -2844,272 +2854,413 @@ message EchoResponse {
         </div>
     </div>
 
-    <!-- Slide 12: XML Fundamentos -->
+    <!-- Slide 12a: XML - Ejemplo Básico -->
     <div class="slide">
-        <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-code"></i> XML: Verbosidad y Overhead</h2>
+        <h2><i class="fas fa-code"></i> XML: Estructura Básica</h2>
 
-        <div
-            style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 200px); max-height: 640px;">
-            <!-- Columna Izquierda: Características -->
-            <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                <div class="quote" style="font-size: 0.8rem; padding: 10px; margin: 0;">
-                    "Integración con SRI para facturas electrónicas y reportes"
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 40px;">
+            <!-- Columna Izquierda -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="quote" style="font-size: 1rem; padding: 15px; margin: 0;">
+                    "Integración con SRI para facturas electrónicas"
                 </div>
 
-                <div style="flex-shrink: 0;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Costos</h3>
-                    <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
-                        <li><strong>Verbosidad</strong>: Tags duplicados</li>
-                        <li><strong>Overhead</strong>: 2-3x más grande</li>
-                        <li><strong>Parsing</strong>: Costoso</li>
-                        <li><strong>Metadatos</strong>: Información extra</li>
+                <div
+                    style="background: rgba(248, 113, 113, 0.1); padding: 20px; border-radius: 12px; border: 2px solid #f87171;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #f87171;">
+                        <i class="fas fa-exclamation-triangle"></i> Desventajas
+                    </h3>
+                    <ul style="font-size: 1rem; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li><strong>Verbosidad:</strong> Tags de apertura y cierre</li>
+                        <li><strong>Overhead:</strong> 2-3x más grande que JSON</li>
+                        <li><strong>Parsing:</strong> Más lento y costoso</li>
+                        <li><strong>Complejidad:</strong> Namespaces y atributos</li>
                     </ul>
                 </div>
 
                 <div
-                    style="background: rgba(248, 113, 113, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid #f87171; flex-shrink: 0;">
-                    <p style="font-size: 0.75rem; margin: 0;">
-                        <i class="fas fa-exclamation-triangle"></i> Legacy pero aún usado
+                    style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                    <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">
+                        <i class="fas fa-info-circle"></i> <strong>Uso actual:</strong> Sistemas legacy, integraciones
+                        gubernamentales (SRI, BCE, IESS)
                     </p>
-                </div>
-
-                <!-- Pestañas de Demos -->
-                <div style="display: flex; gap: 4px; flex-shrink: 0;">
-                    <button class="xml-tab active" data-demo="overhead"
-                        style="flex: 1; padding: 6px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Overhead
-                    </button>
-                    <button class="xml-tab" data-demo="dom"
-                        style="flex: 1; padding: 6px; background: rgba(255,255,255,0.1); color: #e2e8f0; border: none; border-radius: 4px; font-size: 0.7rem; cursor: pointer; font-weight: 600;">
-                        Árbol DOM
-                    </button>
-                </div>
-
-                <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                    <button id="startXmlDemo"
-                        style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                        <i class="fas fa-play"></i> Iniciar Demo
-                    </button>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Visualización -->
-            <div id="xmlDemoContainer" style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                <!-- Demo Overhead -->
-                <div id="demoOverhead" class="xml-demo-content"
-                    style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #f87171; padding: 10px; flex: 1; display: flex; flex-direction: column;">
-                        <h3 style="text-align: center; color: #f87171; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-chart-bar"></i> Comparación de Tamaños
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 450px;">
-                            <canvas id="overheadCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="overheadInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #f87171;">
-                            Tamaños: -</div>
+            <!-- Columna Derecha -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="code-container" style="overflow: hidden;">
+                    <div class="code-header">
+                        <span class="code-filename">transaccion.xml</span>
+                        <button class="code-copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copiar
+                        </button>
                     </div>
-
-                    <div
-                        style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                        <div id="overheadResult"
-                            style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                            Presiona "Iniciar Demo" para ver el overhead
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Demo Árbol DOM -->
-                <div id="demoDom" class="xml-demo-content"
-                    style="display: none; flex-direction: column; gap: 12px; height: 100%;">
-                    <div
-                        style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #60a5fa; padding: 10px; flex: 1; display: flex; flex-direction: column;">
-                        <h3 style="text-align: center; color: #60a5fa; margin: 0 0 8px 0; font-size: 0.9rem;">
-                            <i class="fas fa-sitemap"></i> Árbol DOM de XML
-                        </h3>
-                        <div
-                            style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow: hidden; height: 450px;">
-                            <canvas id="domCanvas" style="display: block;"></canvas>
-                        </div>
-                        <div id="domInfo"
-                            style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #60a5fa;">
-                            Nodos: -</div>
-                    </div>
-
-                    <div
-                        style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                        <div id="domResult" style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                            Presiona "Iniciar Demo" para ver el árbol DOM
-                        </div>
+                    <div style="max-height: 450px; overflow-y: auto;">
+                        <pre class="line-numbers"><code class="language-xml"><?xml version="1.0" encoding="UTF-8"?>
+<transaccion tipo="transferencia" banco="Loja">
+  <id>TXN-1234567890</id>
+  <fecha>2025-11-12T10:30:00Z</fecha>
+  <origen>
+    <cuenta>1234567890</cuenta>
+    <titular>Juan Pérez</titular>
+    <banco>Banco de Loja</banco>
+  </origen>
+  <destino>
+    <cuenta>0987654321</cuenta>
+    <titular>María García</titular>
+    <banco>Banco Pichincha</banco>
+  </destino>
+  <monto moneda="USD">1500.50</monto>
+  <concepto>Pago de servicios</concepto>
+  <estado>completada</estado>
+  <metadata>
+    <ip>192.168.1.100</ip>
+    <dispositivo>Web</dispositivo>
+  </metadata>
+</transaccion></code></pre>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 13: XML Herramientas -->
+    <!-- Slide 12b: XML vs JSON - Comparación -->
     <div class="slide">
-        <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-tools"></i> XML: XPath Interactivo</h2>
+        <h2><i class="fas fa-balance-scale"></i> XML vs JSON: Comparación de Tamaño</h2>
 
-        <div
-            style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 200px); max-height: 640px;">
-            <!-- Columna Izquierda: Selectores -->
-            <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                <div class="quote" style="font-size: 0.8rem; padding: 10px; margin: 0;">
-                    "Consultar transacciones del SRI con XPath"
-                </div>
-
-                <div style="flex-shrink: 0;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Selectores XPath</h3>
-                    <select id="xpathSelector"
-                        style="width: 100%; padding: 8px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem; margin-bottom: 10px;">
-                        <option value="//transaccion">Todas las transacciones</option>
-                        <option value="//transaccion[@tipo='transferencia']">Solo transferencias</option>
-                        <option value="//transaccion[monto>1000]">Montos > $1000</option>
-                        <option value="//transaccion[@banco='Pichincha']">Al Banco Pichincha</option>
-                        <option value="//cliente/nombre">Nombres de clientes</option>
-                        <option value="//transaccion/fecha">Todas las fechas</option>
-                    </select>
-                </div>
-
-                <div
-                    style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                    <p style="font-size: 0.75rem; margin: 0;">
-                        <i class="fas fa-info-circle"></i> Herramienta para auditoría
-                    </p>
-                </div>
-
-                <div
-                    style="flex: 1; background: rgba(15, 20, 25, 0.6); border-radius: 8px; padding: 10px; overflow-y: auto;">
-                    <h3 style="font-size: 0.9rem; margin-bottom: 8px; color: #fbbf24;">📋 Resultado</h3>
-                    <div id="xpathResult"
-                        style="font-family: monospace; font-size: 0.75rem; color: #4ade80; line-height: 1.6;">
-                        Selecciona una consulta XPath...
+        <div style="padding: 0 40px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 20px;">
+                <!-- JSON -->
+                <div class="code-container" style="overflow: hidden;">
+                    <div class="code-header">
+                        <span class="code-filename">transaccion.json</span>
+                        <span class="code-language">~180 bytes</span>
+                    </div>
+                    <div style="max-height: 450px; overflow-y: auto;">
+                        <pre class="line-numbers"><code class="language-json">{
+  "id": "TXN-1234567890",
+  "tipo": "transferencia",
+  "fecha": "2025-11-12T10:30:00Z",
+  "origen": {
+    "cuenta": "1234567890",
+    "titular": "Juan Pérez"
+  },
+  "destino": {
+    "cuenta": "0987654321",
+    "titular": "María García"
+  },
+  "monto": 1500.50,
+  "concepto": "Pago de servicios"
+}</code></pre>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                    <button id="executeXPath"
-                        style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                        <i class="fas fa-play"></i> Ejecutar Consulta
-                    </button>
+                <!-- XML -->
+                <div class="code-container" style="overflow: hidden;">
+                    <div class="code-header">
+                        <span class="code-filename">transaccion.xml</span>
+                        <span class="code-language">~420 bytes</span>
+                    </div>
+                    <div style="max-height: 450px; overflow-y: auto;">
+                        <pre class="line-numbers"><code class="language-xml"><?xml version="1.0" encoding="UTF-8"?>
+<transaccion tipo="transferencia">
+  <id>TXN-1234567890</id>
+  <fecha>2025-11-12T10:30:00Z</fecha>
+  <origen>
+    <cuenta>1234567890</cuenta>
+    <titular>Juan Pérez</titular>
+  </origen>
+  <destino>
+    <cuenta>0987654321</cuenta>
+    <titular>María García</titular>
+  </destino>
+  <monto>1500.50</monto>
+  <concepto>Pago de servicios</concepto>
+</transaccion></code></pre>
+                    </div>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Documento XML -->
-            <div style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                <div
-                    style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #60a5fa; padding: 10px; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="text-align: center; color: #60a5fa; margin: 0 0 8px 0; font-size: 0.9rem;">
-                        <i class="fas fa-file-code"></i> Documento XML - Transacciones Banco de Loja
-                    </h3>
-                    <div
-                        style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow-y: auto; height: 450px;">
-                        <canvas id="xpathCanvas" style="display: block;"></canvas>
-                    </div>
-                    <div id="xpathInfo"
-                        style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #60a5fa;">
-                        Elementos resaltados: -</div>
-                </div>
+            <div
+                style="background: rgba(233, 171, 33, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--uide-accent); text-align: center;">
+                <p style="font-size: 1.2rem; margin: 0; color: var(--uide-accent); font-weight: 600;">
+                    <i class="fas fa-chart-bar"></i> XML es <strong>2.3x más grande</strong> que JSON para los mismos
+                    datos
+                </p>
+                <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">
+                    El overhead proviene de tags de apertura/cierre, declaración XML y atributos
+                </p>
+            </div>
+        </div>
+    </div>
 
-                <div
-                    style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                    <div id="xpathSummary" style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                        XPath permite consultas precisas sobre documentos XML
-                    </div>
+    <!-- Slide 13a: XML - Documento de Ejemplo -->
+    <div class="slide">
+        <h2><i class="fas fa-file-code"></i> XML: Documento de Transacciones</h2>
+
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "Documento XML con múltiples transacciones del Banco de Loja"
+            </div>
+
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">transacciones.xml</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div style="max-height: 500px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;transacciones&gt;
+  &lt;transaccion tipo="transferencia" banco="Pichincha"&gt;
+    &lt;id&gt;TXN-001&lt;/id&gt;
+    &lt;fecha&gt;2025-11-10T09:15:00Z&lt;/fecha&gt;
+    &lt;cliente&gt;
+      &lt;nombre&gt;Juan Pérez&lt;/nombre&gt;
+      &lt;cuenta&gt;1234567890&lt;/cuenta&gt;
+    &lt;/cliente&gt;
+    &lt;monto&gt;1500.00&lt;/monto&gt;
+    &lt;concepto&gt;Pago de servicios&lt;/concepto&gt;
+  &lt;/transaccion&gt;
+
+  &lt;transaccion tipo="retiro" banco="Loja"&gt;
+    &lt;id&gt;TXN-002&lt;/id&gt;
+    &lt;fecha&gt;2025-11-11T14:30:00Z&lt;/fecha&gt;
+    &lt;cliente&gt;
+      &lt;nombre&gt;María García&lt;/nombre&gt;
+      &lt;cuenta&gt;0987654321&lt;/cuenta&gt;
+    &lt;/cliente&gt;
+    &lt;monto&gt;500.00&lt;/monto&gt;
+    &lt;concepto&gt;Retiro ATM&lt;/concepto&gt;
+  &lt;/transaccion&gt;
+
+  &lt;transaccion tipo="transferencia" banco="Guayaquil"&gt;
+    &lt;id&gt;TXN-003&lt;/id&gt;
+    &lt;fecha&gt;2025-11-12T10:45:00Z&lt;/fecha&gt;
+    &lt;cliente&gt;
+      &lt;nombre&gt;Carlos López&lt;/nombre&gt;
+      &lt;cuenta&gt;5555555555&lt;/cuenta&gt;
+    &lt;/cliente&gt;
+    &lt;monto&gt;2500.00&lt;/monto&gt;
+    &lt;concepto&gt;Transferencia internacional&lt;/concepto&gt;
+  &lt;/transaccion&gt;
+
+  &lt;transaccion tipo="pago" banco="Pichincha"&gt;
+    &lt;id&gt;TXN-004&lt;/id&gt;
+    &lt;fecha&gt;2025-11-12T16:20:00Z&lt;/fecha&gt;
+    &lt;cliente&gt;
+      &lt;nombre&gt;Ana Martínez&lt;/nombre&gt;
+      &lt;cuenta&gt;7777777777&lt;/cuenta&gt;
+    &lt;/cliente&gt;
+    &lt;monto&gt;800.00&lt;/monto&gt;
+    &lt;concepto&gt;Pago de tarjeta&lt;/concepto&gt;
+  &lt;/transaccion&gt;
+&lt;/transacciones&gt;</code></pre>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Slide 14: XML Empresarial -->
+    <!-- Slide 13b: XML - XPath Consultas -->
     <div class="slide">
-        <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-building"></i> XML: SOAP y Sistemas Legacy</h2>
+        <h2><i class="fas fa-search"></i> XML: Consultas con XPath</h2>
 
-        <div
-            style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 200px); max-height: 640px;">
-            <!-- Columna Izquierda: Info -->
-            <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                <div class="quote" style="font-size: 0.8rem; padding: 10px; margin: 0;">
-                    "Integración con IESS y BCE mediante SOAP"
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "XPath permite consultas precisas sobre documentos XML"
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <!-- Columna Izquierda: Consultas Básicas -->
+                <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: #60a5fa;">
+                        <i class="fas fa-code"></i> Consultas Básicas
+                    </h3>
+                    <div class="code-container" style="overflow: hidden; margin-bottom: 20px;">
+                        <div class="code-header">
+                            <span class="code-filename">xpath-basico.js</span>
+                        </div>
+                        <div style="max-height: 250px; overflow-y: auto;">
+                            <pre class="line-numbers"><code class="language-javascript">// Todas las transacciones
+//transaccion
+
+// Solo transferencias
+//transaccion[@tipo='transferencia']
+
+// Transacciones al Banco Pichincha
+//transaccion[@banco='Pichincha']
+
+// Montos mayores a $1000
+//transaccion[monto > 1000]
+
+// Todas las fechas
+//transaccion/fecha
+
+// Nombres de clientes
+//cliente/nombre</code></pre>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="flex-shrink: 0;">
-                    <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Casos de Uso Ecuador</h3>
-                    <ul style="font-size: 0.8rem; line-height: 1.6; margin: 0; padding-left: 18px;">
-                        <li>■ <strong>BCE</strong>: Tasas de interés</li>
-                        <li>💼 <strong>IESS</strong>: Verificación aportes</li>
-                        <li>▊ <strong>SRI</strong>: Facturas electrónicas</li>
-                        <li>🏛️ <strong>Superintendencia</strong>: Reportes</li>
-                    </ul>
-                </div>
+                <!-- Columna Derecha: Consultas Avanzadas -->
+                <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--uide-accent);">
+                        <i class="fas fa-code-branch"></i> Consultas Avanzadas
+                    </h3>
+                    <div class="code-container" style="overflow: hidden; margin-bottom: 20px;">
+                        <div class="code-header">
+                            <span class="code-filename">xpath-avanzado.js</span>
+                        </div>
+                        <div style="max-height: 250px; overflow-y: auto;">
+                            <pre class="line-numbers"><code class="language-javascript">// Primera transacción
+//transaccion[1]
 
-                <div
-                    style="background: rgba(248, 113, 113, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid #f87171; flex-shrink: 0;">
-                    <p style="font-size: 0.75rem; margin: 0;">
-                        <i class="fas fa-exclamation-triangle"></i> Legacy pero obligatorio
-                    </p>
-                </div>
+// Última transacción
+//transaccion[last()]
 
-                <div
-                    style="flex: 1; background: rgba(15, 20, 25, 0.6); border-radius: 8px; padding: 10px; overflow-y: auto;">
-                    <h3 style="font-size: 0.9rem; margin-bottom: 8px; color: #60a5fa;">📋 REST vs SOAP</h3>
-                    <table style="width: 100%; font-size: 0.75rem; color: #e2e8f0;">
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 6px; font-weight: bold;">Formato</td>
-                            <td style="padding: 6px;">JSON</td>
-                            <td style="padding: 6px;">XML</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 6px; font-weight: bold;">Protocolo</td>
-                            <td style="padding: 6px;">HTTP</td>
-                            <td style="padding: 6px;">HTTP/SMTP</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 6px; font-weight: bold;">Contrato</td>
-                            <td style="padding: 6px;">OpenAPI</td>
-                            <td style="padding: 6px;">WSDL</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 6px; font-weight: bold;">Uso</td>
-                            <td style="padding: 6px; color: #4ade80;">Moderno</td>
-                            <td style="padding: 6px; color: #f87171;">Legacy</td>
-                        </tr>
-                    </table>
-                </div>
+// Transacciones con monto entre 500 y 2000
+//transaccion[monto >= 500 and monto <= 2000]
 
-                <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                    <button id="startSoapDemo"
-                        style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                        <i class="fas fa-play"></i> Ver Flujo SOAP
-                    </button>
+// Clientes con cuenta que empieza con '12'
+//cliente[starts-with(cuenta, '12')]
+
+// Contar transacciones
+count(//transaccion)
+
+// Suma de todos los montos
+sum(//transaccion/monto)</code></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Diagrama SOAP -->
-            <div style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
-                <div
-                    style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #fbbf24; padding: 10px; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="text-align: center; color: #fbbf24; margin: 0 0 8px 0; font-size: 0.9rem;">
-                        <i class="fas fa-sitemap"></i> Arquitectura SOAP - Consulta al IESS
-                    </h3>
-                    <div
-                        style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 12px; overflow: hidden; height: 450px;">
-                        <canvas id="soapCanvas" style="display: block;"></canvas>
-                    </div>
-                    <div id="soapInfo"
-                        style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: #fbbf24;">
-                        Paso: -</div>
-                </div>
+            <div style="background: rgba(233, 171, 33, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--uide-accent); margin-top: 20px;">
+                <p style="font-size: 1rem; margin: 0; line-height: 1.6;">
+                    <i class="fas fa-info-circle"></i> <strong>XPath</strong> es esencial para auditoría y reportes en sistemas que usan XML (SRI, BCE, IESS)
+                </p>
+            </div>
+        </div>
+    </div>
 
-                <div
-                    style="text-align: center; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; flex-shrink: 0;">
-                    <div id="soapResult" style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">
-                        SOAP/XML usado en integraciones gubernamentales obligatorias
-                    </div>
+    <!-- Slide 14a: XML - SOAP Request -->
+    <div class="slide">
+        <h2><i class="fas fa-building"></i> XML: SOAP Request al IESS</h2>
+
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "Consulta de aportes al IESS mediante SOAP"
+            </div>
+
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">soap-request.xml</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
                 </div>
+                <div style="max-height: 500px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;soap:Envelope 
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:iess="http://www.iess.gob.ec/servicios"&gt;
+  
+  &lt;soap:Header&gt;
+    &lt;iess:Autenticacion&gt;
+      &lt;usuario&gt;BANCO_LOJA&lt;/usuario&gt;
+      &lt;token&gt;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&lt;/token&gt;
+    &lt;/iess:Autenticacion&gt;
+  &lt;/soap:Header&gt;
+  
+  &lt;soap:Body&gt;
+    &lt;iess:ConsultarAportes&gt;
+      &lt;cedula&gt;1234567890&lt;/cedula&gt;
+      &lt;fechaInicio&gt;2024-01-01&lt;/fechaInicio&gt;
+      &lt;fechaFin&gt;2025-11-12&lt;/fechaFin&gt;
+      &lt;tipoConsulta&gt;DETALLADO&lt;/tipoConsulta&gt;
+    &lt;/iess:ConsultarAportes&gt;
+  &lt;/soap:Body&gt;
+  
+&lt;/soap:Envelope&gt;</code></pre>
+                </div>
+            </div>
+
+            <div style="background: rgba(248, 113, 113, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f87171; margin-top: 20px;">
+                <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>SOAP</strong> es legacy pero obligatorio para integraciones con entidades gubernamentales (IESS, BCE, SRI)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14b: XML - SOAP Response -->
+    <div class="slide">
+        <h2><i class="fas fa-reply"></i> XML: SOAP Response del IESS</h2>
+
+        <div style="padding: 0 40px;">
+            <div class="quote" style="font-size: 1rem; padding: 15px; margin-bottom: 20px;">
+                "Respuesta con historial de aportes"
+            </div>
+
+            <div class="code-container" style="overflow: hidden;">
+                <div class="code-header">
+                    <span class="code-filename">soap-response.xml</span>
+                    <button class="code-copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <div style="max-height: 500px; overflow-y: auto;">
+                    <pre class="line-numbers"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;soap:Envelope 
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:iess="http://www.iess.gob.ec/servicios"&gt;
+  
+  &lt;soap:Body&gt;
+    &lt;iess:ConsultarAportesResponse&gt;
+      &lt;resultado&gt;
+        &lt;codigo&gt;200&lt;/codigo&gt;
+        &lt;mensaje&gt;Consulta exitosa&lt;/mensaje&gt;
+      &lt;/resultado&gt;
+      
+      &lt;afiliado&gt;
+        &lt;cedula&gt;1234567890&lt;/cedula&gt;
+        &lt;nombres&gt;Juan Pérez&lt;/nombres&gt;
+        &lt;estado&gt;ACTIVO&lt;/estado&gt;
+      &lt;/afiliado&gt;
+      
+      &lt;aportes&gt;
+        &lt;aporte&gt;
+          &lt;periodo&gt;2025-10&lt;/periodo&gt;
+          &lt;empleador&gt;Banco de Loja&lt;/empleador&gt;
+          &lt;sueldo&gt;1500.00&lt;/sueldo&gt;
+          &lt;aportado&gt;285.00&lt;/aportado&gt;
+          &lt;estado&gt;PAGADO&lt;/estado&gt;
+        &lt;/aporte&gt;
+        &lt;aporte&gt;
+          &lt;periodo&gt;2025-09&lt;/periodo&gt;
+          &lt;empleador&gt;Banco de Loja&lt;/empleador&gt;
+          &lt;sueldo&gt;1500.00&lt;/sueldo&gt;
+          &lt;aportado&gt;285.00&lt;/aportado&gt;
+          &lt;estado&gt;PAGADO&lt;/estado&gt;
+        &lt;/aporte&gt;
+      &lt;/aportes&gt;
+      
+      &lt;resumen&gt;
+        &lt;totalAportes&gt;24&lt;/totalAportes&gt;
+        &lt;ultimoPeriodo&gt;2025-10&lt;/ultimoPeriodo&gt;
+      &lt;/resumen&gt;
+    &lt;/iess:ConsultarAportesResponse&gt;
+  &lt;/soap:Body&gt;
+  
+&lt;/soap:Envelope&gt;</code></pre>
+                </div>
+            </div>
+
+            <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid var(--uide-accent); margin-top: 20px;">
+                <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">
+                    <i class="fas fa-info-circle"></i> <strong>Casos de uso:</strong> BCE (tasas), IESS (aportes), SRI (facturas), Superintendencia (reportes)
+                </p>
             </div>
         </div>
     </div>
@@ -3181,34 +3332,34 @@ message EchoResponse {
         <h2><i class="fas fa-check-circle"></i> Criterios de Selección: Casos de Uso</h2>
         <div class="content-grid">
             <div class="feature-card">
-                <h3><i class="fas fa-server"></i> Microsservicios Internos</h3>
-                <p><strong>Recomendación</strong>: gRPC + Protobuf</p>
-                <p><strong>Razón</strong>: Máximo rendimiento, latencia crítica, control de dependencias</p>
+                <h3><i class="fas fa-server"></i> Microservicios</h3>
+                <p><strong>gRPC + Protobuf</strong></p>
+                <p>Máximo rendimiento y baja latencia</p>
             </div>
             <div class="feature-card">
                 <h3><i class="fas fa-globe"></i> APIs Públicas</h3>
-                <p><strong>Recomendación</strong>: JSON + HTTP/REST</p>
-                <p><strong>Razón</strong>: Simplicidad, adopción masiva, desarrollo ágil</p>
+                <p><strong>JSON + HTTP/REST</strong></p>
+                <p>Simplicidad y adopción universal</p>
             </div>
             <div class="feature-card">
                 <h3><i class="fas fa-clock"></i> Tiempo Real</h3>
-                <p><strong>Recomendación</strong>: WebSockets</p>
-                <p><strong>Razón</strong>: Conexión persistente bidireccional, streaming eficiente</p>
+                <p><strong>WebSockets</strong></p>
+                <p>Conexión bidireccional persistente</p>
             </div>
             <div class="feature-card">
-                <h3><i class="fas fa-building"></i> Integración Empresarial</h3>
-                <p><strong>Recomendación</strong>: XML</p>
-                <p><strong>Razón</strong>: Estándares establecidos, herramientas maduras, interoperabilidad</p>
+                <h3><i class="fas fa-building"></i> Enterprise</h3>
+                <p><strong>XML + SOAP</strong></p>
+                <p>Estándares establecidos</p>
             </div>
             <div class="feature-card">
-                <h3><i class="fas fa-cogs"></i> Sistemas en Evolución</h3>
-                <p><strong>Recomendación</strong>: Protobuf</p>
-                <p><strong>Razón</strong>: Versionado sin ruptura, evolución rápida</p>
+                <h3><i class="fas fa-cogs"></i> Evolución Rápida</h3>
+                <p><strong>Protobuf</strong></p>
+                <p>Versionado sin ruptura</p>
             </div>
             <div class="feature-card">
-                <h3><i class="fas fa-balance-scale"></i> Balance Eficiencia/Simplicidad</h3>
-                <p><strong>Recomendación</strong>: MessagePack</p>
-                <p><strong>Razón</strong>: Más eficiente que JSON, más simple que Protobuf</p>
+                <h3><i class="fas fa-balance-scale"></i> Balance</h3>
+                <p><strong>MessagePack</strong></p>
+                <p>Eficiente y simple</p>
             </div>
         </div>
     </div>
@@ -3345,12 +3496,12 @@ message EchoResponse {
         let teacherModeActivePMSBD = false;
 
         // Detectar combinación de teclas Ctrl+Shift+C
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
                 e.preventDefault();
                 teacherModeActivePMSBD = !teacherModeActivePMSBD;
                 toggleTeacherButtonsPMSBD();
-                
+
                 if (teacherModeActivePMSBD) {
                     showCopyNotificationPMSBD('🎓 Modo Docente Activado - Botones de copiar visibles');
                 } else {
@@ -3436,9 +3587,9 @@ TOTAL: 5.5 puntos`;
                 z-index: 10000;
                 animation: slideInPMSBD 0.3s ease-out;
             `;
-            
+
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.style.animation = 'slideOutPMSBD 0.3s ease-out';
                 setTimeout(() => {
@@ -3640,6 +3791,37 @@ TOTAL: 5.5 puntos`;
     <script src="js/protoc-inline-demos.js"></script>
     <script src="js/xml-inline-demos.js"></script>
     <script src="presentacion.js"></script>
+
+    <script>
+        // Script para manejar los tabs de JSON
+        document.addEventListener('DOMContentLoaded', function () {
+            const jsonTabs = document.querySelectorAll('.json-code-subtab');
+
+            jsonTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const subtab = this.dataset.subtab;
+
+                    // Actualizar estilos de tabs
+                    jsonTabs.forEach(t => {
+                        t.style.background = 'rgba(255,255,255,0.1)';
+                        t.style.color = '#e2e8f0';
+                    });
+                    this.style.background = 'var(--uide-accent)';
+                    this.style.color = '#0f1419';
+
+                    // Mostrar contenido correspondiente
+                    document.querySelectorAll('.json-code-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    const targetContent = document.getElementById('jsonCode' + subtab.charAt(0).toUpperCase() + subtab.slice(1));
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
