@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIA, Modelos de Amenaza y Criptografía Aplicada - Semana 4</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◉</text></svg>">
+    <link rel="stylesheet" href="css/presentacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="uide-logo">
+        <img src="../../Logo%20UIDE.png" alt="UIDE Logo">
+    </div>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="color: #e2e8f0; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">
+                    Presentación Semana 4
+                </h3>
+                <h2 style="color: var(--uide-accent); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">
+                    Seguridad en APIs
+                </h2>
+                <p style="color: #ffffff; font-size: 1.4rem; font-weight: 500;">
+                    CIA, Modelos de Amenaza y Criptografía Aplicada
+                </p>
+                <p style="color: #e2e8f0; font-size: 1.1rem; margin-top: 0.5rem;">
+                    LTI_05A_458 PMSBD • Cuarto Nivel
+                </p>
+            </div>
+            <div style="text-align: center; margin: 2rem 0;">
+                <p style="color: #ffffff; font-size: 1.3rem; font-weight: 600;">
+                    Mgs. Charlie Cárdenas Toledo
+                </p>
+                <p style="color: var(--uide-primary); font-size: 1.2rem; font-weight: 500; margin-top: 0.5rem;">
+                    Octubre 2025 – Febrero 2026
+                </p>
+            </div>
+            <div
+                style="text-align: center; margin-top: 2.5rem; padding: 25px; background: rgba(15, 20, 25, 0.6); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <h3 style="color: var(--uide-accent); font-size: 1.4rem; margin-bottom: 1rem;">
+                    <i class="fas fa-shield-alt"></i> Unidad 2: CIA, Modelos de Amenaza y Criptografía Aplicada a APIs
+                </h3>
+                <p style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.4; margin: 0.5rem 0;">
+                    <strong>Semana 4</strong> • Triada CIA • Modelos de Amenaza y Triada DAD • Criptografía: Hash,
+                    Simétrica, Asimétrica • TLS y PKI<br>
+                    <strong>Herramientas:</strong> OpenSSL, Postman, Wireshark, OWASP ZAP<br>
+                    <strong>Actividades:</strong> PE-1.4 laboratorio TLS + JWT/PASETO (2.25); TA-1.4 informe de modelo
+                    de amenaza (2.25)
+                </p>
+                <p style="color: #cbd5e1; font-size: 1rem; margin-top: 1rem; font-style: italic;">
+                    Comprender la Triada CIA, analizar modelos de amenaza y dominar criptografía aplicada a APIs
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Objetivos -->
+        <div class="slide">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de la Presentación</h2>
+            <div style="padding: 40px;">
+                <ul style="font-size: 1.2rem; line-height: 2.2;">
+                    <li>Comprender la <strong>Triada CIA</strong> como objetivos fundamentales de ciberseguridad</li>
+                    <li>Analizar <strong>Modelos de Amenaza</strong> y la triada DAD</li>
+                    <li>Dominar conceptos de <strong>Criptografía Aplicada</strong> (Hash, Simétrica, Asimétrica)</li>
+                    <li>Implementar <strong>TLS y PKI</strong> en el contexto de APIs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Agenda -->
+        <div class="slide">
+            <h2><i class="fas fa-list-check"></i> Agenda</h2>
+            <div style="padding: 40px;">
+                <ol style="font-size: 1.2rem; line-height: 2.2;">
+                    <li><strong>La Triada CIA: Fundamentos de Ciberseguridad</strong></li>
+                    <li><strong>Modelos de Amenaza y Agentes de Riesgo</strong></li>
+                    <li><strong>Criptografía Aplicada: Hash, Simétrica y Asimétrica</strong></li>
+                    <li><strong>TLS y PKI: Seguridad en APIs</strong></li>
+                    <li><strong>Síntesis e Implicaciones Prácticas</strong></li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 4: La Triada CIA -->
+        <div class="slide">
+            <h2><i class="fas fa-shield-alt"></i> La Triada CIA: Objetivos Fundamentales</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "La Triada CIA define los tres objetivos complementarios de cualquier programa de ciberseguridad"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Los Tres Pilares</h3>
+                <ul style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Confidencialidad (Confidentiality):</strong> Protección contra acceso no autorizado</li>
+                    <li><strong>Integridad (Integrity):</strong> Garantía contra modificaciones no autorizadas</li>
+                    <li><strong>Disponibilidad (Availability):</strong> Acceso oportuno para usuarios legítimos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Confidencialidad -->
+        <div class="slide">
+            <h2><i class="fas fa-lock"></i> Confidencialidad (Confidentiality)</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Objetivo Principal</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                    Garantizar que individuos no autorizados no puedan acceder a información sensible
+                </p>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Estados de los Datos</h3>
+                <ol style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Datos en reposo</strong> (data at rest) → Almacenados en discos, cloud</li>
+                    <li><strong>Datos en tránsito</strong> (data in transit) → Enviados a través de redes</li>
+                    <li><strong>Datos en uso</strong> (data in use) → Procesados activamente por sistemas</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 6: Integridad -->
+        <div class="slide">
+            <h2><i class="fas fa-check-circle"></i> Integridad (Integrity)</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "Garantiza que las alteraciones a los activos de un sistema se pueden realizar solo de una manera
+                    autorizada"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Protege contra:</strong> Modificaciones intencionales y no intencionales</li>
+                    <li><strong>Controles de integridad:</strong> Imponen requisitos de autorización</li>
+                    <li><strong>Aplicación en APIs:</strong> Validación de datos y verificación de mensajes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Disponibilidad -->
+        <div class="slide">
+            <h2><i class="fas fa-bolt"></i> Disponibilidad (Availability)</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Concepto Clave</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Asegura que información y sistemas estén listos para usuarios legítimos cuando los necesiten
+                </p>
+                <div class="quote" style="margin-bottom: 30px;">
+                    "Aquel que tiene la mayor probabilidad de estar funcionando en un instante dado"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Aplicación en APIs</h3>
+                <ul style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Alta disponibilidad:</strong> Redundancia y balanceo de carga</li>
+                    <li><strong>Mitigación de interrupciones:</strong> Planes de contingencia</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: No Repudio -->
+        <div class="slide">
+            <h2><i class="fas fa-edit"></i> No Repudio (Nonrepudiation)</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "Alguien que realizó alguna acción no puede negar más tarde haber realizado esa acción"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Implementación</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Firmas digitales:</strong> Control criptográfico principal</li>
+                    <li><strong>Logs de auditoría:</strong> Registros inmutables</li>
+                    <li><strong>Certificados digitales:</strong> Vinculación de identidad</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Importancia en APIs</h3>
+                <p style="font-size: 1.1rem;">
+                    Trazabilidad completa de todas las transacciones
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 9: La Triada DAD -->
+        <div class="slide">
+            <h2><i class="fas fa-exclamation-triangle"></i> La Triada DAD: Amenazas a la Seguridad</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "Proceso estratégico destinado a considerar posibles escenarios de ataque y vulnerabilidades"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Las Tres Amenazas Principales</h3>
+                <ol style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Divulgación (Disclosure)</strong> → Ataca Confidencialidad</li>
+                    <li><strong>Alteración (Alteration)</strong> → Ataca Integridad</li>
+                    <li><strong>Denegación (Denial)</strong> → Ataca Disponibilidad</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 10: Divulgación -->
+        <div class="slide">
+            <h2><i class="fas fa-unlock"></i> Divulgación (Disclosure)</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Concepto</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Exposición de información sensible a individuos no autorizados
+                </p>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Conocido como:</strong> Pérdida de datos (data breach)</li>
+                    <li><strong>Viola:</strong> Principio de confidencialidad</li>
+                    <li><strong>Consecuencias:</strong> Robo de credenciales, información financiera</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Ejemplos en APIs</h3>
+                <ul style="font-size: 1rem; line-height: 1.8;">
+                    <li>Tokens expuestos en logs</li>
+                    <li>Claves API filtradas</li>
+                    <li>Datos sensibles sin cifrar</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: Alteración -->
+        <div class="slide">
+            <h2><i class="fas fa-wrench"></i> Alteración (Alteration)</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Definición</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Modificación no autorizada de la información
+                </p>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Viola:</strong> Objetivo de integridad</li>
+                    <li><strong>Ejemplos:</strong> Desfiguración de sitios web, manipulación de datos</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">En el Contexto de APIs</h3>
+                <ul style="font-size: 1rem; line-height: 1.8;">
+                    <li><strong>Ataques de Man-in-the-Middle:</strong> Interceptación y modificación</li>
+                    <li><strong>Inyección de código:</strong> SQL injection, XSS</li>
+                    <li><strong>Manipulación de peticiones:</strong> Parámetros alterados</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 12: Denegación -->
+        <div class="slide">
+            <h2><i class="fas fa-ban"></i> Denegación (Denial)</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Concepto</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Interrupción del acceso legítimo de usuarios autorizados
+                </p>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Viola:</strong> Principio de disponibilidad</li>
+                    <li><strong>Manifestaciones:</strong> DoS, DDoS</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Protección en APIs</h3>
+                <ul style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Rate limiting:</strong> Control de tasa de peticiones</li>
+                    <li><strong>Throttling:</strong> Limitación de recursos</li>
+                    <li><strong>Autenticación robusta:</strong> Prevención de abusos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 13: Agentes de Amenaza -->
+        <div class="slide">
+            <h2><i class="fas fa-user-secret"></i> Agentes de Amenaza</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Motivaciones de Atacantes</h3>
+                <ul style="font-size: 1.1rem; line-height: 2.2;">
+                    <li><strong>Lucro monetario:</strong> Ciberdelincuentes (credenciales, datos financieros)</li>
+                    <li><strong>Venganza:</strong> Empleados descontentos</li>
+                    <li><strong>Ventajas estratégicas:</strong> Espionaje corporativo o estatal</li>
+                    <li><strong>Interés en información de negocio:</strong> Competidores</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 14: Vulnerabilidades en APIs -->
+        <div class="slide">
+            <h2><i class="fas fa-search"></i> Vulnerabilidades en APIs</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "Las APIs son puertas de enlace, una vulnerabilidad puede poner en peligro su integridad y provocar
+                    lapsos de seguridad en cascada"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Vulnerabilidades Comunes</h3>
+                <ul style="font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Canales de comunicación no cifrados</strong></li>
+                    <li><strong>Almacenamiento de datos no cifrados</strong></li>
+                    <li><strong>Uso no autorizado de funciones</strong></li>
+                    <li><strong>Autenticación y autorización débiles</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 15: Criptografía Aplicada -->
+        <div class="slide">
+            <h2><i class="fas fa-key"></i> Criptografía Aplicada: Fundamentos</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "La Criptografía es la ciencia de proteger la información para que dos o más personas puedan
+                    comunicarse sin que sus mensajes sean leídos o manipulados"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Objetivos que Cumple</h3>
+                <ul style="font-size: 1.2rem; line-height: 2;">
+                    <li>✅ Confidencialidad</li>
+                    <li>✅ Integridad</li>
+                    <li>✅ Autenticación</li>
+                    <li>✅ No repudio</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 16: Funciones de Hashing -->
+        <div class="slide">
+            <h2><i class="fas fa-hashtag"></i> Funciones de Hashing</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Características Fundamentales</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 30px;">
+                    <li><strong>Función unidireccional:</strong> No reversible</li>
+                    <li><strong>Salida única y repetible:</strong> De longitud fija</li>
+                    <li><strong>Propiedad one-way:</strong> Inviable encontrar la entrada desde el hash</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Aplicación: Integridad</h3>
+                <div class="quote">
+                    "El hash de un mensaje sirve como una comprobación de integridad (integrity check)"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: HMAC -->
+        <div class="slide">
+            <h2><i class="fas fa-key"></i> HMAC: Hash en APIs</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Hash-based Message Authentication Code</h3>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Funcionamiento</h3>
+                <ol style="font-size: 1.1rem; line-height: 2.2; margin-bottom: 30px;">
+                    <li><strong>Cuerpo de solicitud</strong> se hashea con <strong>clave privada</strong></li>
+                    <li><strong>Hash resultante</strong> se envía con la solicitud</li>
+                    <li><strong>Receptor verifica</strong> que el hash coincida</li>
+                </ol>
+                <div class="quote">
+                    "Asegura que ningún tercero haya manipulado la solicitud"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Criptografía Simétrica vs Asimétrica -->
+        <div class="slide">
+            <h2><i class="fas fa-exchange-alt"></i> Criptografía Simétrica vs Asimétrica</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Comparación Clave</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 1rem;">
+                    <thead>
+                        <tr style="background: rgba(233, 171, 33, 0.2);">
+                            <th style="padding: 15px; border: 1px solid rgba(255,255,255,0.2);">Criterio</th>
+                            <th style="padding: 15px; border: 1px solid rgba(255,255,255,0.2);">Simétrica</th>
+                            <th style="padding: 15px; border: 1px solid rgba(255,255,255,0.2);">Asimétrica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);"><strong>Claves</strong>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Una sola clave
+                                compartida</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Par de claves
+                                (pública/privada)</td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.05);">
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">
+                                <strong>Velocidad</strong></td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Muy rápida
+                                (1,000-10,000x)</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">Lenta</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);"><strong>No
+                                    Repudio</strong></td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">❌ No implementa</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">✅ Firmas digitales</td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.05);">
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">
+                                <strong>Escalabilidad</strong></td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">❌ No escalable</td>
+                            <td style="padding: 12px; border: 1px solid rgba(255,255,255,0.2);">✅ Extremadamente
+                                escalable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 19: Criptografía Simétrica -->
+        <div class="slide">
+            <h2><i class="fas fa-lock"></i> Criptografía Simétrica</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Una sola clave secreta</strong> compartida</li>
+                    <li><strong>Cifrado y descifrado</strong> con la misma clave</li>
+                    <li><strong>Muy rápida:</strong> Ideal para cifrado masivo (bulk encryption)</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Limitaciones</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>No proporciona no repudio:</strong> Ambas partes tienen la clave</li>
+                    <li><strong>Problema de distribución de claves:</strong> Requiere canal seguro</li>
+                    <li><strong>No escalable:</strong> N usuarios requieren N(N-1)/2 claves</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 10px;">Uso Típico</h3>
+                <p style="font-size: 1.1rem;">Confidencialidad y protección de datos en reposo/tránsito</p>
+            </div>
+        </div>
+
+        <!-- Slide 20: Criptografía Asimétrica -->
+        <div class="slide">
+            <h2><i class="fas fa-key"></i> Criptografía Asimétrica</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Par de claves:</strong> Pública (compartida) + Privada (secreta)</li>
+                    <li><strong>Escalable:</strong> Solo requiere un par por usuario</li>
+                    <li><strong>Proporciona no repudio:</strong> Mediante firmas digitales</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Limitaciones</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>Lenta:</strong> 1,000-10,000 veces más lenta que simétrica</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 10px;">Uso Típico</h3>
+                <ul style="font-size: 1.1rem; line-height: 1.8;">
+                    <li>Intercambio seguro de claves</li>
+                    <li>Firmas digitales</li>
+                    <li>Autenticación</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 21: Criptografía Híbrida -->
+        <div class="slide">
+            <h2><i class="fas fa-random"></i> Criptografía Híbrida</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "La práctica estándar es usar criptografía asimétrica para establecer conexión y asegurar el
+                    intercambio de una clave secreta simétrica"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Proceso</h3>
+                <ol style="font-size: 1.1rem; line-height: 2.2; margin-bottom: 30px;">
+                    <li><strong>Fase inicial:</strong> Asimétrica para intercambio de claves</li>
+                    <li><strong>Fase de comunicación:</strong> Simétrica con la clave intercambiada</li>
+                </ol>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Ventaja</h3>
+                <p style="font-size: 1.2rem;">
+                    Combina <strong>seguridad de asimétrica</strong> con <strong>velocidad de simétrica</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 22: Firmas Digitales -->
+        <div class="slide">
+            <h2><i class="fas fa-signature"></i> Firmas Digitales</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Objetivos</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 30px;">
+                    <li>✅ <strong>Integridad:</strong> Garantiza que no hubo alteración</li>
+                    <li>✅ <strong>No repudio:</strong> Confirma identidad del remitente</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Proceso de Firma</h3>
+                <ol style="font-size: 1.1rem; line-height: 2.2; margin-bottom: 30px;">
+                    <li><strong>Firma:</strong> Remitente cifra hash con su <strong>clave privada</strong></li>
+                    <li><strong>Verificación:</strong> Destinatario descifra con <strong>clave pública</strong></li>
+                    <li><strong>Validación:</strong> Compara hash descifrado con hash generado</li>
+                </ol>
+                <h3 style="color: var(--uide-accent); margin-bottom: 10px;">Resultado</h3>
+                <p style="font-size: 1.1rem;">Confirmación de <strong>autoría</strong> e <strong>integridad</strong> del
+                    mensaje</p>
+            </div>
+        </div>
+
+        <!-- Slide 23: TLS -->
+        <div class="slide">
+            <h2><i class="fas fa-globe"></i> TLS: Seguridad en Tránsito</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">HTTPS = HTTP + TLS</h3>
+                <div class="quote" style="margin-bottom: 30px;">
+                    "TLS es el protocolo que se activa cuando se ve el candado en la barra de herramientas del
+                    navegador"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Garantías del Canal Seguro</h3>
+                <ul style="font-size: 1.1rem; line-height: 2.2;">
+                    <li><strong>Confidencialidad:</strong> Cifrado de datos en tránsito</li>
+                    <li><strong>Integridad:</strong> Detección de alteraciones</li>
+                    <li><strong>Autenticación:</strong> Verificación de identidad del servidor</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 24: TLS en APIs -->
+        <div class="slide">
+            <h2><i class="fas fa-lock"></i> TLS en APIs</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Mitigación de Ataques</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 30px;">
+                    <li><strong>Evita espionaje</strong> (eavesdropping)</li>
+                    <li><strong>Protege tokens y claves API</strong></li>
+                    <li><strong>Garantiza comunicación segura</strong></li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Requisito Crítico</h3>
+                <div class="quote" style="margin-bottom: 25px;">
+                    "Tokens y claves de API deben transportarse solo a través de una conexión segura como HTTPS"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 10px;">Terminación SSL/TLS</h3>
+                <p style="font-size: 1.1rem;">Load balancers/reverse proxies manejan la conexión TLS, liberando al
+                    servidor</p>
+            </div>
+        </div>
+
+        <!-- Slide 25: PKI -->
+        <div class="slide">
+            <h2><i class="fas fa-building"></i> PKI: Infraestructura de Clave Pública</h2>
+            <div style="padding: 30px;">
+                <div class="quote" style="margin-bottom: 30px;">
+                    "La PKI se refiere a la tecnología, infraestructura y prácticas que apoyan la implementación y
+                    operación de certificados digitales"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Función Principal</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 40px;">
+                    Hacer posible la <strong>comunicación segura a escala</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 26: Componentes de PKI -->
+        <div class="slide">
+            <h2><i class="fas fa-scroll"></i> Componentes de PKI</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">1. Certificado Digital</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Declaración firmada por CA que vincula <strong>clave pública</strong> a <strong>identidad</strong>
+                    del sujeto
+                </p>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">2. Autoridad de Certificación (CA)</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Entidad de confianza que <strong>crea y firma</strong> certificados digitales
+                </p>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">3. Revocación</h3>
+                <p style="font-size: 1.1rem;">
+                    Los certificados pueden ser <strong>cancelados</strong> si la clave privada se compromete
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 27: mTLS -->
+        <div class="slide">
+            <h2><i class="fas fa-lock"></i> mTLS: Autenticación Mutua</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Mutual TLS en Microsservicios</h3>
+                <div class="quote" style="margin-bottom: 30px;">
+                    "Tanto el servidor como el cliente deben presentar un certificado y autenticarse mutuamente"
+                </div>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Características</h3>
+                <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 25px;">
+                    <li><strong>También conocido como:</strong> Two-Way SSL</li>
+                    <li><strong>Verifica:</strong> Identidad del cliente y del servidor</li>
+                    <li><strong>Aplicación:</strong> Comunicación servicio-a-servicio</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 10px;">Ventaja en APIs</h3>
+                <p style="font-size: 1.1rem;">Autenticación robusta en la <strong>capa de transporte</strong></p>
+            </div>
+        </div>
+
+        <!-- Slide 28: Flujo de Autenticación mTLS -->
+        <div class="slide">
+            <h2><i class="fas fa-exchange-alt"></i> Flujo de Autenticación mTLS</h2>
+            <div style="padding: 40px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Proceso</h3>
+                <ol style="font-size: 1.1rem; line-height: 2.2;">
+                    <li><strong>Cliente inicia</strong> conexión TLS</li>
+                    <li><strong>Servidor presenta</strong> su certificado</li>
+                    <li><strong>Cliente valida</strong> certificado del servidor</li>
+                    <li><strong>Servidor solicita</strong> certificado del cliente</li>
+                    <li><strong>Cliente presenta</strong> su certificado</li>
+                    <li><strong>Servidor valida</strong> certificado del cliente</li>
+                    <li><strong>Conexión segura</strong> establecida</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 29: Protección de APIs Resumen -->
+        <div class="slide">
+            <h2><i class="fas fa-shield-alt"></i> Protección de APIs: Resumen</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Capa de Transporte (TLS)</h3>
+                <ul style="font-size: 1rem; line-height: 1.8; margin-bottom: 25px;">
+                    <li><strong>HTTPS obligatorio:</strong> Todos los endpoints</li>
+                    <li><strong>TLS 1.2+:</strong> Versiones actualizadas</li>
+                    <li><strong>mTLS:</strong> Para comunicación servicio-a-servicio</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Capa de Aplicación</h3>
+                <ul style="font-size: 1rem; line-height: 1.8;">
+                    <li><strong>HMAC:</strong> Integridad de peticiones</li>
+                    <li><strong>JWT firmados:</strong> Tokens con firma digital</li>
+                    <li><strong>Validación estricta:</strong> Entrada y salida</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 30: Mejores Prácticas -->
+        <div class="slide">
+            <h2><i class="fas fa-bullseye"></i> Mejores Prácticas en Seguridad de APIs</h2>
+            <div style="padding: 30px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Confidencialidad</h3>
+                        <ul style="font-size: 0.95rem; line-height: 1.8;">
+                            <li>✅ Cifrado en tránsito (TLS)</li>
+                            <li>✅ Cifrado en reposo (AES)</li>
+                            <li>✅ Gestión segura de claves</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Integridad</h3>
+                        <ul style="font-size: 0.95rem; line-height: 1.8;">
+                            <li>✅ HMAC para peticiones</li>
+                            <li>✅ Firmas digitales</li>
+                            <li>✅ Validación de entrada</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Disponibilidad</h3>
+                        <ul style="font-size: 0.95rem; line-height: 1.8;">
+                            <li>✅ Rate limiting</li>
+                            <li>✅ Redundancia</li>
+                            <li>✅ Monitoreo continuo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 31: Modelo de Amenaza para APIs -->
+        <div class="slide">
+            <h2><i class="fas fa-search"></i> Modelo de Amenaza para APIs</h2>
+            <div style="padding: 40px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Proceso de Modelado</h3>
+                <ol style="font-size: 1.1rem; line-height: 2.2;">
+                    <li><strong>Identificar activos:</strong> Datos sensibles, funciones críticas</li>
+                    <li><strong>Identificar amenazas:</strong> DAD aplicado a cada activo</li>
+                    <li><strong>Analizar vulnerabilidades:</strong> Puntos débiles en canales y almacenamiento</li>
+                    <li><strong>Evaluar riesgos:</strong> Probabilidad e impacto</li>
+                    <li><strong>Implementar controles:</strong> Mitigación de riesgos</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 32: Vulnerabilidades Críticas en APIs -->
+        <div class="slide">
+            <h2><i class="fas fa-exclamation-triangle"></i> Vulnerabilidades Críticas en APIs</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">OWASP API Security Top 10</h3>
+                <ol style="font-size: 1rem; line-height: 2;">
+                    <li><strong>Broken Object Level Authorization</strong></li>
+                    <li><strong>Broken Authentication</strong></li>
+                    <li><strong>Broken Object Property Level Authorization</strong></li>
+                    <li><strong>Unrestricted Resource Consumption</strong></li>
+                    <li><strong>Broken Function Level Authorization</strong></li>
+                </ol>
+                <div style="margin-top: 30px; padding: 20px; background: rgba(233, 171, 33, 0.1); border-radius: 10px;">
+                    <h3 style="color: var(--uide-accent); margin-bottom: 10px;">Mitigación</h3>
+                    <p style="font-size: 1.1rem;">Aplicar <strong>principios CIA</strong> y <strong>controles
+                            criptográficos</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 33: Síntesis -->
+        <div class="slide">
+            <h2><i class="fas fa-puzzle-piece"></i> Síntesis: Integrando los Conceptos</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">CIA como Base</h3>
+                <ul style="font-size: 1rem; line-height: 1.8; margin-bottom: 25px;">
+                    <li><strong>Confidencialidad:</strong> TLS, cifrado</li>
+                    <li><strong>Integridad:</strong> HMAC, firmas digitales</li>
+                    <li><strong>Disponibilidad:</strong> Rate limiting, redundancia</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">DAD como Amenazas</h3>
+                <ul style="font-size: 1rem; line-height: 1.8; margin-bottom: 25px;">
+                    <li><strong>Divulgación:</strong> Proteger con cifrado</li>
+                    <li><strong>Alteración:</strong> Validar con hash/firmas</li>
+                    <li><strong>Denegación:</strong> Mitigar con throttling</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Criptografía como Herramienta</h3>
+                <ul style="font-size: 1rem; line-height: 1.8;">
+                    <li><strong>Hash:</strong> Integridad</li>
+                    <li><strong>Simétrica:</strong> Confidencialidad rápida</li>
+                    <li><strong>Asimétrica:</strong> No repudio y distribución de claves</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 34: Implementación Práctica -->
+        <div class="slide">
+            <h2><i class="fas fa-bullseye"></i> Implementación Práctica</h2>
+            <div style="padding: 40px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Checklist de Seguridad para APIs</h3>
+                <ul style="font-size: 1rem; line-height: 2;">
+                    <li>☐ <strong>TLS 1.2+</strong> en todos los endpoints</li>
+                    <li>☐ <strong>Autenticación robusta</strong> (OAuth 2.0, JWT)</li>
+                    <li>☐ <strong>Autorización granular</strong> (RBAC, ABAC)</li>
+                    <li>☐ <strong>Rate limiting</strong> implementado</li>
+                    <li>☐ <strong>HMAC</strong> para integridad de peticiones</li>
+                    <li>☐ <strong>Logging y auditoría</strong> completos</li>
+                    <li>☐ <strong>Gestión de claves</strong> segura</li>
+                    <li>☐ <strong>mTLS</strong> para comunicación interna</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 35: Caso de Estudio -->
+        <div class="slide">
+            <h2><i class="fas fa-microscope"></i> Caso de Estudio: API Gateway Segura</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Componentes</h3>
+                <ol style="font-size: 1rem; line-height: 2;">
+                    <li><strong>Edge:</strong> TLS termination, rate limiting</li>
+                    <li><strong>Autenticación:</strong> JWT con RS256 (asimétrica)</li>
+                    <li><strong>Autorización:</strong> Validación de claims</li>
+                    <li><strong>Backend:</strong> mTLS entre servicios</li>
+                    <li><strong>Integridad:</strong> HMAC en peticiones sensibles</li>
+                    <li><strong>Logging:</strong> Auditoría completa</li>
+                </ol>
+                <div style="margin-top: 30px; padding: 20px; background: rgba(74, 222, 128, 0.1); border-radius: 10px;">
+                    <h3 style="color: #4ade80; margin-bottom: 10px;">Resultado</h3>
+                    <p style="font-size: 1.1rem;">Arquitectura que cumple <strong>CIA</strong> y mitiga
+                        <strong>DAD</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 36: Referencias Fundamentos -->
+        <div class="slide">
+            <h2><i class="fas fa-book"></i> Referencias Clave</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Fundamentos de Seguridad</h3>
+                <ul style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px;">
+                    <li><strong>Raymond, R., et al. (2023).</strong> <em>CompTIA Security+ Study Guide</em>. Technet24
+                    </li>
+                    <li><strong>Schneier, B. (1996).</strong> <em>Security Engineering: A Guide to Building Dependable
+                            Distributed Systems</em></li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Criptografía</h3>
+                <ul style="font-size: 0.95rem; line-height: 1.8;">
+                    <li><strong>Menezes, A. J., Oorschot, P. C. van, & Vanstone, S. A. (1996).</strong> <em>Handbook of
+                            Applied Cryptography</em>. CRC Press</li>
+                    <li><strong>Zuquete, A. (2021).</strong> <em>Segurança em Redes Informáticas</em> (6ª edição). FCA
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 37: Referencias APIs -->
+        <div class="slide">
+            <h2><i class="fas fa-book-open"></i> Referencias: APIs y Seguridad</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Seguridad en APIs</h3>
+                <ul style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px;">
+                    <li><strong>Madden, N.</strong> <em>API Security in Action</em> (1st Edition)</li>
+                    <li><strong>Voelter, M., Kircher, M., & Zdun, U. (2022).</strong> <em>Patterns for API Design:
+                            Simplifying Integration with Loosely Coupled Message Exchanges</em></li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Arquitectura y Microservicios</h3>
+                <ul style="font-size: 0.95rem; line-height: 1.8;">
+                    <li><strong>Newman, S. (2015).</strong> <em>Building Microservices: Designing Fine-Grained
+                            Systems</em>. O'Reilly</li>
+                    <li><strong>Papazoglou, M. P. (2003).</strong> <em>Web Services: Principles and Technology</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 38: Referencias Modelos de Amenaza -->
+        <div class="slide">
+            <h2><i class="fas fa-lock"></i> Referencias: Modelos de Amenaza</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Threat Modeling</h3>
+                <ul style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px;">
+                    <li><strong>UcedaVélez, T., & Morana, M. M. (2015).</strong> <em>Risk Centric Threat Modeling:
+                            Process for Attack Simulation and Threat Analysis</em>. John Wiley & Sons</li>
+                </ul>
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Arquitectura y Redes</h3>
+                <ul style="font-size: 0.95rem; line-height: 1.8;">
+                    <li><strong>Kurose, J. F., & Ross, K. W. (2017).</strong> <em>Computer Networking - a Top-Down
+                            Approach</em> (7th Edition). Pearson</li>
+                    <li><strong>Tanenbaum, A. S., & van Steen, M. (2007).</strong> <em>Distributed Systems: Principles
+                            and Paradigms</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 39: Reflexiones Finales -->
+        <div class="slide">
+            <h2><i class="fas fa-lightbulb"></i> Reflexiones Finales</h2>
+            <div style="padding: 40px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Preguntas para Considerar</h3>
+                <ul style="font-size: 1.1rem; line-height: 2.2; margin-bottom: 35px;">
+                    <li>¿Cómo equilibrar <strong>seguridad</strong> y <strong>rendimiento</strong> en APIs?</li>
+                    <li>¿Qué controles criptográficos son <strong>esenciales</strong> vs. <strong>opcionales</strong>?
+                    </li>
+                    <li>¿Cómo implementar <strong>defensa en profundidad</strong> efectivamente?</li>
+                </ul>
+                <div class="quote">
+                    "Una vulnerabilidad en una API puede provocar lapsos de seguridad en cascada a través de todos los
+                    sistemas vinculados a ella"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 40: Pasos Siguientes -->
+        <div class="slide">
+            <h2><i class="fas fa-rocket"></i> Pasos Siguientes</h2>
+            <div style="padding: 30px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Para Profundizar</h3>
+                <ol style="font-size: 1rem; line-height: 2; margin-bottom: 30px;">
+                    <li><strong>Estudiar OWASP API Security Top 10</strong></li>
+                    <li><strong>Implementar TLS y mTLS</strong> en proyectos</li>
+                    <li><strong>Practicar modelado de amenazas</strong></li>
+                    <li><strong>Explorar PKI</strong> en infraestructura cloud</li>
+                </ol>
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Herramientas Recomendadas</h3>
+                <ul style="font-size: 1rem; line-height: 1.8;">
+                    <li><strong>OpenSSL:</strong> Generación de certificados y claves</li>
+                    <li><strong>Postman:</strong> Testing de APIs con autenticación</li>
+                    <li><strong>Wireshark:</strong> Análisis de tráfico TLS</li>
+                    <li><strong>OWASP ZAP:</strong> Pentesting de APIs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 41: Conclusión -->
+        <div class="slide">
+            <h2><i class="fas fa-bullseye"></i> Conclusión: CIA + Criptografía = APIs Seguras</h2>
+            <div style="padding: 40px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 20px;">Principios Fundamentales</h3>
+                <ol style="font-size: 1.1rem; line-height: 2.2; margin-bottom: 35px;">
+                    <li><strong>CIA</strong> define los objetivos de seguridad</li>
+                    <li><strong>DAD</strong> identifica las amenazas principales</li>
+                    <li><strong>Criptografía</strong> proporciona las herramientas</li>
+                    <li><strong>TLS/PKI</strong> implementa la infraestructura</li>
+                    <li><strong>Modelado de amenazas</strong> guía la estrategia</li>
+                </ol>
+                <div
+                    style="text-align: center; padding: 25px; background: rgba(233, 171, 33, 0.15); border-radius: 12px; border: 2px solid var(--uide-accent);">
+                    <p style="font-size: 1.2rem; font-weight: 600; margin: 0;">
+                        La seguridad de APIs requiere un enfoque <strong>holístico</strong> que integre teoría y
+                        práctica
+                    </p>
+                </div>
+                <p
+                    style="text-align: center; margin-top: 30px; font-style: italic; color: #94a3b8; font-size: 0.95rem;">
+                    Presentación basada en el compendio de Semana 4 - CIA, Modelos de Amenaza y Criptografía Aplicada a
+                    APIs
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">41</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation Script -->
+    <script>
+        // Slide Navigation
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideElement = document.getElementById('currentSlide');
+        const totalSlidesElement = document.getElementById('totalSlides');
+        const progressBar = document.getElementById('progressBar');
+
+        let currentSlide = 0;
+        totalSlidesElement.textContent = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            currentSlideElement.textContent = currentSlide + 1;
+
+            // Update progress bar
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Initialize progress bar
+        progressBar.style.width = (1 / slides.length) * 100 + '%';
+    </script>
+
+</body>
+
+</html>

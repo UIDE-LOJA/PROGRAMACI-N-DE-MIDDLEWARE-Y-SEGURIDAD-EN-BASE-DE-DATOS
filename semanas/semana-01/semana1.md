@@ -1,11 +1,11 @@
 Compendio Exhaustivo sobre Arquitectura y Sistemas Distribuidos
 1. Conceptos de Sistemas Distribuidos (SD)
 Un Sistema Distribuido (SD) se concibe generalmente como "un conjunto de computadores independientes, interconectados a través de una red y con capacidad de colaborar con el fin de realizar una tarea". La Computación Distribuida es, por lo tanto, la computación que se lleva a cabo dentro de dicho sistema.
-Académicamente, los SD son una "red de ordenadores independientes que aparecen como un sistema coherente a sus usuarios". Para lograr esta coherencia, los sistemas se basan en métodos de sincronización y protocolos de comunicación que garantizan que todos los componentes funcionen de manera fluida. Los SD son esenciales para manejar aplicaciones intensivas en datos y a gran escala que un único sistema informático no podría gestionar.
+Académicamente, los SD son una "red de Computadores independientes que aparecen como un sistema coherente a sus usuarios". Para lograr esta coherencia, los sistemas se basan en métodos de sincronización y protocolos de comunicación que garantizan que todos los componentes funcionen de manera fluida. Los SD son esenciales para manejar aplicaciones intensivas en datos y a gran escala que un único sistema informático no podría gestionar.
 Ventajas de los Sistemas Distribuidos
 La adopción de la computación distribuida ofrece varias ventajas clave:
 • Compartición de recursos: La arquitectura de la computación distribuida es un reflejo de la arquitectura de las organizaciones modernas, permitiendo la compartición de recursos a través de la red.
-• Escalabilidad: A diferencia de la computación monolítica, que está limitada por la capacidad de un solo ordenador, la computación distribuida permite incrementar el número de recursos compartidos según la demanda.
+• Escalabilidad: A diferencia de la computación monolítica, que está limitada por la capacidad de un solo Computador, la computación distribuida permite incrementar el número de recursos compartidos según la demanda.
 • Tolerancia a fallos: Los SD permiten la replicación de recursos para dotar al sistema de tolerancia a fallos, asegurando la disponibilidad del recurso incluso en presencia de fallos.
 Sin embargo, esta complejidad introduce desafíos como la dificultad de mantener un tiempo consistente en todas las máquinas (el "problema del reloj global"), asegurar la consistencia de los datos en diferentes ubicaciones y manejar los fallos cuando partes del sistema dejan de comunicarse.
 2. Roles del Middleware
@@ -54,7 +54,7 @@ La arquitectura de una aplicación puede referirse a sus capas lógicas (layers)
 Diferencia entre Capas y Niveles
 Es vital distinguir entre "capa" (referencia lógica) y "nivel" (referencia física):
 • Capa (Layer): Se refiere a la forma en que una solución es segmentada desde el punto de vista lógico (ej., Presentación, Lógica de Negocio, Datos).
-• Nivel (Tier): Corresponde a la forma en que las capas lógicas se encuentran distribuidas de forma física (hardware). Por ejemplo, una solución de tres capas que reside en un solo ordenador es de "tres capas y un nivel". Un cliente, un servidor web y un servidor de bases de datos en tres máquinas físicas diferentes constituye una arquitectura de 3 niveles físicos.
+• Nivel (Tier): Corresponde a la forma en que las capas lógicas se encuentran distribuidas de forma física (hardware). Por ejemplo, una solución de tres capas que reside en un solo Computador es de "tres capas y un nivel". Un cliente, un servidor web y un servidor de bases de datos en tres máquinas físicas diferentes constituye una arquitectura de 3 niveles físicos.
 El Patrón Modelo-Vista-Controlador (MVC)
 El MVC es un patrón arquitectural que es un caso particular de la arquitectura en 3 capas, pero con responsabilidades y relaciones estandarizadas.
 1. Modelo (Model): Donde se programa la lógica de negocio. Incluye el acceso a los datos, los filtros, algoritmos y restricciones que imponga el sistema. Los modelos deben empaquetar esos datos y devolverlos al controlador en objetos estándar. En una arquitectura N-Capas, el Modelo corresponde a la Capa Común/de Objetos y la Capa de Acceso a Datos.
