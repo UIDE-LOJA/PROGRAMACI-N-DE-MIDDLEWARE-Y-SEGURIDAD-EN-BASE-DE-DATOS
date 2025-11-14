@@ -1,7 +1,7 @@
 -- ============================================================================
 -- LABORATORIO SEMANA 4: TLS, Criptografía y JWT en MySQL
 -- Curso: LTI_05A_458 PMSBD
--- Profesor: Mgs. Charlie Cárdenas Toledo
+-- Profesor: Prof. Charlie Cárdenas Toledo, M.Sc.
 -- ============================================================================
 
 -- PARTE 1: VERIFICACIÓN DE TLS

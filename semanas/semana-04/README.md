@@ -198,7 +198,7 @@ node --version
 
 ## 📞 Contacto
 
-**Profesor:** Mgs. Charlie Cárdenas Toledo  
+**Profesor:** Prof. Charlie Cárdenas Toledo, M.Sc.  
 **Email:** chcardenasto@uide.edu.ec  
 **Horario de tutorías:** 
 - Lunes: 10:00 - 12:00

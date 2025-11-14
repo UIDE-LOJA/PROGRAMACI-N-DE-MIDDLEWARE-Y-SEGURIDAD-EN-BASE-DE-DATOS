@@ -124,5 +124,5 @@ git push -u origin main
 
 **Estudiante:** [Tu Nombre]  
 **Curso:** LTI_05A_458 PMSBD  
-**Docente:** Mgs. Charlie Cárdenas Toledo  
+**Docente:** Prof. Charlie Cárdenas Toledo, M.Sc.  
 **UIDE - Noviembre 2025**

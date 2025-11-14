@@ -311,7 +311,7 @@ Al completar esta semana, los estudiantes podrán:
 
 ## 🆘 Soporte y Contacto
 
-**Profesor:** Mgs. Charlie Cárdenas Toledo  
+**Profesor:** Prof. Charlie Cárdenas Toledo, M.Sc.  
 **Email:** chcardenasto@uide.edu.ec
 
 **Horario de tutorías:**
