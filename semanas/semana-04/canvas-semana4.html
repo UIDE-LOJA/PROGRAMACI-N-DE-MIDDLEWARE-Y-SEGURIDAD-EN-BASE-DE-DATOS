@@ -1,0 +1,137 @@
+<p>Esta semana introducimos <strong>Seguridad en APIs y Bases de Datos</strong> con foco en
+    <em>principios CIA</em>, <em>modelos de amenaza</em> y <em>criptografía aplicada</em>. Veremos la Triada CIA 
+    (Confidencialidad, Integridad, Disponibilidad), su contraparte DAD (Divulgación, Alteración, Denegación), y 
+    aplicaremos criptografía simétrica (AES), hash/HMAC, y asimétrica (RSA) en MySQL y APIs.</p>
+
+<p><strong>¿Qué veremos?</strong></p>
+
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Tema</th>
+                    <th style="width: 50%;">Contenido clave</th>
+                    <th style="width: 28%;">Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Triada CIA</td>
+                    <td><strong>Confidencialidad</strong>: protección contra acceso no autorizado (datos en reposo, 
+                        tránsito, uso). <strong>Integridad</strong>: garantía contra modificaciones (validación, hash, 
+                        firmas). <strong>Disponibilidad</strong>: acceso oportuno (redundancia, rate limiting, HA).</td>
+                    <td>MySQL: AES_ENCRYPT() para confidencialidad; SHA2(), HMAC para integridad; Replication, 
+                        Clustering para disponibilidad.</td>
+                </tr>
+                <tr>
+                    <td>Triada DAD (Amenazas)</td>
+                    <td><strong>Divulgación</strong>: ataca confidencialidad (data breach, tokens expuestos). 
+                        <strong>Alteración</strong>: ataca integridad (MITM, SQL Injection). <strong>Denegación</strong>: 
+                        ataca disponibilidad (DoS/DDoS, resource exhaustion).</td>
+                    <td>Divulgación: claves filtradas. Alteración: manipulación de datos. Denegación: service disruption.</td>
+                </tr>
+                <tr>
+                    <td>Criptografía Simétrica</td>
+                    <td><strong>AES</strong>: una sola clave compartida, muy rápida, ideal para grandes volúmenes. 
+                        Problema: distribución de clave. MySQL: AES_ENCRYPT() y AES_DECRYPT() con claves de 128, 192 o 
+                        256 bits.</td>
+                    <td>Cifrar tarjetas de crédito, números de seguro social, datos personales en bases de datos. 
+                        Implementación práctica en MySQL.</td>
+                </tr>
+                <tr>
+                    <td>Hash y HMAC</td>
+                    <td><strong>Hash</strong>: función unidireccional, salida fija, mismo input=mismo hash (SHA-256, 
+                        SHA-512). <strong>HMAC</strong>: Hash + clave secreta, verifica integridad, detecta manipulación. 
+                        Uso en logs de auditoría.</td>
+                    <td>MySQL: SHA2('password', 256) para hash. HMAC = SHA2(secret + data + secret) para integridad de 
+                        logs de auditoría.</td>
+                </tr>
+                <tr>
+                    <td>Criptografía Asimétrica y JWT</td>
+                    <td><strong>RSA</strong>: par de claves (pública + privada), lenta vs simétrica. Clave pública: 
+                        cifrar y verificar. Clave privada: descifrar y firmar. <strong>JWT</strong>: estructura 
+                        Header.Payload.Signature con RS256 para no repudio.</td>
+                    <td>JWT con RS256: firma con clave privada, verifica con clave pública. TLS: intercambio de claves. 
+                        Autenticación segura en APIs.</td>
+                </tr>
+                <tr>
+                    <td>Modelo STRIDE y TLS</td>
+                    <td><strong>STRIDE</strong>: <strong>S</strong>poofing (autenticación), <strong>T</strong>ampering 
+                        (integridad), <strong>R</strong>epudiation (no repudio), <strong>I</strong>nformation Disclosure 
+                        (confidencialidad), <strong>D</strong>enial of Service (disponibilidad), <strong>E</strong>levation 
+                        of Privilege (autorización). <strong>TLS</strong>: protege datos en tránsito (confidencialidad, 
+                        integridad, autenticación). Handshake: cliente→hola, servidor→certificado, intercambio de claves, 
+                        comunicación cifrada.</td>
+                    <td>Tabla threat_model en MySQL con componente, amenaza STRIDE, impacto, probabilidad, mitigación. 
+                        Verificar TLS en MySQL con SHOW VARIABLES LIKE '%ssl%'. HTTPS = HTTP + TLS.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Objetivos de aprendizaje</strong></p>
+
+<p>Al finalizar la semana podrás:</p>
+
+<ul>
+    <li>
+        <p>Describir los <strong>principios CIA</strong> y modelos de amenaza DAD aplicados a APIs y bases de datos.</p>
+    </li>
+    <li>
+        <p>Implementar <strong>criptografía aplicada</strong>: AES para confidencialidad, HMAC para integridad, y RSA/JWT 
+            para autenticación.</p>
+    </li>
+    <li>
+        <p>Configurar <strong>TLS local</strong> en MySQL y verificar conexiones seguras con certificados.</p>
+    </li>
+    <li>
+        <p>Aplicar la <strong>metodología STRIDE</strong> para identificar amenazas, evaluar riesgos y proponer controles 
+            de seguridad.</p>
+    </li>
+</ul>
+
+<p><strong>Materiales</strong></p>
+
+<ul>
+    <li>
+        <p><strong>Presentación:</strong> Semana 4 — Seguridad en APIs y MySQL.</p>
+    </li>
+    <li>
+        <p><strong>Bibliografía:</strong></p>
+        <ul>
+            <li>Beynon-Davies, P. (2018). <em>Sistemas de Bases de Datos</em>. Editorial Reverté.</li>
+            <li>Tanenbaum, A. S., & Van Steen, M. (2023). <em>Distributed Systems: Principles and Paradigms</em> (3rd ed.). 
+                Pearson.</li>
+            <li>Newman, S. (2021). <em>Building Microservices: Designing Fine-Grained Systems</em> (2nd ed.). O'Reilly Media.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Herramientas:</strong> MySQL 8.0 + MySQL Workbench, OpenSSL (certificados TLS), Node.js (JWT demo), 
+            OWASP ZAP (opcional).</p>
+    </li>
+</ul>
+
+<p><strong>Actividades</strong></p>
+
+<ul>
+    <li>
+        <p><strong>Lectura guiada</strong> del compendio Semana 4 y documentación de seguridad en MySQL.</p>
+    </li>
+    <li>
+        <p><strong>PE-1.4: Lab: configurar TLS local y firmar/verificar JWT (o PASETO) con IA</strong> — verificar TLS 
+            en MySQL, implementar cifrado AES, crear funciones HMAC, y trabajar con JWT/PASETO — <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>TA-1.4: Mini informe: modelo de amenaza (STRIDE) de la API</strong> — análisis STRIDE completo con 
+            diagrama DFD, matriz de riesgos (probabilidad × impacto) y medidas de mitigación específicas — 
+            <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>Total de la semana:</strong> <strong>4.5/30</strong> (Evaluación diagnóstica).</p>
+    </li>
+</ul>
+
+<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía 
+    consulta por <strong>correo institucional</strong> con tiempo de respuesta máximo 48 horas laborables.</p>
