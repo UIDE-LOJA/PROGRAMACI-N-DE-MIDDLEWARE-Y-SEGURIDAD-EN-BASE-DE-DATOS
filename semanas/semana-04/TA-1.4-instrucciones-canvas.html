@@ -1,0 +1,125 @@
+<p>Esta actividad de trabajo autónomo te permitirá <strong>crear un checklist de seguridad para APIs</strong> basado en mejores prácticas. Te enfocarás en <em>organizar controles de seguridad</em>, <em>justificar cada ítem técnicamente</em>, y <em>proporcionar ejemplos prácticos</em> de implementación.</p>
+
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Componente</th>
+                    <th style="width: 50%;" data-col-size="xl">Instrucciones específicas</th>
+                    <th style="width: 25%;" data-col-size="md">Criterios de calidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md">Autenticación</td>
+                    <td data-col-size="xl">Mínimo 5 ítems: JWT, OAuth 2.0, API keys, MFA, rotación de credenciales. Incluye justificación y ejemplo.</td>
+                    <td data-col-size="md">Ítems específicos y verificables.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Autorización</td>
+                    <td data-col-size="xl">Mínimo 4 ítems: RBAC, validación de permisos, principio de mínimo privilegio, segregación de funciones.</td>
+                    <td data-col-size="md">Controles de acceso claros.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Cifrado y Criptografía</td>
+                    <td data-col-size="xl">Mínimo 5 ítems: TLS 1.3, cifrado en reposo, hashing de contraseñas (bcrypt/Argon2), HMAC, gestión de claves.</td>
+                    <td data-col-size="md">Controles criptográficos sólidos.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Validación y Sanitización</td>
+                    <td data-col-size="xl">Mínimo 4 ítems: validación de entrada, sanitización, prevención de injection, límites de tamaño.</td>
+                    <td data-col-size="md">Prevención de vulnerabilidades.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Logging y Monitoreo</td>
+                    <td data-col-size="xl">Mínimo 3 ítems: audit trail, detección de anomalías, alertas de seguridad.</td>
+                    <td data-col-size="md">Trazabilidad y detección.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Disponibilidad</td>
+                    <td data-col-size="xl">Mínimo 3 ítems: rate limiting, throttling, protección DDoS.</td>
+                    <td data-col-size="md">Protección contra DoS.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Ejemplo de ítem del checklist:</strong></p>
+<pre>
+Categoría: Autenticación
+Ítem: Implementar JWT con firma HMAC-SHA256
+
+Justificación:
+JWT permite autenticación stateless escalable. HMAC-SHA256 garantiza 
+integridad del token y previene tampering. Tokens con expiración corta 
+(15 min) reducen ventana de ataque si son comprometidos.
+
+Amenaza mitigada: Spoofing, Tampering
+
+Ejemplo de implementación (Node.js):
+const jwt = require('jsonwebtoken');
+const token = jwt.sign(
+  { userId: user.id, role: user.role },
+  process.env.JWT_SECRET,
+  { expiresIn: '15m', algorithm: 'HS256' }
+);
+
+Criterio de verificación:
+✓ Tokens firmados con HMAC-SHA256
+✓ Expiración configurada (≤ 15 min)
+✓ Secret almacenado en variable de entorno
+✓ Validación de firma en cada request
+</pre>
+
+<p><strong>Categorías del checklist:</strong></p>
+<ul>
+    <li><strong>Autenticación:</strong> JWT, OAuth, API keys, MFA, rotación</li>
+    <li><strong>Autorización:</strong> RBAC, permisos, mínimo privilegio</li>
+    <li><strong>Cifrado:</strong> TLS, cifrado en reposo, hashing, HMAC</li>
+    <li><strong>Validación:</strong> Input validation, sanitización, injection prevention</li>
+    <li><strong>Logging:</strong> Audit trail, detección de anomalías, alertas</li>
+    <li><strong>Disponibilidad:</strong> Rate limiting, throttling, DDoS protection</li>
+</ul>
+
+<p><strong>Materiales:</strong> Presentación Semana 4, OWASP API Security Top 10, guías de seguridad. <strong>Herramientas:</strong> Word, Google Docs, Markdown.</p>
+
+<p><strong>Especificaciones técnicas de entrega</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Aspecto</th>
+                    <th style="width: 75%;" data-col-size="xl">Especificación requerida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md"><strong>Formato de archivo</strong></td>
+                    <td data-col-size="xl">PDF únicamente. Nomenclatura: TA-1.4_ApellidoNombre_ChecklistSeguridadAPI.pdf</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Extensión</strong></td>
+                    <td data-col-size="xl">Máximo 4 páginas (mínimo 24 ítems organizados por categorías).</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Originalidad</strong></td>
+                    <td data-col-size="xl">Trabajo original. Máximo 40% contenido IA. Citar fuentes consultadas.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Información importante</strong></p>
+<ul>
+    <li><p><strong>Modalidad:</strong> Trabajo autónomo individual — <strong>2.25 pts</strong>.</p></li>
+    <li><p><strong>Tiempo estimado:</strong> 3 horas de trabajo independiente.</p></li>
+    <li><p><strong>Entrega:</strong> Plataforma Canvas antes de la fecha límite especificada.</p></li>
+    <li><p><strong>Penalización por retraso:</strong> -0.25 puntos por cada día de retraso.</p></li>
+</ul>
+
+<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía consulta por <strong>correo institucional</strong> con tiempo de respuesta máximo 48 horas laborables.</p>

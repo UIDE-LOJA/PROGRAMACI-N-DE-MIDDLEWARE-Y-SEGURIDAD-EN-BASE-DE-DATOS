@@ -1,0 +1,118 @@
+<p>Esta actividad práctica te permitirá aplicar los <strong>conceptos de seguridad en middleware</strong> mediante el análisis de vulnerabilidades y modelado de amenazas. Te enfocarás en <em>identificar vectores de ataque</em>, <em>evaluar riesgos</em>, y <em>proponer contramedidas</em> basadas en los principios CIA.</p>
+
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 23.5%;" data-col-size="sm">Actividad</th>
+                    <th style="width: 47%;" data-col-size="xl">Instrucciones específicas</th>
+                    <th style="width: 29.5%;" data-col-size="md">Entregable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="sm">Preparación individual</td>
+                    <td data-col-size="xl">Revisa presentación Semana 4 sobre CIA, modelos de amenaza, STRIDE y criptografía aplicada a APIs.</td>
+                    <td data-col-size="md">Comprensión de conceptos de seguridad.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Análisis del sistema</td>
+                    <td data-col-size="xl">Selecciona un sistema API REST (puede ser ficticio). Identifica: componentes, flujo de datos, puntos de entrada, activos críticos.</td>
+                    <td data-col-size="md">Diagrama de arquitectura del sistema.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Modelado de amenazas STRIDE</td>
+                    <td data-col-size="xl">Aplica STRIDE para identificar amenazas: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.</td>
+                    <td data-col-size="md">Tabla con amenazas identificadas.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Evaluación de riesgos</td>
+                    <td data-col-size="xl">Para cada amenaza, evalúa: probabilidad (Alta/Media/Baja), impacto (Alto/Medio/Bajo), nivel de riesgo (Crítico/Alto/Medio/Bajo).</td>
+                    <td data-col-size="md">Matriz de riesgos completa.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Contramedidas</td>
+                    <td data-col-size="xl">Propón contramedidas para amenazas críticas/altas: autenticación (JWT, OAuth), cifrado (TLS, hash), validación, rate limiting, logging.</td>
+                    <td data-col-size="md">Tabla de contramedidas con justificación.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Entrega final</td>
+                    <td data-col-size="xl">Compila PDF con diagrama, análisis STRIDE, matriz de riesgos, contramedidas y breve reflexión (máximo 200 palabras) sobre seguridad en APIs.</td>
+                    <td data-col-size="md">PDF completo con análisis de seguridad.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Ejemplo de análisis STRIDE:</strong></p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+        <tr>
+            <th>Amenaza STRIDE</th>
+            <th>Descripción</th>
+            <th>Ejemplo en API</th>
+            <th>Afecta CIA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Spoofing</strong></td>
+            <td>Suplantación de identidad</td>
+            <td>Atacante usa token robado</td>
+            <td>Autenticación</td>
+        </tr>
+        <tr>
+            <td><strong>Tampering</strong></td>
+            <td>Modificación de datos</td>
+            <td>Man-in-the-middle modifica payload</td>
+            <td>Integridad</td>
+        </tr>
+        <tr>
+            <td><strong>Repudiation</strong></td>
+            <td>Negación de acciones</td>
+            <td>Usuario niega haber hecho request</td>
+            <td>No repudio</td>
+        </tr>
+        <tr>
+            <td><strong>Info Disclosure</strong></td>
+            <td>Exposición de información</td>
+            <td>API expone datos sensibles sin cifrar</td>
+            <td>Confidencialidad</td>
+        </tr>
+        <tr>
+            <td><strong>Denial of Service</strong></td>
+            <td>Denegación de servicio</td>
+            <td>Flood de requests satura servidor</td>
+            <td>Disponibilidad</td>
+        </tr>
+        <tr>
+            <td><strong>Elevation of Privilege</strong></td>
+            <td>Escalada de privilegios</td>
+            <td>Usuario normal accede a admin endpoints</td>
+            <td>Autorización</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Ejemplo de contramedidas:</strong></p>
+<ul>
+    <li><strong>Spoofing:</strong> JWT con firma HMAC-SHA256, OAuth 2.0, MFA</li>
+    <li><strong>Tampering:</strong> TLS 1.3, HMAC para integridad de mensajes</li>
+    <li><strong>Repudiation:</strong> Logging centralizado, audit trail, timestamps</li>
+    <li><strong>Info Disclosure:</strong> Cifrado en tránsito (TLS) y reposo (AES-256)</li>
+    <li><strong>DoS:</strong> Rate limiting, throttling, WAF, CDN</li>
+    <li><strong>Elevation:</strong> RBAC, validación de permisos, principio de mínimo privilegio</li>
+</ul>
+
+<p><strong>Información importante</strong></p>
+<ul>
+    <li><p><strong>Modalidad:</strong> Taller individual — <strong>2.25 pts</strong>.</p></li>
+    <li><p><strong>Duración:</strong> 90 minutos.</p></li>
+    <li><p><strong>Entrega:</strong> PDF con análisis de seguridad al final de la clase.</p></li>
+    <li><p><strong>Formato:</strong> PE-1.4_ApellidoNombre_ModeloAmenazas.pdf</p></li>
+</ul>
+
+<p>Si tienes dudas durante la actividad, levanta la mano para recibir asistencia del docente.</p>
