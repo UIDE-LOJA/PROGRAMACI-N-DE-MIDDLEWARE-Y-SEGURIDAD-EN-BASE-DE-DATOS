@@ -697,7 +697,7 @@ WHERE hmac_signature IS NULL;</code></pre>
                 <pre class="line-numbers"><code class="language-sql">SELECT pedido_id, productor_id, estado, timestamp,
        CASE WHEN hmac_signature = generate_hmac(
            CONCAT(pedido_id, productor_id, estado, ubicacion_gps), @secret_key)
-       THEN '✓ VÁLIDO' ELSE '✗ MANIPULADO' END AS integridad
+       THEN 'VÁLIDO' ELSE 'MANIPULADO' END AS integridad
 FROM trazabilidad_pedidos
 ORDER BY timestamp DESC
 LIMIT 10;</code></pre>
@@ -964,7 +964,7 @@ SELECT componente, amenaza_stride, descripcion,
        control_implementado,
        CASE WHEN control_implementado LIKE '%Pendiente%'
             THEN '⚠ REQUIERE ATENCIÓN'
-            ELSE '✓ MITIGADO'
+            ELSE 'MITIGADO'
        END AS estado
 FROM threat_model
 WHERE impacto = 'Crítico'
