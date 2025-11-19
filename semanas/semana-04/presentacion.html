@@ -728,10 +728,16 @@ LIMIT 10;</code></pre>
                         </ul>
                     </div>
                 </div>
-                <div style="padding: 20px; background: rgba(233, 171, 33, 0.1); border-radius: 10px;">
-                    <h3 style="color: var(--uide-accent); margin-bottom: 10px;">JWT con RS256</h3>
-                    <p style="font-size: 1.05rem;">Firma el token con clave privada, verifica con clave pública → No
-                        repudio garantizado</p>
+                <div style="padding: 20px; background: rgba(233, 171, 33, 0.1); border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                    <h3 style="color: var(--uide-accent); margin-bottom: 10px;">¿Qué es RS256?</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
+                        <strong>RS256</strong> = <strong>R</strong>SA <strong>S</strong>ignature with SHA-<strong>256</strong>.
+                        Combina el algoritmo RSA (criptografía asimétrica) con la función hash SHA-256 para crear firmas digitales seguras.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.6;">
+                        <strong>En JWT:</strong> Firma el token con clave privada, verifica con clave pública → No repudio garantizado.
+                        Cualquier servicio puede verificar la autenticidad sin acceder a la clave de firma.
+                    </p>
                 </div>
             </div>
         </div>
