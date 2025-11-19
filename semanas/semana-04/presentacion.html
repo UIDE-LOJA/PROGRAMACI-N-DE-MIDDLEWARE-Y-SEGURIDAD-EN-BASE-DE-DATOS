@@ -774,20 +774,65 @@ LIMIT 10;</code></pre>
         <div class="slide">
             <h2><i class="fas fa-laptop-code"></i> PRÁCTICA 4: JWT con RS256</h2>
             <div style="padding: 30px;">
-                <h3 style="color: var(--uide-accent); margin-bottom: 15px;">Paso 1: Generar par de claves RSA
-                    (PowerShell)</h3>
-                <pre class="line-numbers"><code class="language-bash"># Generar clave privada RSA
-openssl genrsa -out private_key.pem 2048
+                <h3 style="color: var(--uide-accent); margin-bottom: 15px; text-align: center;">Paso 1: Generar par de claves RSA (RS256)</h3>
+
+                <div style="text-align: center; margin-bottom: 15px; padding: 10px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                    <p style="font-size: 0.9rem; margin: 0; color: #cbd5e1;">
+                        <i class="fas fa-info-circle"></i> <strong>Requisito:</strong> Tener OpenSSL instalado y accesible desde la consola
+                    </p>
+                </div>
+
+                <!-- Dos columnas: Windows y Mac -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                    <!-- Columna Izquierda: Windows -->
+                    <div>
+                        <div style="text-align: center; margin-bottom: 15px; padding: 10px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                            <h4 style="color: #60a5fa; margin: 0;">
+                                <i class="fab fa-windows"></i> Windows (PowerShell o CMD)
+                            </h4>
+                        </div>
+                        <pre class="line-numbers"><code class="language-bash"># Generar clave privada RSA (forma recomendada)
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+# [Opcional / Legacy] Forma antigua
+# openssl genrsa -out private_key.pem 2048
 
 # Extraer clave pública
 openssl rsa -in private_key.pem -pubout -out public_key.pem
 
-# Ver las claves
+# Ver las claves (solo para comprobar)
 type private_key.pem
 type public_key.pem</code></pre>
-                <div style="margin-top: 20px; padding: 15px; background: rgba(234, 179, 8, 0.1); border-radius: 10px;">
-                    <p style="font-size: 1rem;"><strong>Importante:</strong> La clave privada NUNCA se comparte. Solo
-                        la pública.</p>
+                    </div>
+
+                    <!-- Columna Derecha: Mac -->
+                    <div>
+                        <div style="text-align: center; margin-bottom: 15px; padding: 10px; background: rgba(156, 163, 175, 0.1); border-radius: 8px;">
+                            <h4 style="color: #9ca3af; margin: 0;">
+                                <i class="fab fa-apple"></i> Mac/Linux (Terminal)
+                            </h4>
+                        </div>
+                        <pre class="line-numbers"><code class="language-bash"># Generar clave privada RSA (forma recomendada)
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+# [Opcional / Legacy] Forma antigua
+# openssl genrsa -out private_key.pem 2048
+
+# Extraer clave pública
+openssl rsa -in private_key.pem -pubout -out public_key.pem
+
+# Ver las claves (solo para comprobar)
+cat private_key.pem
+cat public_key.pem</code></pre>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: rgba(234, 179, 8, 0.1); border-radius: 10px; border-left: 4px solid #eab308;">
+                    <p style="font-size: 0.95rem; margin: 0;"><i class="fas fa-lock"></i> <strong>Nota importante:</strong></p>
+                    <ul style="font-size: 0.9rem; margin: 8px 0 0 0; padding-left: 20px; line-height: 1.6;">
+                        <li>La clave privada (<code>private_key.pem</code>) <strong>NUNCA</strong> se comparte.</li>
+                        <li>La clave pública (<code>public_key.pem</code>) sí se puede distribuir a otros servicios para verificar los JWT firmados.</li>
+                    </ul>
                 </div>
             </div>
         </div>
