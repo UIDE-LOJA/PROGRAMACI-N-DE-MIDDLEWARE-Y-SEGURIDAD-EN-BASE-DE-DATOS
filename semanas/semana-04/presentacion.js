@@ -21,14 +21,20 @@ class PresentationController {
         if (this.totalSlidesEl) {
             this.totalSlidesEl.textContent = this.totalSlides;
         }
-        
+
+        // Set max attribute for slide input
+        const slideInput = document.getElementById('slideInput');
+        if (slideInput) {
+            slideInput.setAttribute('max', this.totalSlides);
+        }
+
         // Bind events
         this.bindEvents();
-        
+
         // Show first slide
         this.goToSlide(0);
-        
-        console.log('✅ HCI Presentation initialized with', this.totalSlides, 'slides');
+
+        console.log('[OK] PMSBD Presentation initialized with', this.totalSlides, 'slides');
     }
 
     bindEvents() {
@@ -95,8 +101,45 @@ class PresentationController {
                 }
             }
         };
-        
+
         this.handleSwipe = handleSwipe;
+
+        // Slide input navigation
+        const slideInput = document.getElementById('slideInput');
+        if (slideInput) {
+            // Cuando cambia el valor (blur o flechas arriba/abajo)
+            slideInput.addEventListener('change', (e) => {
+                const slideNum = parseInt(e.target.value);
+                if (slideNum >= 1 && slideNum <= this.totalSlides) {
+                    this.goToSlide(slideNum - 1);
+                } else {
+                    // Restaurar valor válido si está fuera de rango
+                    e.target.value = this.currentSlide + 1;
+                }
+            });
+
+            // Cuando presiona Enter
+            slideInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const slideNum = parseInt(e.target.value);
+                    if (slideNum >= 1 && slideNum <= this.totalSlides) {
+                        this.goToSlide(slideNum - 1);
+                        slideInput.blur(); // Quitar foco del input
+                    } else {
+                        // Restaurar valor válido
+                        e.target.value = this.currentSlide + 1;
+                    }
+                }
+            });
+
+            // Prevenir que las flechas del teclado naveguen slides cuando el input tiene foco
+            slideInput.addEventListener('keydown', (e) => {
+                if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+                    e.stopPropagation(); // Evitar que el evento llegue al document
+                }
+            });
+        }
     }
 
     goToSlide(index) {
@@ -132,13 +175,19 @@ class PresentationController {
         if (this.currentSlideEl) {
             this.currentSlideEl.textContent = this.currentSlide + 1;
         }
-        
+
+        // Update slide input
+        const slideInput = document.getElementById('slideInput');
+        if (slideInput) {
+            slideInput.value = this.currentSlide + 1;
+        }
+
         // Update progress bar
         if (this.progressBar) {
             const progress = ((this.currentSlide + 1) / this.totalSlides) * 100;
             this.progressBar.style.width = `${progress}%`;
         }
-        
+
         // Update button states
         if (this.prevBtn) {
             this.prevBtn.disabled = this.currentSlide === 0;

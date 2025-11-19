@@ -1149,12 +1149,13 @@ ORDER BY FIELD(control_implementado, 'Pendiente implementación', 'Pendiente') D
     <!-- Navigation Controls -->
     <div class="nav-controls">
         <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <span class="slide-counter">
+            <input type="number" id="slideInput" min="1" max="23" value="1" title="Ir al slide (presiona Enter)" style="width: 50px; text-align: center; background: rgba(0,0,0,0.5);
+                          border: 1px solid var(--uide-accent); color: #fff;
+                          border-radius: 4px; padding: 5px; margin: 0 5px; font-size: 1rem; font-weight: 600;">
+            / <span id="totalSlides">23</span>
+        </span>
         <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-    </div>
-
-    <!-- Slide Counter -->
-    <div class="slide-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">24</span>
     </div>
 
     <!-- Progress Bar -->
