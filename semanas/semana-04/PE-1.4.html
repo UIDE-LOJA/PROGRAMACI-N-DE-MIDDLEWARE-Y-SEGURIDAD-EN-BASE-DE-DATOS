@@ -1,4 +1,4 @@
-<p>Esta actividad práctica te permitirá aplicar los <strong>conceptos de seguridad en middleware</strong> mediante el análisis de vulnerabilidades y modelado de amenazas. Te enfocarás en <em>identificar vectores de ataque</em>, <em>evaluar riesgos</em>, y <em>proponer contramedidas</em> basadas en los principios CIA.</p>
+<p>Esta actividad práctica te permitirá aplicar los <strong>conceptos de seguridad en middleware y MySQL</strong> mediante la implementación de mecanismos criptográficos y análisis de amenazas. Te enfocarás en <em>configurar TLS</em>, <em>cifrar datos sensibles</em>, <em>generar firmas digitales</em>, y <em>documentar amenazas STRIDE</em>.</p>
 
 <p><strong>¿Qué realizarás?</strong></p>
 <div class="_tableContainer_1rjym_1">
@@ -6,113 +6,289 @@
         <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
             <thead>
                 <tr>
-                    <th style="width: 23.5%;" data-col-size="sm">Actividad</th>
-                    <th style="width: 47%;" data-col-size="xl">Instrucciones específicas</th>
-                    <th style="width: 29.5%;" data-col-size="md">Entregable</th>
+                    <th style="width: 20%;" data-col-size="sm">Práctica</th>
+                    <th style="width: 50%;" data-col-size="xl">Instrucciones específicas</th>
+                    <th style="width: 30%;" data-col-size="md">Entregable (captura de pantalla)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-col-size="sm">Preparación individual</td>
-                    <td data-col-size="xl">Revisa presentación Semana 4 sobre CIA, modelos de amenaza, STRIDE y criptografía aplicada a APIs.</td>
-                    <td data-col-size="md">Comprensión de conceptos de seguridad.</td>
+                    <td data-col-size="sm"><strong>Preparación</strong></td>
+                    <td data-col-size="xl">
+                        <ol>
+                            <li>Descargar el archivo <code>setup_database.sql</code> de la presentación</li>
+                            <li>Abrir MySQL Workbench y conectarse al servidor local</li>
+                            <li>Ejecutar el script: <strong>File → Open SQL Script → Execute</strong></li>
+                            <li>Verificar mensaje: "Base de datos configurada exitosamente!"</li>
+                        </ol>
+                    </td>
+                    <td data-col-size="md">
+                        Captura del mensaje de éxito tras ejecutar <code>setup_database.sql</code>
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="sm">Análisis del sistema</td>
-                    <td data-col-size="xl">Selecciona un sistema API REST (puede ser ficticio). Identifica: componentes, flujo de datos, puntos de entrada, activos críticos.</td>
-                    <td data-col-size="md">Diagrama de arquitectura del sistema.</td>
+                    <td data-col-size="sm"><strong>PRÁCTICA 1: Verificar TLS</strong></td>
+                    <td data-col-size="xl">
+                        <p><strong>Objetivo:</strong> Verificar que MySQL tiene TLS habilitado (Confidencialidad en tránsito)</p>
+                        <ol>
+                            <li>Ejecutar query para verificar SSL:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SHOW VARIABLES LIKE '%ssl%';</code></pre>
+                            </li>
+                            <li>Verificar estado de conexión actual:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SHOW STATUS LIKE 'Ssl_cipher';</code></pre>
+                            </li>
+                            <li>Verificar versión de TLS:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SHOW STATUS LIKE 'Ssl_version';</code></pre>
+                            </li>
+                        </ol>
+                        <p><strong>Resultado esperado:</strong> <code>have_ssl = YES</code>, <code>Ssl_cipher</code> activo, TLSv1.2+</p>
+                    </td>
+                    <td data-col-size="md">
+                        <strong>Captura 1:</strong> Resultado de las 3 queries mostrando que TLS está habilitado (have_ssl=YES, Ssl_cipher con valor, Ssl_version=TLSv1.2 o superior)
+                        <br><br>
+                        <strong>Explicación:</strong> Incluir 2-3 líneas explicando qué protege TLS (confidencialidad en tránsito, cifrado de datos entre cliente-servidor)
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="sm">Modelado de amenazas STRIDE</td>
-                    <td data-col-size="xl">Aplica STRIDE para identificar amenazas: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.</td>
-                    <td data-col-size="md">Tabla con amenazas identificadas.</td>
+                    <td data-col-size="sm"><strong>PRÁCTICA 2: Cifrado AES</strong></td>
+                    <td data-col-size="xl">
+                        <p><strong>Objetivo:</strong> Cifrar cuentas bancarias de productores con AES (Confidencialidad en reposo)</p>
+                        <ol>
+                            <li>Usar la base de datos:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>USE marketplace_agricola;</code></pre>
+                            </li>
+                            <li>Definir clave de cifrado:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SET @encryption_key = 'MarketplaceAgricola2024!UIDE';</code></pre>
+                            </li>
+                            <li>Cifrar cuentas bancarias de los productores:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>UPDATE productores
+SET cuenta_bancaria = AES_ENCRYPT(
+    CONCAT(
+        LPAD(FLOOR(RAND() * 10000000000), 10, '0'),
+        '-BANCO-',
+        CASE
+            WHEN id % 3 = 0 THEN 'PICHINCHA'
+            WHEN id % 3 = 1 THEN 'GUAYAQUIL'
+            ELSE 'PACIFICO'
+        END
+    ), @encryption_key
+)
+WHERE id BETWEEN 1 AND 20;</code></pre>
+                            </li>
+                            <li>Ver datos cifrados en hexadecimal:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SELECT id, nombre, HEX(cuenta_bancaria) AS cuenta_cifrada
+FROM productores
+WHERE cuenta_bancaria IS NOT NULL
+LIMIT 5;</code></pre>
+                            </li>
+                            <li>Descifrar con la clave correcta:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SELECT nombre, hectareas,
+       CAST(AES_DECRYPT(cuenta_bancaria, @encryption_key)
+            AS CHAR) AS cuenta_descifrada
+FROM productores
+WHERE cuenta_bancaria IS NOT NULL
+LIMIT 5;</code></pre>
+                            </li>
+                        </ol>
+                    </td>
+                    <td data-col-size="md">
+                        <strong>Captura 2a:</strong> Resultado de la query mostrando cuentas bancarias cifradas (en formato hexadecimal)
+                        <br><br>
+                        <strong>Captura 2b:</strong> Resultado de la query mostrando cuentas bancarias descifradas correctamente
+                        <br><br>
+                        <strong>Explicación:</strong> Explicar qué es AES_ENCRYPT/AES_DECRYPT, por qué se usa criptografía simétrica para datos en reposo, y la importancia de proteger la clave de cifrado
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="sm">Evaluación de riesgos</td>
-                    <td data-col-size="xl">Para cada amenaza, evalúa: probabilidad (Alta/Media/Baja), impacto (Alto/Medio/Bajo), nivel de riesgo (Crítico/Alto/Medio/Bajo).</td>
-                    <td data-col-size="md">Matriz de riesgos completa.</td>
+                    <td data-col-size="sm"><strong>PRÁCTICA 3: HMAC para Integridad</strong></td>
+                    <td data-col-size="xl">
+                        <p><strong>Objetivo:</strong> Garantizar integridad en trazabilidad de pedidos usando HMAC</p>
+                        <ol>
+                            <li>Verificar que la función <code>generate_hmac</code> existe:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SHOW FUNCTION STATUS WHERE Name = 'generate_hmac';</code></pre>
+                            </li>
+                            <li>Definir clave secreta para HMAC:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SET @secret_key = 'TrazabilidadAgricola2024';</code></pre>
+                            </li>
+                            <li>Generar HMAC para todos los eventos de trazabilidad:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>UPDATE trazabilidad_pedidos
+SET hmac_signature = generate_hmac(
+    CONCAT(pedido_id, productor_id, estado, ubicacion_gps),
+    @secret_key
+)
+WHERE hmac_signature IS NULL;</code></pre>
+                            </li>
+                            <li>Verificar integridad de la trazabilidad:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SELECT pedido_id, productor_id, estado, timestamp,
+       CASE WHEN hmac_signature = generate_hmac(
+           CONCAT(pedido_id, productor_id, estado, ubicacion_gps), @secret_key)
+       THEN 'VÁLIDO' ELSE 'MANIPULADO' END AS integridad
+FROM trazabilidad_pedidos
+ORDER BY timestamp DESC
+LIMIT 10;</code></pre>
+                            </li>
+                        </ol>
+                    </td>
+                    <td data-col-size="md">
+                        <strong>Captura 3:</strong> Resultado de la query de verificación mostrando que todos los eventos tienen integridad "VÁLIDO"
+                        <br><br>
+                        <strong>Explicación:</strong> Explicar qué es HMAC (Hash-based Message Authentication Code), cómo combina hash + clave secreta, y por qué detecta manipulaciones en los datos
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="sm">Contramedidas</td>
-                    <td data-col-size="xl">Propón contramedidas para amenazas críticas/altas: autenticación (JWT, OAuth), cifrado (TLS, hash), validación, rate limiting, logging.</td>
-                    <td data-col-size="md">Tabla de contramedidas con justificación.</td>
+                    <td data-col-size="sm"><strong>PRÁCTICA 4: JWT con RS256</strong></td>
+                    <td data-col-size="xl">
+                        <p><strong>Objetivo:</strong> Generar tokens JWT firmados con RSA para autenticación de productores</p>
+                        <ol>
+                            <li><strong>Generar par de claves RSA</strong> (PowerShell/CMD en Windows o Terminal en Mac):
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code># Generar clave privada RSA
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+# Extraer clave pública
+openssl rsa -in private_key.pem -pubout -out public_key.pem</code></pre>
+                            </li>
+                            <li>Ejecutar el script de demostración JWT:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>node jwt-demo.js</code></pre>
+                            </li>
+                            <li>Copiar el JWT generado y pegarlo en <a href="https://jwt.io" target="_blank">https://jwt.io</a> para decodificarlo</li>
+                            <li>Almacenar el token en la base de datos:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>INSERT INTO sesiones_productores (productor_id, token, fecha_expiracion)
+VALUES (
+    1,  -- ID del productor
+    'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...',  -- Token generado
+    DATE_ADD(NOW(), INTERVAL 8 HOUR)
+);</code></pre>
+                            </li>
+                        </ol>
+                    </td>
+                    <td data-col-size="md">
+                        <strong>Captura 4a:</strong> Output del comando OpenSSL mostrando las claves generadas (private_key.pem y public_key.pem)
+                        <br><br>
+                        <strong>Captura 4b:</strong> Output de <code>node jwt-demo.js</code> mostrando el JWT generado
+                        <br><br>
+                        <strong>Captura 4c:</strong> Pantallazo de jwt.io mostrando el JWT decodificado (Header, Payload y Signature verificada)
+                        <br><br>
+                        <strong>Explicación:</strong> Explicar qué es JWT, qué es RS256 (RSA + SHA-256), las 3 partes del token (header, payload, signature), y cómo garantiza no repudio (firma con clave privada, verifica con clave pública)
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="sm">Entrega final</td>
-                    <td data-col-size="xl">Compila PDF con diagrama, análisis STRIDE, matriz de riesgos, contramedidas y breve reflexión (máximo 200 palabras) sobre seguridad en APIs.</td>
-                    <td data-col-size="md">PDF completo con análisis de seguridad.</td>
+                    <td data-col-size="sm"><strong>PRÁCTICA 5: Análisis STRIDE</strong></td>
+                    <td data-col-size="xl">
+                        <p><strong>Objetivo:</strong> Consultar y analizar las amenazas STRIDE ya documentadas en la base de datos</p>
+                        <ol>
+                            <li>Consultar todas las amenazas documentadas:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SELECT componente, amenaza_stride, impacto, probabilidad, control_implementado
+FROM threat_model
+ORDER BY
+    FIELD(impacto, 'Crítico', 'Alto', 'Medio', 'Bajo'),
+    FIELD(probabilidad, 'Alta', 'Media', 'Baja');</code></pre>
+                            </li>
+                            <li>Analizar distribución de amenazas por tipo STRIDE:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SELECT amenaza_stride, COUNT(*) AS total,
+       GROUP_CONCAT(CONCAT(componente, ' (', impacto, ')') SEPARATOR '; ') AS componentes
+FROM threat_model
+GROUP BY amenaza_stride
+ORDER BY total DESC;</code></pre>
+                            </li>
+                            <li>Consultar amenazas críticas:
+<pre style="background: #2d3748; padding: 10px; border-radius: 5px; color: #e2e8f0; margin: 10px 0;"><code>SELECT componente, amenaza_stride, descripcion,
+       control_implementado,
+       CASE WHEN control_implementado LIKE '%Pendiente%'
+            THEN '⚠ REQUIERE ATENCIÓN'
+            ELSE 'MITIGADO'
+       END AS estado
+FROM threat_model
+WHERE impacto = 'Crítico';</code></pre>
+                            </li>
+                        </ol>
+                    </td>
+                    <td data-col-size="md">
+                        <strong>Captura 5a:</strong> Resultado de la primera query mostrando todas las 8 amenazas STRIDE
+                        <br><br>
+                        <strong>Captura 5b:</strong> Resultado de la query de distribución por categoría STRIDE
+                        <br><br>
+                        <strong>Explicación:</strong> Explicar qué es el modelo STRIDE, las 6 categorías (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege), y cómo cada una ataca un aspecto diferente de la seguridad (autenticación, integridad, no repudio, confidencialidad, disponibilidad, autorización)
+                    </td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm"><strong>Entrega final</strong></td>
+                    <td data-col-size="xl">
+                        Compila un documento PDF con:
+                        <ul>
+                            <li>Todas las capturas de pantalla solicitadas (10 capturas en total)</li>
+                            <li>Cada captura debe tener su explicación correspondiente (ver columna "Entregable")</li>
+                            <li>Las explicaciones deben demostrar comprensión de los conceptos</li>
+                            <li>Formato profesional, máximo 8-10 páginas</li>
+                        </ul>
+                    </td>
+                    <td data-col-size="md">
+                        PDF completo con todas las prácticas documentadas: TLS, AES, HMAC, JWT y STRIDE
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<p><strong>Ejemplo de análisis STRIDE:</strong></p>
+<p><strong>Resumen de Conceptos Clave</strong></p>
+
 <table style="border-collapse: collapse; width: 100%;" border="1">
     <thead>
         <tr>
-            <th>Amenaza STRIDE</th>
-            <th>Descripción</th>
-            <th>Ejemplo en API</th>
-            <th>Afecta CIA</th>
+            <th style="width: 20%;">Concepto</th>
+            <th style="width: 40%;">¿Qué hace?</th>
+            <th style="width: 20%;">Protege</th>
+            <th style="width: 20%;">Práctica</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Spoofing</strong></td>
-            <td>Suplantación de identidad</td>
-            <td>Atacante usa token robado</td>
-            <td>Autenticación</td>
+            <td><strong>TLS</strong></td>
+            <td>Cifra la conexión entre cliente y servidor MySQL</td>
+            <td>Confidencialidad en tránsito</td>
+            <td>Práctica 1</td>
         </tr>
         <tr>
-            <td><strong>Tampering</strong></td>
-            <td>Modificación de datos</td>
-            <td>Man-in-the-middle modifica payload</td>
+            <td><strong>AES</strong></td>
+            <td>Cifrado simétrico de datos sensibles (cuentas bancarias)</td>
+            <td>Confidencialidad en reposo</td>
+            <td>Práctica 2</td>
+        </tr>
+        <tr>
+            <td><strong>HMAC</strong></td>
+            <td>Firma de datos con clave secreta para detectar manipulaciones</td>
             <td>Integridad</td>
+            <td>Práctica 3</td>
         </tr>
         <tr>
-            <td><strong>Repudiation</strong></td>
-            <td>Negación de acciones</td>
-            <td>Usuario niega haber hecho request</td>
-            <td>No repudio</td>
+            <td><strong>JWT + RS256</strong></td>
+            <td>Token firmado con RSA para autenticación sin estado</td>
+            <td>No repudio, Autenticación</td>
+            <td>Práctica 4</td>
         </tr>
         <tr>
-            <td><strong>Info Disclosure</strong></td>
-            <td>Exposición de información</td>
-            <td>API expone datos sensibles sin cifrar</td>
-            <td>Confidencialidad</td>
-        </tr>
-        <tr>
-            <td><strong>Denial of Service</strong></td>
-            <td>Denegación de servicio</td>
-            <td>Flood de requests satura servidor</td>
-            <td>Disponibilidad</td>
-        </tr>
-        <tr>
-            <td><strong>Elevation of Privilege</strong></td>
-            <td>Escalada de privilegios</td>
-            <td>Usuario normal accede a admin endpoints</td>
-            <td>Autorización</td>
+            <td><strong>STRIDE</strong></td>
+            <td>Modelo para identificar 6 categorías de amenazas</td>
+            <td>Modelado completo de amenazas</td>
+            <td>Práctica 5</td>
         </tr>
     </tbody>
 </table>
 
-<p><strong>Ejemplo de contramedidas:</strong></p>
+<p><strong>Criterios de Evaluación</strong></p>
 <ul>
-    <li><strong>Spoofing:</strong> JWT con firma HMAC-SHA256, OAuth 2.0, MFA</li>
-    <li><strong>Tampering:</strong> TLS 1.3, HMAC para integridad de mensajes</li>
-    <li><strong>Repudiation:</strong> Logging centralizado, audit trail, timestamps</li>
-    <li><strong>Info Disclosure:</strong> Cifrado en tránsito (TLS) y reposo (AES-256)</li>
-    <li><strong>DoS:</strong> Rate limiting, throttling, WAF, CDN</li>
-    <li><strong>Elevation:</strong> RBAC, validación de permisos, principio de mínimo privilegio</li>
+    <li><strong>Capturas de pantalla (50%):</strong> Todas las capturas solicitadas están presentes y son legibles</li>
+    <li><strong>Explicaciones (40%):</strong> Las explicaciones demuestran comprensión de cada concepto (TLS, AES, HMAC, JWT/RS256, STRIDE)</li>
+    <li><strong>Formato y presentación (10%):</strong> Documento profesional, bien organizado, sin errores ortográficos</li>
 </ul>
 
 <p><strong>Información importante</strong></p>
 <ul>
-    <li><p><strong>Modalidad:</strong> Taller individual — <strong>2.25 pts</strong>.</p></li>
+    <li><p><strong>Modalidad:</strong> Laboratorio individual — <strong>2.25 pts</strong>.</p></li>
     <li><p><strong>Duración:</strong> 90 minutos.</p></li>
-    <li><p><strong>Entrega:</strong> PDF con análisis de seguridad al final de la clase.</p></li>
-    <li><p><strong>Formato:</strong> PE-1.4_ApellidoNombre_ModeloAmenazas.pdf</p></li>
+    <li><p><strong>Entrega:</strong> PDF con todas las prácticas al final de la clase.</p></li>
+    <li><p><strong>Formato de archivo:</strong> PE-1.4_ApellidoNombre_SeguridadMySQL.pdf</p></li>
+    <li><p><strong>Requisitos previos:</strong> MySQL Workbench, Node.js, OpenSSL instalados</p></li>
 </ul>
 
 <p>Si tienes dudas durante la actividad, levanta la mano para recibir asistencia del docente.</p>

@@ -1,4 +1,4 @@
-<p>Esta actividad de trabajo autónomo te permitirá <strong>crear un checklist de seguridad para APIs</strong> basado en mejores prácticas. Te enfocarás en <em>organizar controles de seguridad</em>, <em>justificar cada ítem técnicamente</em>, y <em>proporcionar ejemplos prácticos</em> de implementación.</p>
+<p>Esta actividad de trabajo autónomo te permitirá <strong>aplicar el modelo de amenazas STRIDE</strong> a un sistema API real o ficticio. Te enfocarás en <em>identificar amenazas específicas</em>, <em>evaluar riesgos</em>, y <em>proponer contramedidas técnicas</em> basadas en lo aprendido en clase.</p>
 
 <p><strong>¿Qué realizarás?</strong></p>
 <div class="_tableContainer_1rjym_1">
@@ -6,85 +6,136 @@
         <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
             <thead>
                 <tr>
-                    <th style="width: 25%;" data-col-size="md">Componente</th>
+                    <th style="width: 25%;" data-col-size="md">Sección</th>
                     <th style="width: 50%;" data-col-size="xl">Instrucciones específicas</th>
-                    <th style="width: 25%;" data-col-size="md">Criterios de calidad</th>
+                    <th style="width: 25%;" data-col-size="md">Entregable</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-col-size="md">Autenticación</td>
-                    <td data-col-size="xl">Mínimo 5 ítems: JWT, OAuth 2.0, API keys, MFA, rotación de credenciales. Incluye justificación y ejemplo.</td>
-                    <td data-col-size="md">Ítems específicos y verificables.</td>
+                    <td data-col-size="md"><strong>1. Descripción del Sistema</strong></td>
+                    <td data-col-size="xl">
+                        Describe brevemente tu sistema API (máximo 200 palabras):
+                        <ul>
+                            <li>Tipo de API (REST, GraphQL, etc.)</li>
+                            <li>Propósito principal</li>
+                            <li>Componentes clave (base de datos, servidor, clientes)</li>
+                            <li>Datos sensibles que maneja</li>
+                        </ul>
+                        <em>Puedes usar el Marketplace Agrícola de clase o crear uno ficticio (ej: API bancaria, e-commerce, IoT, salud)</em>
+                    </td>
+                    <td data-col-size="md">
+                        Descripción clara del sistema (1 párrafo)
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="md">Autorización</td>
-                    <td data-col-size="xl">Mínimo 4 ítems: RBAC, validación de permisos, principio de mínimo privilegio, segregación de funciones.</td>
-                    <td data-col-size="md">Controles de acceso claros.</td>
+                    <td data-col-size="md"><strong>2. Análisis STRIDE</strong></td>
+                    <td data-col-size="xl">
+                        <p><strong>Para cada categoría STRIDE, identifica mínimo 1 amenaza específica:</strong></p>
+                        <ul>
+                            <li><strong>S</strong>poofing: Suplantación de identidad</li>
+                            <li><strong>T</strong>ampering: Alteración de datos</li>
+                            <li><strong>R</strong>epudiation: Negación de acciones</li>
+                            <li><strong>I</strong>nformation Disclosure: Divulgación de información</li>
+                            <li><strong>D</strong>enial of Service: Denegación de servicio</li>
+                            <li><strong>E</strong>levation of Privilege: Escalada de privilegios</li>
+                        </ul>
+                        <p>Para cada amenaza incluye:</p>
+                        <ul>
+                            <li>Descripción específica de la amenaza en tu sistema</li>
+                            <li>Componente afectado</li>
+                            <li>Ejemplo concreto de ataque</li>
+                        </ul>
+                    </td>
+                    <td data-col-size="md">
+                        Tabla con 6 amenazas (una por categoría STRIDE)
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="md">Cifrado y Criptografía</td>
-                    <td data-col-size="xl">Mínimo 5 ítems: TLS 1.3, cifrado en reposo, hashing de contraseñas (bcrypt/Argon2), HMAC, gestión de claves.</td>
-                    <td data-col-size="md">Controles criptográficos sólidos.</td>
+                    <td data-col-size="md"><strong>3. Evaluación de Riesgos</strong></td>
+                    <td data-col-size="xl">
+                        Para cada amenaza identificada, evalúa:
+                        <ul>
+                            <li><strong>Probabilidad:</strong> Alta / Media / Baja</li>
+                            <li><strong>Impacto:</strong> Crítico / Alto / Medio / Bajo</li>
+                            <li><strong>Nivel de Riesgo:</strong> Combina probabilidad e impacto</li>
+                        </ul>
+                        <p><em>Justifica brevemente tu evaluación (1-2 líneas por amenaza)</em></p>
+                    </td>
+                    <td data-col-size="md">
+                        Matriz de riesgos con evaluación justificada
+                    </td>
                 </tr>
                 <tr>
-                    <td data-col-size="md">Validación y Sanitización</td>
-                    <td data-col-size="xl">Mínimo 4 ítems: validación de entrada, sanitización, prevención de injection, límites de tamaño.</td>
-                    <td data-col-size="md">Prevención de vulnerabilidades.</td>
-                </tr>
-                <tr>
-                    <td data-col-size="md">Logging y Monitoreo</td>
-                    <td data-col-size="xl">Mínimo 3 ítems: audit trail, detección de anomalías, alertas de seguridad.</td>
-                    <td data-col-size="md">Trazabilidad y detección.</td>
-                </tr>
-                <tr>
-                    <td data-col-size="md">Disponibilidad</td>
-                    <td data-col-size="xl">Mínimo 3 ítems: rate limiting, throttling, protección DDoS.</td>
-                    <td data-col-size="md">Protección contra DoS.</td>
+                    <td data-col-size="md"><strong>4. Contramedidas</strong></td>
+                    <td data-col-size="xl">
+                        Para las <strong>3 amenazas más críticas</strong>, propón contramedidas técnicas específicas:
+                        <ul>
+                            <li>Tecnología o mecanismo a implementar (ej: JWT, TLS, HMAC, rate limiting)</li>
+                            <li>Cómo mitiga la amenaza</li>
+                            <li>Referencia a conceptos de clase (AES, RSA, STRIDE, CIA)</li>
+                        </ul>
+                        <p><strong>Usa lo visto en clase:</strong> TLS, AES, HMAC, JWT/RS256, validación, logging, rate limiting</p>
+                    </td>
+                    <td data-col-size="md">
+                        Tabla de contramedidas con justificación técnica
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<p><strong>Ejemplo de ítem del checklist:</strong></p>
-<pre>
-Categoría: Autenticación
-Ítem: Implementar JWT con firma HMAC-SHA256
+<p><strong>Ejemplo de análisis STRIDE simplificado:</strong></p>
 
-Justificación:
-JWT permite autenticación stateless escalable. HMAC-SHA256 garantiza 
-integridad del token y previene tampering. Tokens con expiración corta 
-(15 min) reducen ventana de ataque si son comprometidos.
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <thead>
+        <tr>
+            <th>STRIDE</th>
+            <th>Amenaza Específica</th>
+            <th>Componente</th>
+            <th>Probabilidad</th>
+            <th>Impacto</th>
+            <th>Contramedida</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Spoofing</strong></td>
+            <td>Atacante roba JWT de productor y accede a su cuenta</td>
+            <td>API /auth</td>
+            <td>Media</td>
+            <td>Alto</td>
+            <td>JWT con RS256 + expiración corta (15 min) + HTTPS obligatorio</td>
+        </tr>
+        <tr>
+            <td><strong>Tampering</strong></td>
+            <td>Man-in-the-middle modifica datos de pedido en tránsito</td>
+            <td>Conexión cliente-servidor</td>
+            <td>Baja</td>
+            <td>Crítico</td>
+            <td>TLS 1.3 + HMAC para integridad de payload</td>
+        </tr>
+        <tr>
+            <td><strong>Information Disclosure</strong></td>
+            <td>Cuentas bancarias expuestas en base de datos sin cifrar</td>
+            <td>Base de datos MySQL</td>
+            <td>Media</td>
+            <td>Crítico</td>
+            <td>AES_ENCRYPT para datos sensibles + acceso restringido RBAC</td>
+        </tr>
+    </tbody>
+</table>
 
-Amenaza mitigada: Spoofing, Tampering
-
-Ejemplo de implementación (Node.js):
-const jwt = require('jsonwebtoken');
-const token = jwt.sign(
-  { userId: user.id, role: user.role },
-  process.env.JWT_SECRET,
-  { expiresIn: '15m', algorithm: 'HS256' }
-);
-
-Criterio de verificación:
-✓ Tokens firmados con HMAC-SHA256
-✓ Expiración configurada (≤ 15 min)
-✓ Secret almacenado en variable de entorno
-✓ Validación de firma en cada request
-</pre>
-
-<p><strong>Categorías del checklist:</strong></p>
-<ul>
-    <li><strong>Autenticación:</strong> JWT, OAuth, API keys, MFA, rotación</li>
-    <li><strong>Autorización:</strong> RBAC, permisos, mínimo privilegio</li>
-    <li><strong>Cifrado:</strong> TLS, cifrado en reposo, hashing, HMAC</li>
-    <li><strong>Validación:</strong> Input validation, sanitización, injection prevention</li>
-    <li><strong>Logging:</strong> Audit trail, detección de anomalías, alertas</li>
-    <li><strong>Disponibilidad:</strong> Rate limiting, throttling, DDoS protection</li>
-</ul>
-
-<p><strong>Materiales:</strong> Presentación Semana 4, OWASP API Security Top 10, guías de seguridad. <strong>Herramientas:</strong> Word, Google Docs, Markdown.</p>
+<p><strong>Formato del documento:</strong></p>
+<ol>
+    <li><strong>Portada:</strong> Título, nombre, fecha</li>
+    <li><strong>Sección 1:</strong> Descripción del sistema (máximo 200 palabras)</li>
+    <li><strong>Sección 2:</strong> Tabla de análisis STRIDE (6 amenazas)</li>
+    <li><strong>Sección 3:</strong> Matriz de evaluación de riesgos</li>
+    <li><strong>Sección 4:</strong> Tabla de contramedidas (mínimo 3)</li>
+    <li><strong>Conclusión:</strong> Reflexión breve sobre la importancia del modelo STRIDE (máximo 150 palabras)</li>
+</ol>
 
 <p><strong>Especificaciones técnicas de entrega</strong></p>
 <div class="_tableContainer_1rjym_1">
@@ -99,25 +150,33 @@ Criterio de verificación:
             <tbody>
                 <tr>
                     <td data-col-size="md"><strong>Formato de archivo</strong></td>
-                    <td data-col-size="xl">PDF únicamente. Nomenclatura: TA-1.4_ApellidoNombre_ChecklistSeguridadAPI.pdf</td>
+                    <td data-col-size="xl">PDF únicamente. Nomenclatura: TA-1.4_ApellidoNombre_ModeloSTRIDE.pdf</td>
                 </tr>
                 <tr>
                     <td data-col-size="md"><strong>Extensión</strong></td>
-                    <td data-col-size="xl">Máximo 4 páginas (mínimo 24 ítems organizados por categorías).</td>
+                    <td data-col-size="xl">Máximo 3 páginas (sin contar portada). Mínimo: 6 amenazas STRIDE + 3 contramedidas.</td>
                 </tr>
                 <tr>
                     <td data-col-size="md"><strong>Originalidad</strong></td>
-                    <td data-col-size="xl">Trabajo original. Máximo 40% contenido IA. Citar fuentes consultadas.</td>
+                    <td data-col-size="xl">Trabajo original. Se permite IA para generar ideas, pero el análisis debe ser propio y específico a tu sistema. Citar fuentes consultadas.</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
+<p><strong>Recursos de apoyo:</strong></p>
+<ul>
+    <li>Presentación Semana 4 (diapositivas sobre STRIDE, CIA, TLS, AES, JWT)</li>
+    <li>Base de datos <code>threat_model</code> del laboratorio (ver ejemplos)</li>
+    <li>Microsoft STRIDE: <a href="https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats" target="_blank">Documentación oficial</a></li>
+    <li>OWASP API Security Top 10: <a href="https://owasp.org/www-project-api-security/" target="_blank">Guía</a></li>
+</ul>
+
 <p><strong>Información importante</strong></p>
 <ul>
     <li><p><strong>Modalidad:</strong> Trabajo autónomo individual — <strong>2.25 pts</strong>.</p></li>
-    <li><p><strong>Tiempo estimado:</strong> 3 horas de trabajo independiente.</p></li>
+    <li><p><strong>Tiempo estimado:</strong> 2-3 horas de trabajo independiente.</p></li>
     <li><p><strong>Entrega:</strong> Plataforma Canvas antes de la fecha límite especificada.</p></li>
     <li><p><strong>Penalización por retraso:</strong> -0.25 puntos por cada día de retraso.</p></li>
 </ul>
