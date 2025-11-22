@@ -1,0 +1,449 @@
+[
+  {
+    "question": {
+      "question_name": "Definición de Sistemas Distribuidos",
+      "question_text": "<p>Un sistema distribuido se define académicamente como:</p>",
+      "question_type": "multiple_choice_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Un conjunto de computadores independientes, interconectados por red, que colaboran para realizar una tarea y aparecen como un sistema coherente",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. Esta definición captura la esencia: independencia de nodos, colaboración mediante protocolos y la ilusión de coherencia."
+        },
+        {
+          "answer_text": "Una supercomputadora centralizada que procesa todas las peticiones simultáneamente",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esto describe un sistema monolítico centralizado, lo opuesto a la naturaleza distribuida."
+        },
+        {
+          "answer_text": "Un sistema de bases de datos replicadas sin procesamiento distribuido",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Los sistemas distribuidos incluyen tanto procesamiento como almacenamiento distribuido."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Ventaja de Tolerancia a Fallos",
+      "question_text": "<p>La tolerancia a fallos en sistemas distribuidos se logra mediante replicación de recursos.</p>",
+      "question_type": "true_false_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Verdadero",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. La replicación asegura disponibilidad del sistema incluso ante fallos de componentes individuales, logrando niveles de 99.9% o superiores."
+        },
+        {
+          "answer_text": "Falso",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. La replicación es fundamental para tolerancia a fallos, permitiendo que el sistema continúe funcionando cuando un nodo falla."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Funciones del Middleware",
+      "question_text": "<p>Selecciona todas las funciones clave del middleware en sistemas distribuidos:</p>",
+      "question_type": "multiple_answers_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Abstracción mediante APIs más funcionales que el sistema operativo",
+          "answer_weight": 33.33,
+          "answer_comments": "Correcto. El middleware abstrae la complejidad del SO y la red."
+        },
+        {
+          "answer_text": "Integración entre plataformas heterogéneas con transformación de datos",
+          "answer_weight": 33.33,
+          "answer_comments": "Correcto. El middleware conecta sistemas diferentes mediante transformación y mensajería."
+        },
+        {
+          "answer_text": "Reemplazo completo del sistema operativo",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. El middleware se sitúa entre el SO y las aplicaciones, no lo reemplaza."
+        },
+        {
+          "answer_text": "Desacoplamiento temporal y referencial en sistemas Pub/Sub",
+          "answer_weight": 33.33,
+          "answer_comments": "Correcto. El middleware permite desacoplamiento mediante espacios de memoria compartida."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Sistemas de Mensajería",
+      "question_text": "<p>Kafka es ideal para [tipo_sistema] y streaming a gran escala, mientras que RabbitMQ se usa para [tipo_flujo] y tareas de latencia crítica.</p>",
+      "question_type": "fill_in_multiple_blanks_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "sistemas orientados a eventos",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_sistema"
+        },
+        {
+          "answer_text": "event-driven",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_sistema"
+        },
+        {
+          "answer_text": "flujos impulsados por comandos",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_flujo"
+        },
+        {
+          "answer_text": "command-driven",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_flujo"
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Responsabilidades de Capas",
+      "question_text": "<p>En una arquitectura de tres capas, ¿cuál es la responsabilidad de la capa de presentación?</p>",
+      "question_type": "multiple_choice_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Mostrar interfaces de usuario, capturar input del usuario y renderizar vistas dinámicas",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. La capa de presentación maneja toda la interacción con el usuario: interfaces visuales, captura de datos y navegación."
+        },
+        {
+          "answer_text": "Validar reglas de negocio complejas y ejecutar algoritmos de procesamiento",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es responsabilidad de la capa de procesamiento o lógica de negocio."
+        },
+        {
+          "answer_text": "Gestionar transacciones de base de datos y garantizar persistencia",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es responsabilidad de la capa de datos."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Capa vs Nivel",
+      "question_text": "<p>Una aplicación de 3 capas lógicas desplegada en un solo servidor físico se considera una arquitectura de 3 capas y 1 nivel.</p>",
+      "question_type": "true_false_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Verdadero",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. Capa es segmentación lógica, nivel es distribución física. 3 capas en 1 servidor = 3 capas, 1 nivel."
+        },
+        {
+          "answer_text": "Falso",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. La distinción es clara: capas son lógicas (software), niveles son físicos (hardware)."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Controlador en MVC",
+      "question_text": "<p>En el patrón MVC, el Controlador es responsable de:</p>",
+      "question_type": "multiple_choice_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Recibir acciones del usuario, gestionar eventos, actualizar el Modelo y delegar a la Vista la tarea de desplegar la interfaz",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. El Controlador actúa como intermediario: recibe eventos, ejecuta lógica, modifica el Modelo y coordina la Vista."
+        },
+        {
+          "answer_text": "Definir las estructuras de datos y lógica de acceso a la base de datos",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es la responsabilidad del Modelo."
+        },
+        {
+          "answer_text": "Renderizar la interfaz de usuario y mostrar datos al usuario",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es la responsabilidad de la Vista."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Función del API Gateway",
+      "question_text": "<p>¿Cuál es la función principal del API Gateway en microservicios?</p>",
+      "question_type": "short_answer_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "autenticar",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. Autenticación es una función clave."
+        },
+        {
+          "answer_text": "rutear",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. Ruteo de peticiones es fundamental."
+        },
+        {
+          "answer_text": "rate limiting",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. Control de tasa de peticiones."
+        },
+        {
+          "answer_text": "routing",
+          "answer_weight": 100,
+          "answer_comments": "Correcto."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "gRPC usa HTTP/2",
+      "question_text": "<p>gRPC utiliza HTTP/2 como protocolo de transporte y Protocol Buffers para serialización binaria.</p>",
+      "question_type": "true_false_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Verdadero",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. gRPC usa HTTP/2 y Protobuf, resultando en comunicación más eficiente que REST/JSON sobre HTTP 1.1."
+        },
+        {
+          "answer_text": "Falso",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es precisamente la combinación que hace a gRPC eficiente para microservicios."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Ventajas de Protocol Buffers",
+      "question_text": "<p>Selecciona todas las ventajas de Protocol Buffers sobre JSON:</p>",
+      "question_type": "multiple_answers_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Serialización binaria más compacta",
+          "answer_weight": 33.33,
+          "answer_comments": "Correcto. Protobuf produce mensajes binarios más pequeños que JSON textual."
+        },
+        {
+          "answer_text": "Mayor velocidad de serialización y deserialización",
+          "answer_weight": 33.33,
+          "answer_comments": "Correcto. Protobuf es significativamente más rápido que JSON."
+        },
+        {
+          "answer_text": "Mayor legibilidad para humanos",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. JSON es más legible. Protobuf es binario y requiere herramientas."
+        },
+        {
+          "answer_text": "Evolución de esquemas mediante etiquetas numéricas",
+          "answer_weight": 33.33,
+          "answer_comments": "Correcto. Protobuf permite renombrar campos sin romper compatibilidad."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Naturaleza de WebSockets",
+      "question_text": "<p>Después del handshake HTTP inicial, WebSockets establece una conexión [tipo_conexion] persistente que no utiliza [protocolo] para la comunicación posterior.</p>",
+      "question_type": "fill_in_multiple_blanks_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "TCP",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_conexion"
+        },
+        {
+          "answer_text": "tcp",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_conexion"
+        },
+        {
+          "answer_text": "HTTP",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "protocolo"
+        },
+        {
+          "answer_text": "http",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "protocolo"
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "XML y SOAP",
+      "question_text": "<p>SOAP es un protocolo de servicios web que utiliza XML como formato de mensaje.</p>",
+      "question_type": "true_false_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Verdadero",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. SOAP (Simple Object Access Protocol) está fundamentalmente basado en XML para estructurar mensajes."
+        },
+        {
+          "answer_text": "Falso",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. SOAP utiliza XML como su formato de mensaje estándar definido por W3C."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Principio de Integridad",
+      "question_text": "<p>En la triada CIA de ciberseguridad, ¿qué garantiza el principio de Integridad?</p>",
+      "question_type": "multiple_choice_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Que las alteraciones a los activos de un sistema solo se pueden realizar de manera autorizada",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. La Integridad protege contra modificaciones intencionales y no intencionales mediante controles como HMAC y firmas digitales."
+        },
+        {
+          "answer_text": "La protección contra acceso no autorizado a información sensible",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es la definición de Confidencialidad."
+        },
+        {
+          "answer_text": "Que información y sistemas estén disponibles cuando usuarios legítimos los necesiten",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta es la definición de Disponibilidad."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Amenaza de Alteración",
+      "question_text": "<p>La amenaza de Alteración en la triada DAD ataca específicamente el principio de [principio_cia] mediante [tipo_ataque].</p>",
+      "question_type": "fill_in_multiple_blanks_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Integridad",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "principio_cia"
+        },
+        {
+          "answer_text": "integridad",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "principio_cia"
+        },
+        {
+          "answer_text": "modificación no autorizada",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_ataque"
+        },
+        {
+          "answer_text": "modificaciones no autorizadas",
+          "answer_weight": 100,
+          "answer_comments": "Correcto",
+          "blank_id": "tipo_ataque"
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Velocidad Criptografía",
+      "question_text": "<p>La criptografía simétrica es aproximadamente 1,000 a 10,000 veces más rápida que la asimétrica.</p>",
+      "question_type": "true_false_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Verdadero",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. La simétrica es mucho más rápida, por eso se usa para cifrado masivo mientras que la asimétrica se usa solo para intercambio de claves."
+        },
+        {
+          "answer_text": "Falso",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Esta diferencia de velocidad es real y es la razón por la que se usa criptografía híbrida."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "No Repudio",
+      "question_text": "<p>¿Qué tipo de criptografía proporciona no repudio mediante firmas digitales?</p>",
+      "question_type": "multiple_choice_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "Criptografía asimétrica con par de claves pública/privada",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. La asimétrica permite firmas digitales: el remitente firma con su clave privada y el receptor verifica con la clave pública."
+        },
+        {
+          "answer_text": "Criptografía simétrica con clave compartida",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. La simétrica no proporciona no repudio porque ambas partes tienen la misma clave."
+        },
+        {
+          "answer_text": "Funciones de hash sin clave",
+          "answer_weight": 0,
+          "answer_comments": "Incorrecto. Las funciones hash solas no proporcionan no repudio, se necesita criptografía asimétrica."
+        }
+      ]
+    }
+  },
+  {
+    "question": {
+      "question_name": "Función de HMAC",
+      "question_text": "<p>¿Qué garantiza HMAC en el contexto de APIs?</p>",
+      "question_type": "short_answer_question",
+      "points_possible": 0.25,
+      "answers": [
+        {
+          "answer_text": "integridad",
+          "answer_weight": 100,
+          "answer_comments": "Correcto. HMAC garantiza integridad de peticiones."
+        },
+        {
+          "answer_text": "integrity",
+          "answer_weight": 100,
+          "answer_comments": "Correcto."
+        },
+        {
+          "answer_text": "integridad de mensajes",
+          "answer_weight": 100,
+          "answer_comments": "Correcto."
+        },
+        {
+          "answer_text": "integridad de peticiones",
+          "answer_weight": 100,
+          "answer_comments": "Correcto."
+        }
+      ]
+    }
+  }
+]

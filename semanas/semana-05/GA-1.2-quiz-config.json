@@ -1,0 +1,24 @@
+{
+  "quiz": {
+    "title": "GA-1.2 — Evaluación Teórica - Fundamentos de Sistemas Distribuidos y Middleware",
+    "description": "<p>Esta evaluación diagnóstica evalúa la comprensión de los conceptos fundamentales cubiertos en las primeras cuatro semanas del curso:</p><ul><li>Fundamentos de Sistemas Distribuidos</li><li>Arquitectura de 3 Capas y MVC</li><li>Protocolos y Formatos de Datos</li><li>Seguridad: CIA y Criptografía</li></ul><p><strong>Instrucciones:</strong></p><ul><li>Lee cuidadosamente cada pregunta antes de responder</li><li>Todas las preguntas deben ser contestadas</li><li>Puedes consultar tus apuntes personales y compendios de las semanas 1-4</li></ul>",
+    "quiz_type": "assignment",
+    "time_limit": 120,
+    "allowed_attempts": 1,
+    "scoring_policy": "keep_highest",
+    "cant_go_back": false,
+    "shuffle_answers": true,
+    "show_correct_answers": "always",
+    "show_correct_answers_last_attempt": false,
+    "one_question_at_a_time": false,
+    "require_lockdown_browser": false,
+    "require_lockdown_browser_for_results": false,
+    "access_code": "",
+    "ip_filter": "",
+    "due_at": null,
+    "lock_at": null,
+    "unlock_at": null,
+    "published": false,
+    "points_possible": 4
+  }
+}
